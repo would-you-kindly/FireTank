@@ -39,7 +39,7 @@ namespace FireSafety
             //textures.Load(Textures.ID.Tree, "../../Media/tree.png");
             textures.Load(Textures.ID.House, "../../Media/house.png");
             textures.Load(Textures.ID.Fire, "../../Media/fire.png");
-            textures.Load(Textures.ID.tank, "../../Media/tank.png");
+            textures.Load(Textures.ID.Tank, "../../Media/tank.png");
             textures.Load(Textures.ID.Tree, "../../Media/greentree.png");
             textures.Load(Textures.ID.Turret, "../../Media/turret.png");
 
@@ -64,7 +64,7 @@ namespace FireSafety
             // TODO: Должно быть items.Count (почему-т он считает больше)
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                tanks[i] = new Tank(Textures.ID.tank, Textures.ID.Turret, textures, forest);
+                tanks[i] = new Tank(Textures.ID.Tank, Textures.ID.Turret, textures, forest);
                 // TODO: +16
                 tanks[i].Move(new Vector2f(items[i].rect.Left + 16, items[i].rect.Top + 16));
             }
