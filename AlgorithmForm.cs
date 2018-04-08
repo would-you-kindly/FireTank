@@ -129,6 +129,12 @@ namespace FireSafety
             {
                 switch (lbTurretCommands.Items[i].ToString())
                 {
+                    case "Rotate 45 CW":
+                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
+                        break;
+                    case "Rotate 45 CCW":
+                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
+                        break;
                     case "Rotate 90 CW":
                         listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
                         break;

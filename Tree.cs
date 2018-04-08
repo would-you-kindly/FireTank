@@ -18,7 +18,7 @@ namespace FireSafety
         }
 
         public State state;
-        private int hitPoints = 6;
+        private int hitPoints = 10;
         private Flame _flame;
 
         public Tree(Textures.ID idTree, Textures.ID idFlame, TextureHolder<Textures.ID> textures) :

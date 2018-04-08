@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FireSafety
 {
@@ -14,26 +15,35 @@ namespace FireSafety
             base(id, textures)
         {
             // Выставляем Origin в центр картинки
-            FloatRect rect = sprite.GetLocalBounds();
-            sprite.Origin = new Vector2f(rect.Width / 2.0f, rect.Height / 2.0f);
+            Utilities.CenterOrigin(sprite);
         }
 
         public Vector2f AgainstPosition
         {
             get
             {
+                const int rotation = 45;
+                //MessageBox.Show(sprite.Position.ToString());
                 // TODO: Проконтролировать Rotation
                 int degrees = (Math.Abs((int)sprite.Rotation < 0 ? 360 + (int)sprite.Rotation : (int)sprite.Rotation)) % 360;
                 switch (degrees)
                 {
-                    case 0:
-                        return new Vector2f(192 + Sprite.Position.X, 224 + Sprite.Position.Y - 32);
-                    case 90:
-                        return new Vector2f(192 + Sprite.Position.X + 32, 224 + Sprite.Position.Y);
-                    case 180:
-                        return new Vector2f(192 + Sprite.Position.X, 224 + Sprite.Position.Y + 32);
-                    case 270:
-                        return new Vector2f(192 + Sprite.Position.X - 32, 224 + Sprite.Position.Y);
+                    case rotation * 0:
+                        return new Vector2f(Sprite.Position.X - 16, Sprite.Position.Y - 16 - 32);
+                    case rotation * 1:
+                        return new Vector2f(Sprite.Position.X - 16 + 32, Sprite.Position.Y - 16 - 32);
+                    case rotation * 2:                        
+                        return new Vector2f(Sprite.Position.X - 16 + 32, Sprite.Position.Y - 16);
+                    case rotation * 3:                        
+                        return new Vector2f(Sprite.Position.X - 16 + 32, Sprite.Position.Y - 16 + 32);
+                    case rotation * 4:                        
+                        return new Vector2f(Sprite.Position.X - 16, Sprite.Position.Y - 16 + 32);
+                    case rotation * 5:                        
+                        return new Vector2f(Sprite.Position.X - 16 - 32, Sprite.Position.Y - 16 + 32);
+                    case rotation * 6:                        
+                        return new Vector2f(Sprite.Position.X - 16 - 32, Sprite.Position.Y - 16);
+                    case rotation * 7:                        
+                        return new Vector2f(Sprite.Position.X - 16 - 32, Sprite.Position.Y - 16 - 32);
                     default:
                         throw new Exception("Невозможный угол поворота башни.");
                 }

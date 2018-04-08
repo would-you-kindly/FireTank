@@ -16,7 +16,12 @@ namespace FireSafety
             None
         }
 
-        public Commands command;
+        public Commands command { get; set; }
+
+        public ShootCommand()
+        {
+
+        }
 
         public ShootCommand(Commands command)
         {

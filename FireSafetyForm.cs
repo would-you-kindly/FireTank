@@ -57,7 +57,7 @@ namespace FireSafety
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("ParallelAlgorithm.algo", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("ParallelAlgorithm.algo", FileMode.Create, FileAccess.Write))
             {
                 formatter.Serialize(fs, _parallelAlgorithm);
             }
@@ -67,7 +67,7 @@ namespace FireSafety
         {
             ParallelAlgorithm loadedParallelAlgorithm;
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("ParallelAlgorithm.algo", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("ParallelAlgorithm.algo", FileMode.Open, FileAccess.Read))
             {
                 loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
             }

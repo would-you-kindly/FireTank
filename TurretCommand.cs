@@ -11,6 +11,8 @@ namespace FireSafety
     {
         public enum Commands
         {
+            Rotate45CW,
+            Rotate45CCW,
             Rotate90CW,
             Rotate90CCW,
             Up,
@@ -18,7 +20,12 @@ namespace FireSafety
             None
         }
 
-        public Commands command;
+        public Commands command { get; set; }
+
+        public TurretCommand()
+        {
+
+        }
 
         public TurretCommand(Commands command)
         {
@@ -34,6 +41,10 @@ namespace FireSafety
         {
             switch (command)
             {
+                case Commands.Rotate45CW:
+                    return "Rotate 45 CW";
+                case Commands.Rotate45CCW:
+                    return "Rotate 45 CCW";
                 case Commands.Rotate90CW:
                     return "Rotate 90 CW";
                 case Commands.Rotate90CCW:

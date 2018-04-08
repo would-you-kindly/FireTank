@@ -97,6 +97,8 @@
             this.cbTurret.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTurret.FormattingEnabled = true;
             this.cbTurret.Items.AddRange(new object[] {
+            "Rotate 45 CW",
+            "Rotate 45 CCW",
             "Rotate 90 CW",
             "Rotate 90 CCW",
             "Up",

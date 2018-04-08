@@ -26,7 +26,7 @@ namespace FireSafety
             Utilities.CenterOrigin(sprite);
         }
 
-        private void Move(Vector2f move)
+        public void Move(Vector2f move)
         {
             // Перемещаем и танк, и пушку
             sprite.Position += move;
@@ -64,11 +64,21 @@ namespace FireSafety
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
         }
 
-        private void Rotate(float degrees)
+        private void RotateTurret(float degrees)
+        {
+            turret.Sprite.Rotation += degrees;
+
+            // Возвращаем углы поворота в диапазон [0-360]
+            if (turret.Sprite.Rotation < 0)
+            {
+                turret.Sprite.Rotation += 360;
+            }
+        }
+
+        private void RotateTank(float degrees)
         {
             // Поворачиваем и танк, и пушку
             sprite.Rotation += degrees;
-            turret.Sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
             if (sprite.Rotation < 0)
@@ -76,10 +86,7 @@ namespace FireSafety
                 sprite.Rotation += 360;
             }
 
-            if (turret.Sprite.Rotation < 0)
-            {
-                turret.Sprite.Rotation += 360;
-            }
+            RotateTurret(degrees);
         }
 
         public void Move(MoveCommand.Commands command)
@@ -93,16 +100,16 @@ namespace FireSafety
                     Move(sprite.Rotation, MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
-                    Rotate(90);
+                    RotateTank(90);
                     break;
                 case MoveCommand.Commands.Rotate90CCW:
-                    Rotate(-90);
+                    RotateTank(-90);
                     break;
                 case MoveCommand.Commands.Rotate45CW:
-                    Rotate(45);
+                    RotateTank(45);
                     break;
                 case MoveCommand.Commands.Rotate45CCW:
-                    Rotate(-45);
+                    RotateTank(-45);
                     break;
                 default:
                     break;
@@ -138,11 +145,17 @@ namespace FireSafety
         {
             switch (command)
             {
+                case TurretCommand.Commands.Rotate45CW:
+                    RotateTurret(45);
+                    break;
+                case TurretCommand.Commands.Rotate45CCW:
+                    RotateTurret(-45);
+                    break;
                 case TurretCommand.Commands.Rotate90CW:
-                    turret.Sprite.Rotation += 90;
+                    RotateTurret(90);
                     break;
                 case TurretCommand.Commands.Rotate90CCW:
-                    turret.Sprite.Rotation -= 90;
+                    RotateTurret(-90);
                     break;
                 case TurretCommand.Commands.Up:
                     Console.WriteLine("TurretCommand.Commands.Up");

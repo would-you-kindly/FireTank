@@ -21,7 +21,12 @@ namespace FireSafety
             None
         }
 
-        public Commands command;
+        public Commands command { get; set; }
+
+        public MoveCommand()
+        {
+
+        }
 
         public MoveCommand(Commands command)
         {

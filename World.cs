@@ -66,7 +66,7 @@ namespace FireSafety
             {
                 tanks[i] = new Tank(Textures.ID.tank, Textures.ID.Turret, textures, forest);
                 // TODO: +16
-                tanks[i].Position = new Vector2f(items[i].rect.Left + 16, items[i].rect.Top + 16);
+                tanks[i].Move(new Vector2f(items[i].rect.Left + 16, items[i].rect.Top + 16));
             }
 
             // Поджигаем деревья
