@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace FireSafety
 {
-    class Tree : Entity
+    public class Tree : Entity
     {
         public enum State
         {

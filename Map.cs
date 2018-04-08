@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace FireSafety
 {
-    class Object
+    public class Object
     {
         public string name = string.Empty;
         public string type = string.Empty;
@@ -33,13 +33,13 @@ namespace FireSafety
         }
     }
 
-    class Layer
+    public class Layer
     {
         public int opacity;
         public List<Sprite> tiles = new List<Sprite>();
     }
 
-    class Map : Drawable
+    public class Map : Drawable
     {
         private int width, height, tileWidth, tileHeight;
         private int firstTileID;

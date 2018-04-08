@@ -16,7 +16,7 @@ namespace FireSafety
 
         private RenderWindow window;
         private FireSafetyForm form;
-        private Algorithm algorithm;
+        private ParallelAlgorithm parallelAlgorithm;
         private World world;
         public static bool executing;
 
@@ -26,16 +26,16 @@ namespace FireSafety
 
             AssignEvents();
 
-            algorithm = new Algorithm();
+            parallelAlgorithm = new ParallelAlgorithm();
 
             executing = false;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            form = new FireSafetyForm(algorithm);
+            form = new FireSafetyForm(parallelAlgorithm);
             form.Show();
 
-            world = new World(algorithm);
+            world = new World(parallelAlgorithm);
         }
 
         private void AssignEvents()

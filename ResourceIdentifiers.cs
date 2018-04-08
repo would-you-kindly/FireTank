@@ -8,7 +8,7 @@
             Tree,
             House,
             Fire,
-            Robot,
+            tank,
             Turret
         }
     }

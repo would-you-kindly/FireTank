@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.cbMove = new System.Windows.Forms.ComboBox();
-            this.btnExecuteAlgorithm = new System.Windows.Forms.Button();
             this.lbMoveCommands = new System.Windows.Forms.ListBox();
             this.lbShootCommands = new System.Windows.Forms.ListBox();
             this.lbTurretCommands = new System.Windows.Forms.ListBox();
@@ -54,16 +53,6 @@
             this.cbMove.Size = new System.Drawing.Size(121, 21);
             this.cbMove.TabIndex = 2;
             this.cbMove.SelectedIndexChanged += new System.EventHandler(this.cbShootCommandsCommands_SelectedIndexChanged);
-            // 
-            // btnExecuteAlgorithm
-            // 
-            this.btnExecuteAlgorithm.Location = new System.Drawing.Point(264, 427);
-            this.btnExecuteAlgorithm.Name = "btnExecuteAlgorithm";
-            this.btnExecuteAlgorithm.Size = new System.Drawing.Size(120, 23);
-            this.btnExecuteAlgorithm.TabIndex = 3;
-            this.btnExecuteAlgorithm.Text = "Execute algorithm";
-            this.btnExecuteAlgorithm.UseVisualStyleBackColor = true;
-            this.btnExecuteAlgorithm.Click += new System.EventHandler(this.btnExecuteAlgorithm_Click);
             // 
             // lbMoveCommands
             // 
@@ -127,7 +116,6 @@
             this.Controls.Add(this.lbTurretCommands);
             this.Controls.Add(this.lbShootCommands);
             this.Controls.Add(this.lbMoveCommands);
-            this.Controls.Add(this.btnExecuteAlgorithm);
             this.Controls.Add(this.cbTurret);
             this.Controls.Add(this.cbShoot);
             this.Controls.Add(this.cbMove);
@@ -140,7 +128,6 @@
 
         #endregion
         private System.Windows.Forms.ComboBox cbMove;
-        private System.Windows.Forms.Button btnExecuteAlgorithm;
         public System.Windows.Forms.ListBox lbMoveCommands;
         public System.Windows.Forms.ListBox lbShootCommands;
         public System.Windows.Forms.ListBox lbTurretCommands;

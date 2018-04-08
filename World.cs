@@ -12,14 +12,15 @@ namespace FireSafety
     {
         private Map map;
         private TextureHolder<Textures.ID> textures;
-        private Tank robot;
-        private Algorithm _algorithm;
+        private Tank[] tanks;
+        private ParallelAlgorithm _parallelAlgorithm;
         private Wind wind;
         private Forest forest;
 
-        public World(Algorithm algorithm)
+        public World(ParallelAlgorithm parallelAlgorithm)
         {
-            _algorithm = algorithm;
+            _parallelAlgorithm = parallelAlgorithm;
+            tanks = new Tank[Utilities.TANKS_COUNT];
 
             LoadResources();
             BuildWorld();
@@ -30,7 +31,7 @@ namespace FireSafety
         {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();
-            map.LoadFromFile("../../Media/map.tmx");
+            map.LoadFromFile("../../Media/map3.tmx");
 
             // Загружаем текстуры
             textures = new TextureHolder<Textures.ID>();
@@ -38,7 +39,7 @@ namespace FireSafety
             //textures.Load(Textures.ID.Tree, "../../Media/tree.png");
             textures.Load(Textures.ID.House, "../../Media/house.png");
             textures.Load(Textures.ID.Fire, "../../Media/fire.png");
-            textures.Load(Textures.ID.Robot, "../../Media/tank.png");
+            textures.Load(Textures.ID.tank, "../../Media/tank.png");
             textures.Load(Textures.ID.Tree, "../../Media/greentree.png");
             textures.Load(Textures.ID.Turret, "../../Media/turret.png");
 
@@ -58,10 +59,15 @@ namespace FireSafety
             // Устанавливаем начальное положение деревьев (леса)
             forest = new Forest(map.GetObjects("tree"), textures, wind);
 
-            // Устанавливаем начальное положение робота
-            robot = new Tank(Textures.ID.Robot, Textures.ID.Turret, textures, forest);
-            // TODO: +16
-            robot.Position = new Vector2f(map.GetObject("tank").rect.Left + 16, map.GetObject("tank").rect.Top + 16);
+            // Устанавливаем начальное положение танка
+            var items = map.GetObjects("tank");
+            // TODO: Должно быть items.Count (почему-т он считает больше)
+            for (int i = 0; i < Utilities.TANKS_COUNT; i++)
+            {
+                tanks[i] = new Tank(Textures.ID.tank, Textures.ID.Turret, textures, forest);
+                // TODO: +16
+                tanks[i].Position = new Vector2f(items[i].rect.Left + 16, items[i].rect.Top + 16);
+            }
 
             // Поджигаем деревья
             forest[16].Fire();
@@ -73,7 +79,10 @@ namespace FireSafety
         {
             ExecuteAlgorithm();
             forest.Update(deltaTime);
-            robot.Update(deltaTime);
+            foreach (var tank in tanks)
+            {
+                tank.Update(deltaTime);
+            }
             // TODO: Важный момент, кто изменяется первым, новый огонь или действие игрока
         }
 
@@ -81,12 +90,19 @@ namespace FireSafety
         {
             map.Draw(target, states);
             forest.Draw(target, states);
-            robot.Draw(target, states);
+            foreach (var tank in tanks)
+            {
+                tank.Draw(target, states);
+            }
         }
 
         public void ExecuteAlgorithm()
         {
-            robot.ExecuteAlgorithm(_algorithm);
+            // Каждый танк выполняет свой алгоритм
+            for (int i = 0; i < tanks.Count(); i++)
+            {
+                tanks[i].ExecuteAlgorithm(_parallelAlgorithm[i]);
+            }
         }
     }
 }

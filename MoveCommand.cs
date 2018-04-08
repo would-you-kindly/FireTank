@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class MoveCommand : Command
+
+    [Serializable]
+    public class MoveCommand : Command
     {
         public enum Commands
         {
@@ -26,9 +28,32 @@ namespace FireSafety
             this.command = command;
         }
 
-        public override void Execute(Tank robot)
+        public override void Execute(Tank tank)
         {
-            robot.Move(command);
+            tank.Move(command);
+        }
+
+        public override string ToString()
+        {
+            switch (command)
+            {
+                case Commands.Forward:
+                    return "Forward";
+                case Commands.Backward:
+                    return "Backward";
+                case Commands.Rotate90CW:
+                    return "Rotate 90 CW";
+                case Commands.Rotate90CCW:
+                    return "Rotate 90 CCW";
+                case Commands.Rotate45CW:
+                    return "Rotate 45 CW";
+                case Commands.Rotate45CCW:
+                    return "Rotate 45 CCW";
+                case Commands.None:
+                    return "None";
+            }
+
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,7 +8,7 @@ using SFML.Graphics;
 
 namespace FireSafety
 {
-    class Tank : Entity
+    public class Tank : Entity
     {
         private const int maxWaterPressure = 3;
         private int waterPressure;

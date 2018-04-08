@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class Wind
+    public class Wind
     {
         // Направление ветра
         public enum Direction

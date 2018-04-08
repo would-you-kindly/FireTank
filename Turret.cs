@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class Turret : Entity
+    public class Turret : Entity
     {
         public Turret(Textures.ID id, TextureHolder<Textures.ID> textures) :
             base(id, textures)

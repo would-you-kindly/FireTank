@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class Forest : Entity
+    public class Forest : Entity
     {
         public List<Tree> trees;
         private Wind _wind;
+        private const int timeToSpread = 3;
+        private int currentTimeToSpread = 0;
 
         public Forest() :
             base()
@@ -58,8 +60,19 @@ namespace FireSafety
 
         private void SpreadFire()
         {
-            List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state == Tree.State.Burns));
+            // Огонь распространяется через каждые timeToSpread шагов
+            currentTimeToSpread++;
+            if (currentTimeToSpread != timeToSpread)
+            {
+                return;
+            }
+            else
+            {
+                currentTimeToSpread = 0;
+            }
 
+            // Ищем дерево, которое загорится следующим
+            List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state == Tree.State.Burns));
             foreach (Tree tree in burningTrees)
             {
                 switch (_wind.direction)

@@ -72,9 +72,10 @@ namespace FireSafety
             cbTurret.SelectedText = null;
         }
 
-        private void btnExecuteAlgorithm_Click(object sender, EventArgs e)
+        public void ExecuteAlgorithm()
         {
-            _algorithm.actions.Clear();
+            // Переносим то, что написали на элементах упралвения и сохраняем в Algorithm
+            _algorithm.Actions.Clear();
 
             List<Action> listActions = new List<Action>();
             for (int i = 0; i < lbMoveCommands.Items.Count; i++)
@@ -151,8 +152,7 @@ namespace FireSafety
                 actions.Enqueue(action);
             }
 
-            _algorithm.actions = actions;
-            Game.executing = true;
+            _algorithm.Actions = actions;
         }
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    abstract class Command
+    [Serializable]
+    public abstract class Command
     {
-        public abstract void Execute(Tank robot);
+        public abstract void Execute(Tank tank);
     }
 }

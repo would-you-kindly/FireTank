@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class TextureHolder<Identifier>
+    public class TextureHolder<Identifier>
     {
         private Dictionary<Identifier, Texture> textures;
 

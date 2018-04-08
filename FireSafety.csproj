@@ -99,6 +99,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MoveCommand.cs" />
+    <Compile Include="ParallelAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceIdentifiers.cs" />

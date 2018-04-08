@@ -8,25 +8,26 @@ using System.Windows.Forms;
 
 namespace FireSafety
 {
-    class Algorithm
+    [Serializable]
+    public class Algorithm
     {
-        public Queue<Action> actions;
+        public Queue<Action> Actions { get; set; }
 
         public Algorithm()
         {
-            actions = new Queue<Action>();
+            Actions = new Queue<Action>();
         }
 
         public Action GetNextAction()
         {
-            Action action = actions.Dequeue();
+            Action action = Actions.Dequeue();
 
             return action;
         }
 
         public bool HasCommands()
         {
-            return actions.Count != 0;
+            return Actions.Count != 0;
         }
     }
 }

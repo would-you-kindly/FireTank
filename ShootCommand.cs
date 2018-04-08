@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class ShootCommand : Command
+    [Serializable]
+    public class ShootCommand : Command
     {
         public enum Commands
         {
@@ -22,9 +23,25 @@ namespace FireSafety
             this.command = command;
         }
 
-        public override void Execute(Tank robot)
+        public override void Execute(Tank tank)
         {
-            robot.Shoot(command);
+            tank.Shoot(command);
+        }
+
+        public override string ToString()
+        {
+            switch (command)
+            {
+                case Commands.IncreaseWaterPressure:
+                    return "Increase water pressure";
+                case Commands.Shoot:
+                    return "Shoot";
+                case Commands.None:
+                    return "None";
+            }
+
+            throw new NotImplementedException();
+
         }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    class Action
+    [Serializable]
+    public class Action
     {
         public enum Types
         {
