@@ -18,9 +18,9 @@ namespace Interface
         private Label lblMove;
         private Label lblShoot;
         private Label lblTurret;
-        private ListBox lbMove;
-        private ListBox lbShoot;
-        private ListBox lbTurret;
+        public ListBox lbMove;
+        public ListBox lbShoot;
+        public ListBox lbTurret;
         private ComboBox cbMove;
         private ComboBox cbShoot;
         private ComboBox cbTurret;

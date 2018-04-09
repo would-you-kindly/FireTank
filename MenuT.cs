@@ -10,10 +10,11 @@ namespace Interface
     public class MenuT
     {
         public MenuBar menuBar;
+        private Theme theme;
 
         public MenuT()
         {
-            Theme theme = new Theme("themes/Black.txt");
+            theme = new Theme("themes/Black.txt");
             menuBar = new MenuBar();
             menuBar.SetRenderer(theme.getRenderer("MenuBar"));
 
@@ -24,11 +25,23 @@ namespace Interface
             menuBar.AddMenuItem("File", "Load level");
             menuBar.AddMenuItem("File", "Load level");
             menuBar.AddMenu("Window");
-            menuBar.AddMenuItem("Window", "Tank algorithm");
-            menuBar.AddMenuItem("Tank algorithm", "Red");
-            menuBar.AddMenuItem("Tank algorithm", "Blue");
-            menuBar.AddMenuItem("Tank algorithm", "Yellow");
-            menuBar.AddMenuItem("Tank algorithm", "Green");
+
+            menuBar.MenuItemClicked += MenuBar_MenuItemClicked;
+        }
+
+        private void MenuBar_MenuItemClicked(object sender, SignalArgsString e)
+        {
+            switch (e.Value)
+            {
+                case "Save algorithm":
+                    GuiT.getInstance().SaveParallelAlgorithm();
+                    break;
+                case "Load algorithm":
+                    GuiT.getInstance().LoadParallelAlgorithm();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

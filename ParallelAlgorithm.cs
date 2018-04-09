@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,8 +35,28 @@ namespace FireSafety
             }
         }
 
+        public void Load(string filename)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
+            {
+                ParallelAlgorithm loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
+                this.Algorithms = loadedParallelAlgorithm.Algorithms;
+            }
+        }
+        
+        public void Save(string filename)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
+            {
+                formatter.Serialize(fs, this);
+            }
+        }
+
         public void Execute()
         {
+            // TODO: Контролируем конфликты
             throw new NotImplementedException();
         }
     }
