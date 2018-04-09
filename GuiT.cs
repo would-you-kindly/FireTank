@@ -22,7 +22,7 @@ namespace Interface
         {
             renderWindow = new RenderWindow(new VideoMode(Utilities.WINDOW_WIDTH, Utilities.WINDOW_HEIGHT), "FireSafety");
             gui = new Gui(renderWindow);
-            algorithmT = new AlgorithmT(TankColor.Blue);
+            algorithmT = new AlgorithmT();
 
             gui.Add(algorithmT.window);
         }
