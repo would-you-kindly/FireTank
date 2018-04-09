@@ -12,7 +12,7 @@ namespace Interface
 {
     public class AlgorithmT
     {
-        ChildWindow window;
+        public ChildWindow window;
         ListBox lbMove;
         ListBox lbShoot;
         ListBox lbTurret;
@@ -46,7 +46,7 @@ namespace Interface
             lbTurret = new ListBox();
             //lbTurret.Size = new Vector2f(100, 200);
 
-            GuiT.getInstance().gui.Add(window);
+            //GuiT.getInstance().gui.Add(window);
         }
 
 
