@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Interface;
 
 namespace FireSafety
 {
@@ -14,7 +15,6 @@ namespace FireSafety
     {
         private Time TimePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
-        private RenderWindow window;
         private FireSafetyForm form;
         private ParallelAlgorithm parallelAlgorithm;
         private World world;
@@ -22,8 +22,6 @@ namespace FireSafety
 
         public Game()
         {
-            window = new RenderWindow(new VideoMode(640, 480), "FireSafety");
-
             AssignEvents();
 
             parallelAlgorithm = new ParallelAlgorithm();
@@ -40,7 +38,7 @@ namespace FireSafety
 
         private void AssignEvents()
         {
-            window.Closed += Window_Closed;
+            GuiT.getInstance().renderWindow.Closed += Window_Closed;
         }
 
         public void Run()
@@ -48,7 +46,7 @@ namespace FireSafety
             Clock clock = new Clock();
             Time timeSinceLastUpdate = Time.Zero;
 
-            while (window.IsOpen)
+            while (GuiT.getInstance().renderWindow.IsOpen)
             {
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
@@ -70,7 +68,7 @@ namespace FireSafety
         private void ProcessInput()
         {
             // Handle FireSafety events (NOTE this is still required when FireSafety is hosted in another window)
-            window.DispatchEvents();
+            GuiT.getInstance().renderWindow.DispatchEvents();
         }
 
         private void Update(Time deltaTime)
@@ -81,11 +79,12 @@ namespace FireSafety
         private void Render()
         {
             // Clear our FireSafety RenderWindow
-            window.Clear();
+            GuiT.getInstance().renderWindow.Clear();
             // Drawing sprites
-            window.Draw(world);
+            GuiT.getInstance().renderWindow.Draw(world);
+            GuiT.getInstance().Draw();
             // Display what FireSafety has drawn to the screen
-            window.Display();
+            GuiT.getInstance().renderWindow.Display();
         }
 
         private static void Window_Closed(object sender, EventArgs e)
