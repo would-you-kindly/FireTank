@@ -16,15 +16,18 @@ namespace Interface
         public Gui gui;
 
         private static GuiT instance;
-        public AlgorithmT algorithmT;
+        public AlgorithmT algorithm;
+        public MenuT menu;
 
         private GuiT()
         {
             renderWindow = new RenderWindow(new VideoMode(Utilities.WINDOW_WIDTH, Utilities.WINDOW_HEIGHT), "FireSafety");
             gui = new Gui(renderWindow);
-            algorithmT = new AlgorithmT();
+            algorithm = new AlgorithmT();
+            menu = new MenuT();
 
-            gui.Add(algorithmT.window);
+            gui.Add(algorithm.window);
+            gui.Add(menu.menuBar);
         }
 
         public static GuiT getInstance()

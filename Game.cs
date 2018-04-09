@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Interface;
+using System.Threading;
 
 namespace FireSafety
 {
     class Game
     {
-        private Time TimePerFrame = Time.FromSeconds(1.0f / 2.0f);
+        private Time TimePerFrame = Time.FromSeconds(1.0f / 60.0f);
 
         private FireSafetyForm form;
         private ParallelAlgorithm parallelAlgorithm;

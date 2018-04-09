@@ -119,6 +119,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GuiT.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MenuT.cs" />
     <Compile Include="MoveCommand.cs" />
     <Compile Include="ParallelAlgorithm.cs" />
     <Compile Include="Program.cs" />
