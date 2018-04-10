@@ -30,7 +30,7 @@ namespace Interface
             gui.Add(menuT.menuBar);
         }
 
-        public static GuiT getInstance()
+        public static GuiT GetInstance()
         {
             if (instance == null)
                 instance = new GuiT();

@@ -39,7 +39,7 @@ namespace FireSafety
 
         private void AssignEvents()
         {
-            GuiT.getInstance().renderWindow.Closed += Window_Closed;
+            GuiT.GetInstance().renderWindow.Closed += Window_Closed;
         }
 
         public void Run()
@@ -47,7 +47,7 @@ namespace FireSafety
             Clock clock = new Clock();
             Time timeSinceLastUpdate = Time.Zero;
 
-            while (GuiT.getInstance().renderWindow.IsOpen)
+            while (GuiT.GetInstance().renderWindow.IsOpen)
             {
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
@@ -69,7 +69,7 @@ namespace FireSafety
         private void ProcessInput()
         {
             // Handle FireSafety events (NOTE this is still required when FireSafety is hosted in another window)
-            GuiT.getInstance().renderWindow.DispatchEvents();
+            GuiT.GetInstance().renderWindow.DispatchEvents();
         }
 
         private void Update(Time deltaTime)
@@ -80,12 +80,12 @@ namespace FireSafety
         private void Render()
         {
             // Clear our FireSafety RenderWindow
-            GuiT.getInstance().renderWindow.Clear();
+            GuiT.GetInstance().renderWindow.Clear();
             // Drawing sprites
-            GuiT.getInstance().renderWindow.Draw(world);
-            GuiT.getInstance().Draw();
+            GuiT.GetInstance().renderWindow.Draw(world);
+            GuiT.GetInstance().Draw();
             // Display what FireSafety has drawn to the screen
-            GuiT.getInstance().renderWindow.Display();
+            GuiT.GetInstance().renderWindow.Display();
         }
 
         private static void Window_Closed(object sender, EventArgs e)

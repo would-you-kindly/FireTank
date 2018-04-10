@@ -34,10 +34,10 @@ namespace Interface
             switch (e.Value)
             {
                 case "Save algorithm":
-                    GuiT.getInstance().SaveParallelAlgorithm();
+                    GuiT.GetInstance().SaveParallelAlgorithm();
                     break;
                 case "Load algorithm":
-                    GuiT.getInstance().LoadParallelAlgorithm();
+                    GuiT.GetInstance().LoadParallelAlgorithm();
                     break;
                 default:
                     break;

@@ -21,5 +21,11 @@ namespace FireSafety
             FloatRect rect = sprite.GetLocalBounds();
             sprite.Origin = new Vector2f(rect.Width / 2.0f, rect.Height / 2.0f);
         }
+
+        public static void CenterOrigin(Shape shape, float shiftX = 0.0f, float shiftY = 0.0f)
+        {
+            FloatRect rect = shape.GetLocalBounds();
+            shape.Origin = new Vector2f(rect.Width / 2.0f + shiftX, rect.Height / 2.0f + shiftY);
+        }
     }
 }

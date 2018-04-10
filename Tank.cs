@@ -187,7 +187,20 @@ namespace FireSafety
             states.Transform *= Transform;
 
             target.Draw(sprite, states);
+            RectangleShape tankDirection = new RectangleShape(new Vector2f(3, 16));
+            Utilities.CenterOrigin(tankDirection, 0, 16);
+            tankDirection.FillColor = Color.Yellow;
+            tankDirection.Position = sprite.Position;
+            tankDirection.Rotation = sprite.Rotation;
+            target.Draw(tankDirection);
+
             target.Draw(turret.Sprite, states);
+            RectangleShape turretDirection = new RectangleShape(new Vector2f(1, 32));
+            Utilities.CenterOrigin(turretDirection, 0, 32);
+            turretDirection.FillColor = Color.Red;
+            turretDirection.Position = turret.Sprite.Position;
+            turretDirection.Rotation = turret.Sprite.Rotation;
+            target.Draw(turretDirection);
         }
     }
 }
