@@ -49,7 +49,7 @@ namespace FireSafety
     {
         public int width, height, tileWidth, tileHeight;
         private int firstTileID;
-        private FloatRect drawingBounds;
+        //private FloatRect drawingBounds;
         private Texture tilesetImage;
         private List<Object> objects = new List<Object>();
         private List<Layer> layers = new List<Layer>();
@@ -90,7 +90,7 @@ namespace FireSafety
                 mapPropertyElement = (XmlElement)mapPropertyElement.NextSibling;
             }
 
-            // Получаем инфрмацию о наборе тайлов (firstgid)
+            // Получаем информацию о наборе тайлов (firstgid)
             XmlElement tilesetElement = (XmlElement)xDoc.GetElementsByTagName("tileset")[0];
             firstTileID = int.Parse(tilesetElement.GetAttribute("firstgid"));
 
@@ -110,7 +110,7 @@ namespace FireSafety
 
             image.CreateMaskFromColor(new Color(255, 255, 255));
             tilesetImage = new Texture(image);
-            tilesetImage.Smooth = false;
+            //tilesetImage.Smooth = false;
 
             int columns = (int)tilesetImage.Size.X / tileWidth;
             int rows = (int)tilesetImage.Size.Y / tileHeight;
@@ -269,18 +269,17 @@ namespace FireSafety
                         obj.sprite = sprite;
 
                         FloatRect objectRect = new FloatRect();
-                        objectRect.Top = y;
                         objectRect.Left = x;
-                        objectRect.Height = height;
+                        objectRect.Top = y;
                         objectRect.Width = width;
+                        objectRect.Height = height;
                         obj.rect = objectRect;
 
                         // "Переменные" объекта
                         XmlElement properties = (XmlElement)objectElement.GetElementsByTagName("properties")[0];
                         if (properties != null)
                         {
-                            XmlElement prop;
-                            prop = (XmlElement)properties.GetElementsByTagName("property")[0];
+                            XmlElement prop = (XmlElement)properties.GetElementsByTagName("property")[0];
                             if (prop != null)
                             {
                                 for (int k = 0; k < properties.GetElementsByTagName("property").Count; k++)
@@ -298,7 +297,7 @@ namespace FireSafety
 
                         objects.Add(obj);
 
-                        objectElement = (XmlElement)xDoc.GetElementsByTagName("object").Item(j + 1);
+                        objectElement = (XmlElement)objectGroupElement.GetElementsByTagName("object").Item(j + 1);
                     }
                     objectGroupElement = (XmlElement)xDoc.GetElementsByTagName("objectgroup").Item(i + 1);
                 }

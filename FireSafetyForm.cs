@@ -75,7 +75,8 @@ namespace FireSafety
             // Пишем шаги алгоритма в элементы управления формы
             for (int i = 0; i < algorithmForms.Count; i++)
             {
-                for (int j = 0; j < loadedParallelAlgorithm.Algorithms[i].Actions.Count; j++)
+                int actionCount = loadedParallelAlgorithm.Algorithms[i].Actions.Count;
+                for (int j = 0; j < actionCount; j++)
                 {
                     Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
                     algorithmForms[i].lbMoveCommands.Items.Add(action.commands[0].ToString());

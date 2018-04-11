@@ -56,7 +56,7 @@ namespace FireSafety
             // Устанавливаем параметры карты
             Utilities.TILE_SIZE = map.GetTileSize().X;
             // TODO: СЧИТАТЬ ИЗ ФАЙЛА !!!!! map.GetObjects("tank").Count
-            Utilities.TANKS_COUNT = 2;
+            Utilities.TANKS_COUNT = map.GetObjects("tank").Count;
             Utilities.WINDOW_WIDTH = (uint)map.width * (uint)map.tileWidth;
             Utilities.WINDOW_HEIGHT = (uint)map.height * (uint)map.tileHeight;
 
@@ -93,14 +93,13 @@ namespace FireSafety
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
-            for (int i = 0; i < Utilities.TANKS_COUNT; i++)
-            //foreach (Object tankObject in map.GetObjects("tank"))
+            foreach (Object tankObject in map.GetObjects("tank"))
             {
                 Tank tank = new Tank(Textures.ID.Tank, Textures.ID.Turret, textures, forest);
-                tank.Move(new Vector2f(map.GetObjects("tank")[i].rect.Left + Utilities.TILE_SIZE / 2, map.GetObjects("tank")[i].rect.Top + Utilities.TILE_SIZE / 2));
-                tank.RotateTank(map.GetObjects("tank")[i].rotation);
-                Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == map.GetObjects("tank")[i].rect.Left && turret.rect.Top == map.GetObjects("tank")[i].rect.Top);
-                tank.RotateTurret(map.GetObjects("tank")[i].rotation - turretObject.rotation);
+                tank.Move(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
+                tank.RotateTank(tankObject.rotation);
+                Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
+                tank.RotateTurret(tankObject.rotation - turretObject.rotation);
                 tanks.Add(tank);
             }
 
