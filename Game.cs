@@ -23,8 +23,6 @@ namespace FireSafety
 
         public Game()
         {
-            AssignEvents();
-
             parallelAlgorithm = new ParallelAlgorithm();
 
             executing = false;
@@ -35,6 +33,8 @@ namespace FireSafety
             form.Show();
 
             world = new World(parallelAlgorithm);
+
+            AssignEvents();
         }
 
         private void AssignEvents()

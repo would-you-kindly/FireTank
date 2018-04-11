@@ -39,13 +39,19 @@ namespace FireSafety
         // Поджигает дерево
         public void Fire()
         {
-            state = State.Burns;
+            if (state == State.Normal)
+            {
+                state = State.Burns;
+            }
         }
 
         // Сжигает дерево
         public void Burn()
         {
-            state = State.Burned;
+            if (state == State.Burns)
+            {
+                state = State.Burned;
+            }
         }
 
         // Проверяет, не горит ли дерево
