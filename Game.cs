@@ -14,7 +14,7 @@ namespace FireSafety
 {
     class Game
     {
-        private Time TimePerFrame = Time.FromSeconds(1.0f / 60.0f);
+        private Time TimePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
         private FireSafetyForm form;
         private ParallelAlgorithm parallelAlgorithm;
@@ -70,6 +70,7 @@ namespace FireSafety
         {
             // Handle FireSafety events (NOTE this is still required when FireSafety is hosted in another window)
             GuiT.GetInstance().renderWindow.DispatchEvents();
+            // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
         }
 
         private void Update(Time deltaTime)
@@ -79,10 +80,11 @@ namespace FireSafety
 
         private void Render()
         {
-            // Clear our FireSafety RenderWindow
+            // Clear RenderWindow
             GuiT.GetInstance().renderWindow.Clear();
             // Drawing sprites
             GuiT.GetInstance().renderWindow.Draw(world);
+            // Drawing interface
             GuiT.GetInstance().Draw();
             // Display what FireSafety has drawn to the screen
             GuiT.GetInstance().renderWindow.Display();

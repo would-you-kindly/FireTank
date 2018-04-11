@@ -23,13 +23,13 @@ namespace FireSafety
             _forest = forest;
 
             // Выставляем Origin в центр картинки
-            Utilities.CenterOrigin(sprite);
+            Utilities.CenterOrigin(Sprite);
         }
 
         public void Move(Vector2f move)
         {
             // Перемещаем и танк, и пушку
-            sprite.Position += move;
+            Sprite.Position += move;
             turret.Sprite.Position += move;
         }
 
@@ -64,7 +64,7 @@ namespace FireSafety
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
         }
 
-        private void RotateTurret(float degrees)
+        public void RotateTurret(float degrees)
         {
             turret.Sprite.Rotation += degrees;
 
@@ -75,15 +75,14 @@ namespace FireSafety
             }
         }
 
-        private void RotateTank(float degrees)
+        public void RotateTank(float degrees)
         {
-            // Поворачиваем и танк, и пушку
-            sprite.Rotation += degrees;
+            Sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            if (sprite.Rotation < 0)
+            if (Sprite.Rotation < 0)
             {
-                sprite.Rotation += 360;
+                Sprite.Rotation += 360;
             }
 
             RotateTurret(degrees);
@@ -94,10 +93,10 @@ namespace FireSafety
             switch (command)
             {
                 case MoveCommand.Commands.Forward:
-                    Move(sprite.Rotation, MoveCommand.Commands.Forward);
+                    Move(Sprite.Rotation, MoveCommand.Commands.Forward);
                     break;
                 case MoveCommand.Commands.Backward:
-                    Move(sprite.Rotation, MoveCommand.Commands.Backward);
+                    Move(Sprite.Rotation, MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
                     RotateTank(90);
@@ -169,13 +168,13 @@ namespace FireSafety
         }
 
         // Пошагово выполняет алгоритм, заложенный в Algorithm
-        public void ExecuteAlgorithm(Algorithm algorithm)
+        public void Execute(Algorithm algorithm)
         {
             if (algorithm.HasCommands())
             {
                 Action action = algorithm.GetNextAction();
 
-                foreach (Command command in action.tankCommands)
+                foreach (Command command in action.commands)
                 {
                     command?.Execute(this);
                 }
@@ -186,14 +185,16 @@ namespace FireSafety
         {
             states.Transform *= Transform;
 
-            target.Draw(sprite, states);
+            // Рисуем корпус танка (с направлением)
+            target.Draw(Sprite, states);
             RectangleShape tankDirection = new RectangleShape(new Vector2f(3, 16));
             Utilities.CenterOrigin(tankDirection, 0, 16);
             tankDirection.FillColor = Color.Yellow;
-            tankDirection.Position = sprite.Position;
-            tankDirection.Rotation = sprite.Rotation;
+            tankDirection.Position = Sprite.Position;
+            tankDirection.Rotation = Sprite.Rotation;
             target.Draw(tankDirection);
 
+            // Рисуем башню танка (с направлением)
             target.Draw(turret.Sprite, states);
             RectangleShape turretDirection = new RectangleShape(new Vector2f(1, 32));
             Utilities.CenterOrigin(turretDirection, 0, 32);

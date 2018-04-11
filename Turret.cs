@@ -15,7 +15,7 @@ namespace FireSafety
             base(id, textures)
         {
             // Выставляем Origin в центр картинки
-            Utilities.CenterOrigin(sprite);
+            Utilities.CenterOrigin(Sprite);
         }
 
         public Vector2f AgainstPosition
@@ -25,7 +25,7 @@ namespace FireSafety
                 const int rotation = 45;
                 //MessageBox.Show(sprite.Position.ToString());
                 // TODO: Проконтролировать Rotation
-                int degrees = (Math.Abs((int)sprite.Rotation < 0 ? 360 + (int)sprite.Rotation : (int)sprite.Rotation)) % 360;
+                int degrees = (Math.Abs((int)Sprite.Rotation < 0 ? 360 + (int)Sprite.Rotation : (int)Sprite.Rotation)) % 360;
                 switch (degrees)
                 {
                     case rotation * 0:

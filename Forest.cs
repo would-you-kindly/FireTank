@@ -16,13 +16,6 @@ namespace FireSafety
         private const int timeToSpread = 3;
         private int currentTimeToSpread = 0;
 
-        public Forest() :
-            base()
-        {
-            trees = new List<Tree>();
-            _wind = new Wind(Wind.Direction.Down);
-        }
-
         public Forest(List<Object> treesObjects, TextureHolder<Textures.ID> textures, Wind wind) :
             base()
         {
@@ -79,16 +72,16 @@ namespace FireSafety
                 switch (_wind.direction)
                 {
                     case Wind.Direction.Up:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y -32))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.Left:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - 32, tree.Position.Y))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y))?.Fire();
                         break;
                     case Wind.Direction.Down:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y + 32))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
                         break;
-                    case Wind.Direction.Rigth:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + 32, tree.Position.Y))?.Fire();
+                    case Wind.Direction.Right:
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y))?.Fire();
                         break;
                     default:
                         break;
@@ -96,7 +89,7 @@ namespace FireSafety
             }
         }
 
-        public void Draw(RenderTarget target, RenderStates states)
+        public override void Draw(RenderTarget target, RenderStates states)
         {
             foreach (Tree tree in trees)
             {

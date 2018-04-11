@@ -78,9 +78,9 @@ namespace FireSafety
                 for (int j = 0; j < loadedParallelAlgorithm.Algorithms[i].Actions.Count; j++)
                 {
                     Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
-                    algorithmForms[i].lbMoveCommands.Items.Add(action.tankCommands[0].ToString());
-                    algorithmForms[i].lbShootCommands.Items.Add(action.tankCommands[1].ToString());
-                    algorithmForms[i].lbTurretCommands.Items.Add(action.tankCommands[2].ToString());
+                    algorithmForms[i].lbMoveCommands.Items.Add(action.commands[0].ToString());
+                    algorithmForms[i].lbShootCommands.Items.Add(action.commands[1].ToString());
+                    algorithmForms[i].lbTurretCommands.Items.Add(action.commands[2].ToString());
                 }
             }
         }

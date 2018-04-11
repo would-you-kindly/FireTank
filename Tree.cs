@@ -19,28 +19,30 @@ namespace FireSafety
 
         public State state;
         private int hitPoints = 10;
-        private Flame _flame;
+        private Flame flame;
+        private Sprite burnedTreeSprite;
 
         public Tree(Textures.ID idTree, Textures.ID idFlame, TextureHolder<Textures.ID> textures) :
             base(idTree, textures)
         {
-            _flame = new Flame(idFlame, textures);
+            flame = new Flame(idFlame, textures);
+            burnedTreeSprite = new Sprite(textures.Get(Textures.ID.BurnedTree));
             state = State.Normal;
         }
 
-        // Потушить дерево
+        // Тушит дерево
         public void Extinguish()
         {
             state = State.Normal;
         }
 
-        // Поджечь дерево
+        // Поджигает дерево
         public void Fire()
         {
             state = State.Burns;
         }
 
-        // Дерево сгорело
+        // Сжигает дерево
         public void Burn()
         {
             state = State.Burned;
@@ -80,16 +82,15 @@ namespace FireSafety
             switch (state)
             {
                 case State.Normal:
-                    target.Draw(sprite, states);
+                    target.Draw(Sprite, states);
                     break;
                 case State.Burns:
-                    target.Draw(sprite, states);
-                    target.Draw(_flame.Sprite, states);
+                    target.Draw(Sprite, states);
+                    target.Draw(flame.Sprite, states);
                     break;
                 case State.Burned:
                     // TODO: Нужно будет вернуть цвет, если дерево будет потушено
-                    sprite.Color = Color.Red;
-                    target.Draw(sprite, states);
+                    target.Draw(burnedTreeSprite, states);
                     break;
                 default:
                     break;

@@ -18,13 +18,13 @@ namespace FireSafety
             Count
         }
 
-        public Command[] tankCommands = new Command[(int)Types.Count];
+        public Command[] commands = new Command[(int)Types.Count];
 
         public Action()
         {
-            tankCommands[(int)Types.Move] = new MoveCommand(MoveCommand.Commands.None);
-            tankCommands[(int)Types.Shoot] = new ShootCommand(ShootCommand.Commands.None);
-            tankCommands[(int)Types.Turret] = new TurretCommand(TurretCommand.Commands.None);
+            commands[(int)Types.Move] = new MoveCommand(MoveCommand.Commands.None);
+            commands[(int)Types.Shoot] = new ShootCommand(ShootCommand.Commands.None);
+            commands[(int)Types.Turret] = new TurretCommand(TurretCommand.Commands.None);
         }
     }
 }

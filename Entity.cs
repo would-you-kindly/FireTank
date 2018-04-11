@@ -11,40 +11,28 @@ namespace FireSafety
 {
     public class Entity : Transformable, Drawable
     {
-        protected Sprite sprite;
+        public Sprite Sprite { get; set; }
 
         public Entity()
         {
-            sprite = new Sprite();
+            Sprite = new Sprite();
         }
 
         public Entity(Textures.ID id, TextureHolder<Textures.ID> textures)
         {
             Texture texture = textures.Get(id);
-            sprite = new Sprite(texture);
+            Sprite = new Sprite(texture);
         }
 
         public virtual void Draw(RenderTarget target, RenderStates states)
         {
             states.Transform *= Transform;
-            target.Draw(sprite, states);
+            target.Draw(Sprite, states);
         }
 
         public virtual void Update(Time deltaTime)
         {
             // Empty method
-        }
-
-        public Sprite Sprite
-        {
-            get
-            {
-                return sprite;
-            }
-            set
-            {
-                sprite = value;
-            }
         }
     }
 }

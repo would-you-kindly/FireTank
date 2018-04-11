@@ -14,7 +14,7 @@ namespace FireSafety
             Up,
             Left,
             Down,
-            Rigth
+            Right
         }
 
         public Direction direction;

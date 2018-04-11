@@ -6,6 +6,7 @@
         {
             Grass,
             Tree,
+            BurnedTree,
             House,
             Fire,
             Tank,

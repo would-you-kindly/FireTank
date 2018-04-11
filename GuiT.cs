@@ -50,22 +50,22 @@ namespace Interface
                 switch (algorithmT.lbMove.GetItems()[i])
                 {
                     case "Forward":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
                         break;
                     case "Backward":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
                         break;
                     case "45 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
                         break;
                     case "45 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
                         break;
                     case "90 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
                         break;
                     case "90 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
                         break;
                 }
             }
@@ -75,10 +75,10 @@ namespace Interface
                 switch (algorithmT.lbShoot.GetItems()[i])
                 {
                     case "Pressure":
-                        listActions[i].tankCommands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
+                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
                         break;
                     case "Shoot":
-                        listActions[i].tankCommands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
+                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
                         break;
                     default:
                         break;
@@ -90,22 +90,22 @@ namespace Interface
                 switch (algorithmT.lbTurret.GetItems()[i])
                 {
                     case "45 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
                         break;
                     case "45 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
                         break;
                     case "90 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
                         break;
                     case "90 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
                         break;
                     case "Up":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
                         break;
                     case "Down":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
                         break;
                     default:
                         break;
@@ -142,9 +142,9 @@ namespace Interface
                 for (int j = 0; j < parallelAlgorithm.Algorithms[0].Actions.Count; j++)
                 {
                     Action action = parallelAlgorithm.Algorithms[0].Actions.Dequeue();
-                    algorithmT.lbMove.AddItem(action.tankCommands[0].ToString());
-                    algorithmT.lbShoot.AddItem(action.tankCommands[1].ToString());
-                    algorithmT.lbTurret.AddItem(action.tankCommands[2].ToString());
+                    algorithmT.lbMove.AddItem(action.commands[0].ToString());
+                    algorithmT.lbShoot.AddItem(action.commands[1].ToString());
+                    algorithmT.lbTurret.AddItem(action.commands[2].ToString());
                 }
             }
         }

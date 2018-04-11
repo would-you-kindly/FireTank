@@ -88,22 +88,22 @@ namespace FireSafety
                 switch (lbMoveCommands.Items[i].ToString())
                 {
                     case "Forward":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
                         break;
                     case "Backward":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
                         break;
                     case "Rotate 90 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
                         break;
                     case "Rotate 90 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
                         break;
                     case "Rotate 45 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
                         break;
                     case "Rotate 45 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
+                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
                         break;
                     default:
                         break;
@@ -115,10 +115,10 @@ namespace FireSafety
                 switch (lbShootCommands.Items[i].ToString())
                 {
                     case "Increase water pressure":
-                        listActions[i].tankCommands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
+                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
                         break;
                     case "Shoot":
-                        listActions[i].tankCommands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
+                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
                         break;
                     default:
                         break;
@@ -130,22 +130,22 @@ namespace FireSafety
                 switch (lbTurretCommands.Items[i].ToString())
                 {
                     case "Rotate 45 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
                         break;
                     case "Rotate 45 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
                         break;
                     case "Rotate 90 CW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
                         break;
                     case "Rotate 90 CCW":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
                         break;
                     case "Up":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
                         break;
                     case "Down":
-                        listActions[i].tankCommands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
+                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
                         break;
                     default:
                         break;

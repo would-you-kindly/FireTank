@@ -13,23 +13,29 @@ namespace FireSafety
     {
         public string name = string.Empty;
         public string type = string.Empty;
+        public float rotation = 0.0f;
         public FloatRect rect = new FloatRect();
         public Dictionary<string, string> properties = new Dictionary<string, string>();
         public Sprite sprite = new Sprite();
 
-        int GetPropertyInt(string name)
+        public int GetPropertyInt(string name)
         {
             return int.Parse(properties[name]);
         }
 
-        float GetPropertyFloat(string name)
+        public float GetPropertyFloat(string name)
         {
             return float.Parse(properties[name]);
         }
 
-        string GetPropertyString(string name)
+        public string GetPropertyString(string name)
         {
             return properties[name];
+        }
+
+        public bool GetPropertyBool(string name)
+        {
+            return bool.Parse(properties[name]);
         }
     }
 
@@ -41,12 +47,13 @@ namespace FireSafety
 
     public class Map : Drawable
     {
-        private int width, height, tileWidth, tileHeight;
+        public int width, height, tileWidth, tileHeight;
         private int firstTileID;
         private FloatRect drawingBounds;
         private Texture tilesetImage;
         private List<Object> objects = new List<Object>();
         private List<Layer> layers = new List<Layer>();
+        public Dictionary<string, string> properties = new Dictionary<string, string>();
 
         public bool LoadFromFile(string filename)
         {
@@ -71,6 +78,17 @@ namespace FireSafety
             height = int.Parse(mapElement.GetAttribute("height"));
             tileWidth = int.Parse(mapElement.GetAttribute("tilewidth"));
             tileHeight = int.Parse(mapElement.GetAttribute("tileheight"));
+
+            // Получаем инфрмацию о свойствах карты
+            XmlElement mapPropertiesElement = (XmlElement)mapElement.GetElementsByTagName("properties")[0];
+            XmlElement mapPropertyElement = (XmlElement)mapPropertiesElement.GetElementsByTagName("property").Item(0);
+            while (mapPropertyElement!= null)
+            {
+                string propertyName = mapPropertyElement.GetAttribute("name");
+                string propertyValue = mapPropertyElement.GetAttribute("value");
+                properties.Add(propertyName, propertyValue);
+                mapPropertyElement = (XmlElement)mapPropertyElement.NextSibling;
+            }
 
             // Получаем инфрмацию о наборе тайлов (firstgid)
             XmlElement tilesetElement = (XmlElement)xDoc.GetElementsByTagName("tileset")[0];
@@ -216,6 +234,11 @@ namespace FireSafety
                         {
                             objectName = objectElement.GetAttribute("name");
                         }
+                        float objectRotation = 0.0f;
+                        if (objectElement.HasAttribute("rotation"))
+                        {
+                            objectRotation = float.Parse(objectElement.GetAttribute("rotation"));
+                        }
                         int x = int.Parse(objectElement.GetAttribute("x"));
                         int y = int.Parse(objectElement.GetAttribute("y"));
 
@@ -242,6 +265,7 @@ namespace FireSafety
                         Object obj = new Object();
                         obj.name = objectName;
                         obj.type = objectType;
+                        obj.rotation = objectRotation;
                         obj.sprite = sprite;
 
                         FloatRect objectRect = new FloatRect();
@@ -252,8 +276,7 @@ namespace FireSafety
                         obj.rect = objectRect;
 
                         // "Переменные" объекта
-                        XmlElement properties;
-                        properties = (XmlElement)objectElement.GetElementsByTagName("object")[0];
+                        XmlElement properties = (XmlElement)objectElement.GetElementsByTagName("properties")[0];
                         if (properties != null)
                         {
                             XmlElement prop;
