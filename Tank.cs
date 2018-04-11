@@ -10,16 +10,26 @@ namespace FireSafety
 {
     public class Tank : Entity
     {
+        public enum TankColor
+        {
+            Red,
+            Blue,
+            Yellow,
+            Green
+        }
+
         private const int maxWaterPressure = 3;
         private int waterPressure;
         private Turret turret;
         private Forest _forest;
+        private TankColor tankColor;
 
-        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, Forest forest) :
+        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Forest forest) :
             base(idTank, textures)
         {
             waterPressure = 0;
             turret = new Turret(idTurret, textures);
+            this.tankColor = tankColor;
             _forest = forest;
 
             // Выставляем Origin в центр картинки

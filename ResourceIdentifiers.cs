@@ -4,13 +4,19 @@
     {
         public enum ID
         {
+            RedTank = 0,
+            RedTurret,
+            BlueTank,
+            BlueTurret,
+            YellowTank,
+            YellowTurret,
+            GreenTank,
+            GreenTurret,
             Grass,
             Tree,
             BurnedTree,
             House,
-            Fire,
-            Tank,
-            Turret
+            Fire
         }
     }
 }

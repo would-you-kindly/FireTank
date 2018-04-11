@@ -39,9 +39,11 @@ namespace FireSafety
             textures.Load(Textures.ID.Grass, "../../Media/grass.png");
             textures.Load(Textures.ID.House, "../../Media/house.png");
             textures.Load(Textures.ID.Fire, "../../Media/fire.png");
-            textures.Load(Textures.ID.Tank, "../../Media/tank.png");
+            textures.Load(Textures.ID.BlueTank, "../../Media/tank.png");
+            textures.Load(Textures.ID.BlueTurret, "../../Media/turret.png");
+            textures.Load(Textures.ID.RedTank, "../../Media/redtank.png");
+            textures.Load(Textures.ID.RedTurret, "../../Media/redturret.png");
             textures.Load(Textures.ID.Tree, "../../Media/greentree.png");
-            textures.Load(Textures.ID.Turret, "../../Media/turret.png");
 
             // TODO: Проверка на загрузку объектов (можно убрать)
             for (int i = 0; i < map.GetAllObjects().Count; i++)
@@ -93,9 +95,10 @@ namespace FireSafety
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
-            foreach (Object tankObject in map.GetObjects("tank"))
+            for (int i = 0; i < map.GetObjects("tank").Count; i++)
             {
-                Tank tank = new Tank(Textures.ID.Tank, Textures.ID.Turret, textures, forest);
+                Object tankObject = map.GetObjects("tank")[i];
+                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, (Tank.TankColor)i, forest);
                 tank.Move(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.RotateTank(tankObject.rotation);
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);

@@ -127,7 +127,6 @@
     <Compile Include="ResourceIdentifiers.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="ShootCommand.cs" />
-    <Compile Include="TankColor.cs" />
     <Compile Include="TextureHolder.cs" />
     <Compile Include="Tree.cs" />
     <Compile Include="Turret.cs" />
