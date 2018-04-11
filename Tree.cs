@@ -33,7 +33,10 @@ namespace FireSafety
         // Тушит дерево
         public void Extinguish()
         {
-            state = State.Normal;
+            if (state == State.Burns)
+            {
+                state = State.Normal;
+            }
         }
 
         // Поджигает дерево

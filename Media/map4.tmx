@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="141">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="147">
  <properties>
   <property name="wind" value="left"/>
  </properties>
@@ -480,6 +480,36 @@
   <object id="140" name="tree" type="tree" gid="6" x="256" y="320" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="141" name="tree" type="tree" gid="6" x="256" y="64" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="142" name="tree" type="tree" gid="6" x="288" y="64" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="143" name="tree" type="tree" gid="6" x="320" y="64" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="144" name="tree" type="tree" gid="6" x="288" y="96" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="145" name="tree" type="tree" gid="6" x="320" y="96" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="146" name="tree" type="tree" gid="6" x="224" y="64" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>

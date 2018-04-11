@@ -197,7 +197,7 @@ namespace FireSafety
 
             // Рисуем корпус танка (с направлением)
             target.Draw(Sprite, states);
-            RectangleShape tankDirection = new RectangleShape(new Vector2f(3, 16));
+            RectangleShape tankDirection = new RectangleShape(new Vector2f(4, 16));
             Utilities.CenterOrigin(tankDirection, 0, 16);
             tankDirection.FillColor = Color.Yellow;
             tankDirection.Position = Sprite.Position;
@@ -206,7 +206,7 @@ namespace FireSafety
 
             // Рисуем башню танка (с направлением)
             target.Draw(turret.Sprite, states);
-            RectangleShape turretDirection = new RectangleShape(new Vector2f(1, 32));
+            RectangleShape turretDirection = new RectangleShape(new Vector2f(2, 32));
             Utilities.CenterOrigin(turretDirection, 0, 32);
             turretDirection.FillColor = Color.Red;
             turretDirection.Position = turret.Sprite.Position;
