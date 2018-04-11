@@ -39,10 +39,14 @@ namespace FireSafety
             textures.Load(Textures.ID.Grass, "../../Media/grass.png");
             textures.Load(Textures.ID.House, "../../Media/house.png");
             textures.Load(Textures.ID.Fire, "../../Media/fire.png");
-            textures.Load(Textures.ID.BlueTank, "../../Media/tank.png");
-            textures.Load(Textures.ID.BlueTurret, "../../Media/turret.png");
             textures.Load(Textures.ID.RedTank, "../../Media/redtank.png");
             textures.Load(Textures.ID.RedTurret, "../../Media/redturret.png");
+            textures.Load(Textures.ID.BlueTank, "../../Media/bluetank.png");
+            textures.Load(Textures.ID.BlueTurret, "../../Media/blueturret.png");
+            textures.Load(Textures.ID.YellowTank, "../../Media/yellowtank.png");
+            textures.Load(Textures.ID.YellowTurret, "../../Media/yellowturret.png");
+            textures.Load(Textures.ID.GreenTank, "../../Media/greentank.png");
+            textures.Load(Textures.ID.GreenTurret, "../../Media/greenturret.png");
             textures.Load(Textures.ID.Tree, "../../Media/greentree.png");
 
             // TODO: Проверка на загрузку объектов (можно убрать)

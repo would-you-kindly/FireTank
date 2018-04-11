@@ -27,12 +27,12 @@ namespace FireSafety
 
             executing = false;
 
+            world = new World(parallelAlgorithm);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             form = new FireSafetyForm(parallelAlgorithm);
             form.Show();
-
-            world = new World(parallelAlgorithm);
 
             AssignEvents();
         }
