@@ -58,9 +58,13 @@ namespace FireSafety
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("ParallelAlgorithm.algo", FileMode.Create, FileAccess.Write))
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                formatter.Serialize(fs, _parallelAlgorithm);
+                using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write))
+                {
+                    formatter.Serialize(fs, _parallelAlgorithm);
+                }
             }
         }
 
@@ -68,21 +72,25 @@ namespace FireSafety
         {
             ParallelAlgorithm loadedParallelAlgorithm;
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("ParallelAlgorithm.algo", FileMode.Open, FileAccess.Read))
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
-            }
-
-            // Пишем шаги алгоритма в элементы управления формы
-            for (int i = 0; i < algorithmForms.Count; i++)
-            {
-                int actionCount = loadedParallelAlgorithm.Algorithms[i].Actions.Count;
-                for (int j = 0; j < actionCount; j++)
+                using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read))
                 {
-                    Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
-                    algorithmForms[i].lbMoveCommands.Items.Add(action.commands[0].ToString());
-                    algorithmForms[i].lbShootCommands.Items.Add(action.commands[1].ToString());
-                    algorithmForms[i].lbTurretCommands.Items.Add(action.commands[2].ToString());
+                    loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
+                }
+
+                // Пишем шаги алгоритма в элементы управления формы
+                for (int i = 0; i < algorithmForms.Count; i++)
+                {
+                    int actionCount = loadedParallelAlgorithm.Algorithms[i].Actions.Count;
+                    for (int j = 0; j < actionCount; j++)
+                    {
+                        Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
+                        algorithmForms[i].lbMoveCommands.Items.Add(action.commands[0].ToString());
+                        algorithmForms[i].lbShootCommands.Items.Add(action.commands[1].ToString());
+                        algorithmForms[i].lbTurretCommands.Items.Add(action.commands[2].ToString());
+                    }
                 }
             }
         }

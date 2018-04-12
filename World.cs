@@ -28,29 +28,23 @@ namespace FireSafety
         {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();
-            map.LoadFromFile("../../Media/map4.tmx");
+            map.LoadFromFile("Media/Maps/map4.tmx");
 
             // Загружаем текстуры
             textures = new TextureHolder<Textures.ID>();
-            textures.Load(Textures.ID.BurnedTree, "../../Media/burnedTree.png");
-            textures.Load(Textures.ID.Grass, "../../Media/grass.png");
-            textures.Load(Textures.ID.House, "../../Media/house.png");
-            textures.Load(Textures.ID.Fire, "../../Media/fire.png");
-            textures.Load(Textures.ID.RedTank, "../../Media/redtank.png");
-            textures.Load(Textures.ID.RedTurret, "../../Media/redturret.png");
-            textures.Load(Textures.ID.BlueTank, "../../Media/bluetank.png");
-            textures.Load(Textures.ID.BlueTurret, "../../Media/blueturret.png");
-            textures.Load(Textures.ID.YellowTank, "../../Media/yellowtank.png");
-            textures.Load(Textures.ID.YellowTurret, "../../Media/yellowturret.png");
-            textures.Load(Textures.ID.GreenTank, "../../Media/greentank.png");
-            textures.Load(Textures.ID.GreenTurret, "../../Media/greenturret.png");
-            textures.Load(Textures.ID.Tree, "../../Media/greentree.png");
-
-            // TODO: Проверка на загрузку объектов (можно убрать)
-            for (int i = 0; i < map.GetAllObjects().Count; i++)
-            {
-                Console.WriteLine(i + " - " + map.GetAllObjects()[i].type + " - " + map.GetAllObjects()[i].sprite.Position);
-            }
+            textures.Load(Textures.ID.BurnedTree, "Media/Textures/burnedTree.png");
+            textures.Load(Textures.ID.Grass, "Media/Textures/grass.png");
+            textures.Load(Textures.ID.House, "Media/Textures/house.png");
+            textures.Load(Textures.ID.Fire, "Media/Textures/fire.png");
+            textures.Load(Textures.ID.RedTank, "Media/Textures/redtank.png");
+            textures.Load(Textures.ID.RedTurret, "Media/Textures/redturret.png");
+            textures.Load(Textures.ID.BlueTank, "Media/Textures/bluetank.png");
+            textures.Load(Textures.ID.BlueTurret, "Media/Textures/blueturret.png");
+            textures.Load(Textures.ID.YellowTank, "Media/Textures/yellowtank.png");
+            textures.Load(Textures.ID.YellowTurret, "Media/Textures/yellowturret.png");
+            textures.Load(Textures.ID.GreenTank, "Media/Textures/greentank.png");
+            textures.Load(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
+            textures.Load(Textures.ID.Tree, "Media/Textures/greentree.png");
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов
