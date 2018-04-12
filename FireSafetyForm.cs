@@ -30,7 +30,7 @@ namespace FireSafety
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                AlgorithmForm algorithmForm = new AlgorithmForm(parallelAlgorithm[i]);
+                AlgorithmForm algorithmForm = new AlgorithmForm();
                 algorithmForm.MdiParent = this;
                 algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
                 algorithmForm.Show();
@@ -60,9 +60,9 @@ namespace FireSafety
 
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (var algorithmForm in algorithmForms)
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForm.ExecuteAlgorithm();
+                _parallelAlgorithm[i] = algorithmForms[i].BuildAlgorithm();
             }
             //_parallelAlgorithm.Execute();
             Game.executing = true;
@@ -70,10 +70,10 @@ namespace FireSafety
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (var algorithmForm in algorithmForms)
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
                 // Не фактическое выполнение, а перенос слов с элементов управления в экземпляры класса Flgorithm
-                algorithmForm.ExecuteAlgorithm();
+                _parallelAlgorithm[i] = algorithmForms[i].BuildAlgorithm();
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -105,7 +105,8 @@ namespace FireSafety
                     int actionCount = loadedParallelAlgorithm.Algorithms[i].Actions.Count;
                     for (int j = 0; j < actionCount; j++)
                     {
-                        Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
+                        Action action = loadedParallelAlgorithm.Algorithms[i].Actions[actionCount - 1];
+                        loadedParallelAlgorithm.Algorithms[i].Actions.RemoveAt(actionCount - 1);
                         algorithmForms[i].lbMoveCommands.Items.Add(action.commands[0].ToString());
                         algorithmForms[i].lbShootCommands.Items.Add(action.commands[1].ToString());
                         algorithmForms[i].lbTurretCommands.Items.Add(action.commands[2].ToString());

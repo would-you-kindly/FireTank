@@ -12,13 +12,9 @@ namespace FireSafety
 {
     partial class AlgorithmForm : Form
     {
-        private Algorithm _algorithm;
-
-        public AlgorithmForm(Algorithm algorithm)
+        public AlgorithmForm()
         {
             InitializeComponent();
-
-            _algorithm = algorithm;
         }
 
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,15 +68,13 @@ namespace FireSafety
             cbTurret.SelectedText = null;
         }
 
-        public void ExecuteAlgorithm()
+        // Составляет алгоритм танка согласно командам в интерфейсе
+        public Algorithm BuildAlgorithm()
         {
-            // Переносим то, что написали на элементах упралвения и сохраняем в Algorithm
-            _algorithm.Actions.Clear();
-
-            List<Action> listActions = new List<Action>();
+            List<Action> actions = new List<Action>();
             for (int i = 0; i < lbMoveCommands.Items.Count; i++)
             {
-                listActions.Add(new Action());
+                actions.Add(new Action());
             }
 
             for (int i = 0; i < lbMoveCommands.Items.Count; i++)
@@ -88,22 +82,22 @@ namespace FireSafety
                 switch (lbMoveCommands.Items[i].ToString())
                 {
                     case "Forward":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
+                        actions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
                         break;
                     case "Backward":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
+                        actions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
                         break;
                     case "Rotate 90 CW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
+                        actions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
                         break;
                     case "Rotate 90 CCW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
+                        actions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
                         break;
                     case "Rotate 45 CW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
+                        actions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
                         break;
                     case "Rotate 45 CCW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
+                        actions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
                         break;
                     default:
                         break;
@@ -115,10 +109,10 @@ namespace FireSafety
                 switch (lbShootCommands.Items[i].ToString())
                 {
                     case "Increase water pressure":
-                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
+                        actions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
                         break;
                     case "Shoot":
-                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
+                        actions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
                         break;
                     default:
                         break;
@@ -130,35 +124,32 @@ namespace FireSafety
                 switch (lbTurretCommands.Items[i].ToString())
                 {
                     case "Rotate 45 CW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
+                        actions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
                         break;
                     case "Rotate 45 CCW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
+                        actions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
                         break;
                     case "Rotate 90 CW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
+                        actions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
                         break;
                     case "Rotate 90 CCW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
+                        actions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
                         break;
                     case "Up":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
+                        actions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
                         break;
                     case "Down":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
+                        actions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
                         break;
                     default:
                         break;
                 }
             }
 
-            Queue<Action> actions = new Queue<Action>();
-            foreach (Action action in listActions)
-            {
-                actions.Enqueue(action);
-            }
+            Algorithm algorithm = new Algorithm();
+            algorithm.Actions = actions;
 
-            _algorithm.Actions = actions;
+            return algorithm;
         }
     }
 }
