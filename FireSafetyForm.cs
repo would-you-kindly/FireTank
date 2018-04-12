@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SFML.Graphics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,17 +14,20 @@ using System.Xml.Serialization;
 
 namespace FireSafety
 {
-    partial class FireSafetyForm : Form
+    public partial class FireSafetyForm : Form
     {
         ParallelAlgorithm _parallelAlgorithm;
         List<AlgorithmForm> algorithmForms;
+        public RenderWindow renderWindow;
+        Form sfmlForm;
 
         public FireSafetyForm(ParallelAlgorithm parallelAlgorithm)
         {
             InitializeComponent();
-            _parallelAlgorithm = parallelAlgorithm;
-            algorithmForms = new List<AlgorithmForm>();
 
+            _parallelAlgorithm = parallelAlgorithm;
+
+            algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
                 AlgorithmForm algorithmForm = new AlgorithmForm(parallelAlgorithm[i]);
@@ -32,6 +36,19 @@ namespace FireSafety
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
             }
+
+            sfmlForm = new Form();
+            sfmlForm.MdiParent = this;
+            sfmlForm.Text = "Map";
+            sfmlForm.Show();
+            sfmlForm.Size = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+
+            DrawingSurface surface = new DrawingSurface();
+            surface.Size= new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            sfmlForm.Controls.Add(surface);
+
+            // Creates our SFML RenderWindow on our surface control
+            renderWindow = new RenderWindow(surface.Handle);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

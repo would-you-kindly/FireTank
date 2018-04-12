@@ -13,31 +13,25 @@ namespace FireSafety
 {
     public class Game
     {
-        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 60.0f);
 
-        private FireSafetyForm form;
         private ParallelAlgorithm parallelAlgorithm;
         private World world;
-        private RenderWindow renderWindow;
+        private Gui gui;
         public static bool executing = false;
 
         public Game()
         {
             parallelAlgorithm = new ParallelAlgorithm();
-            world = new World();
-            renderWindow = new RenderWindow(new VideoMode(Utilities.WINDOW_WIDTH, Utilities.WINDOW_HEIGHT), "Fire Tank");
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            form = new FireSafetyForm(parallelAlgorithm);
-            form.Show();
+            world = new World(parallelAlgorithm);
+            gui = new Gui(parallelAlgorithm);
 
             AssignEvents();
         }
 
         private void AssignEvents()
         {
-            renderWindow.Closed += Window_Closed;
+            gui.form.renderWindow.Closed += Window_Closed;
         }
 
         public void Run()
@@ -45,7 +39,7 @@ namespace FireSafety
             Clock clock = new Clock();
             Time timeSinceLastUpdate = Time.Zero;
 
-            while (renderWindow.IsOpen)
+            while (gui.form.renderWindow.IsOpen)
             {
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
@@ -67,25 +61,26 @@ namespace FireSafety
         private void ProcessInput()
         {
             // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
-            renderWindow.DispatchEvents();
+            Application.DoEvents(); // handle form events
+            gui.form.renderWindow.DispatchEvents();
         }
 
         private void Update(Time deltaTime)
         {
-            // Каждый танк выполняет свой алгоритм
-            for (int i = 0; i < world.tanks.Count(); i++)
-            {
-                world.tanks[i].Execute(parallelAlgorithm[i]);
-            }
+            //// Каждый танк выполняет свой алгоритм
+            //for (int i = 0; i < world.tanks.Count(); i++)
+            //{
+            //    world.tanks[i].Execute(parallelAlgorithm[i]);
+            //}
 
             world.Update(deltaTime);
         }
 
         private void Render()
         {
-            renderWindow.Clear();
-            renderWindow.Draw(world);
-            renderWindow.Display();
+            gui.form.renderWindow.Clear();
+            gui.form.renderWindow.Draw(world);
+            gui.form.renderWindow.Display();
         }
 
         private static void Window_Closed(object sender, EventArgs e)

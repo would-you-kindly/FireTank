@@ -20,6 +20,7 @@ namespace FireSafety
 
         private const int maxWaterPressure = 3;
         private int waterPressure;
+        private Algorithm _algorithm;
         private Turret turret;
         private Forest _forest;
         private TankColor tankColor;
@@ -34,6 +35,11 @@ namespace FireSafety
 
             // Выставляем Origin в центр картинки
             Utilities.CenterOrigin(sprite);
+        }
+
+        public void SetAlgorithm(Algorithm algorithm)
+        {
+            _algorithm = algorithm;
         }
 
         public void Move(Vector2f move)
@@ -189,6 +195,11 @@ namespace FireSafety
                     command?.Execute(this);
                 }
             }
+        }
+
+        public override void Update(Time deltaTime)
+        {
+            Execute(_algorithm);
         }
 
         public override void Draw(RenderTarget target, RenderStates states)

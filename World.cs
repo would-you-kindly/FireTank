@@ -16,9 +16,12 @@ namespace FireSafety
         public List<Tank> tanks;
         public Forest forest;
         public static Wind wind;
+        private ParallelAlgorithm _parallelAlgorithm;
 
-        public World()
+        public World(ParallelAlgorithm parallelAlgorithm)
         {
+            _parallelAlgorithm = parallelAlgorithm;
+
             LoadResources();
             BuildWorld();
         }
@@ -89,6 +92,7 @@ namespace FireSafety
                 Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, (Tank.TankColor)i, forest);
                 tank.Move(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.RotateTank(tankObject.rotation);
+                tank.SetAlgorithm(_parallelAlgorithm[i]);
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
                 tank.RotateTurret(tankObject.rotation - turretObject.rotation);
                 tanks.Add(tank);
@@ -103,11 +107,11 @@ namespace FireSafety
 
         public void Update(Time deltaTime)
         {
-            forest.Update(deltaTime);
             foreach (var tank in tanks)
             {
                 tank.Update(deltaTime);
             }
+            forest.Update(deltaTime);
             // TODO: Важный момент, кто изменяется первым, новый огонь или действие игрока
         }
 
