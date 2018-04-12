@@ -51,7 +51,7 @@ namespace FireSafety
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов
-        private void BuildWorld()
+        public void BuildWorld()
         {
             // Устанавливаем параметры карты
             Utilities.TILE_SIZE = map.GetTileSize().X;

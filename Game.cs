@@ -13,10 +13,10 @@ namespace FireSafety
 {
     public class Game
     {
-        private Time timePerFrame = Time.FromSeconds(1.0f / 60.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
         private ParallelAlgorithm parallelAlgorithm;
-        private World world;
+        internal static World world;
         private Gui gui;
         public static bool executing = false;
 

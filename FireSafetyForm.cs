@@ -37,14 +37,16 @@ namespace FireSafety
                 algorithmForms.Add(algorithmForm);
             }
 
+            // Задаем параметры формы
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
             sfmlForm.Text = "Map";
             sfmlForm.Show();
-            sfmlForm.Size = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
 
+            // Создаем surface на форме для рисования через контекст SFML
             DrawingSurface surface = new DrawingSurface();
-            surface.Size= new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            surface.Size = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
             sfmlForm.Controls.Add(surface);
 
             // Creates our SFML RenderWindow on our surface control
@@ -53,10 +55,10 @@ namespace FireSafety
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void executeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (var algorithmForm in algorithmForms)
             {
@@ -66,7 +68,7 @@ namespace FireSafety
             Game.executing = true;
         }
 
-        private void saveAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (var algorithmForm in algorithmForms)
             {
@@ -85,7 +87,7 @@ namespace FireSafety
             }
         }
 
-        private void loadAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ParallelAlgorithm loadedParallelAlgorithm;
             BinaryFormatter formatter = new BinaryFormatter();
@@ -110,6 +112,37 @@ namespace FireSafety
                     }
                 }
             }
+        }
+
+        private void arrandeIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.ArrangeIcons);
+        }
+
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void saveAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Game.executing = false;
+            Game.world.BuildWorld();
         }
     }
 }
