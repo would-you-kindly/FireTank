@@ -11,24 +11,21 @@ using System.Threading;
 
 namespace FireSafety
 {
-    class Game
+    public class Game
     {
-        private Time TimePerFrame = Time.FromSeconds(1.0f / 2.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
         private FireSafetyForm form;
         private ParallelAlgorithm parallelAlgorithm;
         private World world;
         private RenderWindow renderWindow;
-        public static bool executing;
+        public static bool executing = false;
 
         public Game()
         {
-            renderWindow = new RenderWindow(new VideoMode(32 * 16, 32 * 16), "Fire Tank");
             parallelAlgorithm = new ParallelAlgorithm();
-
-            executing = false;
-
-            world = new World(parallelAlgorithm);
+            world = new World();
+            renderWindow = new RenderWindow(new VideoMode(Utilities.WINDOW_WIDTH, Utilities.WINDOW_HEIGHT), "Fire Tank");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -52,14 +49,14 @@ namespace FireSafety
             {
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
-                while (timeSinceLastUpdate > TimePerFrame)
+                while (timeSinceLastUpdate > timePerFrame)
                 {
-                    timeSinceLastUpdate -= TimePerFrame;
+                    timeSinceLastUpdate -= timePerFrame;
 
                     ProcessInput();
                     if (executing)
                     {
-                        Update(TimePerFrame);
+                        Update(timePerFrame);
                     }
                 }
 
@@ -75,6 +72,12 @@ namespace FireSafety
 
         private void Update(Time deltaTime)
         {
+            // Каждый танк выполняет свой алгоритм
+            for (int i = 0; i < world.tanks.Count(); i++)
+            {
+                world.tanks[i].Execute(parallelAlgorithm[i]);
+            }
+
             world.Update(deltaTime);
         }
 

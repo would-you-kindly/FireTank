@@ -12,16 +12,13 @@ namespace FireSafety
     {
         private Map map;
         private TextureHolder<Textures.ID> textures;
-        private List<Tank> tanks;
-        private ParallelAlgorithm _parallelAlgorithm;
-        private Wind wind;
-        private Forest forest;
 
-        public World(ParallelAlgorithm parallelAlgorithm)
+        public List<Tank> tanks;
+        public Forest forest;
+        public static Wind wind;
+
+        public World()
         {
-            _parallelAlgorithm = parallelAlgorithm;
-            tanks = new List<Tank>();
-
             LoadResources();
             BuildWorld();
         }
@@ -61,8 +58,9 @@ namespace FireSafety
         {
             // Устанавливаем параметры карты
             Utilities.TILE_SIZE = map.GetTileSize().X;
-            // TODO: СЧИТАТЬ ИЗ ФАЙЛА !!!!! map.GetObjects("tank").Count
             Utilities.TANKS_COUNT = map.GetObjects("tank").Count;
+            Utilities.WIDTH_TILE_COUNT = (uint)map.width;
+            Utilities.HEIGHT_TILE_COUNT = (uint)map.height;
             Utilities.WINDOW_WIDTH = (uint)map.width * (uint)map.tileWidth;
             Utilities.WINDOW_HEIGHT = (uint)map.height * (uint)map.tileHeight;
 
@@ -86,19 +84,11 @@ namespace FireSafety
             }
 
             // Устанавливаем начальное положение деревьев (леса)
-            forest = new Forest(map.GetObjects("tree"), textures, wind);
-
-            //List<Object> tanksObjects = map.GetObjects("tank");
-            //// TODO: Должно быть items.Count (почему-т он считает больше)
-            //for (int i = 0; i < Utilities.TANKS_COUNT; i++)
-            //{
-            //    tanks[i] = new Tank(Textures.ID.Tank, Textures.ID.Turret, textures, forest);
-            //    // TODO: +Utilities.TILE_SIZE / 2
-            //    tanks[i].Move(new Vector2f(items[i].rect.Left + Utilities.TILE_SIZE / 2, items[i].rect.Top + Utilities.TILE_SIZE / 2));
-            //}
+            forest = new Forest(map.GetObjects("tree"), textures);
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
+            tanks = new List<Tank>();
             for (int i = 0; i < map.GetObjects("tank").Count; i++)
             {
                 Object tankObject = map.GetObjects("tank")[i];
@@ -119,7 +109,6 @@ namespace FireSafety
 
         public void Update(Time deltaTime)
         {
-            ExecuteAlgorithm();
             forest.Update(deltaTime);
             foreach (var tank in tanks)
             {
@@ -135,15 +124,6 @@ namespace FireSafety
             foreach (var tank in tanks)
             {
                 tank.Draw(target, states);
-            }
-        }
-
-        public void ExecuteAlgorithm()
-        {
-            // Каждый танк выполняет свой алгоритм
-            for (int i = 0; i < tanks.Count(); i++)
-            {
-                tanks[i].Execute(_parallelAlgorithm[i]);
             }
         }
     }

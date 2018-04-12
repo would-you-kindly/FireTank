@@ -12,15 +12,13 @@ namespace FireSafety
     public class Forest : Entity
     {
         public List<Tree> trees;
-        private Wind _wind;
         private const int timeToSpread = 3;
         private int currentTimeToSpread = 0;
 
-        public Forest(List<Object> treesObjects, TextureHolder<Textures.ID> textures, Wind wind) :
+        public Forest(List<Object> treesObjects, TextureHolder<Textures.ID> textures) :
             base()
         {
             trees = new List<Tree>();
-            _wind = wind;
 
             foreach (Object item in treesObjects)
             {
@@ -69,7 +67,7 @@ namespace FireSafety
             List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state == Tree.State.Burns));
             foreach (Tree tree in burningTrees)
             {
-                switch (_wind.direction)
+                switch (World.wind.direction)
                 {
                     case Wind.Direction.Up:
                         trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();

@@ -13,8 +13,10 @@ namespace FireSafety
         // TODO: Грузить эти значения из xml
         public static int TILE_SIZE = 32;
         public static int TANKS_COUNT = 2;
-        public static uint WINDOW_WIDTH = 640;
-        public static uint WINDOW_HEIGHT = 480;
+        public static uint WIDTH_TILE_COUNT = 16;
+        public static uint HEIGHT_TILE_COUNT = 16;
+        public static uint WINDOW_WIDTH = (uint)TILE_SIZE * WIDTH_TILE_COUNT;
+        public static uint WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
 
         public static void CenterOrigin(Sprite sprite)
         {
