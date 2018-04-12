@@ -13,7 +13,7 @@ namespace FireSafety
         public Flame(Textures.ID id, TextureHolder<Textures.ID> textures) :
             base(id, textures)
         {
-
+            // Empty method
         }
     }
 }

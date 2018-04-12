@@ -10,15 +10,7 @@ namespace FireSafety
 {
     public class Tree : Entity
     {
-        public enum State
-        {
-            Normal,
-            Burns,
-            Burned
-        }
-
-        public State state;
-        private int hitPoints = 10;
+        public TreeState state;
         private Flame flame;
         private Sprite burnedTreeSprite;
 
@@ -27,60 +19,30 @@ namespace FireSafety
         {
             flame = new Flame(idFlame, textures);
             burnedTreeSprite = new Sprite(textures.Get(Textures.ID.BurnedTree));
-            state = State.Normal;
+            state = new NormalTreeState();
         }
 
-        // Тушит дерево
         public void Extinguish()
         {
-            if (state == State.Burns)
-            {
-                state = State.Normal;
-            }
+            state.Extinguish(this);
         }
 
-        // Поджигает дерево
         public void Fire()
         {
-            if (state == State.Normal)
-            {
-                state = State.Burns;
-            }
+            state.Fire(this);
         }
 
-        // Сжигает дерево
         public void Burn()
         {
-            if (state == State.Burns)
-            {
-                state = State.Burned;
-            }
-        }
-
-        // Проверяет, не горит ли дерево
-        public bool IsNormal()
-        {
-            return state == State.Normal;
-        }
-
-        // Проверяет, горит ли дерево
-        public bool IsBurns()
-        {
-            return state == State.Burns;
-        }
-
-        // Проверяет, сгорело ли дерево
-        public bool IsBurned()
-        {
-            return state == State.Burned;
+            state.Burn(this);
         }
 
         public override void Update(Time deltaTime)
         {
-            if (IsBurns() && --hitPoints == 0)
+            if (state.IsBurning() && --state.hitPoints == 0)
             {
                 // TODO: Дерево сгорело, но в списке леса осталось
-                Burn();
+                state.Burn(this);
             }
         }
 
@@ -88,21 +50,21 @@ namespace FireSafety
         {
             states.Transform *= Transform;
 
-            switch (state)
+            if (state.IsNormal())
             {
-                case State.Normal:
-                    target.Draw(sprite, states);
-                    break;
-                case State.Burns:
-                    target.Draw(sprite, states);
-                    target.Draw(flame.sprite, states);
-                    break;
-                case State.Burned:
-                    // TODO: Нужно будет вернуть цвет, если дерево будет потушено
-                    target.Draw(burnedTreeSprite, states);
-                    break;
-                default:
-                    break;
+                target.Draw(sprite, states);
+            }
+
+            if (state.IsBurning())
+            {
+                target.Draw(sprite, states);
+                target.Draw(flame.sprite, states);
+            }
+
+            if (state.IsBurned())
+            {
+                // TODO: Нужно будет вернуть цвет, если дерево будет потушено
+                target.Draw(burnedTreeSprite, states);
             }
         }
     }

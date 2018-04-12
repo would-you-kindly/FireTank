@@ -64,7 +64,7 @@ namespace FireSafety
             }
 
             // Ищем дерево, которое загорится следующим
-            List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state == Tree.State.Burns));
+            List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state.IsBurning()));
             foreach (Tree tree in burningTrees)
             {
                 switch (World.wind.direction)

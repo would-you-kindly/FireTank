@@ -97,7 +97,7 @@ namespace FireSafety
             // Поджигаем деревья
             foreach (Object burningTree in map.GetObjects("tree").Where(tree => tree.GetPropertyBool("burns")))
             {
-                forest.trees.Find(tree => tree.Position == new Vector2f(burningTree.rect.Left, burningTree.rect.Top)).Fire();
+                forest.trees.Find(tree => tree.Position == new Vector2f(burningTree.rect.Left, burningTree.rect.Top))?.Fire();
             }
         }
 

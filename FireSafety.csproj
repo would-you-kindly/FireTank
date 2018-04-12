@@ -105,6 +105,8 @@
     <Compile Include="AlgorithmForm.Designer.cs">
       <DependentUpon>AlgorithmForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BurnedTreeState.cs" />
+    <Compile Include="BurningTreeState.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FireSafetyForm.cs">
@@ -116,8 +118,10 @@
     <Compile Include="Flame.cs" />
     <Compile Include="Forest.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="TreeState.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MoveCommand.cs" />
+    <Compile Include="NormalTreeState.cs" />
     <Compile Include="ParallelAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
