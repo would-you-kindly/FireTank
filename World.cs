@@ -29,10 +29,19 @@ namespace FireSafety
         // Загружает ресурсы в память (текстуры, звуки, шрифты, карты...)
         private void LoadResources()
         {
+            LoadMap();
+            LoadTextures();
+        }
+
+        public void LoadMap(string filename = "Media/Maps/map5.tmx")
+        {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();
-            map.LoadFromFile("Media/Maps/map4.tmx");
+            map.LoadFromFile(filename);
+        }
 
+        private void LoadTextures()
+        {
             // Загружаем текстуры
             textures = new TextureHolder<Textures.ID>();
             textures.Load(Textures.ID.BurnedTree, "Media/Textures/burnedTree.png");

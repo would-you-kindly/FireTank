@@ -17,8 +17,7 @@ namespace FireSafety
         {
             Algorithms = new List<Algorithm>();
 
-            // TODO: по количеству танков определяем
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
             {
                 Algorithms.Add(new Algorithm());
             }

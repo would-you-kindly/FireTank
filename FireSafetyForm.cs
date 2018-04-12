@@ -144,5 +144,15 @@ namespace FireSafety
             Game.executing = false;
             Game.world.BuildWorld();
         }
+
+        private void openMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Game.world.LoadMap(ofd.FileName);
+                Game.world.BuildWorld();
+            }
+        }
     }
 }

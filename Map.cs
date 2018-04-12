@@ -99,7 +99,7 @@ namespace FireSafety
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
-            Image image = new Image("Media/" + imagePath);
+            Image image = new Image("Media/Prototypes/" + imagePath);
 
             // TODO: Проверку добавить
             //if (!img.loadFromFile(imagepath))
