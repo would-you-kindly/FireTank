@@ -22,7 +22,7 @@ namespace FireSafety
 
             foreach (Object item in treesObjects)
             {
-                Tree tree = new Tree(Textures.ID.Tree, Textures.ID.Fire, textures);
+                Tree tree = new Tree(Textures.ID.Tree, textures);
                 tree.Position = new Vector2f(item.rect.Left, item.rect.Top);
                 trees.Add(tree);
             }

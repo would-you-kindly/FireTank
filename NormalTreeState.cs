@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SFML.Graphics;
 
 namespace FireSafety
 {
-    class NormalTreeState : TreeState
+    public class NormalTreeState : TreeState
     {
         public override void Extinguish(Tree tree)
         {

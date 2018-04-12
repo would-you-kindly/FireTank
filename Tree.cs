@@ -14,12 +14,13 @@ namespace FireSafety
         private Flame flame;
         private Sprite burnedTreeSprite;
 
-        public Tree(Textures.ID idTree, Textures.ID idFlame, TextureHolder<Textures.ID> textures) :
+        public Tree(Textures.ID idTree, TextureHolder<Textures.ID> textures) :
             base(idTree, textures)
         {
-            flame = new Flame(idFlame, textures);
-            burnedTreeSprite = new Sprite(textures.Get(Textures.ID.BurnedTree));
             state = new NormalTreeState();
+
+            flame = new Flame(Textures.ID.Fire, textures);
+            burnedTreeSprite = new Sprite(textures.Get(Textures.ID.BurnedTree));
         }
 
         public void Extinguish()
@@ -42,7 +43,7 @@ namespace FireSafety
             if (state.IsBurning() && --state.hitPoints == 0)
             {
                 // TODO: Дерево сгорело, но в списке леса осталось
-                state.Burn(this);
+                Burn();
             }
         }
 
