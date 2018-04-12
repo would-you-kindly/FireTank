@@ -91,11 +91,11 @@ namespace FireSafety
             switch (state)
             {
                 case State.Normal:
-                    target.Draw(Sprite, states);
+                    target.Draw(sprite, states);
                     break;
                 case State.Burns:
-                    target.Draw(Sprite, states);
-                    target.Draw(flame.Sprite, states);
+                    target.Draw(sprite, states);
+                    target.Draw(flame.sprite, states);
                     break;
                 case State.Burned:
                     // TODO: Нужно будет вернуть цвет, если дерево будет потушено

@@ -33,14 +33,14 @@ namespace FireSafety
             _forest = forest;
 
             // Выставляем Origin в центр картинки
-            Utilities.CenterOrigin(Sprite);
+            Utilities.CenterOrigin(sprite);
         }
 
         public void Move(Vector2f move)
         {
             // Перемещаем и танк, и пушку
-            Sprite.Position += move;
-            turret.Sprite.Position += move;
+            sprite.Position += move;
+            turret.sprite.Position += move;
         }
 
         private void Move(float degrees, MoveCommand.Commands where)
@@ -76,23 +76,23 @@ namespace FireSafety
 
         public void RotateTurret(float degrees)
         {
-            turret.Sprite.Rotation += degrees;
+            turret.sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            if (turret.Sprite.Rotation < 0)
+            if (turret.sprite.Rotation < 0)
             {
-                turret.Sprite.Rotation += 360;
+                turret.sprite.Rotation += 360;
             }
         }
 
         public void RotateTank(float degrees)
         {
-            Sprite.Rotation += degrees;
+            sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            if (Sprite.Rotation < 0)
+            if (sprite.Rotation < 0)
             {
-                Sprite.Rotation += 360;
+                sprite.Rotation += 360;
             }
 
             RotateTurret(degrees);
@@ -103,10 +103,10 @@ namespace FireSafety
             switch (command)
             {
                 case MoveCommand.Commands.Forward:
-                    Move(Sprite.Rotation, MoveCommand.Commands.Forward);
+                    Move(sprite.Rotation, MoveCommand.Commands.Forward);
                     break;
                 case MoveCommand.Commands.Backward:
-                    Move(Sprite.Rotation, MoveCommand.Commands.Backward);
+                    Move(sprite.Rotation, MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
                     RotateTank(90);
@@ -196,21 +196,21 @@ namespace FireSafety
             states.Transform *= Transform;
 
             // Рисуем корпус танка (с направлением)
-            target.Draw(Sprite, states);
+            target.Draw(sprite, states);
             RectangleShape tankDirection = new RectangleShape(new Vector2f(4, 16));
             Utilities.CenterOrigin(tankDirection, 0, 16);
             tankDirection.FillColor = Color.Yellow;
-            tankDirection.Position = Sprite.Position;
-            tankDirection.Rotation = Sprite.Rotation;
+            tankDirection.Position = sprite.Position;
+            tankDirection.Rotation = sprite.Rotation;
             target.Draw(tankDirection);
 
             // Рисуем башню танка (с направлением)
-            target.Draw(turret.Sprite, states);
+            target.Draw(turret.sprite, states);
             RectangleShape turretDirection = new RectangleShape(new Vector2f(2, 32));
             Utilities.CenterOrigin(turretDirection, 0, 32);
             turretDirection.FillColor = Color.Red;
-            turretDirection.Position = turret.Sprite.Position;
-            turretDirection.Rotation = turret.Sprite.Rotation;
+            turretDirection.Position = turret.sprite.Position;
+            turretDirection.Rotation = turret.sprite.Rotation;
             target.Draw(turretDirection);
         }
     }

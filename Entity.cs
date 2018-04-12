@@ -11,23 +11,23 @@ namespace FireSafety
 {
     public class Entity : Transformable, Drawable
     {
-        public Sprite Sprite { get; set; }
+        public Sprite sprite;
 
         public Entity()
         {
-            Sprite = new Sprite();
+            sprite = new Sprite();
         }
 
         public Entity(Textures.ID id, TextureHolder<Textures.ID> textures)
         {
             Texture texture = textures.Get(id);
-            Sprite = new Sprite(texture);
+            sprite = new Sprite(texture);
         }
 
         public virtual void Draw(RenderTarget target, RenderStates states)
         {
             states.Transform *= Transform;
-            target.Draw(Sprite, states);
+            target.Draw(sprite, states);
         }
 
         public virtual void Update(Time deltaTime)

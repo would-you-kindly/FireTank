@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Interface;
 using System.Threading;
 
 namespace FireSafety
@@ -19,10 +18,12 @@ namespace FireSafety
         private FireSafetyForm form;
         private ParallelAlgorithm parallelAlgorithm;
         private World world;
+        private RenderWindow renderWindow;
         public static bool executing;
 
         public Game()
         {
+            renderWindow = new RenderWindow(new VideoMode(32 * 16, 32 * 16), "Fire Tank");
             parallelAlgorithm = new ParallelAlgorithm();
 
             executing = false;
@@ -39,7 +40,7 @@ namespace FireSafety
 
         private void AssignEvents()
         {
-            GuiT.GetInstance().renderWindow.Closed += Window_Closed;
+            renderWindow.Closed += Window_Closed;
         }
 
         public void Run()
@@ -47,7 +48,7 @@ namespace FireSafety
             Clock clock = new Clock();
             Time timeSinceLastUpdate = Time.Zero;
 
-            while (GuiT.GetInstance().renderWindow.IsOpen)
+            while (renderWindow.IsOpen)
             {
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
@@ -68,9 +69,8 @@ namespace FireSafety
 
         private void ProcessInput()
         {
-            // Handle FireSafety events (NOTE this is still required when FireSafety is hosted in another window)
-            GuiT.GetInstance().renderWindow.DispatchEvents();
             // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
+            renderWindow.DispatchEvents();
         }
 
         private void Update(Time deltaTime)
@@ -80,14 +80,9 @@ namespace FireSafety
 
         private void Render()
         {
-            // Clear RenderWindow
-            GuiT.GetInstance().renderWindow.Clear();
-            // Drawing sprites
-            GuiT.GetInstance().renderWindow.Draw(world);
-            // Drawing interface
-            GuiT.GetInstance().Draw();
-            // Display what FireSafety has drawn to the screen
-            GuiT.GetInstance().renderWindow.Display();
+            renderWindow.Clear();
+            renderWindow.Draw(world);
+            renderWindow.Display();
         }
 
         private static void Window_Closed(object sender, EventArgs e)
