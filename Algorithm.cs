@@ -11,17 +11,16 @@ namespace FireSafety
     [Serializable]
     public class Algorithm
     {
-        public List<Action> Actions { get; set; }
+        public Queue<Action> Actions { get; set; }
 
         public Algorithm()
         {
-            Actions = new List<Action>();
+            Actions = new Queue<Action>();
         }
 
         public Action GetNextAction()
         {
-            Action action = Actions[Actions.Count - 1];
-            Actions.RemoveAt(Actions.Count - 1);
+            Action action = Actions.Dequeue();
 
             return action;
         }
