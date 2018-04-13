@@ -12,9 +12,13 @@ namespace FireSafety
 {
     partial class AlgorithmForm : Form
     {
-        public AlgorithmForm()
+        Algorithm _algorithm;
+
+        public AlgorithmForm(Algorithm algorithm)
         {
             InitializeComponent();
+
+            _algorithm = algorithm;
 
             dgvAlgorithm.Focus();
             dgvAlgorithm.ClearSelection();
@@ -67,7 +71,7 @@ namespace FireSafety
         }
 
         // Составляет алгоритм на основе данных в элементах управления
-        public void BuildAlgorithm(Algorithm algorithm)
+        public void BuildAlgorithm()
         {
             List<Action> listActions = new List<Action>();
             for (int i = 0; i < dgvAlgorithm.Rows.Count; i++)
@@ -78,7 +82,7 @@ namespace FireSafety
                 SetTurretCommands(listActions, i);
             }
 
-            algorithm.Actions = new Queue<Action>(listActions);
+            _algorithm.Actions = new Queue<Action>(listActions);
         }
 
         private void SetTurretCommands(List<Action> listActions, int i)

@@ -85,10 +85,7 @@ namespace FireSafety
             turret.sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            if (turret.sprite.Rotation < 0)
-            {
-                turret.sprite.Rotation += 360;
-            }
+            NormalizeRotation(turret.sprite.Rotation);
         }
 
         public void RotateTank(float degrees)
@@ -96,12 +93,19 @@ namespace FireSafety
             sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            if (sprite.Rotation < 0)
-            {
-                sprite.Rotation += 360;
-            }
+            NormalizeRotation(sprite.Rotation);
 
             RotateTurret(degrees);
+        }
+
+        private float NormalizeRotation(float degrees)
+        {
+            if (degrees < 0)
+            {
+                turret.sprite.Rotation += 360;
+            }
+
+            return turret.sprite.Rotation;
         }
 
         public void Move(MoveCommand.Commands command)
@@ -109,10 +113,10 @@ namespace FireSafety
             switch (command)
             {
                 case MoveCommand.Commands.Forward:
-                    Move(sprite.Rotation, MoveCommand.Commands.Forward);
+                    Move(NormalizeRotation(sprite.Rotation), MoveCommand.Commands.Forward);
                     break;
                 case MoveCommand.Commands.Backward:
-                    Move(sprite.Rotation, MoveCommand.Commands.Backward);
+                    Move(NormalizeRotation(sprite.Rotation), MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
                     RotateTank(90);

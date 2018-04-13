@@ -30,7 +30,7 @@ namespace FireSafety
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                AlgorithmForm algorithmForm = new AlgorithmForm();
+                AlgorithmForm algorithmForm = new AlgorithmForm(_parallelAlgorithm[i]);
                 algorithmForm.MdiParent = this;
                 algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
                 algorithmForm.Show();
@@ -64,7 +64,7 @@ namespace FireSafety
 
             for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForms[i].BuildAlgorithm(_parallelAlgorithm[i]);
+                algorithmForms[i].BuildAlgorithm();
             }
             //_parallelAlgorithm.Execute();
             Game.executing = true;
@@ -74,7 +74,7 @@ namespace FireSafety
         {
             for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForms[i].BuildAlgorithm(_parallelAlgorithm[i]);
+                algorithmForms[i].BuildAlgorithm();
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -100,7 +100,7 @@ namespace FireSafety
                     loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
                 }
 
-                // Пишем шаги алгоритма в элементы управления формы
+                // Записываем шаги алгоритма в элементы управления формы
                 for (int i = 0; i < algorithmForms.Count; i++)
                 {
                     int actionCount = loadedParallelAlgorithm.Algorithms[i].Actions.Count;
