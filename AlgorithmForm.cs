@@ -24,16 +24,6 @@ namespace FireSafety
             dgvAlgorithm.ClearSelection();
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams createParams = base.CreateParams;
-                createParams.ClassStyle = 0x200;
-                return createParams;
-            }
-        }
-
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetCommand((ComboBox)sender);

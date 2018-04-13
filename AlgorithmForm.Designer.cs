@@ -229,6 +229,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 412);
+            this.ControlBox = false;
             this.Controls.Add(this.gbControls);
             this.Controls.Add(this.dgvAlgorithm);
             this.MinimumSize = new System.Drawing.Size(424, 250);

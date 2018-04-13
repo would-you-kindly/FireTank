@@ -50,6 +50,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,39 +139,39 @@
             // 
             this.executeToolStripMenuItem.Name = "executeToolStripMenuItem";
             this.executeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.executeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.executeToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.executeToolStripMenuItem.Text = "Run";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
             // reloadToolStripMenuItem
             // 
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.reloadToolStripMenuItem.Text = "Reload";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             // 
             // stepToolStripMenuItem
             // 
             this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
-            this.stepToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stepToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.stepToolStripMenuItem.Text = "Step";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.clearToolStripMenuItem.Text = "Clean";
             // 
             // windowToolStripMenuItem
@@ -186,7 +187,8 @@
             // 
             this.layoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.horizontalToolStripMenuItem,
-            this.verticalToolStripMenuItem});
+            this.verticalToolStripMenuItem,
+            this.smartToolStripMenuItem});
             this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
             this.layoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.layoutToolStripMenuItem.Text = "Layout";
@@ -233,6 +235,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // smartToolStripMenuItem
+            // 
+            this.smartToolStripMenuItem.Name = "smartToolStripMenuItem";
+            this.smartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.smartToolStripMenuItem.Text = "Smart";
+            this.smartToolStripMenuItem.Click += new System.EventHandler(this.smartToolStripMenuItem_Click);
+            // 
             // FireSafetyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +253,7 @@
             this.Name = "FireSafetyForm";
             this.Text = "Fire Tank";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FireSafetyForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -275,5 +285,6 @@
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem algorithmsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem smartToolStripMenuItem;
     }
 }
