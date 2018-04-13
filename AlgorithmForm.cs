@@ -55,11 +55,26 @@ namespace FireSafety
                     break;
             }
 
-            if (dgvAlgorithm.SelectedCells.Count != 0 &&
-                dgvAlgorithm.SelectedCells[0].ColumnIndex == index)
+            // Изменяем команды действия алгоритма
+            if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnChange.Checked)
             {
                 dgvAlgorithm.Rows[dgvAlgorithm.SelectedCells[0].RowIndex].Cells[index].Value = cb.SelectedItem.ToString();
             }
+            // Вставляем новое действие выше выделенного
+            else if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnInsertBefore.Checked)
+            {
+                int beforeIndex = dgvAlgorithm.SelectedRows[0].Index;
+                dgvAlgorithm.Rows.Insert(beforeIndex, "None", "None", "None");
+                dgvAlgorithm.Rows[beforeIndex].Cells[index].Value = cb.SelectedItem.ToString();
+            }
+            // Вставляем новое действие ниже выделенного
+            else if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnInsertAfter.Checked)
+            {
+                int afterIndex = dgvAlgorithm.SelectedRows[0].Index + 1;
+                dgvAlgorithm.Rows.Insert(afterIndex, "None", "None", "None");
+                dgvAlgorithm.Rows[afterIndex].Cells[index].Value = cb.SelectedItem.ToString();
+            }
+            // Вставляем новое действие в конец алгоритма
             else
             {
                 dgvAlgorithm.Rows.Add("None", "None", "None");
@@ -161,6 +176,29 @@ namespace FireSafety
             {
                 dgvAlgorithm.ClearSelection();
             }
+
+            // Удаляем выделенное действие
+            if (e.KeyChar == (char)Keys.Delete)
+            {
+                DeleteAction();
+            }
+        }
+
+        private void DeleteAction()
+        {
+            if (dgvAlgorithm.SelectedRows.Count != 0)
+            {
+                dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.", "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnDeleteAction_Click(object sender, EventArgs e)
+        {
+                DeleteAction();
         }
     }
 }

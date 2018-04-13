@@ -35,7 +35,15 @@
             this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbControls = new System.Windows.Forms.GroupBox();
+            this.btnDeleteAction = new System.Windows.Forms.Button();
+            this.btnMoveActionDown = new System.Windows.Forms.Button();
+            this.btnMoveActionUp = new System.Windows.Forms.Button();
+            this.rbtnInsertAfter = new System.Windows.Forms.RadioButton();
+            this.rbtnInsertBefore = new System.Windows.Forms.RadioButton();
+            this.rbtnChange = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
+            this.gbControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbMove
@@ -50,9 +58,9 @@
             "Rotate 45 CW",
             "Rotate 45 CCW",
             "None"});
-            this.cbMove.Location = new System.Drawing.Point(12, 168);
+            this.cbMove.Location = new System.Drawing.Point(6, 19);
             this.cbMove.Name = "cbMove";
-            this.cbMove.Size = new System.Drawing.Size(121, 21);
+            this.cbMove.Size = new System.Drawing.Size(120, 21);
             this.cbMove.TabIndex = 2;
             this.cbMove.SelectedIndexChanged += new System.EventHandler(this.cbShootCommandsCommands_SelectedIndexChanged);
             // 
@@ -64,9 +72,9 @@
             "Increase water pressure",
             "Shoot",
             "None"});
-            this.cbShoot.Location = new System.Drawing.Point(139, 168);
+            this.cbShoot.Location = new System.Drawing.Point(132, 19);
             this.cbShoot.Name = "cbShoot";
-            this.cbShoot.Size = new System.Drawing.Size(121, 21);
+            this.cbShoot.Size = new System.Drawing.Size(120, 21);
             this.cbShoot.TabIndex = 2;
             this.cbShoot.SelectedIndexChanged += new System.EventHandler(this.cbShoot_SelectedIndexChanged);
             // 
@@ -82,9 +90,9 @@
             "Up",
             "Down",
             "None"});
-            this.cbTurret.Location = new System.Drawing.Point(266, 168);
+            this.cbTurret.Location = new System.Drawing.Point(258, 19);
             this.cbTurret.Name = "cbTurret";
-            this.cbTurret.Size = new System.Drawing.Size(121, 21);
+            this.cbTurret.Size = new System.Drawing.Size(120, 21);
             this.cbTurret.TabIndex = 2;
             this.cbTurret.SelectedIndexChanged += new System.EventHandler(this.cbTurret_SelectedIndexChanged);
             // 
@@ -94,6 +102,9 @@
             this.dgvAlgorithm.AllowUserToDeleteRows = false;
             this.dgvAlgorithm.AllowUserToResizeColumns = false;
             this.dgvAlgorithm.AllowUserToResizeRows = false;
+            this.dgvAlgorithm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAlgorithm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlgorithm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MoveCommands,
@@ -105,7 +116,8 @@
             this.dgvAlgorithm.Name = "dgvAlgorithm";
             this.dgvAlgorithm.ReadOnly = true;
             this.dgvAlgorithm.RowHeadersVisible = false;
-            this.dgvAlgorithm.Size = new System.Drawing.Size(375, 150);
+            this.dgvAlgorithm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlgorithm.Size = new System.Drawing.Size(384, 249);
             this.dgvAlgorithm.TabIndex = 6;
             this.dgvAlgorithm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvAlgorithm_KeyPress);
             // 
@@ -133,19 +145,99 @@
             this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.TurretCommands.Width = 115;
             // 
+            // gbControls
+            // 
+            this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbControls.Controls.Add(this.btnDeleteAction);
+            this.gbControls.Controls.Add(this.btnMoveActionDown);
+            this.gbControls.Controls.Add(this.btnMoveActionUp);
+            this.gbControls.Controls.Add(this.rbtnInsertAfter);
+            this.gbControls.Controls.Add(this.rbtnInsertBefore);
+            this.gbControls.Controls.Add(this.rbtnChange);
+            this.gbControls.Controls.Add(this.cbTurret);
+            this.gbControls.Controls.Add(this.cbShoot);
+            this.gbControls.Controls.Add(this.cbMove);
+            this.gbControls.Location = new System.Drawing.Point(12, 267);
+            this.gbControls.Name = "gbControls";
+            this.gbControls.Size = new System.Drawing.Size(384, 133);
+            this.gbControls.TabIndex = 8;
+            this.gbControls.TabStop = false;
+            // 
+            // btnDeleteAction
+            // 
+            this.btnDeleteAction.Location = new System.Drawing.Point(258, 104);
+            this.btnDeleteAction.Name = "btnDeleteAction";
+            this.btnDeleteAction.Size = new System.Drawing.Size(120, 23);
+            this.btnDeleteAction.TabIndex = 4;
+            this.btnDeleteAction.Text = "Delete action";
+            this.btnDeleteAction.UseVisualStyleBackColor = true;
+            this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
+            // 
+            // btnMoveActionDown
+            // 
+            this.btnMoveActionDown.Location = new System.Drawing.Point(258, 75);
+            this.btnMoveActionDown.Name = "btnMoveActionDown";
+            this.btnMoveActionDown.Size = new System.Drawing.Size(120, 23);
+            this.btnMoveActionDown.TabIndex = 4;
+            this.btnMoveActionDown.Text = "Move action down";
+            this.btnMoveActionDown.UseVisualStyleBackColor = true;
+            // 
+            // btnMoveActionUp
+            // 
+            this.btnMoveActionUp.Location = new System.Drawing.Point(258, 46);
+            this.btnMoveActionUp.Name = "btnMoveActionUp";
+            this.btnMoveActionUp.Size = new System.Drawing.Size(120, 23);
+            this.btnMoveActionUp.TabIndex = 4;
+            this.btnMoveActionUp.Text = "Move action up";
+            this.btnMoveActionUp.UseVisualStyleBackColor = true;
+            // 
+            // rbtnInsertAfter
+            // 
+            this.rbtnInsertAfter.AutoSize = true;
+            this.rbtnInsertAfter.Location = new System.Drawing.Point(6, 92);
+            this.rbtnInsertAfter.Name = "rbtnInsertAfter";
+            this.rbtnInsertAfter.Size = new System.Drawing.Size(75, 17);
+            this.rbtnInsertAfter.TabIndex = 3;
+            this.rbtnInsertAfter.Text = "Insert after";
+            this.rbtnInsertAfter.UseVisualStyleBackColor = true;
+            // 
+            // rbtnInsertBefore
+            // 
+            this.rbtnInsertBefore.AutoSize = true;
+            this.rbtnInsertBefore.Location = new System.Drawing.Point(6, 69);
+            this.rbtnInsertBefore.Name = "rbtnInsertBefore";
+            this.rbtnInsertBefore.Size = new System.Drawing.Size(84, 17);
+            this.rbtnInsertBefore.TabIndex = 3;
+            this.rbtnInsertBefore.Text = "Insert before";
+            this.rbtnInsertBefore.UseVisualStyleBackColor = true;
+            // 
+            // rbtnChange
+            // 
+            this.rbtnChange.AutoSize = true;
+            this.rbtnChange.Checked = true;
+            this.rbtnChange.Location = new System.Drawing.Point(6, 46);
+            this.rbtnChange.Name = "rbtnChange";
+            this.rbtnChange.Size = new System.Drawing.Size(62, 17);
+            this.rbtnChange.TabIndex = 3;
+            this.rbtnChange.TabStop = true;
+            this.rbtnChange.Text = "Change";
+            this.rbtnChange.UseVisualStyleBackColor = true;
+            // 
             // AlgorithmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 462);
+            this.ClientSize = new System.Drawing.Size(408, 412);
+            this.Controls.Add(this.gbControls);
             this.Controls.Add(this.dgvAlgorithm);
-            this.Controls.Add(this.cbTurret);
-            this.Controls.Add(this.cbShoot);
-            this.Controls.Add(this.cbMove);
+            this.MinimumSize = new System.Drawing.Size(424, 250);
             this.Name = "AlgorithmForm";
             this.Tag = "Algorithm";
             this.Text = "Algorithm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).EndInit();
+            this.gbControls.ResumeLayout(false);
+            this.gbControls.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -158,5 +250,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
+        private System.Windows.Forms.GroupBox gbControls;
+        private System.Windows.Forms.Button btnDeleteAction;
+        private System.Windows.Forms.Button btnMoveActionDown;
+        private System.Windows.Forms.Button btnMoveActionUp;
+        private System.Windows.Forms.RadioButton rbtnInsertAfter;
+        private System.Windows.Forms.RadioButton rbtnInsertBefore;
+        private System.Windows.Forms.RadioButton rbtnChange;
     }
 }
