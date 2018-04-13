@@ -12,153 +12,151 @@ namespace FireSafety
 {
     partial class AlgorithmForm : Form
     {
-        private Algorithm _algorithm;
-
-        public AlgorithmForm(Algorithm algorithm)
+        public AlgorithmForm()
         {
             InitializeComponent();
 
-            _algorithm = algorithm;
+            dgvAlgorithm.Focus();
+            dgvAlgorithm.ClearSelection();
         }
 
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbMoveCommands.SelectedItem != null)
-            {
-                lbMoveCommands.Items.Insert(lbMoveCommands.SelectedIndex, cbMove.SelectedItem.ToString());
-                lbMoveCommands.Items.RemoveAt(lbMoveCommands.SelectedIndex);
-            }
-            else
-            {
-                lbMoveCommands.Items.Add(cbMove.SelectedItem.ToString());
-                lbShootCommands.Items.Add("None");
-                lbTurretCommands.Items.Add("None");
-            }
-
-            cbMove.SelectedText = null;
+            SetCommand((ComboBox)sender);
         }
 
         private void cbShoot_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbShootCommands.SelectedItem != null)
-            {
-                lbShootCommands.Items.Insert(lbShootCommands.SelectedIndex, cbShoot.SelectedItem.ToString());
-                lbShootCommands.Items.RemoveAt(lbShootCommands.SelectedIndex);
-            }
-            else
-            {
-                lbMoveCommands.Items.Add("None");
-                lbShootCommands.Items.Add(cbShoot.SelectedItem.ToString());
-                lbTurretCommands.Items.Add("None");
-            }
-
-            cbShoot.SelectedText = null;
+            SetCommand((ComboBox)sender);
         }
 
         private void cbTurret_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbTurretCommands.SelectedItem != null)
+            SetCommand((ComboBox)sender);
+        }
+
+        private void SetCommand(ComboBox cb)
+        {
+            int index = 0;
+            switch (cb.Name)
             {
-                lbTurretCommands.Items.Insert(lbTurretCommands.SelectedIndex, cbTurret.SelectedItem.ToString());
-                lbTurretCommands.Items.RemoveAt(lbTurretCommands.SelectedIndex);
+                case "cbMove":
+                    index = 0;
+                    break;
+                case "cbShoot":
+                    index = 1;
+                    break;
+                case "cbTurret":
+                    index = 2;
+                    break;
+            }
+
+            if (dgvAlgorithm.SelectedCells.Count != 0 &&
+                dgvAlgorithm.SelectedCells[0].ColumnIndex == index)
+            {
+                dgvAlgorithm.Rows[dgvAlgorithm.SelectedCells[0].RowIndex].Cells[index].Value = cb.SelectedItem.ToString();
             }
             else
             {
-                lbMoveCommands.Items.Add("None");
-                lbShootCommands.Items.Add("None");
-                lbTurretCommands.Items.Add(cbTurret.SelectedItem.ToString());
+                dgvAlgorithm.Rows.Add("None", "None", "None");
+                dgvAlgorithm.Rows[dgvAlgorithm.RowCount - 1].Cells[index].Value = cb.SelectedItem.ToString();
             }
 
-            cbTurret.SelectedText = null;
+            dgvAlgorithm.Focus();
+            dgvAlgorithm.ClearSelection();
         }
 
-        public void ExecuteAlgorithm()
+        // Составляет алгоритм на основе данных в элементах управления
+        public void BuildAlgorithm(Algorithm algorithm)
         {
-            // Переносим то, что написали на элементах упралвения и сохраняем в Algorithm
-            _algorithm.Actions.Clear();
-
             List<Action> listActions = new List<Action>();
-            for (int i = 0; i < lbMoveCommands.Items.Count; i++)
+            for (int i = 0; i < dgvAlgorithm.Rows.Count; i++)
             {
                 listActions.Add(new Action());
+                SetMoveCommands(listActions, i);
+                SetShootCommands(listActions, i);
+                SetTurretCommands(listActions, i);
             }
 
-            for (int i = 0; i < lbMoveCommands.Items.Count; i++)
+            algorithm.Actions = new Queue<Action>(listActions);
+        }
+
+        private void SetTurretCommands(List<Action> listActions, int i)
+        {
+            switch (dgvAlgorithm.Rows[i].Cells[2].Value.ToString())
             {
-                switch (lbMoveCommands.Items[i].ToString())
-                {
-                    case "Forward":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
-                        break;
-                    case "Backward":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
-                        break;
-                    case "Rotate 90 CW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
-                        break;
-                    case "Rotate 90 CCW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
-                        break;
-                    case "Rotate 45 CW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
-                        break;
-                    case "Rotate 45 CCW":
-                        listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
-                        break;
-                    default:
-                        break;
-                }
+                case "Rotate 45 CW":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
+                    break;
+                case "Rotate 45 CCW":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
+                    break;
+                case "Rotate 90 CW":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
+                    break;
+                case "Rotate 90 CCW":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
+                    break;
+                case "Up":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
+                    break;
+                case "Down":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
+                    break;
+                default:
+                    break;
             }
+        }
 
-            for (int i = 0; i < lbShootCommands.Items.Count; i++)
+        private void SetShootCommands(List<Action> listActions, int i)
+        {
+            switch (dgvAlgorithm.Rows[i].Cells[1].Value.ToString())
             {
-                switch (lbShootCommands.Items[i].ToString())
-                {
-                    case "Increase water pressure":
-                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
-                        break;
-                    case "Shoot":
-                        listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
-                        break;
-                    default:
-                        break;
-                }
+                case "Increase water pressure":
+                    listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
+                    break;
+                case "Shoot":
+                    listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
+                    break;
+                default:
+                    break;
             }
+        }
 
-            for (int i = 0; i < lbTurretCommands.Items.Count; i++)
+        private void SetMoveCommands(List<Action> listActions, int i)
+        {
+            switch (dgvAlgorithm.Rows[i].Cells[0].Value.ToString())
             {
-                switch (lbTurretCommands.Items[i].ToString())
-                {
-                    case "Rotate 45 CW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
-                        break;
-                    case "Rotate 45 CCW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CCW);
-                        break;
-                    case "Rotate 90 CW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CW);
-                        break;
-                    case "Rotate 90 CCW":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate90CCW);
-                        break;
-                    case "Up":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Up);
-                        break;
-                    case "Down":
-                        listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
-                        break;
-                    default:
-                        break;
-                }
+                case "Forward":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
+                    break;
+                case "Backward":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
+                    break;
+                case "Rotate 90 CW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
+                    break;
+                case "Rotate 90 CCW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CCW);
+                    break;
+                case "Rotate 45 CW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CW);
+                    break;
+                case "Rotate 45 CCW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate45CCW);
+                    break;
+                default:
+                    break;
             }
+        }
 
-            Queue<Action> actions = new Queue<Action>();
-            foreach (Action action in listActions)
+        private void dgvAlgorithm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Отменяем выделение при нажатии "Escape"
+            if (e.KeyChar == (char)Keys.Escape)
             {
-                actions.Enqueue(action);
+                dgvAlgorithm.ClearSelection();
             }
-
-            _algorithm.Actions = actions;
         }
     }
 }

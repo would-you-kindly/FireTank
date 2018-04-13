@@ -30,7 +30,7 @@ namespace FireSafety
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                AlgorithmForm algorithmForm = new AlgorithmForm(parallelAlgorithm[i]);
+                AlgorithmForm algorithmForm = new AlgorithmForm();
                 algorithmForm.MdiParent = this;
                 algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
                 algorithmForm.Show();
@@ -55,14 +55,16 @@ namespace FireSafety
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            Game.gui.form.renderWindow.Close();
         }
 
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (var algorithmForm in algorithmForms)
+            Game.world.BuildWorld();
+
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForm.ExecuteAlgorithm();
+                algorithmForms[i].BuildAlgorithm(_parallelAlgorithm[i]);
             }
             //_parallelAlgorithm.Execute();
             Game.executing = true;
@@ -70,10 +72,9 @@ namespace FireSafety
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (var algorithmForm in algorithmForms)
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
-                // Не фактическое выполнение, а перенос слов с элементов управления в экземпляры класса Flgorithm
-                algorithmForm.ExecuteAlgorithm();
+                algorithmForms[i].BuildAlgorithm(_parallelAlgorithm[i]);
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -106,23 +107,12 @@ namespace FireSafety
                     for (int j = 0; j < actionCount; j++)
                     {
                         Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
-                        algorithmForms[i].lbMoveCommands.Items.Add(action.commands[0].ToString());
-                        algorithmForms[i].lbShootCommands.Items.Add(action.commands[1].ToString());
-                        algorithmForms[i].lbTurretCommands.Items.Add(action.commands[2].ToString());
+                        algorithmForms[i].dgvAlgorithm.Rows.Add(action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
                     }
                 }
             }
         }
 
-        private void arrandeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
 
         private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {

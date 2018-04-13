@@ -44,8 +44,6 @@
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arrandeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,28 +81,34 @@
             // saveAlgorithmToolStripMenuItem
             // 
             this.saveAlgorithmToolStripMenuItem.Name = "saveAlgorithmToolStripMenuItem";
-            this.saveAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.saveAlgorithmToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.saveAlgorithmToolStripMenuItem.Text = "Save algorithm";
             this.saveAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.saveAlgorithmToolStripMenuItem_Click);
             // 
             // saveAlgorithmAsToolStripMenuItem
             // 
             this.saveAlgorithmAsToolStripMenuItem.Name = "saveAlgorithmAsToolStripMenuItem";
-            this.saveAlgorithmAsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.saveAlgorithmAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.saveAlgorithmAsToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.saveAlgorithmAsToolStripMenuItem.Text = "Save algorithm as...";
             this.saveAlgorithmAsToolStripMenuItem.Click += new System.EventHandler(this.saveAlgorithmAsToolStripMenuItem_Click);
             // 
             // openAlgorithmToolStripMenuItem
             // 
             this.openAlgorithmToolStripMenuItem.Name = "openAlgorithmToolStripMenuItem";
-            this.openAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.openAlgorithmToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.openAlgorithmToolStripMenuItem.Text = "Open algorithm";
             this.openAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.openAlgorithmToolStripMenuItem_Click);
             // 
             // openMapToolStripMenuItem
             // 
             this.openMapToolStripMenuItem.Name = "openMapToolStripMenuItem";
-            this.openMapToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.openMapToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.O)));
+            this.openMapToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.openMapToolStripMenuItem.Text = "Open map";
             this.openMapToolStripMenuItem.Click += new System.EventHandler(this.openMapToolStripMenuItem_Click);
             // 
@@ -112,7 +116,7 @@
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -133,6 +137,7 @@
             // executeToolStripMenuItem
             // 
             this.executeToolStripMenuItem.Name = "executeToolStripMenuItem";
+            this.executeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.executeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.executeToolStripMenuItem.Text = "Run";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
@@ -180,46 +185,30 @@
             // layoutToolStripMenuItem
             // 
             this.layoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arrandeIconsToolStripMenuItem,
-            this.cascadeToolStripMenuItem,
             this.horizontalToolStripMenuItem,
             this.verticalToolStripMenuItem});
             this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
-            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.layoutToolStripMenuItem.Text = "Layout";
-            // 
-            // arrandeIconsToolStripMenuItem
-            // 
-            this.arrandeIconsToolStripMenuItem.Name = "arrandeIconsToolStripMenuItem";
-            this.arrandeIconsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.arrandeIconsToolStripMenuItem.Text = "Arrange icons";
-            this.arrandeIconsToolStripMenuItem.Click += new System.EventHandler(this.arrandeIconsToolStripMenuItem_Click);
-            // 
-            // cascadeToolStripMenuItem
-            // 
-            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.cascadeToolStripMenuItem.Text = "Cascade";
-            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
             // horizontalToolStripMenuItem
             // 
             this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.horizontalToolStripMenuItem.Text = "Horizontal";
             this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
             // 
             // verticalToolStripMenuItem
             // 
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verticalToolStripMenuItem.Text = "Vertical";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
             // algorithmsToolStripMenuItem
             // 
             this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
-            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.algorithmsToolStripMenuItem.Text = "Algorithms";
             // 
             // helpToolStripMenuItem
@@ -234,13 +223,14 @@
             // documentationToolStripMenuItem
             // 
             this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
-            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.documentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.documentationToolStripMenuItem.Text = "Documentation";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // FireSafetyForm
@@ -278,8 +268,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem arrandeIconsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAlgorithmToolStripMenuItem;
