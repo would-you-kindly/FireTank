@@ -114,7 +114,6 @@ namespace FireSafety
             }
         }
 
-
         private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileHorizontal);

@@ -24,6 +24,16 @@ namespace FireSafety
             dgvAlgorithm.ClearSelection();
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams createParams = base.CreateParams;
+                createParams.ClassStyle = 0x200;
+                return createParams;
+            }
+        }
+
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetCommand((ComboBox)sender);
@@ -171,14 +181,14 @@ namespace FireSafety
 
         private void dgvAlgorithm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Отменяем выделение при нажатии "Escape"
+            // Отменяем выделение
             if (e.KeyChar == (char)Keys.Escape)
             {
                 dgvAlgorithm.ClearSelection();
             }
 
             // Удаляем выделенное действие
-            if (e.KeyChar == (char)Keys.Delete)
+            if (e.KeyChar == (char)Keys.Back)
             {
                 DeleteAction();
             }
@@ -192,13 +202,14 @@ namespace FireSafety
             }
             else
             {
-                MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.", "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.",
+                    "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btnDeleteAction_Click(object sender, EventArgs e)
         {
-                DeleteAction();
+            DeleteAction();
         }
     }
 }

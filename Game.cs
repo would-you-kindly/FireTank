@@ -13,7 +13,7 @@ namespace FireSafety
 {
     public class Game
     {
-        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 60.0f);
 
         private ParallelAlgorithm parallelAlgorithm;
         internal static World world;
@@ -61,18 +61,13 @@ namespace FireSafety
         private void ProcessInput()
         {
             // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
-            Application.DoEvents(); // handle form events
+            // Handle form events
+            Application.DoEvents(); 
             gui.form.renderWindow.DispatchEvents();
         }
 
         private void Update(Time deltaTime)
         {
-            //// Каждый танк выполняет свой алгоритм
-            //for (int i = 0; i < world.tanks.Count(); i++)
-            //{
-            //    world.tanks[i].Execute(parallelAlgorithm[i]);
-            //}
-
             world.Update(deltaTime);
         }
 
