@@ -21,6 +21,7 @@ namespace FireSafety
         List<AlgorithmForm> algorithmForms;
         public RenderWindow renderWindow;
         Form sfmlForm;
+        private bool algorithmBuilt = false;
 
         public FireSafetyForm(ParallelAlgorithm parallelAlgorithm)
         {
@@ -71,6 +72,7 @@ namespace FireSafety
             }
             //_parallelAlgorithm.Execute();
             Game.executing = true;
+            algorithmBuilt = false;
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -135,6 +137,7 @@ namespace FireSafety
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Game.executing = false;
+            algorithmBuilt = false;
             Game.world.BuildWorld();
         }
 
@@ -205,6 +208,135 @@ namespace FireSafety
         private void FireSafetyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Game.gui.form.renderWindow.Close();
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм? Все несохраненные данные будут утеряны.",
+                "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Game.executing = false;
+                Game.world.BuildWorld();
+                _parallelAlgorithm.Clear();
+                foreach (AlgorithmForm form in algorithmForms)
+                {
+                    form.dgvAlgorithm.Rows.Clear();
+                }
+            }
+        }
+
+        private void stepToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!algorithmBuilt)
+            {
+                for (int i = 0; i < algorithmForms.Count; i++)
+                {
+                    algorithmForms[i].BuildAlgorithm();
+                }
+
+                algorithmBuilt = true;
+            }
+
+            Game.Update(new SFML.System.Time());
+            Game.executing = false;
+        }
+
+        private void Shortcut(ComboBox cb, string text)
+        {
+            foreach (AlgorithmForm algorithmForm in algorithmForms)
+            {
+                if (algorithmForm.ContainsFocus)
+                {
+                    cb.SelectedIndex = -1;
+                    cb.SelectedItem = text;
+                    break;
+                }
+            }
+        }
+
+        private void forwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void backwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate45CWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem) sender).Text);
+        }
+
+        private void rotate45CCWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate90CWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate90CCWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void noneMoveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void pressureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbShoot, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void shootToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbShoot, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void noneShootToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbShoot, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate45CWToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate45CCWToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate90CWToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void rotate90CCWToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void upToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void downToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+        }
+
+        private void noneTurretToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
         }
     }
 }

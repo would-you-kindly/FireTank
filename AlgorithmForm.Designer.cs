@@ -43,9 +43,9 @@
             this.rbtnInsertBefore = new System.Windows.Forms.RadioButton();
             this.rbtnChange = new System.Windows.Forms.RadioButton();
             this.gbCommands = new System.Windows.Forms.GroupBox();
-            this.lblMoveCommands = new System.Windows.Forms.Label();
-            this.lblShootCommands = new System.Windows.Forms.Label();
             this.lblTurretCommands = new System.Windows.Forms.Label();
+            this.lblShootCommands = new System.Windows.Forms.Label();
+            this.lblMoveCommands = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             this.gbCommands.SuspendLayout();
@@ -58,10 +58,10 @@
             this.cbMove.Items.AddRange(new object[] {
             "Forward",
             "Backward",
-            "Rotate 90 CW",
-            "Rotate 90 CCW",
             "Rotate 45 CW",
             "Rotate 45 CCW",
+            "Rotate 90 CW",
+            "Rotate 90 CCW",
             "None"});
             this.cbMove.Location = new System.Drawing.Point(6, 32);
             this.cbMove.Name = "cbMove";
@@ -74,7 +74,7 @@
             this.cbShoot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbShoot.FormattingEnabled = true;
             this.cbShoot.Items.AddRange(new object[] {
-            "Increase water pressure",
+            "Pressure",
             "Shoot",
             "None"});
             this.cbShoot.Location = new System.Drawing.Point(132, 32);
@@ -242,14 +242,14 @@
             this.gbCommands.TabIndex = 9;
             this.gbCommands.TabStop = false;
             // 
-            // lblMoveCommands
+            // lblTurretCommands
             // 
-            this.lblMoveCommands.AutoSize = true;
-            this.lblMoveCommands.Location = new System.Drawing.Point(3, 16);
-            this.lblMoveCommands.Name = "lblMoveCommands";
-            this.lblMoveCommands.Size = new System.Drawing.Size(88, 13);
-            this.lblMoveCommands.TabIndex = 0;
-            this.lblMoveCommands.Text = "Move commands";
+            this.lblTurretCommands.AutoSize = true;
+            this.lblTurretCommands.Location = new System.Drawing.Point(255, 16);
+            this.lblTurretCommands.Name = "lblTurretCommands";
+            this.lblTurretCommands.Size = new System.Drawing.Size(89, 13);
+            this.lblTurretCommands.TabIndex = 4;
+            this.lblTurretCommands.Text = "Turret commands";
             // 
             // lblShootCommands
             // 
@@ -260,14 +260,14 @@
             this.lblShootCommands.TabIndex = 3;
             this.lblShootCommands.Text = "Shoot commands";
             // 
-            // lblTurretCommands
+            // lblMoveCommands
             // 
-            this.lblTurretCommands.AutoSize = true;
-            this.lblTurretCommands.Location = new System.Drawing.Point(255, 16);
-            this.lblTurretCommands.Name = "lblTurretCommands";
-            this.lblTurretCommands.Size = new System.Drawing.Size(89, 13);
-            this.lblTurretCommands.TabIndex = 4;
-            this.lblTurretCommands.Text = "Turret commands";
+            this.lblMoveCommands.AutoSize = true;
+            this.lblMoveCommands.Location = new System.Drawing.Point(3, 16);
+            this.lblMoveCommands.Name = "lblMoveCommands";
+            this.lblMoveCommands.Size = new System.Drawing.Size(88, 13);
+            this.lblMoveCommands.TabIndex = 0;
+            this.lblMoveCommands.Text = "Move commands";
             // 
             // AlgorithmForm
             // 
@@ -293,9 +293,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbMove;
-        private System.Windows.Forms.ComboBox cbShoot;
-        private System.Windows.Forms.ComboBox cbTurret;
+        public System.Windows.Forms.ComboBox cbMove;
+        public System.Windows.Forms.ComboBox cbShoot;
+        public System.Windows.Forms.ComboBox cbTurret;
         public System.Windows.Forms.DataGridView dgvAlgorithm;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;

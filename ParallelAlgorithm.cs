@@ -59,5 +59,10 @@ namespace FireSafety
             // TODO: Контролируем конфликты
             throw new NotImplementedException();
         }
+
+        public void Clear()
+        {
+            Algorithms.Clear();
+        }
     }
 }

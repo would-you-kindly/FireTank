@@ -38,7 +38,7 @@ namespace FireSafety
             switch (command)
             {
                 case Commands.IncreaseWaterPressure:
-                    return "Increase water pressure";
+                    return "Pressure";
                 case Commands.Shoot:
                     return "Shoot";
                 case Commands.None:

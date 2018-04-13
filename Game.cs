@@ -66,7 +66,7 @@ namespace FireSafety
             gui.form.renderWindow.DispatchEvents();
         }
 
-        private void Update(Time deltaTime)
+        public static void Update(Time deltaTime)
         {
             world.Update(deltaTime);
         }

@@ -50,8 +50,13 @@ namespace FireSafety
             SetCommand((ComboBox)sender);
         }
 
-        private void SetCommand(ComboBox cb)
+        public void SetCommand(ComboBox cb)
         {
+            if (cb.SelectedIndex == -1)
+            {
+                return;
+            }
+
             int index = 0;
             switch (cb.Name)
             {
@@ -142,7 +147,7 @@ namespace FireSafety
         {
             switch (dgvAlgorithm.Rows[i].Cells[1].Value.ToString())
             {
-                case "Increase water pressure":
+                case "Pressure":
                     listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
                     break;
                 case "Shoot":
