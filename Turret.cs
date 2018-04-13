@@ -11,43 +11,62 @@ namespace FireSafety
 {
     public class Turret : Entity
     {
+        public int maxWaterPressure = 3;
+        public int waterPressure;
+        public bool up;
+
         public Turret(Textures.ID id, TextureHolder<Textures.ID> textures) :
             base(id, textures)
         {
+            waterPressure = 0;
+            up = false;
+
             // Выставляем Origin в центр картинки
             Utilities.CenterOrigin(sprite);
         }
 
-        public Vector2f AgainstPosition
+        // Возвращает список координта, куда может попасть вода (или одну координату, если пушка поднята)
+        public List<Vector2f> GetTargetPositions()
         {
-            get
+            const int rotation = 45;
+            List<Vector2f> targets = new List<Vector2f>();
+
+            // Собираем все координаты, куда может попасть вода
+            for (int i = 0; i < waterPressure; i++)
             {
-                const int rotation = 45;
-                //MessageBox.Show(sprite.Position.ToString());
-                // TODO: Проконтролировать Rotation
-                int degrees = (Math.Abs((int)sprite.Rotation < 0 ? 360 + (int)sprite.Rotation : (int)sprite.Rotation)) % 360;
-                switch (degrees)
+                // Если пушка поднята, ищем дальнюю цель
+                if (up && (i + 1 != waterPressure))
                 {
-                    case rotation * 0:
-                        return new Vector2f(sprite.Position.X - 16, sprite.Position.Y - 16 - 32);
-                    case rotation * 1:
-                        return new Vector2f(sprite.Position.X - 16 + 32, sprite.Position.Y - 16 - 32);
-                    case rotation * 2:                        
-                        return new Vector2f(sprite.Position.X - 16 + 32, sprite.Position.Y - 16);
-                    case rotation * 3:                        
-                        return new Vector2f(sprite.Position.X - 16 + 32, sprite.Position.Y - 16 + 32);
-                    case rotation * 4:                        
-                        return new Vector2f(sprite.Position.X - 16, sprite.Position.Y - 16 + 32);
-                    case rotation * 5:                        
-                        return new Vector2f(sprite.Position.X - 16 - 32, sprite.Position.Y - 16 + 32);
-                    case rotation * 6:                        
-                        return new Vector2f(sprite.Position.X - 16 - 32, sprite.Position.Y - 16);
-                    case rotation * 7:                        
-                        return new Vector2f(sprite.Position.X - 16 - 32, sprite.Position.Y - 16 - 32);
-                    default:
-                        throw new Exception("Невозможный угол поворота башни.");
+                    continue;
                 }
+
+                // Вверх
+                if (NormalizedRotation == rotation * 0)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2, sprite.Position.Y - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1)));
+                // Вверх-вправо
+                if (NormalizedRotation == rotation * 1)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1)));
+                // Вправо
+                if (NormalizedRotation == rotation * 2)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2));
+                // Вправо-вниз
+                if (NormalizedRotation == rotation * 3)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1)));
+                // Вниз
+                if (NormalizedRotation == rotation * 4)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2, sprite.Position.Y - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1)));
+                // Вниз-влево
+                if (NormalizedRotation == rotation * 5)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1)));
+                // Влево
+                if (NormalizedRotation == rotation * 6)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2));
+                // Влево-вверх
+                if (NormalizedRotation == rotation * 7)
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1)));
             }
+
+            return targets;
         }
     }
 }

@@ -18,8 +18,7 @@ namespace FireSafety
             Green
         }
 
-        private const int maxWaterPressure = 3;
-        private int waterPressure;
+
         private Algorithm _algorithm;
         private Turret turret;
         private Forest _forest;
@@ -28,7 +27,6 @@ namespace FireSafety
         public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Forest forest) :
             base(idTank, textures)
         {
-            waterPressure = 0;
             turret = new Turret(idTurret, textures);
             this.tankColor = tankColor;
             _forest = forest;
@@ -52,79 +50,43 @@ namespace FireSafety
         private void MoveTank(MoveCommand.Commands where)
         {
             int sign = where == MoveCommand.Commands.Forward ? 1 : -1;
-            int rotation = 45;
-            float degrees = NormalizeTankRotation();
+            const int rotation = 45;
 
             // Вверх
-            if (degrees == rotation * 0)
+            if (NormalizedRotation == rotation * 0)
                 Move(new Vector2f(0, -Utilities.TILE_SIZE * sign));
             // Вверх-вправо
-            if (degrees == rotation * 1)
+            if (NormalizedRotation == rotation * 1)
                 Move(new Vector2f(Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
             // Вправо
-            if (degrees == rotation * 2)
+            if (NormalizedRotation == rotation * 2)
                 Move(new Vector2f(Utilities.TILE_SIZE * sign, 0));
             // Вправо-вниз
-            if (degrees == rotation * 3)
+            if (NormalizedRotation == rotation * 3)
                 Move(new Vector2f(Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
             // Вниз
-            if (degrees == rotation * 4)
+            if (NormalizedRotation == rotation * 4)
                 Move(new Vector2f(0, Utilities.TILE_SIZE * sign));
             // Вниз-влево
-            if (degrees == rotation * 5)
+            if (NormalizedRotation == rotation * 5)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
             // Влево
-            if (degrees == rotation * 6)
+            if (NormalizedRotation == rotation * 6)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, 0));
             // Влево-вверх
-            if (degrees == rotation * 7)
+            if (NormalizedRotation == rotation * 7)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
         }
 
         public void RotateTurret(float degrees)
         {
             turret.sprite.Rotation += degrees;
-
-            // Возвращаем углы поворота в диапазон [0-360]
-            NormalizeTerretRotation();
         }
 
         public void RotateTank(float degrees)
         {
             sprite.Rotation += degrees;
-
-            // Возвращаем углы поворота в диапазон [0-360]
-            NormalizeTankRotation();
-
             RotateTurret(degrees);
-        }
-
-        private float NormalizeTerretRotation()
-        {
-            while (turret.sprite.Rotation < 0)
-            {
-                turret.sprite.Rotation += 360;
-            }
-            while (turret.sprite.Rotation >= 360)
-            {
-                turret.sprite.Rotation -= 360;
-            }
-
-            return turret.sprite.Rotation;
-        }
-
-        private float NormalizeTankRotation()
-        {
-            while (sprite.Rotation < 0)
-            {
-                sprite.Rotation += 360;
-            }
-            while (sprite.Rotation >= 360)
-            {
-                sprite.Rotation -= 360;
-            }
-
-            return sprite.Rotation;
         }
 
         public void Move(MoveCommand.Commands command)
@@ -159,18 +121,38 @@ namespace FireSafety
             switch (command)
             {
                 case ShootCommand.Commands.IncreaseWaterPressure:
-                    if (waterPressure < maxWaterPressure)
+                    if (turret.waterPressure < turret.maxWaterPressure)
                     {
-                        waterPressure++;
+                        turret.waterPressure++;
                     }
                     Console.WriteLine("ShootCommand.Commands.IncreaseWaterPressure");
                     break;
                 case ShootCommand.Commands.Shoot:
-                    if (waterPressure != 0)
+                    if (turret.waterPressure != 0)
                     {
-                        waterPressure = 0;
-                        Tree treeToExtinguish = _forest.trees.Find(tree => tree.Position == turret.AgainstPosition);
-                        treeToExtinguish?.Extinguish();
+                        // Если пушка опущена, то можно потушить ближайшее дерево
+                        if (!turret.up)
+                        {
+                            foreach (Vector2f coords in turret.GetTargetPositions())
+                            {
+                                Tree treeToExtinguish = _forest.trees.Find(tree => tree.Position == coords);
+
+                                // Если нашли ближайшее дерево, то остальные не проверяем
+                                if (treeToExtinguish != null)
+                                {
+                                    treeToExtinguish.Extinguish();
+                                    break;
+                                }
+                            }
+                        }
+                        // Если пушка поднята, то можно потушить только одно дальнее дерево
+                        else
+                        {
+                            Tree treeToExtinguish = _forest.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
+                            treeToExtinguish?.Extinguish();
+                        }
+
+                        turret.waterPressure = 0;
                     }
                     Console.WriteLine("ShootCommand.Commands.Shoot");
                     break;
@@ -196,10 +178,10 @@ namespace FireSafety
                     RotateTurret(-90);
                     break;
                 case TurretCommand.Commands.Up:
-                    Console.WriteLine("TurretCommand.Commands.Up");
+                    turret.up = true;
                     break;
                 case TurretCommand.Commands.Down:
-                    Console.WriteLine("TurretCommand.Commands.Down");
+                    turret.up = false;
                     break;
                 default:
                     break;
@@ -231,7 +213,7 @@ namespace FireSafety
 
             // Рисуем корпус танка (с направлением)
             target.Draw(sprite, states);
-            RectangleShape tankDirection = new RectangleShape(new Vector2f(4, 16));
+            RectangleShape tankDirection = new RectangleShape(new Vector2f(6, 16));
             Utilities.CenterOrigin(tankDirection, 0, 16);
             tankDirection.FillColor = Color.Yellow;
             tankDirection.Position = sprite.Position;
@@ -242,7 +224,14 @@ namespace FireSafety
             target.Draw(turret.sprite, states);
             RectangleShape turretDirection = new RectangleShape(new Vector2f(2, 32));
             Utilities.CenterOrigin(turretDirection, 0, 32);
-            turretDirection.FillColor = Color.Red;
+            if (turret.up)
+            {
+                turretDirection.FillColor = Color.Blue;
+            }
+            else
+            {
+                turretDirection.FillColor = Color.Red;
+            }
             turretDirection.Position = turret.sprite.Position;
             turretDirection.Rotation = turret.sprite.Rotation;
             target.Draw(turretDirection);
