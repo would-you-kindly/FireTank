@@ -90,23 +90,22 @@ namespace FireSafety
 
         private void openAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParallelAlgorithm loadedParallelAlgorithm;
             BinaryFormatter formatter = new BinaryFormatter();
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read))
                 {
-                    loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
+                    _parallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
                 }
 
                 // Записываем шаги алгоритма в элементы управления формы
                 for (int i = 0; i < algorithmForms.Count; i++)
                 {
-                    int actionCount = loadedParallelAlgorithm.Algorithms[i].Actions.Count;
+                    int actionCount = _parallelAlgorithm.Algorithms[i].Actions.Count;
                     for (int j = 0; j < actionCount; j++)
                     {
-                        Action action = loadedParallelAlgorithm.Algorithms[i].Actions.Dequeue();
+                        Action action = _parallelAlgorithm.Algorithms[i].Actions.Dequeue();
                         algorithmForms[i].dgvAlgorithm.Rows.Add(action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
                     }
                 }

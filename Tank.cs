@@ -49,34 +49,35 @@ namespace FireSafety
             turret.sprite.Position += move;
         }
 
-        private void Move(float degrees, MoveCommand.Commands where)
+        private void MoveTank(MoveCommand.Commands where)
         {
             int sign = where == MoveCommand.Commands.Forward ? 1 : -1;
             int rotation = 45;
+            float degrees = NormalizeTankRotation();
 
             // Вверх
-            if (degrees % 360 == rotation * 0)
+            if (degrees == rotation * 0)
                 Move(new Vector2f(0, -Utilities.TILE_SIZE * sign));
             // Вверх-вправо
-            if (degrees % 360 == rotation * 1)
+            if (degrees == rotation * 1)
                 Move(new Vector2f(Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
             // Вправо
-            if (degrees % 360 == rotation * 2)
+            if (degrees == rotation * 2)
                 Move(new Vector2f(Utilities.TILE_SIZE * sign, 0));
             // Вправо-вниз
-            if (degrees % 360 == rotation * 3)
+            if (degrees == rotation * 3)
                 Move(new Vector2f(Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
             // Вниз
-            if (degrees % 360 == rotation * 4)
+            if (degrees == rotation * 4)
                 Move(new Vector2f(0, Utilities.TILE_SIZE * sign));
             // Вниз-влево
-            if (degrees % 360 == rotation * 5)
+            if (degrees == rotation * 5)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
             // Влево
-            if (degrees % 360 == rotation * 6)
+            if (degrees == rotation * 6)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, 0));
             // Влево-вверх
-            if (degrees % 360 == rotation * 7)
+            if (degrees == rotation * 7)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
         }
 
@@ -85,7 +86,7 @@ namespace FireSafety
             turret.sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            NormalizeRotation(turret.sprite.Rotation);
+            NormalizeTerretRotation();
         }
 
         public void RotateTank(float degrees)
@@ -93,19 +94,37 @@ namespace FireSafety
             sprite.Rotation += degrees;
 
             // Возвращаем углы поворота в диапазон [0-360]
-            NormalizeRotation(sprite.Rotation);
+            NormalizeTankRotation();
 
             RotateTurret(degrees);
         }
 
-        private float NormalizeRotation(float degrees)
+        private float NormalizeTerretRotation()
         {
-            if (degrees < 0)
+            while (turret.sprite.Rotation < 0)
             {
                 turret.sprite.Rotation += 360;
             }
+            while (turret.sprite.Rotation >= 360)
+            {
+                turret.sprite.Rotation -= 360;
+            }
 
             return turret.sprite.Rotation;
+        }
+
+        private float NormalizeTankRotation()
+        {
+            while (sprite.Rotation < 0)
+            {
+                sprite.Rotation += 360;
+            }
+            while (sprite.Rotation >= 360)
+            {
+                sprite.Rotation -= 360;
+            }
+
+            return sprite.Rotation;
         }
 
         public void Move(MoveCommand.Commands command)
@@ -113,10 +132,10 @@ namespace FireSafety
             switch (command)
             {
                 case MoveCommand.Commands.Forward:
-                    Move(NormalizeRotation(sprite.Rotation), MoveCommand.Commands.Forward);
+                    MoveTank(MoveCommand.Commands.Forward);
                     break;
                 case MoveCommand.Commands.Backward:
-                    Move(NormalizeRotation(sprite.Rotation), MoveCommand.Commands.Backward);
+                    MoveTank(MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
                     RotateTank(90);
