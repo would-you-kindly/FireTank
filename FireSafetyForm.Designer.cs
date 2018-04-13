@@ -253,6 +253,7 @@
             this.Name = "FireSafetyForm";
             this.Text = "Fire Tank";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FireSafetyForm_FormClosed);
             this.Load += new System.EventHandler(this.FireSafetyForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

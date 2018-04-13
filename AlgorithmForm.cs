@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,16 @@ namespace FireSafety
 
             dgvAlgorithm.Focus();
             dgvAlgorithm.ClearSelection();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams createParams = base.CreateParams;
+                createParams.ClassStyle = 0x200;
+                return createParams;
+            }
         }
 
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
@@ -201,5 +212,21 @@ namespace FireSafety
         {
             DeleteAction();
         }
+
+        //private const int GWL_STYLE = -16;
+        //private const int WS_CLIPSIBLINGS = 1 << 26;
+
+        //[DllImport("user32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
+        //public static extern IntPtr SetWindowLongPtr32(HandleRef hWnd, int nIndex, HandleRef dwNewLong);
+        //[DllImport("user32.dll", CharSet = CharSet.Auto, EntryPoint = "GetWindowLong")]
+        //public static extern IntPtr GetWindowLong32(HandleRef hWnd, int nIndex);
+
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    int style = (int)((long)GetWindowLong32(new HandleRef(this, this.Handle), GWL_STYLE));
+        //    SetWindowLongPtr32(new HandleRef(this, this.Handle), GWL_STYLE, new HandleRef(null, (IntPtr)(style & ~WS_CLIPSIBLINGS)));
+
+        //    base.OnLoad(e);
+        //}
     }
 }

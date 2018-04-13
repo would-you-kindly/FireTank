@@ -42,8 +42,13 @@
             this.rbtnInsertAfter = new System.Windows.Forms.RadioButton();
             this.rbtnInsertBefore = new System.Windows.Forms.RadioButton();
             this.rbtnChange = new System.Windows.Forms.RadioButton();
+            this.gbCommands = new System.Windows.Forms.GroupBox();
+            this.lblMoveCommands = new System.Windows.Forms.Label();
+            this.lblShootCommands = new System.Windows.Forms.Label();
+            this.lblTurretCommands = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
+            this.gbCommands.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbMove
@@ -58,7 +63,7 @@
             "Rotate 45 CW",
             "Rotate 45 CCW",
             "None"});
-            this.cbMove.Location = new System.Drawing.Point(6, 19);
+            this.cbMove.Location = new System.Drawing.Point(6, 32);
             this.cbMove.Name = "cbMove";
             this.cbMove.Size = new System.Drawing.Size(120, 21);
             this.cbMove.TabIndex = 2;
@@ -72,7 +77,7 @@
             "Increase water pressure",
             "Shoot",
             "None"});
-            this.cbShoot.Location = new System.Drawing.Point(132, 19);
+            this.cbShoot.Location = new System.Drawing.Point(132, 32);
             this.cbShoot.Name = "cbShoot";
             this.cbShoot.Size = new System.Drawing.Size(120, 21);
             this.cbShoot.TabIndex = 2;
@@ -90,7 +95,7 @@
             "Up",
             "Down",
             "None"});
-            this.cbTurret.Location = new System.Drawing.Point(258, 19);
+            this.cbTurret.Location = new System.Drawing.Point(258, 32);
             this.cbTurret.Name = "cbTurret";
             this.cbTurret.Size = new System.Drawing.Size(120, 21);
             this.cbTurret.TabIndex = 2;
@@ -117,7 +122,7 @@
             this.dgvAlgorithm.ReadOnly = true;
             this.dgvAlgorithm.RowHeadersVisible = false;
             this.dgvAlgorithm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlgorithm.Size = new System.Drawing.Size(384, 249);
+            this.dgvAlgorithm.Size = new System.Drawing.Size(384, 211);
             this.dgvAlgorithm.TabIndex = 6;
             this.dgvAlgorithm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvAlgorithm_KeyPress);
             // 
@@ -155,18 +160,15 @@
             this.gbControls.Controls.Add(this.rbtnInsertAfter);
             this.gbControls.Controls.Add(this.rbtnInsertBefore);
             this.gbControls.Controls.Add(this.rbtnChange);
-            this.gbControls.Controls.Add(this.cbTurret);
-            this.gbControls.Controls.Add(this.cbShoot);
-            this.gbControls.Controls.Add(this.cbMove);
-            this.gbControls.Location = new System.Drawing.Point(12, 267);
+            this.gbControls.Location = new System.Drawing.Point(12, 294);
             this.gbControls.Name = "gbControls";
-            this.gbControls.Size = new System.Drawing.Size(384, 133);
+            this.gbControls.Size = new System.Drawing.Size(384, 106);
             this.gbControls.TabIndex = 8;
             this.gbControls.TabStop = false;
             // 
             // btnDeleteAction
             // 
-            this.btnDeleteAction.Location = new System.Drawing.Point(258, 104);
+            this.btnDeleteAction.Location = new System.Drawing.Point(258, 77);
             this.btnDeleteAction.Name = "btnDeleteAction";
             this.btnDeleteAction.Size = new System.Drawing.Size(120, 23);
             this.btnDeleteAction.TabIndex = 4;
@@ -176,7 +178,7 @@
             // 
             // btnMoveActionDown
             // 
-            this.btnMoveActionDown.Location = new System.Drawing.Point(258, 75);
+            this.btnMoveActionDown.Location = new System.Drawing.Point(258, 48);
             this.btnMoveActionDown.Name = "btnMoveActionDown";
             this.btnMoveActionDown.Size = new System.Drawing.Size(120, 23);
             this.btnMoveActionDown.TabIndex = 4;
@@ -185,7 +187,7 @@
             // 
             // btnMoveActionUp
             // 
-            this.btnMoveActionUp.Location = new System.Drawing.Point(258, 46);
+            this.btnMoveActionUp.Location = new System.Drawing.Point(258, 19);
             this.btnMoveActionUp.Name = "btnMoveActionUp";
             this.btnMoveActionUp.Size = new System.Drawing.Size(120, 23);
             this.btnMoveActionUp.TabIndex = 4;
@@ -195,7 +197,7 @@
             // rbtnInsertAfter
             // 
             this.rbtnInsertAfter.AutoSize = true;
-            this.rbtnInsertAfter.Location = new System.Drawing.Point(6, 92);
+            this.rbtnInsertAfter.Location = new System.Drawing.Point(6, 65);
             this.rbtnInsertAfter.Name = "rbtnInsertAfter";
             this.rbtnInsertAfter.Size = new System.Drawing.Size(75, 17);
             this.rbtnInsertAfter.TabIndex = 3;
@@ -205,7 +207,7 @@
             // rbtnInsertBefore
             // 
             this.rbtnInsertBefore.AutoSize = true;
-            this.rbtnInsertBefore.Location = new System.Drawing.Point(6, 69);
+            this.rbtnInsertBefore.Location = new System.Drawing.Point(6, 42);
             this.rbtnInsertBefore.Name = "rbtnInsertBefore";
             this.rbtnInsertBefore.Size = new System.Drawing.Size(84, 17);
             this.rbtnInsertBefore.TabIndex = 3;
@@ -216,7 +218,7 @@
             // 
             this.rbtnChange.AutoSize = true;
             this.rbtnChange.Checked = true;
-            this.rbtnChange.Location = new System.Drawing.Point(6, 46);
+            this.rbtnChange.Location = new System.Drawing.Point(6, 19);
             this.rbtnChange.Name = "rbtnChange";
             this.rbtnChange.Size = new System.Drawing.Size(62, 17);
             this.rbtnChange.TabIndex = 3;
@@ -224,21 +226,68 @@
             this.rbtnChange.Text = "Change";
             this.rbtnChange.UseVisualStyleBackColor = true;
             // 
+            // gbCommands
+            // 
+            this.gbCommands.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCommands.Controls.Add(this.lblTurretCommands);
+            this.gbCommands.Controls.Add(this.lblShootCommands);
+            this.gbCommands.Controls.Add(this.lblMoveCommands);
+            this.gbCommands.Controls.Add(this.cbMove);
+            this.gbCommands.Controls.Add(this.cbShoot);
+            this.gbCommands.Controls.Add(this.cbTurret);
+            this.gbCommands.Location = new System.Drawing.Point(12, 229);
+            this.gbCommands.Name = "gbCommands";
+            this.gbCommands.Size = new System.Drawing.Size(384, 59);
+            this.gbCommands.TabIndex = 9;
+            this.gbCommands.TabStop = false;
+            // 
+            // lblMoveCommands
+            // 
+            this.lblMoveCommands.AutoSize = true;
+            this.lblMoveCommands.Location = new System.Drawing.Point(3, 16);
+            this.lblMoveCommands.Name = "lblMoveCommands";
+            this.lblMoveCommands.Size = new System.Drawing.Size(88, 13);
+            this.lblMoveCommands.TabIndex = 0;
+            this.lblMoveCommands.Text = "Move commands";
+            // 
+            // lblShootCommands
+            // 
+            this.lblShootCommands.AutoSize = true;
+            this.lblShootCommands.Location = new System.Drawing.Point(129, 16);
+            this.lblShootCommands.Name = "lblShootCommands";
+            this.lblShootCommands.Size = new System.Drawing.Size(89, 13);
+            this.lblShootCommands.TabIndex = 3;
+            this.lblShootCommands.Text = "Shoot commands";
+            // 
+            // lblTurretCommands
+            // 
+            this.lblTurretCommands.AutoSize = true;
+            this.lblTurretCommands.Location = new System.Drawing.Point(255, 16);
+            this.lblTurretCommands.Name = "lblTurretCommands";
+            this.lblTurretCommands.Size = new System.Drawing.Size(89, 13);
+            this.lblTurretCommands.TabIndex = 4;
+            this.lblTurretCommands.Text = "Turret commands";
+            // 
             // AlgorithmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 412);
-            this.ControlBox = false;
+            this.Controls.Add(this.gbCommands);
             this.Controls.Add(this.gbControls);
             this.Controls.Add(this.dgvAlgorithm);
-            this.MinimumSize = new System.Drawing.Size(424, 250);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(424, 280);
             this.Name = "AlgorithmForm";
             this.Tag = "Algorithm";
             this.Text = "Algorithm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).EndInit();
             this.gbControls.ResumeLayout(false);
             this.gbControls.PerformLayout();
+            this.gbCommands.ResumeLayout(false);
+            this.gbCommands.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +307,9 @@
         private System.Windows.Forms.RadioButton rbtnInsertAfter;
         private System.Windows.Forms.RadioButton rbtnInsertBefore;
         private System.Windows.Forms.RadioButton rbtnChange;
+        private System.Windows.Forms.GroupBox gbCommands;
+        private System.Windows.Forms.Label lblTurretCommands;
+        private System.Windows.Forms.Label lblShootCommands;
+        private System.Windows.Forms.Label lblMoveCommands;
     }
 }
