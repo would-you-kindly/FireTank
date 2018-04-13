@@ -81,8 +81,8 @@ namespace FireSafety
                 dgvAlgorithm.Rows[dgvAlgorithm.RowCount - 1].Cells[index].Value = cb.SelectedItem.ToString();
             }
 
-            dgvAlgorithm.Focus();
             dgvAlgorithm.ClearSelection();
+            dgvAlgorithm.Focus();
         }
 
         // Составляет алгоритм на основе данных в элементах управления

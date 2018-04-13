@@ -102,12 +102,14 @@ namespace FireSafety
                 // Записываем шаги алгоритма в элементы управления формы
                 for (int i = 0; i < algorithmForms.Count; i++)
                 {
+                    algorithmForms[i].dgvAlgorithm.Rows.Clear();
                     int actionCount = _parallelAlgorithm.Algorithms[i].Actions.Count;
                     for (int j = 0; j < actionCount; j++)
                     {
                         Action action = _parallelAlgorithm.Algorithms[i].Actions.Dequeue();
                         algorithmForms[i].dgvAlgorithm.Rows.Add(action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
                     }
+                    algorithmForms[i].dgvAlgorithm.ClearSelection();
                 }
             }
         }
