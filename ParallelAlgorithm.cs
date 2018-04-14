@@ -62,7 +62,8 @@ namespace FireSafety
 
         public void Clear()
         {
-            Algorithms.Clear();
+            // TODO: Нужно ли чистить?????
+            //Algorithms.Clear();
         }
     }
 }

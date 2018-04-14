@@ -50,6 +50,13 @@
             this.shootToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.turretCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotate45CWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotate45CCWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotate90CWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotate90CCWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.upToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noneToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveActionUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveActionDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,13 +75,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotate45CWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotate45CCWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotate90CWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotate90CCWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.upToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noneToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,58 +182,56 @@
             // forwardToolStripMenuItem
             // 
             this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
-            this.forwardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.forwardToolStripMenuItem.ShortcutKeyDisplayString = "F";
+            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.forwardToolStripMenuItem.Text = "Forward";
             this.forwardToolStripMenuItem.Click += new System.EventHandler(this.forwardToolStripMenuItem_Click);
             // 
             // backwardToolStripMenuItem
             // 
             this.backwardToolStripMenuItem.Name = "backwardToolStripMenuItem";
-            this.backwardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.B)));
-            this.backwardToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.backwardToolStripMenuItem.ShortcutKeyDisplayString = "B";
+            this.backwardToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.backwardToolStripMenuItem.Text = "Backward";
             this.backwardToolStripMenuItem.Click += new System.EventHandler(this.backwardToolStripMenuItem_Click);
             // 
             // rotate45CWToolStripMenuItem
             // 
             this.rotate45CWToolStripMenuItem.Name = "rotate45CWToolStripMenuItem";
-            this.rotate45CWToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.NumPad8)));
-            this.rotate45CWToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.rotate45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 8";
+            this.rotate45CWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate45CWToolStripMenuItem.Text = "Rotate 45 CW";
             this.rotate45CWToolStripMenuItem.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem_Click);
             // 
             // rotate45CCWToolStripMenuItem
             // 
             this.rotate45CCWToolStripMenuItem.Name = "rotate45CCWToolStripMenuItem";
-            this.rotate45CCWToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.NumPad2)));
-            this.rotate45CCWToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.rotate45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 2";
+            this.rotate45CCWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate45CCWToolStripMenuItem.Text = "Rotate 45 CCW";
             this.rotate45CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem_Click);
             // 
             // rotate90CWToolStripMenuItem
             // 
             this.rotate90CWToolStripMenuItem.Name = "rotate90CWToolStripMenuItem";
-            this.rotate90CWToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.NumPad8)));
-            this.rotate90CWToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.rotate90CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 8 (Hold)";
+            this.rotate90CWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate90CWToolStripMenuItem.Text = "Rotate 90 CW";
             this.rotate90CWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem_Click);
             // 
             // rotate90CCWToolStripMenuItem
             // 
             this.rotate90CCWToolStripMenuItem.Name = "rotate90CCWToolStripMenuItem";
-            this.rotate90CCWToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.NumPad2)));
-            this.rotate90CCWToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.rotate90CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 2 (Hold)";
+            this.rotate90CCWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate90CCWToolStripMenuItem.Text = "Rotate 90 CCW";
             this.rotate90CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem_Click);
             // 
             // noneToolStripMenuItem
             // 
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.noneToolStripMenuItem.ShortcutKeyDisplayString = "N";
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneMoveToolStripMenuItem_Click);
             // 
@@ -250,24 +248,24 @@
             // pressureToolStripMenuItem
             // 
             this.pressureToolStripMenuItem.Name = "pressureToolStripMenuItem";
-            this.pressureToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.pressureToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.pressureToolStripMenuItem.ShortcutKeyDisplayString = "P";
+            this.pressureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pressureToolStripMenuItem.Text = "Pressure";
             this.pressureToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
             // 
             // shootToolStripMenuItem1
             // 
             this.shootToolStripMenuItem1.Name = "shootToolStripMenuItem1";
-            this.shootToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.shootToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.shootToolStripMenuItem1.ShortcutKeyDisplayString = "S";
+            this.shootToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.shootToolStripMenuItem1.Text = "Shoot";
             this.shootToolStripMenuItem1.Click += new System.EventHandler(this.shootToolStripMenuItem_Click);
             // 
             // noneToolStripMenuItem1
             // 
             this.noneToolStripMenuItem1.Name = "noneToolStripMenuItem1";
-            this.noneToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
-            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.noneToolStripMenuItem1.ShortcutKeyDisplayString = "N";
+            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.noneToolStripMenuItem1.Text = "None";
             this.noneToolStripMenuItem1.Click += new System.EventHandler(this.noneShootToolStripMenuItem_Click);
             // 
@@ -284,6 +282,62 @@
             this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
             this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.turretCommandsToolStripMenuItem.Text = "Turret";
+            // 
+            // rotate45CWToolStripMenuItem1
+            // 
+            this.rotate45CWToolStripMenuItem1.Name = "rotate45CWToolStripMenuItem1";
+            this.rotate45CWToolStripMenuItem1.ShortcutKeyDisplayString = "NumPad 6";
+            this.rotate45CWToolStripMenuItem1.Size = new System.Drawing.Size(253, 22);
+            this.rotate45CWToolStripMenuItem1.Text = "Rotate 45 CW";
+            this.rotate45CWToolStripMenuItem1.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem1_Click);
+            // 
+            // rotate45CCWToolStripMenuItem1
+            // 
+            this.rotate45CCWToolStripMenuItem1.Name = "rotate45CCWToolStripMenuItem1";
+            this.rotate45CCWToolStripMenuItem1.ShortcutKeyDisplayString = "NumPad 4";
+            this.rotate45CCWToolStripMenuItem1.Size = new System.Drawing.Size(253, 22);
+            this.rotate45CCWToolStripMenuItem1.Text = "Rotate 45 CCW";
+            this.rotate45CCWToolStripMenuItem1.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem1_Click);
+            // 
+            // rotate90CWToolStripMenuItem1
+            // 
+            this.rotate90CWToolStripMenuItem1.Name = "rotate90CWToolStripMenuItem1";
+            this.rotate90CWToolStripMenuItem1.ShortcutKeyDisplayString = "NumPad 6 (Hold)";
+            this.rotate90CWToolStripMenuItem1.Size = new System.Drawing.Size(253, 22);
+            this.rotate90CWToolStripMenuItem1.Text = "Rotate 90 CW";
+            this.rotate90CWToolStripMenuItem1.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem1_Click);
+            // 
+            // rotate90CCWToolStripMenuItem1
+            // 
+            this.rotate90CCWToolStripMenuItem1.Name = "rotate90CCWToolStripMenuItem1";
+            this.rotate90CCWToolStripMenuItem1.ShortcutKeyDisplayString = "NumPad 4 (Hold)";
+            this.rotate90CCWToolStripMenuItem1.Size = new System.Drawing.Size(253, 22);
+            this.rotate90CCWToolStripMenuItem1.Text = "Rotate 90 CCW";
+            this.rotate90CCWToolStripMenuItem1.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem1_Click);
+            // 
+            // upToolStripMenuItem
+            // 
+            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
+            this.upToolStripMenuItem.ShortcutKeyDisplayString = "U";
+            this.upToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.upToolStripMenuItem.Text = "Up";
+            this.upToolStripMenuItem.Click += new System.EventHandler(this.upToolStripMenuItem_Click);
+            // 
+            // downToolStripMenuItem
+            // 
+            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
+            this.downToolStripMenuItem.ShortcutKeyDisplayString = "D";
+            this.downToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.downToolStripMenuItem.Text = "Down";
+            this.downToolStripMenuItem.Click += new System.EventHandler(this.downToolStripMenuItem_Click);
+            // 
+            // noneToolStripMenuItem2
+            // 
+            this.noneToolStripMenuItem2.Name = "noneToolStripMenuItem2";
+            this.noneToolStripMenuItem2.ShortcutKeyDisplayString = "N";
+            this.noneToolStripMenuItem2.Size = new System.Drawing.Size(253, 22);
+            this.noneToolStripMenuItem2.Text = "None";
+            this.noneToolStripMenuItem2.Click += new System.EventHandler(this.noneTurretToolStripMenuItem_Click);
             // 
             // reorderingToolStripMenuItem
             // 
@@ -424,64 +478,6 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // rotate45CWToolStripMenuItem1
-            // 
-            this.rotate45CWToolStripMenuItem1.Name = "rotate45CWToolStripMenuItem1";
-            this.rotate45CWToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.NumPad6)));
-            this.rotate45CWToolStripMenuItem1.Size = new System.Drawing.Size(263, 22);
-            this.rotate45CWToolStripMenuItem1.Text = "Rotate 45 CW";
-            this.rotate45CWToolStripMenuItem1.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem1_Click);
-            // 
-            // rotate45CCWToolStripMenuItem1
-            // 
-            this.rotate45CCWToolStripMenuItem1.Name = "rotate45CCWToolStripMenuItem1";
-            this.rotate45CCWToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.NumPad4)));
-            this.rotate45CCWToolStripMenuItem1.Size = new System.Drawing.Size(263, 22);
-            this.rotate45CCWToolStripMenuItem1.Text = "Rotate 45 CCW";
-            this.rotate45CCWToolStripMenuItem1.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem1_Click);
-            // 
-            // rotate90CWToolStripMenuItem1
-            // 
-            this.rotate90CWToolStripMenuItem1.Name = "rotate90CWToolStripMenuItem1";
-            this.rotate90CWToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.NumPad6)));
-            this.rotate90CWToolStripMenuItem1.Size = new System.Drawing.Size(263, 22);
-            this.rotate90CWToolStripMenuItem1.Text = "Rotate 90 CW";
-            this.rotate90CWToolStripMenuItem1.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem1_Click);
-            // 
-            // rotate90CCWToolStripMenuItem1
-            // 
-            this.rotate90CCWToolStripMenuItem1.Name = "rotate90CCWToolStripMenuItem1";
-            this.rotate90CCWToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.NumPad2)));
-            this.rotate90CCWToolStripMenuItem1.Size = new System.Drawing.Size(263, 22);
-            this.rotate90CCWToolStripMenuItem1.Text = "Rotate 90 CCW";
-            this.rotate90CCWToolStripMenuItem1.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem1_Click);
-            // 
-            // upToolStripMenuItem
-            // 
-            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
-            this.upToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.U)));
-            this.upToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.upToolStripMenuItem.Text = "Up";
-            this.upToolStripMenuItem.Click += new System.EventHandler(this.upToolStripMenuItem_Click);
-            // 
-            // downToolStripMenuItem
-            // 
-            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
-            this.downToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D)));
-            this.downToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.downToolStripMenuItem.Text = "Down";
-            this.downToolStripMenuItem.Click += new System.EventHandler(this.downToolStripMenuItem_Click);
-            // 
-            // noneToolStripMenuItem2
-            // 
-            this.noneToolStripMenuItem2.Name = "noneToolStripMenuItem2";
-            this.noneToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
-            this.noneToolStripMenuItem2.Size = new System.Drawing.Size(263, 22);
-            this.noneToolStripMenuItem2.Text = "None";
-            this.noneToolStripMenuItem2.Click += new System.EventHandler(this.noneTurretToolStripMenuItem_Click);
             // 
             // FireSafetyForm
             // 

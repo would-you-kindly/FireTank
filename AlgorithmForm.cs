@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -14,6 +15,10 @@ namespace FireSafety
     partial class AlgorithmForm : Form
     {
         Algorithm _algorithm;
+
+        Stopwatch clock = new Stopwatch();
+        bool keyPressed = false;
+        private const int timeToHold = 200;
 
         public AlgorithmForm(Algorithm algorithm)
         {
@@ -97,6 +102,15 @@ namespace FireSafety
                 dgvAlgorithm.Rows[dgvAlgorithm.RowCount - 1].Cells[index].Value = cb.SelectedItem.ToString();
             }
 
+            // Перемещаем таблицу вниз, чтобы были видны новые добавленные дейтсвия
+            try
+            {
+                dgvAlgorithm.FirstDisplayedScrollingRowIndex = dgvAlgorithm.Rows.Count - 1;
+            }
+            catch (Exception)
+            {
+                // Ignore exception
+            }
             dgvAlgorithm.ClearSelection();
             dgvAlgorithm.Focus();
         }
@@ -187,17 +201,7 @@ namespace FireSafety
 
         private void dgvAlgorithm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Отменяем выделение
-            if (e.KeyChar == (char)Keys.Escape)
-            {
-                dgvAlgorithm.ClearSelection();
-            }
 
-            // Удаляем выделенное действие
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                DeleteAction();
-            }
         }
 
         private void DeleteAction()
@@ -216,6 +220,138 @@ namespace FireSafety
         private void btnDeleteAction_Click(object sender, EventArgs e)
         {
             DeleteAction();
+        }
+
+        private void dgvAlgorithm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (keyPressed)
+            {
+                return;
+            }
+            keyPressed = true;
+
+            clock.Restart();
+
+            // Отменяем выделение
+            if (e.KeyCode == Keys.Escape)
+            {
+                dgvAlgorithm.ClearSelection();
+            }
+
+            // Удаляем выделенное действие
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteAction();
+            }
+
+            // Обрабатываем горячие клавиши добавления команд движения
+            if (e.KeyCode == Keys.F)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "Forward";
+            }
+
+            if (e.KeyCode == Keys.B)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "Backward";
+            }
+
+            if (e.KeyCode == Keys.N)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "None";
+            }
+
+            // Обрабатываем горячие клавиши добавления команд выстрела
+            if (e.KeyCode == Keys.P)
+            {
+                cbShoot.SelectedIndex = -1;
+                cbShoot.SelectedItem = "Pressure";
+            }
+
+            if (e.KeyCode == Keys.S)
+            {
+                cbShoot.SelectedIndex = -1;
+                cbShoot.SelectedItem = "Shoot";
+            }
+
+            // Обрабатываем горячие клавиши добавления команд турели
+            if (e.KeyCode == Keys.U)
+            {
+                cbTurret.SelectedIndex = -1;
+                cbTurret.SelectedItem = "Up";
+            }
+
+            if (e.KeyCode == Keys.D)
+            {
+                cbTurret.SelectedIndex = -1;
+                cbTurret.SelectedItem = "Down";
+            }
+        }
+
+        private void dgvAlgorithm_KeyUp(object sender, KeyEventArgs e)
+        {
+            keyPressed = false;
+            clock.Stop();
+
+            // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд движения
+            if (e.KeyCode == Keys.NumPad8)
+            {
+                if (clock.ElapsedMilliseconds < timeToHold)
+                {
+                    cbMove.SelectedIndex = -1;
+                    cbMove.SelectedItem = "Rotate 45 CW";
+                }
+                else
+                {
+                    cbMove.SelectedIndex = -1;
+                    cbMove.SelectedItem = "Rotate 90 CW";
+                }
+            }
+
+            if (e.KeyCode == Keys.NumPad2)
+            {
+                if (clock.ElapsedMilliseconds < timeToHold)
+                {
+                    cbMove.SelectedIndex = -1;
+                    cbMove.SelectedItem = "Rotate 45 CCW";
+                }
+                else
+                {
+                    cbMove.SelectedIndex = -1;
+                    cbMove.SelectedItem = "Rotate 90 CCW";
+                }
+            }
+
+            // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд турели
+            if (e.KeyCode == Keys.NumPad6)
+            {
+                if (clock.ElapsedMilliseconds < timeToHold)
+                {
+                    cbTurret.SelectedIndex = -1;
+                    cbTurret.SelectedItem = "Rotate 45 CW";
+                }
+                else
+                {
+                    cbTurret.SelectedIndex = -1;
+                    cbTurret.SelectedItem = "Rotate 90 CW";
+                }
+            }
+
+            if (e.KeyCode == Keys.NumPad4)
+            {
+                if (clock.ElapsedMilliseconds < timeToHold)
+                {
+                    cbTurret.SelectedIndex = -1;
+                    cbTurret.SelectedItem = "Rotate 45 CCW";
+                }
+                else
+                {
+                    cbTurret.SelectedIndex = -1;
+                    cbTurret.SelectedItem = "Rotate 90 CCW";
+                }
+            }
         }
 
         //private const int GWL_STYLE = -16;
