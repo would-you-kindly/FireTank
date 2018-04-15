@@ -182,6 +182,18 @@ namespace FireSafety
                 case "Backward":
                     listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward);
                     break;
+                case "Forward 45 CW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward45CW);
+                    break;
+                case "Forward 45 CCW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward45CCW);
+                    break;
+                case "Backward 45 CW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward45CW);
+                    break;
+                case "Backward 45 CCW":
+                    listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Backward45CCW);
+                    break;
                 case "Rotate 90 CW":
                     listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Rotate90CW);
                     break;
@@ -197,11 +209,6 @@ namespace FireSafety
                 default:
                     break;
             }
-        }
-
-        private void dgvAlgorithm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
 
         private void DeleteAction()
@@ -255,6 +262,30 @@ namespace FireSafety
             {
                 cbMove.SelectedIndex = -1;
                 cbMove.SelectedItem = "Backward";
+            }
+
+            if (e.KeyCode == Keys.NumPad9)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "Forward 45 CW";
+            }
+
+            if (e.KeyCode == Keys.NumPad7)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "Forward 45 CCW";
+            }
+
+            if (e.KeyCode == Keys.NumPad1)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "Backward 45 CW";
+            }
+
+            if (e.KeyCode == Keys.NumPad3)
+            {
+                cbMove.SelectedIndex = -1;
+                cbMove.SelectedItem = "Backward 45 CCW";
             }
 
             if (e.KeyCode == Keys.N)

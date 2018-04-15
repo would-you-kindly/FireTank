@@ -14,10 +14,14 @@ namespace FireSafety
         {
             Forward,
             Backward,
-            Rotate90CW,
-            Rotate90CCW,
+            Forward45CW,
+            Forward45CCW,
+            Backward45CW,
+            Backward45CCW,
             Rotate45CW,
             Rotate45CCW,
+            Rotate90CW,
+            Rotate90CCW,
             None
         }
 
@@ -54,6 +58,14 @@ namespace FireSafety
                     return "Rotate 45 CW";
                 case Commands.Rotate45CCW:
                     return "Rotate 45 CCW";
+                case Commands.Forward45CW:
+                    return "Forward 45 CW";
+                case Commands.Forward45CCW:
+                    return "Forward 45 CCW";
+                case Commands.Backward45CW:
+                    return "Backward 45 CW";
+                case Commands.Backward45CCW:
+                    return "Backward 45 CCW";
                 case Commands.None:
                     return "None";
             }

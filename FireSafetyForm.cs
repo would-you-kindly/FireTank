@@ -398,5 +398,37 @@ namespace FireSafety
             else
                 AddActionMessage();
         }
+
+        private void forward45CWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+            else
+                AddActionMessage();
+        }
+
+        private void forward45CCWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+            else
+                AddActionMessage();
+        }
+
+        private void backward45CWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+            else
+                AddActionMessage();
+        }
+
+        private void backward45CCWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
+            else
+                AddActionMessage();
+        }
     }
 }

@@ -75,6 +75,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forward45CWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forward45CCWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backward45CWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backward45CCWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,6 +174,10 @@
             this.moveCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.forwardToolStripMenuItem,
             this.backwardToolStripMenuItem,
+            this.forward45CWToolStripMenuItem,
+            this.forward45CCWToolStripMenuItem,
+            this.backward45CWToolStripMenuItem,
+            this.backward45CCWToolStripMenuItem,
             this.rotate45CWToolStripMenuItem,
             this.rotate45CCWToolStripMenuItem,
             this.rotate90CWToolStripMenuItem,
@@ -249,7 +257,7 @@
             // 
             this.pressureToolStripMenuItem.Name = "pressureToolStripMenuItem";
             this.pressureToolStripMenuItem.ShortcutKeyDisplayString = "P";
-            this.pressureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pressureToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.pressureToolStripMenuItem.Text = "Pressure";
             this.pressureToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
             // 
@@ -257,7 +265,7 @@
             // 
             this.shootToolStripMenuItem1.Name = "shootToolStripMenuItem1";
             this.shootToolStripMenuItem1.ShortcutKeyDisplayString = "S";
-            this.shootToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.shootToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.shootToolStripMenuItem1.Text = "Shoot";
             this.shootToolStripMenuItem1.Click += new System.EventHandler(this.shootToolStripMenuItem_Click);
             // 
@@ -265,7 +273,7 @@
             // 
             this.noneToolStripMenuItem1.Name = "noneToolStripMenuItem1";
             this.noneToolStripMenuItem1.ShortcutKeyDisplayString = "N";
-            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.noneToolStripMenuItem1.Text = "None";
             this.noneToolStripMenuItem1.Click += new System.EventHandler(this.noneShootToolStripMenuItem_Click);
             // 
@@ -479,6 +487,38 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // forward45CWToolStripMenuItem
+            // 
+            this.forward45CWToolStripMenuItem.Name = "forward45CWToolStripMenuItem";
+            this.forward45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 9";
+            this.forward45CWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.forward45CWToolStripMenuItem.Text = "Forward 45 CW";
+            this.forward45CWToolStripMenuItem.Click += new System.EventHandler(this.forward45CWToolStripMenuItem_Click);
+            // 
+            // forward45CCWToolStripMenuItem
+            // 
+            this.forward45CCWToolStripMenuItem.Name = "forward45CCWToolStripMenuItem";
+            this.forward45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 7";
+            this.forward45CCWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.forward45CCWToolStripMenuItem.Text = "Forward 45 CCW";
+            this.forward45CCWToolStripMenuItem.Click += new System.EventHandler(this.forward45CCWToolStripMenuItem_Click);
+            // 
+            // backward45CWToolStripMenuItem
+            // 
+            this.backward45CWToolStripMenuItem.Name = "backward45CWToolStripMenuItem";
+            this.backward45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 1";
+            this.backward45CWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.backward45CWToolStripMenuItem.Text = "Backward 45 CW";
+            this.backward45CWToolStripMenuItem.Click += new System.EventHandler(this.backward45CWToolStripMenuItem_Click);
+            // 
+            // backward45CCWToolStripMenuItem
+            // 
+            this.backward45CCWToolStripMenuItem.Name = "backward45CCWToolStripMenuItem";
+            this.backward45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 3";
+            this.backward45CCWToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.backward45CCWToolStripMenuItem.Text = "Backward 45 CCW";
+            this.backward45CCWToolStripMenuItem.Click += new System.EventHandler(this.backward45CCWToolStripMenuItem_Click);
+            // 
             // FireSafetyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,5 +588,9 @@
         private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem forward45CWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forward45CCWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backward45CWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backward45CCWToolStripMenuItem;
     }
 }

@@ -111,6 +111,54 @@ namespace FireSafety
                 case MoveCommand.Commands.Rotate45CCW:
                     RotateTank(-45);
                     break;
+                case MoveCommand.Commands.Forward45CW:
+                    if ((NormalizedRotation / 45.0) % 2 == 1)
+                    {
+                        MoveTank(MoveCommand.Commands.Forward);
+                        RotateTank(45);
+                    }
+                    else
+                    {
+                        RotateTank(45);
+                        MoveTank(MoveCommand.Commands.Forward);
+                    }
+                    break;
+                case MoveCommand.Commands.Forward45CCW:
+                    if ((NormalizedRotation / 45.0) % 2 == 1)
+                    {
+                        MoveTank(MoveCommand.Commands.Forward);
+                        RotateTank(-45);
+                    }
+                    else
+                    {
+                        RotateTank(-45);
+                        MoveTank(MoveCommand.Commands.Forward);
+                    }
+                    break;
+                case MoveCommand.Commands.Backward45CW:
+                    if ((NormalizedRotation / 45.0) % 2 == 1)
+                    {
+                        MoveTank(MoveCommand.Commands.Backward);
+                        RotateTank(45);
+                    }
+                    else
+                    {
+                        RotateTank(45);
+                        MoveTank(MoveCommand.Commands.Backward);
+                    }
+                    break;
+                case MoveCommand.Commands.Backward45CCW:
+                    if ((NormalizedRotation / 45.0) % 2 == 1)
+                    {
+                        MoveTank(MoveCommand.Commands.Backward);
+                        RotateTank(-45);
+                    }
+                    else
+                    {
+                        RotateTank(-45);
+                        MoveTank(MoveCommand.Commands.Backward);
+                    }
+                    break;
                 default:
                     break;
             }

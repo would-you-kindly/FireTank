@@ -58,6 +58,10 @@
             this.cbMove.Items.AddRange(new object[] {
             "Forward",
             "Backward",
+            "Forward 45 CW",
+            "Forward 45 CCW",
+            "Backward 45 CW",
+            "Backward 45 CCW",
             "Rotate 45 CW",
             "Rotate 45 CCW",
             "Rotate 90 CW",
@@ -125,7 +129,6 @@
             this.dgvAlgorithm.Size = new System.Drawing.Size(384, 211);
             this.dgvAlgorithm.TabIndex = 6;
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
-            this.dgvAlgorithm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvAlgorithm_KeyPress);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
             // MoveCommands
