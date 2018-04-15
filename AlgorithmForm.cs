@@ -227,6 +227,7 @@ namespace FireSafety
         private void btnDeleteAction_Click(object sender, EventArgs e)
         {
             DeleteAction();
+            dgvAlgorithm.Focus();
         }
 
         private void dgvAlgorithm_KeyDown(object sender, KeyEventArgs e)
@@ -383,6 +384,33 @@ namespace FireSafety
                     cbTurret.SelectedItem = "Rotate 90 CCW";
                 }
             }
+        }
+
+        private void rbtnChange_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvAlgorithm.Focus();
+        }
+
+        private void rbtnInsertBefore_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvAlgorithm.Focus();
+        }
+
+        private void rbtnInsertAfter_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvAlgorithm.Focus();
+        }
+
+        private void btnMoveActionUp_Click(object sender, EventArgs e)
+        {
+
+            dgvAlgorithm.Focus();
+        }
+
+        private void btnMoveActionDown_Click(object sender, EventArgs e)
+        {
+
+            dgvAlgorithm.Focus();
         }
 
         //private const int GWL_STYLE = -16;

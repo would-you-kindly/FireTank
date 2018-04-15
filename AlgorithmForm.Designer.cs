@@ -189,6 +189,7 @@
             this.btnMoveActionDown.TabIndex = 4;
             this.btnMoveActionDown.Text = "Move action down";
             this.btnMoveActionDown.UseVisualStyleBackColor = true;
+            this.btnMoveActionDown.Click += new System.EventHandler(this.btnMoveActionDown_Click);
             // 
             // btnMoveActionUp
             // 
@@ -198,6 +199,7 @@
             this.btnMoveActionUp.TabIndex = 4;
             this.btnMoveActionUp.Text = "Move action up";
             this.btnMoveActionUp.UseVisualStyleBackColor = true;
+            this.btnMoveActionUp.Click += new System.EventHandler(this.btnMoveActionUp_Click);
             // 
             // rbtnInsertAfter
             // 
@@ -208,6 +210,7 @@
             this.rbtnInsertAfter.TabIndex = 3;
             this.rbtnInsertAfter.Text = "Insert after";
             this.rbtnInsertAfter.UseVisualStyleBackColor = true;
+            this.rbtnInsertAfter.CheckedChanged += new System.EventHandler(this.rbtnInsertAfter_CheckedChanged);
             // 
             // rbtnInsertBefore
             // 
@@ -218,6 +221,7 @@
             this.rbtnInsertBefore.TabIndex = 3;
             this.rbtnInsertBefore.Text = "Insert before";
             this.rbtnInsertBefore.UseVisualStyleBackColor = true;
+            this.rbtnInsertBefore.CheckedChanged += new System.EventHandler(this.rbtnInsertBefore_CheckedChanged);
             // 
             // rbtnChange
             // 
@@ -230,6 +234,7 @@
             this.rbtnChange.TabStop = true;
             this.rbtnChange.Text = "Change";
             this.rbtnChange.UseVisualStyleBackColor = true;
+            this.rbtnChange.CheckedChanged += new System.EventHandler(this.rbtnChange_CheckedChanged);
             // 
             // gbCommands
             // 
