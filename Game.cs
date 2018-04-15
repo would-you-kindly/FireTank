@@ -20,6 +20,11 @@ namespace FireSafety
         public static Gui gui;
         public static bool executing = false;
 
+        // Переменные для обработки ошибок
+        public static bool error = false;
+        public static Tank errorTank;
+        public static CollideEventArgs errorCollideEventArgs;
+
         public Game()
         {
             parallelAlgorithm = new ParallelAlgorithm();
@@ -32,6 +37,10 @@ namespace FireSafety
         private void AssignEvents()
         {
             gui.form.renderWindow.Closed += Window_Closed;
+            foreach (Tank tank in world.tanks)
+            {
+                tank.Collide += Tank_Collide;
+            }
         }
 
         public void Run()
@@ -55,6 +64,16 @@ namespace FireSafety
                 }
 
                 Render();
+
+                // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
+                if (error)
+                {
+                    error = false;
+                    executing = false;
+                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка.\n{errorTank.tankColor.ToString()} танк столкнулся с объектом\n{errorCollideEventArgs.entity.GetType().ToString()}",
+                        "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    world.BuildWorld();
+                }
             }
         }
 
@@ -81,6 +100,13 @@ namespace FireSafety
         private static void Window_Closed(object sender, EventArgs e)
         {
             ((RenderWindow)sender).Close();
+        }
+
+        public static void Tank_Collide(object sender, CollideEventArgs e)
+        {
+            error = true;
+            errorTank = (Tank)sender;
+            errorCollideEventArgs = e;
         }
     }
 }

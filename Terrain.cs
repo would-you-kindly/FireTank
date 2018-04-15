@@ -2,6 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    public class Terrain : Entity
+    public class Terrain : Entity, IEnumerable
     {
         public List<Tree> trees;
         public List<Lake> lakes;
@@ -123,6 +124,18 @@ namespace FireSafety
             foreach (Lake lake in lakes)
             {
                 target.Draw(lake, states);
+            }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            foreach (Tree tree in trees)
+            {
+                yield return tree;
+            }
+            foreach (Lake lake in lakes)
+            {
+                yield return lake;
             }
         }
     }

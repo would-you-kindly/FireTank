@@ -8,6 +8,16 @@ using SFML.Graphics;
 
 namespace FireSafety
 {
+    public class CollideEventArgs
+    {
+        public Entity entity;
+
+        public CollideEventArgs(Entity entity)
+        {
+            this.entity = entity;
+        }
+    }
+
     public class Tank : Entity
     {
         public enum TankColor
@@ -18,18 +28,26 @@ namespace FireSafety
             Green
         }
 
+        public delegate void CollideEventHandler(object sender, CollideEventArgs e);
+        public event CollideEventHandler Collide;
 
         private Algorithm _algorithm;
         private Turret turret;
-        private Terrain _forest;
-        private TankColor tankColor;
+        private Terrain _terrain;
+        public TankColor tankColor;
 
-        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Terrain forest) :
+        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Terrain terrain) :
             base(idTank, textures)
         {
             turret = new Turret(idTurret, textures);
             this.tankColor = tankColor;
-            _forest = forest;
+            _terrain = terrain;
+            Collide += delegate (object sender, CollideEventArgs e)
+            {
+                Game.error = true;
+                Game.errorTank = (Tank)sender;
+                Game.errorCollideEventArgs = e;
+            };
 
             // Выставляем Origin в центр картинки
             Utilities.CenterOrigin(sprite);
@@ -76,6 +94,28 @@ namespace FireSafety
             // Влево-вверх
             if (NormalizedRotation == rotation * 7)
                 Move(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
+
+            CheckForCollision();
+        }
+
+        private void CheckForCollision()
+        {
+            // Если танк столкнулся с препятствием на местности, инициируем событие столкновения
+            foreach (Entity item in _terrain)
+            {
+                if (sprite.Position - new Vector2f(Utilities.TILE_SIZE / 2, Utilities.TILE_SIZE / 2) == item.Position)
+                {
+                    Collide?.Invoke(this, new CollideEventArgs(item));
+                }
+            }
+            // Если танк столкнулся с другим танком (исключая себя), инициируем событие столкновения
+            foreach (Tank item in Game.world.tanks)
+            {
+                if (sprite.Position == item.sprite.Position && item != this)
+                {
+                    Collide?.Invoke(this, new CollideEventArgs(item));
+                }
+            }
         }
 
         public void RotateTurret(float degrees)
@@ -183,7 +223,7 @@ namespace FireSafety
                         {
                             foreach (Vector2f coords in turret.GetTargetPositions())
                             {
-                                Tree treeToExtinguish = _forest.trees.Find(tree => tree.Position == coords);
+                                Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
 
                                 // Если нашли ближайшее дерево, то остальные не проверяем
                                 if (treeToExtinguish != null)
@@ -196,7 +236,7 @@ namespace FireSafety
                         // Если пушка поднята, то можно потушить только одно дальнее дерево
                         else
                         {
-                            Tree treeToExtinguish = _forest.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
+                            Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
                             treeToExtinguish?.Extinguish();
                         }
 
@@ -285,4 +325,5 @@ namespace FireSafety
             target.Draw(turretDirection);
         }
     }
+
 }
