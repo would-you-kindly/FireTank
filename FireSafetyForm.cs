@@ -42,7 +42,7 @@ namespace FireSafety
             // Задаем параметры формы
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
-            sfmlForm.Text = "Map";
+            sfmlForm.Text = World.wind.direction.ToString();
             sfmlForm.Show();
             sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
 
