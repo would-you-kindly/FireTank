@@ -14,7 +14,7 @@ namespace FireSafety
         private TextureHolder<Textures.ID> textures;
 
         public List<Tank> tanks;
-        public Forest forest;
+        public Terrain terrain;
         public static Wind wind;
         private ParallelAlgorithm _parallelAlgorithm;
 
@@ -33,7 +33,7 @@ namespace FireSafety
             LoadTextures();
         }
 
-        public void LoadMap(string filename = "Media/Maps/map5.tmx")
+        public void LoadMap(string filename = "Media/Maps/map6.tmx")
         {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();
@@ -57,6 +57,7 @@ namespace FireSafety
             textures.Load(Textures.ID.GreenTank, "Media/Textures/greentank.png");
             textures.Load(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
             textures.Load(Textures.ID.Tree, "Media/Textures/greentree.png");
+            textures.Load(Textures.ID.Lake, "Media/Textures/Lake.png");
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов
@@ -89,8 +90,10 @@ namespace FireSafety
                     throw new Exception("Неверно указано направление ветра");
             }
 
-            // Устанавливаем начальное положение деревьев (леса)
-            forest = new Forest(map.GetObjects("tree"), textures);
+            // Устанавливаем начальное положение объектов местности (деревьев, озер, гор)
+            terrain = new Terrain(map.GetAllObjects(), textures);
+
+            
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
@@ -98,7 +101,7 @@ namespace FireSafety
             for (int i = 0; i < map.GetObjects("tank").Count; i++)
             {
                 Object tankObject = map.GetObjects("tank")[i];
-                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, (Tank.TankColor)i, forest);
+                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, (Tank.TankColor)i, terrain);
                 tank.Move(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.RotateTank(tankObject.rotation);
                 tank.SetAlgorithm(_parallelAlgorithm[i]);
@@ -107,11 +110,7 @@ namespace FireSafety
                 tanks.Add(tank);
             }
 
-            // Поджигаем деревья
-            foreach (Object burningTree in map.GetObjects("tree").Where(tree => tree.GetPropertyBool("burns")))
-            {
-                forest.trees.Find(tree => tree.Position == new Vector2f(burningTree.rect.Left, burningTree.rect.Top))?.Fire();
-            }
+            
         }
 
         public void Update(Time deltaTime)
@@ -120,14 +119,14 @@ namespace FireSafety
             {
                 tank.Update(deltaTime);
             }
-            forest.Update(deltaTime);
+            terrain.Update(deltaTime);
             // TODO: Важный момент, кто изменяется первым, новый огонь или действие игрока
         }
 
         public void Draw(RenderTarget target, RenderStates states)
         {
             map.Draw(target, states);
-            forest.Draw(target, states);
+            terrain.Draw(target, states);
             foreach (var tank in tanks)
             {
                 tank.Draw(target, states);

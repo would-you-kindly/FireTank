@@ -9,6 +9,11 @@ namespace FireSafety
 {
     public class NormalTreeState : TreeState
     {
+        public NormalTreeState()
+        {
+            currentTimeToSpread = 0;
+        }
+
         public override void Extinguish(Tree tree)
         {
             // Empty method
@@ -16,7 +21,14 @@ namespace FireSafety
 
         public override void Fire(Tree tree)
         {
-            tree.state = new BurningTreeState();
+            if (currentTimeToSpread == timeToSpread)
+            {
+                tree.state = new BurningTreeState();
+            }
+            else
+            {
+                currentTimeToSpread++;
+            }
         }
 
         public override void Burn(Tree tree)

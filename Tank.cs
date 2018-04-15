@@ -21,10 +21,10 @@ namespace FireSafety
 
         private Algorithm _algorithm;
         private Turret turret;
-        private Forest _forest;
+        private Terrain _forest;
         private TankColor tankColor;
 
-        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Forest forest) :
+        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Terrain forest) :
             base(idTank, textures)
         {
             turret = new Turret(idTurret, textures);

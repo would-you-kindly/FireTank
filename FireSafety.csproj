@@ -119,9 +119,10 @@
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Flame.cs" />
-    <Compile Include="Forest.cs" />
+    <Compile Include="Terrain.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Gui.cs" />
+    <Compile Include="Lake.cs" />
     <Compile Include="TreeState.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MoveCommand.cs" />
