@@ -16,6 +16,7 @@ namespace FireSafety
         public List<Tank> tanks;
         public Terrain terrain;
         public static Wind wind;
+        public List<WaterTrace> traces;
         private ParallelAlgorithm _parallelAlgorithm;
 
         public World(ParallelAlgorithm parallelAlgorithm)
@@ -33,7 +34,7 @@ namespace FireSafety
             LoadTextures();
         }
 
-        public void LoadMap(string filename = "Media/Maps/map6.tmx")
+        public void LoadMap(string filename = "Media/Maps/map7.tmx")
         {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();
@@ -70,6 +71,8 @@ namespace FireSafety
             Utilities.HEIGHT_TILE_COUNT = (uint)map.height;
             Utilities.WINDOW_WIDTH = (uint)map.width * (uint)map.tileWidth;
             Utilities.WINDOW_HEIGHT = (uint)map.height * (uint)map.tileHeight;
+
+            traces = new List<WaterTrace>();
 
             // Устанавливаем направление ветра
             switch (map.properties["wind"])
@@ -125,12 +128,20 @@ namespace FireSafety
 
         public void Draw(RenderTarget target, RenderStates states)
         {
+            Game.gui.form.renderWindow.PushGLStates();
+
             map.Draw(target, states);
             terrain.Draw(target, states);
+            foreach (var trace in traces)
+            {
+                trace.Draw(target, states);
+            }
             foreach (var tank in tanks)
             {
                 tank.Draw(target, states);
             }
+
+            Game.gui.form.renderWindow.PopGLStates();
         }
     }
 }

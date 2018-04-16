@@ -9,11 +9,5 @@ namespace FireSafety
         {
 
         }
-
-        public override void Draw(RenderTarget target, RenderStates states)
-        {
-            states.Transform *= Transform;
-            target.Draw(sprite, states);
-        }
     }
 }

@@ -53,8 +53,10 @@ namespace FireSafety
             sfmlForm.ControlBox = false;
 
             // Creates our SFML RenderWindow on our surface control
-            renderWindow = new RenderWindow(surface.Handle);
-
+            ContextSettings contextSettings = new ContextSettings();
+            contextSettings.DepthBits = 24;
+            renderWindow = new RenderWindow(surface.Handle, contextSettings);
+            renderWindow.SetActive();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
