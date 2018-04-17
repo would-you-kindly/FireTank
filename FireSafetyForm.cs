@@ -35,7 +35,7 @@ namespace FireSafety
             {
                 AlgorithmForm algorithmForm = new AlgorithmForm(_parallelAlgorithm[i]);
                 algorithmForm.MdiParent = this;
-                algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
+                algorithmForm.Text = $"{(i + 1)}. {Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString()}";
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
             }

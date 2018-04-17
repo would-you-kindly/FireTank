@@ -12,6 +12,7 @@ namespace FireSafety
     {
         public Map map;
         private TextureHolder<Textures.ID> textures;
+        private FontHolder<Fonts.ID> fonts;
 
         public List<Tank> tanks;
         public Terrain terrain;
@@ -59,6 +60,10 @@ namespace FireSafety
             textures.Load(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
             textures.Load(Textures.ID.Tree, "Media/Textures/greentree.png");
             textures.Load(Textures.ID.Lake, "Media/Textures/Lake.png");
+
+            // Загружаем шрифты
+            fonts = new FontHolder<Fonts.ID>();
+            fonts.Load(Fonts.ID.Sansation, "Media/Sansation.otf");
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов
@@ -102,7 +107,7 @@ namespace FireSafety
             for (int i = 0; i < map.GetObjects("tank").Count; i++)
             {
                 Object tankObject = map.GetObjects("tank")[i];
-                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, (Tank.TankColor)i, terrain);
+                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, fonts, (Tank.TankColor)i, terrain);
                 tank.Move(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.RotateTank(tankObject.rotation);
                 tank.SetAlgorithm(_parallelAlgorithm[i]);
@@ -111,7 +116,7 @@ namespace FireSafety
                 tanks.Add(tank);
             }
 
-            
+
         }
 
         public void Update(Time deltaTime)

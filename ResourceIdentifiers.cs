@@ -20,4 +20,12 @@
             Lake
         }
     }
+
+    namespace Fonts
+    {
+        public enum ID
+        {
+            Sansation = 0
+        }
+    }
 }

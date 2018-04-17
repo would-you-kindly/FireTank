@@ -22,7 +22,7 @@ namespace FireSafety
     {
         public enum TankColor
         {
-            Red,
+            Red = 0,
             Blue,
             Yellow,
             Green
@@ -34,13 +34,16 @@ namespace FireSafety
         private Algorithm _algorithm;
         private Turret turret;
         private Terrain _terrain;
-        public TankColor tankColor;
+        public TankColor color;
+        private Text number;
 
-        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, TankColor tankColor, Terrain terrain) :
+        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, FontHolder<Fonts.ID> fonts, TankColor color, Terrain terrain) :
             base(idTank, textures)
         {
+            number = new Text(((int)color + 1).ToString(), fonts.Get(Fonts.ID.Sansation), 20);
+            Utilities.CenterOrigin(number);
             turret = new Turret(idTurret, textures);
-            this.tankColor = tankColor;
+            this.color = color;
             _terrain = terrain;
             Collide += delegate (object sender, CollideEventArgs e)
             {
@@ -322,6 +325,13 @@ namespace FireSafety
             turretDirection.Position = turret.sprite.Position;
             turretDirection.Rotation = turret.sprite.Rotation;
             target.Draw(turretDirection);
+
+            // Рисуем номер танка
+            number.Position = sprite.Position + new Vector2f(Utilities.TILE_SIZE / 3, Utilities.TILE_SIZE / 3);
+            //number.OutlineColor = Color.Black;
+            number.FillColor = Color.Red;
+            number.OutlineThickness = 0.75f;
+            target.Draw(number);
         }
     }
 
