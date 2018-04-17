@@ -103,23 +103,7 @@ namespace FireSafety
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read))
-                {
-                    _parallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
-                }
-
-                // Записываем шаги алгоритма в элементы управления формы
-                for (int i = 0; i < algorithmForms.Count; i++)
-                {
-                    algorithmForms[i].dgvAlgorithm.Rows.Clear();
-                    int actionCount = _parallelAlgorithm.Algorithms[i].Actions.Count;
-                    for (int j = 0; j < actionCount; j++)
-                    {
-                        Action action = _parallelAlgorithm.Algorithms[i].Actions.Dequeue();
-                        algorithmForms[i].dgvAlgorithm.Rows.Add(j + 1, action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
-                    }
-                    algorithmForms[i].dgvAlgorithm.ClearSelection();
-                }
+                OpenAlgorithm(Path.Combine(ofd.FileName));
             }
         }
 
