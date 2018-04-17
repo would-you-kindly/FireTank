@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-using OpenTK;
-using OpenTK.Graphics;
 
 namespace FireSafety
 {
@@ -32,26 +30,6 @@ namespace FireSafety
             parallelAlgorithm = new ParallelAlgorithm();
             world = new World(parallelAlgorithm);
             gui = new Gui(parallelAlgorithm);
-
-            Toolkit.Init();
-            GraphicsContext context = new GraphicsContext(new ContextHandle(IntPtr.Zero), null);
-
-            //// Enable Z-buffer read and write
-            //GL.Enable(EnableCap.DepthTest);
-            //GL.DepthMask(true);
-            //GL.ClearDepth(1);
-
-            //// Disable lighting
-            //GL.Disable(EnableCap.Lighting);
-
-            //// Configure the viewport (the same size as the window)
-            //GL.Viewport(0, 0, (int)gui.form.renderWindow.Size.X, (int)gui.form.renderWindow.Size.Y);
-
-            //// Setup a perspective projection
-            //GL.MatrixMode(MatrixMode.Projection);
-            //GL.LoadIdentity();
-            //float ratio = (float)(gui.form.renderWindow.Size.X) / gui.form.renderWindow.Size.Y;
-            //GL.Frustum(-ratio, ratio, -1, 1, 1, 500);
 
             AssignEvents();
         }

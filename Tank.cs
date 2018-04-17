@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SFML.Graphics;
-using OpenTK;
 
 namespace FireSafety
 {
@@ -219,7 +218,6 @@ namespace FireSafety
                 case ShootCommand.Commands.Shoot:
                     if (turret.waterPressure != 0)
                     {
-                        Vector2f to = new Vector2f();
                         // Если пушка опущена, то можно потушить ближайшее дерево
                         if (!turret.up)
                         {
@@ -231,7 +229,6 @@ namespace FireSafety
                                 if (treeToExtinguish != null)
                                 {
                                     treeToExtinguish.Extinguish();
-                                    to = treeToExtinguish.Position;
                                     break;
                                 }
                             }
@@ -240,13 +237,11 @@ namespace FireSafety
                         else
                         {
                             Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
-                            to = treeToExtinguish.Position;
                             treeToExtinguish?.Extinguish();
                         }
 
-                        Vector2f from = sprite.Position;
+                        Game.world.traces.Add(new WaterTrace(turret.up, sprite.Position, turret.waterPressure, turret.NormalizedRotation));
                         turret.waterPressure = 0;
-                        Game.world.traces.Add(new WaterTrace(from, to + new Vector2f(Utilities.TILE_SIZE / 2, Utilities.TILE_SIZE / 2)));
                     }
                     Console.WriteLine("ShootCommand.Commands.Shoot");
                     break;
