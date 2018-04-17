@@ -29,6 +29,7 @@ namespace FireSafety
 
             _parallelAlgorithm = parallelAlgorithm;
 
+            // Создаем окна алгоритмов
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
@@ -149,8 +150,53 @@ namespace FireSafety
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                // Загружаем новую карту
                 Game.world.LoadMap(ofd.FileName);
                 Game.world.BuildWorld();
+                Game.executing = false;
+                sfmlForm.Text = World.wind.ToString();
+
+                // Создаем окна алгоритмов
+                algorithmForms.ForEach(form => form.Close());
+                algorithmForms.Clear();
+                for (int i = 0; i < Utilities.TANKS_COUNT; i++)
+                {
+                    AlgorithmForm algorithmForm = new AlgorithmForm(_parallelAlgorithm[i]);
+                    algorithmForm.MdiParent = this;
+                    algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
+                    algorithmForm.Show();
+                    algorithmForms.Add(algorithmForm);
+                }
+
+                // Если указан обучающий алгоритм, загружаем его
+                if (Game.world.map.properties["algorithm"] != string.Empty)
+                {
+                    OpenAlgorithm(Path.Combine(Path.GetFullPath(ofd.FileName), Game.world.map.properties["algorithm"]));
+                }
+
+                SmartLayout();
+            }
+        }
+
+        private void OpenAlgorithm(string filename)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
+            {
+                _parallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
+            }
+
+            // Записываем шаги алгоритма в элементы управления формы
+            for (int i = 0; i < algorithmForms.Count; i++)
+            {
+                algorithmForms[i].dgvAlgorithm.Rows.Clear();
+                int actionCount = _parallelAlgorithm.Algorithms[i].Actions.Count;
+                for (int j = 0; j < actionCount; j++)
+                {
+                    Action action = _parallelAlgorithm.Algorithms[i].Actions.Dequeue();
+                    algorithmForms[i].dgvAlgorithm.Rows.Add(j + 1, action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
+                }
+                algorithmForms[i].dgvAlgorithm.ClearSelection();
             }
         }
 
@@ -178,29 +224,29 @@ namespace FireSafety
             }
 
             // Расставляем окна алгоритмов
-            for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
+            //for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
+            //{
+            if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
             {
-                if (algorithmForms[0] != null)
-                {
-                    algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, heightForAlgorithmForms);
-                    algorithmForms[0].Location = new Point(sfmlForm.Size.Width, 0);
-                }
-                if (algorithmForms[1] != null)
-                {
-                    algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, heightForAlgorithmForms);
-                    algorithmForms[1].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, 0);
-                }
-                if (algorithmForms[2] != null)
-                {
-                    algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, heightForAlgorithmForms);
-                    algorithmForms[2].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height);
-                }
-                if (algorithmForms[3] != null)
-                {
-                    algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, heightForAlgorithmForms);
-                    algorithmForms[3].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height);
-                }
+                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[0].Location = new Point(sfmlForm.Size.Width, 0);
             }
+            if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
+            {
+                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[1].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, 0);
+            }
+            if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
+            {
+                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[2].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height);
+            }
+            if (algorithmForms.Count == 4 && algorithmForms.ElementAt(3) != null)
+            {
+                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[3].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height);
+            }
+            //}
         }
 
         private void FireSafetyForm_Load(object sender, EventArgs e)

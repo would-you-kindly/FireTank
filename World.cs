@@ -10,7 +10,7 @@ namespace FireSafety
 {
     class World : Transformable, Drawable
     {
-        private Map map;
+        public Map map;
         private TextureHolder<Textures.ID> textures;
 
         public List<Tank> tanks;
@@ -95,8 +95,6 @@ namespace FireSafety
 
             // Устанавливаем начальное положение объектов местности (деревьев, озер, гор)
             terrain = new Terrain(map.GetAllObjects(), textures);
-
-            
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
