@@ -12,7 +12,7 @@ namespace FireSafety
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             // Don't call base.OnPaint(e) to prevent forground painting
-            // base.OnPaint(e);
+            //base.OnPaint(e);
         }
 
         protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs pevent)

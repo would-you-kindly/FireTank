@@ -71,7 +71,7 @@ namespace FireSafety
                     error = false;
                     executing = false;
                     MessageBox.Show($"Во время выполнения алгоритма произошла ошибка.\n{errorTank.tankColor.ToString()} танк столкнулся с объектом\n{errorCollideEventArgs.entity.GetType().ToString()}",
-                        "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     world.BuildWorld();
                 }
             }

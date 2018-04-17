@@ -66,13 +66,13 @@ namespace FireSafety
             switch (cb.Name)
             {
                 case "cbMove":
-                    index = 0;
-                    break;
-                case "cbShoot":
                     index = 1;
                     break;
-                case "cbTurret":
+                case "cbShoot":
                     index = 2;
+                    break;
+                case "cbTurret":
+                    index = 3;
                     break;
             }
 
@@ -85,20 +85,20 @@ namespace FireSafety
             else if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnInsertBefore.Checked)
             {
                 int beforeIndex = dgvAlgorithm.SelectedRows[0].Index;
-                dgvAlgorithm.Rows.Insert(beforeIndex, "None", "None", "None");
+                dgvAlgorithm.Rows.Insert(beforeIndex, "", "None", "None", "None");
                 dgvAlgorithm.Rows[beforeIndex].Cells[index].Value = cb.SelectedItem.ToString();
             }
             // Вставляем новое действие ниже выделенного
             else if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnInsertAfter.Checked)
             {
                 int afterIndex = dgvAlgorithm.SelectedRows[0].Index + 1;
-                dgvAlgorithm.Rows.Insert(afterIndex, "None", "None", "None");
+                dgvAlgorithm.Rows.Insert(afterIndex, "", "None", "None", "None");
                 dgvAlgorithm.Rows[afterIndex].Cells[index].Value = cb.SelectedItem.ToString();
             }
             // Вставляем новое действие в конец алгоритма
             else
             {
-                dgvAlgorithm.Rows.Add("None", "None", "None");
+                dgvAlgorithm.Rows.Add("", "None", "None", "None");
                 dgvAlgorithm.Rows[dgvAlgorithm.RowCount - 1].Cells[index].Value = cb.SelectedItem.ToString();
             }
 
@@ -111,6 +111,13 @@ namespace FireSafety
             {
                 // Ignore exception
             }
+
+            // Пересчитываем номера строк таблицы
+            for (int i = 0; i < dgvAlgorithm.Rows.Count; i++)
+            {
+                dgvAlgorithm.Rows[i].Cells[0].Value = i + 1;
+            }
+
             dgvAlgorithm.ClearSelection();
             dgvAlgorithm.Focus();
         }
@@ -132,7 +139,7 @@ namespace FireSafety
 
         private void SetTurretCommands(List<Action> listActions, int i)
         {
-            switch (dgvAlgorithm.Rows[i].Cells[2].Value.ToString())
+            switch (dgvAlgorithm.Rows[i].Cells[3].Value.ToString())
             {
                 case "Rotate 45 CW":
                     listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Rotate45CW);
@@ -152,6 +159,9 @@ namespace FireSafety
                 case "Down":
                     listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Down);
                     break;
+                case "Shoot":
+                    listActions[i].commands[(int)Action.Types.Turret] = new TurretCommand(TurretCommand.Commands.Shoot);
+                    break;
                 default:
                     break;
             }
@@ -159,13 +169,10 @@ namespace FireSafety
 
         private void SetShootCommands(List<Action> listActions, int i)
         {
-            switch (dgvAlgorithm.Rows[i].Cells[1].Value.ToString())
+            switch (dgvAlgorithm.Rows[i].Cells[2].Value.ToString())
             {
                 case "Pressure":
                     listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.IncreaseWaterPressure);
-                    break;
-                case "Shoot":
-                    listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Shoot);
                     break;
                 default:
                     break;
@@ -174,7 +181,7 @@ namespace FireSafety
 
         private void SetMoveCommands(List<Action> listActions, int i)
         {
-            switch (dgvAlgorithm.Rows[i].Cells[0].Value.ToString())
+            switch (dgvAlgorithm.Rows[i].Cells[1].Value.ToString())
             {
                 case "Forward":
                     listActions[i].commands[(int)Action.Types.Move] = new MoveCommand(MoveCommand.Commands.Forward);
@@ -221,6 +228,12 @@ namespace FireSafety
             {
                 MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.",
                     "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            // Пересчитываем номера строк таблицы
+            for (int i = 0; i < dgvAlgorithm.Rows.Count; i++)
+            {
+                dgvAlgorithm.Rows[i].Cells[0].Value = i + 1;
             }
         }
 
@@ -302,12 +315,6 @@ namespace FireSafety
                 cbShoot.SelectedItem = "Pressure";
             }
 
-            if (e.KeyCode == Keys.S)
-            {
-                cbShoot.SelectedIndex = -1;
-                cbShoot.SelectedItem = "Shoot";
-            }
-
             // Обрабатываем горячие клавиши добавления команд турели
             if (e.KeyCode == Keys.U)
             {
@@ -319,6 +326,12 @@ namespace FireSafety
             {
                 cbTurret.SelectedIndex = -1;
                 cbTurret.SelectedItem = "Down";
+            }
+
+            if (e.KeyCode == Keys.S)
+            {
+                cbTurret.SelectedIndex = -1;
+                cbTurret.SelectedItem = "Shoot";
             }
         }
 

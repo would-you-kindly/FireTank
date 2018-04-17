@@ -51,6 +51,10 @@ namespace FireSafety
             surface.Size = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
             sfmlForm.Controls.Add(surface);
             sfmlForm.ControlBox = false;
+            //sfmlForm.ClientSizeChanged += delegate (object sender, EventArgs e)
+            //{
+            //    surface.Size = sfmlForm.ClientSize;
+            //};
 
             // Creates our SFML RenderWindow on our surface control
             renderWindow = new RenderWindow(surface.Handle);
@@ -111,7 +115,7 @@ namespace FireSafety
                     for (int j = 0; j < actionCount; j++)
                     {
                         Action action = _parallelAlgorithm.Algorithms[i].Actions.Dequeue();
-                        algorithmForms[i].dgvAlgorithm.Rows.Add(action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
+                        algorithmForms[i].dgvAlgorithm.Rows.Add(j + 1, action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
                     }
                     algorithmForms[i].dgvAlgorithm.ClearSelection();
                 }
@@ -326,14 +330,6 @@ namespace FireSafety
                 AddActionMessage();
         }
 
-        private void shootToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (algorithmForms.Any(form => form.ContainsFocus))
-                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbShoot, ((ToolStripMenuItem)sender).Text);
-            else
-                AddActionMessage();
-        }
-
         private void noneShootToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (algorithmForms.Any(form => form.ContainsFocus))
@@ -383,6 +379,14 @@ namespace FireSafety
         }
 
         private void downToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
+            else
+                AddActionMessage();
+        }
+
+        private void shootToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);

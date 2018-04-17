@@ -213,37 +213,6 @@ namespace FireSafety
                     {
                         turret.waterPressure++;
                     }
-                    Console.WriteLine("ShootCommand.Commands.IncreaseWaterPressure");
-                    break;
-                case ShootCommand.Commands.Shoot:
-                    if (turret.waterPressure != 0)
-                    {
-                        // Если пушка опущена, то можно потушить ближайшее дерево
-                        if (!turret.up)
-                        {
-                            foreach (Vector2f coords in turret.GetTargetPositions())
-                            {
-                                Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
-
-                                // Если нашли ближайшее дерево, то остальные не проверяем
-                                if (treeToExtinguish != null)
-                                {
-                                    treeToExtinguish.Extinguish();
-                                    break;
-                                }
-                            }
-                        }
-                        // Если пушка поднята, то можно потушить только одно дальнее дерево
-                        else
-                        {
-                            Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
-                            treeToExtinguish?.Extinguish();
-                        }
-
-                        Game.world.traces.Add(new WaterTrace(turret.up, sprite.Position, turret.waterPressure, turret.NormalizedRotation));
-                        turret.waterPressure = 0;
-                    }
-                    Console.WriteLine("ShootCommand.Commands.Shoot");
                     break;
                 default:
                     break;
@@ -271,6 +240,35 @@ namespace FireSafety
                     break;
                 case TurretCommand.Commands.Down:
                     turret.up = false;
+                    break;
+                case TurretCommand.Commands.Shoot:
+                    if (turret.waterPressure != 0)
+                    {
+                        // Если пушка опущена, то можно потушить ближайшее дерево
+                        if (!turret.up)
+                        {
+                            foreach (Vector2f coords in turret.GetTargetPositions())
+                            {
+                                Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
+
+                                // Если нашли ближайшее дерево, то остальные не проверяем
+                                if (treeToExtinguish != null)
+                                {
+                                    treeToExtinguish.Extinguish();
+                                    break;
+                                }
+                            }
+                        }
+                        // Если пушка поднята, то можно потушить только одно дальнее дерево
+                        else
+                        {
+                            Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
+                            treeToExtinguish?.Extinguish();
+                        }
+
+                        Game.world.traces.Add(new WaterTrace(turret.up, sprite.Position, turret.waterPressure, turret.NormalizedRotation));
+                        turret.waterPressure = 0;
+                    }
                     break;
                 default:
                     break;

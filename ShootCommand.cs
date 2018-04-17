@@ -12,7 +12,6 @@ namespace FireSafety
         public enum Commands
         {
             IncreaseWaterPressure,
-            Shoot,
             None
         }
 
@@ -39,8 +38,7 @@ namespace FireSafety
             {
                 case Commands.IncreaseWaterPressure:
                     return "Pressure";
-                case Commands.Shoot:
-                    return "Shoot";
+
                 case Commands.None:
                     return "None";
             }
