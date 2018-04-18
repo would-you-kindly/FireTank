@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FireSafety
 {
-    partial class AlgorithmForm : Form
+    public partial class AlgorithmForm : Form
     {
         Algorithm _algorithm;
 
@@ -120,6 +120,23 @@ namespace FireSafety
 
             dgvAlgorithm.ClearSelection();
             dgvAlgorithm.Focus();
+        }
+
+        public void ColorActionRow(int number)
+        {
+            foreach (DataGridViewRow item in dgvAlgorithm.Rows)
+            {
+                item.DefaultCellStyle.BackColor = Color.White;
+            }
+
+            try
+            {
+                dgvAlgorithm.Rows[number].DefaultCellStyle.BackColor = Color.Yellow;
+            }
+            catch (Exception)
+            {
+                // Ignore exception
+            }
         }
 
         // Составляет алгоритм на основе данных в элементах управления

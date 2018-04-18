@@ -18,7 +18,7 @@ namespace FireSafety
     public partial class FireSafetyForm : Form
     {
         ParallelAlgorithm _parallelAlgorithm;
-        List<AlgorithmForm> algorithmForms;
+        public List<AlgorithmForm> algorithmForms;
         public RenderWindow renderWindow;
         Form sfmlForm;
         private bool algorithmBuilt = false;

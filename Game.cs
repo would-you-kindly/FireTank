@@ -13,7 +13,7 @@ namespace FireSafety
 {
     public class Game
     {
-        private Time timePerFrame = Time.FromSeconds(1.0f / 60.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
         private ParallelAlgorithm parallelAlgorithm;
         internal static World world;
@@ -60,9 +60,18 @@ namespace FireSafety
                     if (executing)
                     {
                         Update(timePerFrame);
+                        //Utilities.CURRENT_ACTION_NUMBER++;
                     }
+                    //else
+                    //{
+                    //    Utilities.CURRENT_ACTION_NUMBER = 0;
+                    //}
                 }
 
+                //foreach (AlgorithmForm form in gui.form.algorithmForms)
+                //{
+                //    form.ColorActionRow(Utilities.CURRENT_ACTION_NUMBER);
+                //}
                 Render();
 
                 // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
@@ -81,7 +90,7 @@ namespace FireSafety
         {
             // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
             // Handle form events
-            Application.DoEvents(); 
+            Application.DoEvents();
             gui.form.renderWindow.DispatchEvents();
         }
 
