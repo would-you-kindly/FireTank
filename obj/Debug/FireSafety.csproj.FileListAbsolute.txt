@@ -1,29 +1,10 @@
-D:\Рабочий стол\FireSafety\bin\Debug\FireSafety.exe.config
-D:\Рабочий стол\FireSafety\bin\Debug\FireSafety.exe
-D:\Рабочий стол\FireSafety\bin\Debug\FireSafety.pdb
-D:\Рабочий стол\FireSafety\bin\Debug\sfmlnet-audio-2.dll
-D:\Рабочий стол\FireSafety\bin\Debug\sfmlnet-graphics-2.dll
-D:\Рабочий стол\FireSafety\bin\Debug\sfmlnet-system-2.dll
-D:\Рабочий стол\FireSafety\bin\Debug\sfmlnet-window-2.dll
-D:\Рабочий стол\FireSafety\obj\Debug\FireSafety.exe
-D:\Рабочий стол\FireSafety\obj\Debug\FireSafety.pdb
-D:\Рабочий стол\FireSafety\obj\Debug\FireSafety.FireSafetyForm.resources
-D:\Рабочий стол\FireSafety\obj\Debug\FireSafety.csproj.GenerateResource.Cache
-D:\Рабочий стол\FireSafety\obj\Debug\FireSafety.AlgorithmForm.resources
-D:\Рабочий стол\FireSafety\obj\Debug\FireSafety.csprojResolveAssemblyReference.cache
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.AlgorithmForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.FireSafetyForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.GenerateResource.Cache
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CoreCompileInputs.cache
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.exe
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.pdb
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\FireSafety.exe.config
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\FireSafety.exe
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\FireSafety.pdb
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\sfmlnet-audio-2.dll
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\sfmlnet-graphics-2.dll
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\sfmlnet-system-2.dll
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\sfmlnet-window-2.dll
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\FireSafety.exe.config
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\FireSafety.exe
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\FireSafety.pdb
+D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.exe
+D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.pdb
+D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojResolveAssemblyReference.cache

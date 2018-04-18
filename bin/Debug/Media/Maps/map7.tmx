@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" nextobjectid="347">
  <properties>
+  <property name="algorithm" value=""/>
   <property name="wind" value="right"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="Prototypes/Sprites.png" width="160" height="160"/>
+  <image source="../Prototypes/Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="24" height="24">
   <data>

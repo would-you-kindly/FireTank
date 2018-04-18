@@ -100,7 +100,7 @@ namespace FireSafety
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
-            Image image = new Image(@"D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\Media\Prototypes\Sprites.png");
+            Image image = new Image(Path.Combine("Media/", imagePath.Remove(0,3)));
 
             // TODO: Проверку добавить
             //if (!img.loadFromFile(imagepath))
