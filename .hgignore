@@ -11,14 +11,11 @@ syntax: glob
 
 ## Build results
 
-[Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
 [Rr]eleases/
 x64/
 build/
 bld/
-[Oo]bj/
 
 ## Roslyn cache directories
 
