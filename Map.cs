@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SFML.System;
 using System.Xml;
+using System.IO;
 
 namespace FireSafety
 {
@@ -99,7 +100,7 @@ namespace FireSafety
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
-            Image image = new Image("Media/Prototypes/" + imagePath);
+            Image image = new Image(@"D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\Media\Prototypes\Sprites.png");
 
             // TODO: Проверку добавить
             //if (!img.loadFromFile(imagepath))

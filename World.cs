@@ -63,7 +63,7 @@ namespace FireSafety
 
             // Загружаем шрифты
             fonts = new FontHolder<Fonts.ID>();
-            fonts.Load(Fonts.ID.Sansation, "Media/Sansation.otf");
+            fonts.Load(Fonts.ID.Sansation, "Media/Sansation.ttf");
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов
