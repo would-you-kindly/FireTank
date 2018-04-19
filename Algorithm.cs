@@ -20,9 +20,7 @@ namespace FireSafety
 
         public Action GetNextAction()
         {
-            Action action = Actions.Dequeue();
-
-            return action;
+            return Actions.Dequeue();
         }
 
         public bool HasCommands()

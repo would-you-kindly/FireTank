@@ -23,7 +23,7 @@ namespace FireSafety
         // Переменные для обработки ошибок
         public static bool error = false;
         public static Tank errorTank;
-        public static CollideEventArgs errorCollideEventArgs;
+        public static Tank.CollideEventArgs errorCollideEventArgs;
 
         public Game()
         {
@@ -39,7 +39,7 @@ namespace FireSafety
             gui.form.renderWindow.Closed += Window_Closed;
             foreach (Tank tank in world.tanks)
             {
-                tank.Collide += Tank_Collide;
+                tank.Collided += Tank_Collide;
             }
         }
 
@@ -119,7 +119,7 @@ namespace FireSafety
             ((RenderWindow)sender).Close();
         }
 
-        public static void Tank_Collide(object sender, CollideEventArgs e)
+        public static void Tank_Collide(object sender, Tank.CollideEventArgs e)
         {
             error = true;
             errorTank = (Tank)sender;

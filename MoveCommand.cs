@@ -39,7 +39,7 @@ namespace FireSafety
 
         public override void Execute(Tank tank)
         {
-            tank.Move(command);
+            tank.MovementCommand(command);
         }
 
         public override string ToString()

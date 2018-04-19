@@ -35,7 +35,7 @@ namespace FireSafety
 
         public override void Execute(Tank tank)
         {
-            tank.RotateTurret(command);
+            tank.TurretCommand(command);
         }
 
         public override string ToString()

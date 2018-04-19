@@ -107,12 +107,13 @@ namespace FireSafety
             for (int i = 0; i < map.GetObjects("tank").Count; i++)
             {
                 Object tankObject = map.GetObjects("tank")[i];
-                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, fonts, (Tank.TankColor)i, terrain);
-                tank.Move(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
-                tank.RotateTank(tankObject.rotation);
+                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, fonts, (Tank.TankColor)i);
+                tank.SetTerrain(terrain);
+                tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
+                tank.SetRotation(tankObject.rotation);
                 tank.SetAlgorithm(_parallelAlgorithm[i]);
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
-                tank.RotateTurret(tankObject.rotation - turretObject.rotation);
+                tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
                 tanks.Add(tank);
             }
 

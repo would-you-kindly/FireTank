@@ -11,7 +11,7 @@ namespace FireSafety
     {
         public enum Commands
         {
-            IncreaseWaterPressure,
+            Pressure,
             None
         }
 
@@ -29,14 +29,14 @@ namespace FireSafety
 
         public override void Execute(Tank tank)
         {
-            tank.Shoot(command);
+            tank.ChargeCommand(command);
         }
 
         public override string ToString()
         {
             switch (command)
             {
-                case Commands.IncreaseWaterPressure:
+                case Commands.Pressure:
                     return "Pressure";
 
                 case Commands.None:

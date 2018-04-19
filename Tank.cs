@@ -8,16 +8,6 @@ using SFML.Graphics;
 
 namespace FireSafety
 {
-    public class CollideEventArgs
-    {
-        public Entity entity;
-
-        public CollideEventArgs(Entity entity)
-        {
-            this.entity = entity;
-        }
-    }
-
     public class Tank : Entity
     {
         public enum TankColor
@@ -28,24 +18,83 @@ namespace FireSafety
             Green
         }
 
-        public delegate void CollideEventHandler(object sender, CollideEventArgs e);
-        public event CollideEventHandler Collide;
+        // Классы для передачи параметров событий
+        public class CollideEventArgs
+        {
+            // Объект, с которым столкнулся танк
+            public Entity entity;
 
+            public CollideEventArgs(Entity entity)
+            {
+                this.entity = entity;
+            }
+        }
+        public class MoveTankEventArgs : EventArgs
+        {
+            // Новая позиция танка
+            public Vector2f newPosition;
+
+            public MoveTankEventArgs(Vector2f newPosition)
+            {
+                this.newPosition = newPosition;
+            }
+        }
+        public class RotateTankEventArgs : EventArgs
+        {
+        }
+
+        // События танка
+        public delegate void CollideEventHandler(object sender, CollideEventArgs e);
+        public delegate void MoveTankEventHandler(object sender, MoveTankEventArgs e);
+        public delegate void RotateTankEventHandler(object sender, RotateTankEventArgs e);
+        public event CollideEventHandler Collided;
+        public event MoveTankEventHandler TankMoved;
+        public event RotateTankEventHandler TankRotated;
+
+        // Параметры-ссылки
         private Algorithm _algorithm;
-        private Turret turret;
         private Terrain _terrain;
+
+        // Параметры танка
+        private Turret turret;
         public TankColor color;
         private Text number;
+        private RectangleShape direction;
 
-        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, FontHolder<Fonts.ID> fonts, TankColor color, Terrain terrain) :
+        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, FontHolder<Fonts.ID> fonts, TankColor color) :
             base(idTank, textures)
         {
-            number = new Text(((int)color + 1).ToString(), fonts.Get(Fonts.ID.Sansation), 20);
-            Utilities.CenterOrigin(number);
+            // Создаем турель (башню) танка
             turret = new Turret(idTurret, textures);
+
+            // Определяем цвет танка
             this.color = color;
-            _terrain = terrain;
-            Collide += delegate (object sender, CollideEventArgs e)
+
+            // Определяем номер танка
+            number = new Text(((int)color + 1).ToString(), fonts.Get(Fonts.ID.Sansation), 20);
+            number.FillColor = Color.Red;
+            number.OutlineThickness = 0.75f;
+            Utilities.CenterOrigin(number);
+            TankMoved += delegate (object sender, MoveTankEventArgs e)
+            {
+                number.Position = e.newPosition + new Vector2f(Utilities.TILE_SIZE / 3, Utilities.TILE_SIZE / 3);
+            };
+
+            // Создаем полоску для указания направления танка
+            direction = new RectangleShape(new Vector2f(6, 16));
+            direction.FillColor = Color.Yellow;
+            Utilities.CenterOrigin(direction, 0, 16);
+            TankMoved += delegate (object sender, MoveTankEventArgs e)
+            {
+                direction.Position = e.newPosition;
+            };
+            TankRotated += delegate (object sender, RotateTankEventArgs e)
+            {
+                direction.Rotation = sprite.Rotation;
+            };
+
+            // Определяем событие столкновения с объектами сцены
+            Collided += delegate (object sender, CollideEventArgs e)
             {
                 Game.error = true;
                 Game.errorTank = (Tank)sender;
@@ -61,145 +110,171 @@ namespace FireSafety
             _algorithm = algorithm;
         }
 
-        public void Move(Vector2f move)
+        public void SetTerrain(Terrain terrain)
         {
-            // Перемещаем и танк, и пушку
-            sprite.Position += move;
-            turret.sprite.Position += move;
+            _terrain = terrain;
         }
 
-        private void MoveTank(MoveCommand.Commands where)
+        public void SetPosition(Vector2f position)
+        {
+            MoveBy(position);
+        }
+
+        public void SetRotation(float rotation)
+        {
+            RotateTankBy(rotation);
+        }
+
+        public void SetTurretRotation(float rotation)
+        {
+            RotateTurretBy(rotation);
+        }
+
+        private void MoveBy(Vector2f move)
+        {
+            // Перемещаем танк и башню
+            sprite.Position += move;
+            turret.MoveBy(move);
+
+            TankMoved?.Invoke(this, new MoveTankEventArgs(sprite.Position));
+        }
+
+        private void MoveTo(MoveCommand.Commands where)
         {
             int sign = where == MoveCommand.Commands.Forward ? 1 : -1;
             const int rotation = 45;
 
             // Вверх
             if (NormalizedRotation == rotation * 0)
-                Move(new Vector2f(0, -Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(0, -Utilities.TILE_SIZE * sign));
             // Вверх-вправо
             if (NormalizedRotation == rotation * 1)
-                Move(new Vector2f(Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
             // Вправо
             if (NormalizedRotation == rotation * 2)
-                Move(new Vector2f(Utilities.TILE_SIZE * sign, 0));
+                MoveBy(new Vector2f(Utilities.TILE_SIZE * sign, 0));
             // Вправо-вниз
             if (NormalizedRotation == rotation * 3)
-                Move(new Vector2f(Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
             // Вниз
             if (NormalizedRotation == rotation * 4)
-                Move(new Vector2f(0, Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(0, Utilities.TILE_SIZE * sign));
             // Вниз-влево
             if (NormalizedRotation == rotation * 5)
-                Move(new Vector2f(-Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(-Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
             // Влево
             if (NormalizedRotation == rotation * 6)
-                Move(new Vector2f(-Utilities.TILE_SIZE * sign, 0));
+                MoveBy(new Vector2f(-Utilities.TILE_SIZE * sign, 0));
             // Влево-вверх
             if (NormalizedRotation == rotation * 7)
-                Move(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
 
-            CheckForCollision();
+            CheckCollisions();
         }
 
-        private void CheckForCollision()
+        private void CheckCollisions()
         {
             // Если танк столкнулся с препятствием на местности, инициируем событие столкновения
             foreach (Entity item in _terrain)
             {
                 if (sprite.Position - new Vector2f(Utilities.TILE_SIZE / 2, Utilities.TILE_SIZE / 2) == item.Position)
                 {
-                    Collide?.Invoke(this, new CollideEventArgs(item));
+                    Collided?.Invoke(this, new CollideEventArgs(item));
                 }
             }
+
             // Если танк столкнулся с другим танком (исключая себя), инициируем событие столкновения
             foreach (Tank item in Game.world.tanks)
             {
                 if (sprite.Position == item.sprite.Position && item != this)
                 {
-                    Collide?.Invoke(this, new CollideEventArgs(item));
+                    Collided?.Invoke(this, new CollideEventArgs(item));
                 }
             }
         }
 
-        public void RotateTurret(float degrees)
+        private void RotateTurretBy(float degrees)
         {
-            turret.sprite.Rotation += degrees;
+            turret.RotateBy(degrees);
         }
 
-        public void RotateTank(float degrees)
+        private void RotateTankBy(float degrees)
         {
+            // Поворачиваем танк и башню
             sprite.Rotation += degrees;
-            RotateTurret(degrees);
+            turret.sprite.Rotation += degrees;
+
+            TankRotated?.Invoke(this, new RotateTankEventArgs());
         }
 
-        public void Move(MoveCommand.Commands command)
+        public void MovementCommand(MoveCommand.Commands command)
         {
             switch (command)
             {
                 case MoveCommand.Commands.Forward:
-                    MoveTank(MoveCommand.Commands.Forward);
+                    MoveTo(MoveCommand.Commands.Forward);
                     break;
                 case MoveCommand.Commands.Backward:
-                    MoveTank(MoveCommand.Commands.Backward);
+                    MoveTo(MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
-                    RotateTank(90);
+                    RotateTankBy(90);
                     break;
                 case MoveCommand.Commands.Rotate90CCW:
-                    RotateTank(-90);
+                    RotateTankBy(-90);
                     break;
                 case MoveCommand.Commands.Rotate45CW:
-                    RotateTank(45);
+                    RotateTankBy(45);
                     break;
                 case MoveCommand.Commands.Rotate45CCW:
-                    RotateTank(-45);
+                    RotateTankBy(-45);
                     break;
                 case MoveCommand.Commands.Forward45CW:
                     if ((NormalizedRotation / 45.0) % 2 == 1)
                     {
-                        MoveTank(MoveCommand.Commands.Forward);
-                        RotateTank(45);
+                        MoveTo(MoveCommand.Commands.Forward);
+                        RotateTankBy(45);
                     }
                     else
                     {
-                        RotateTank(45);
-                        MoveTank(MoveCommand.Commands.Forward);
+                        RotateTankBy(45);
+                        MoveTo(MoveCommand.Commands.Forward);
                     }
                     break;
                 case MoveCommand.Commands.Forward45CCW:
                     if ((NormalizedRotation / 45.0) % 2 == 1)
                     {
-                        MoveTank(MoveCommand.Commands.Forward);
-                        RotateTank(-45);
+                        MoveTo(MoveCommand.Commands.Forward);
+                        RotateTankBy(-45);
                     }
                     else
                     {
-                        RotateTank(-45);
-                        MoveTank(MoveCommand.Commands.Forward);
+                        RotateTankBy(-45);
+                        MoveTo(MoveCommand.Commands.Forward);
                     }
                     break;
                 case MoveCommand.Commands.Backward45CW:
                     if ((NormalizedRotation / 45.0) % 2 == 1)
                     {
-                        MoveTank(MoveCommand.Commands.Backward);
-                        RotateTank(45);
+                        MoveTo(MoveCommand.Commands.Backward);
+                        RotateTankBy(45);
                     }
                     else
                     {
-                        RotateTank(45);
-                        MoveTank(MoveCommand.Commands.Backward);
+                        RotateTankBy(45);
+                        MoveTo(MoveCommand.Commands.Backward);
                     }
                     break;
                 case MoveCommand.Commands.Backward45CCW:
                     if ((NormalizedRotation / 45.0) % 2 == 1)
                     {
-                        MoveTank(MoveCommand.Commands.Backward);
-                        RotateTank(-45);
+                        MoveTo(MoveCommand.Commands.Backward);
+                        RotateTankBy(-45);
                     }
                     else
                     {
-                        RotateTank(-45);
-                        MoveTank(MoveCommand.Commands.Backward);
+                        RotateTankBy(-45);
+                        MoveTo(MoveCommand.Commands.Backward);
                     }
                     break;
                 default:
@@ -207,11 +282,11 @@ namespace FireSafety
             }
         }
 
-        public void Shoot(ShootCommand.Commands command)
+        public void ChargeCommand(ShootCommand.Commands command)
         {
             switch (command)
             {
-                case ShootCommand.Commands.IncreaseWaterPressure:
+                case ShootCommand.Commands.Pressure:
                     if (turret.waterPressure < turret.maxWaterPressure)
                     {
                         turret.waterPressure++;
@@ -222,29 +297,29 @@ namespace FireSafety
             }
         }
 
-        public void RotateTurret(TurretCommand.Commands command)
+        public void TurretCommand(TurretCommand.Commands command)
         {
             switch (command)
             {
-                case TurretCommand.Commands.Rotate45CW:
-                    RotateTurret(45);
+                case FireSafety.TurretCommand.Commands.Rotate45CW:
+                    RotateTurretBy(45);
                     break;
-                case TurretCommand.Commands.Rotate45CCW:
-                    RotateTurret(-45);
+                case FireSafety.TurretCommand.Commands.Rotate45CCW:
+                    RotateTurretBy(-45);
                     break;
-                case TurretCommand.Commands.Rotate90CW:
-                    RotateTurret(90);
+                case FireSafety.TurretCommand.Commands.Rotate90CW:
+                    RotateTurretBy(90);
                     break;
-                case TurretCommand.Commands.Rotate90CCW:
-                    RotateTurret(-90);
+                case FireSafety.TurretCommand.Commands.Rotate90CCW:
+                    RotateTurretBy(-90);
                     break;
-                case TurretCommand.Commands.Up:
-                    turret.up = true;
+                case FireSafety.TurretCommand.Commands.Up:
+                    turret.UpDown(true);
                     break;
-                case TurretCommand.Commands.Down:
-                    turret.up = false;
+                case FireSafety.TurretCommand.Commands.Down:
+                    turret.UpDown(false);
                     break;
-                case TurretCommand.Commands.Shoot:
+                case FireSafety.TurretCommand.Commands.Shoot:
                     if (turret.waterPressure != 0)
                     {
                         // Если пушка опущена, то можно потушить ближайшее дерево
@@ -303,34 +378,15 @@ namespace FireSafety
 
             // Рисуем корпус танка (с направлением)
             target.Draw(sprite, states);
-            RectangleShape tankDirection = new RectangleShape(new Vector2f(6, 16));
-            Utilities.CenterOrigin(tankDirection, 0, 16);
-            tankDirection.FillColor = Color.Yellow;
-            tankDirection.Position = sprite.Position;
-            tankDirection.Rotation = sprite.Rotation;
-            target.Draw(tankDirection);
+            target.Draw(direction, states);
 
             // Рисуем башню танка (с направлением)
-            target.Draw(turret.sprite, states);
-            RectangleShape turretDirection = new RectangleShape(new Vector2f(2, 32));
-            Utilities.CenterOrigin(turretDirection, 0, 32);
-            if (turret.up)
-            {
-                turretDirection.FillColor = Color.Blue;
-            }
-            else
-            {
-                turretDirection.FillColor = Color.Red;
-            }
-            turretDirection.Position = turret.sprite.Position;
-            turretDirection.Rotation = turret.sprite.Rotation;
-            target.Draw(turretDirection);
+            target.Draw(turret, states);
+
+
+
 
             // Рисуем номер танка
-            number.Position = sprite.Position + new Vector2f(Utilities.TILE_SIZE / 3, Utilities.TILE_SIZE / 3);
-            //number.OutlineColor = Color.Black;
-            number.FillColor = Color.Red;
-            number.OutlineThickness = 0.75f;
             target.Draw(number);
         }
     }
