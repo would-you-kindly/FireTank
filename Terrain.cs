@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    public class Terrain : Entity, IEnumerable
+    public class Terrain : IEnumerable
     {
         public List<Tree> trees;
         public List<Lake> lakes;
@@ -23,17 +23,21 @@ namespace FireSafety
 
             foreach (Object item in objects)
             {
+                // Создаем деревья
                 if (item.name == "tree")
                 {
                     Tree tree = new Tree(Textures.ID.Tree, textures);
                     tree.Position = new Vector2f(item.rect.Left, item.rect.Top);
                     if (item.GetPropertyBool("burns"))
                     {
+                        // TODO: Такое себе место
                         tree.state.currentTimeToSpread = 3;
                         tree.Fire();
                     }
                     trees.Add(tree);
                 }
+
+                // Создаем озера
                 if (item.name == "lake")
                 {
                     Lake lake = new Lake(Textures.ID.Lake, textures);
@@ -63,7 +67,7 @@ namespace FireSafety
             lakes[index] = lake;
         }
 
-        public override void Update(Time deltaTime)
+        public void Update(Time deltaTime)
         {
             SpreadFire();
 
@@ -115,7 +119,7 @@ namespace FireSafety
             }
         }
 
-        public override void Draw(RenderTarget target, RenderStates states)
+        public void Draw(RenderTarget target, RenderStates states)
         {
             foreach (Tree tree in trees)
             {

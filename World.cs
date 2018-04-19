@@ -114,6 +114,13 @@ namespace FireSafety
                 tank.SetAlgorithm(_parallelAlgorithm[i]);
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
                 tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
+                tank.turret.UpDown(false);
+                // При выстреле сохраняем след от выстрела
+                tank.turret.TurretShoot += delegate (object sender, Turret.ShootTurretEventArgs e)
+                {
+                    traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position, 
+                        tank.turret.waterPressure, tank.turret.NormalizedRotation));
+                };
                 tanks.Add(tank);
             }
 
@@ -132,20 +139,23 @@ namespace FireSafety
 
         public void Draw(RenderTarget target, RenderStates states)
         {
-            Game.gui.form.renderWindow.PushGLStates();
-
+            // Рисуем карту (фон рельефа)
             map.Draw(target, states);
+
+            // Рисуем объекты местности (деревья, озера, дома, скалы...)
             terrain.Draw(target, states);
+
+            // Рисуем следы выстрелов
             foreach (var trace in traces)
             {
                 trace.Draw(target, states);
             }
+
+            // Рисуем танки
             foreach (var tank in tanks)
             {
                 tank.Draw(target, states);
             }
-
-            Game.gui.form.renderWindow.PopGLStates();
         }
     }
 }

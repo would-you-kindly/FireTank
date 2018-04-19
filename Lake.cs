@@ -7,7 +7,7 @@ namespace FireSafety
         public Lake(Textures.ID idLake, TextureHolder<Textures.ID> textures) 
             : base(idLake, textures)
         {
-
+            // Empty method
         }
     }
 }

@@ -36,19 +36,48 @@ namespace FireSafety
         public class DownTurretEventArgs : EventArgs
         {
         }
+        public class ShootTurretEventArgs : EventArgs
+        {
+            public Tree treeToExtinguish;
+
+            public ShootTurretEventArgs(Tree treeToExtinguish)
+            {
+                this.treeToExtinguish = treeToExtinguish;
+            }
+        }
+        public class ShootTurretErrorEventArgs : EventArgs
+        {
+        }
+        public class PressureTurretEventArgs : EventArgs
+        {
+        }
+        public class PressureTurretErrorEventArgs : EventArgs
+        {
+        }
 
         // События башни
         public delegate void MoveTurretEventHandler(object sender, MoveTurretEventArgs e);
         public delegate void RotateTurretEventHandler(object sender, RotateTurretEventArgs e);
         public delegate void UpTurretEventHandler(object sender, UpTurretEventArgs e);
         public delegate void DownTurretEventHandler(object sender, DownTurretEventArgs e);
+        public delegate void ShootTurretEventHandler(object sender, ShootTurretEventArgs e);
+        public delegate void ShootTurretErrorEventHandler(object sender, ShootTurretErrorEventArgs e);
+        public delegate void PressureTurretEventHandler(object sender, PressureTurretEventArgs e);
+        public delegate void PressureTurretErrorEventHandler(object sender, PressureTurretErrorEventArgs e);
         public event MoveTurretEventHandler TurretMoved;
         public event RotateTurretEventHandler TurretRotated;
         public event UpTurretEventHandler TurretUp;
         public event DownTurretEventHandler TurretDown;
+        public event ShootTurretEventHandler TurretShoot;
+        public event ShootTurretErrorEventHandler TurretShootError;
+        public event PressureTurretEventHandler TurretPressure;
+        public event PressureTurretErrorEventHandler TurretPressureError;
+
+        // Параметры-ссылки
+        Terrain _terrain;
 
         // Параметры турели
-        public int maxWaterPressure = 3;
+        public const int maxWaterPressure = 3;
         public int waterPressure;
         public bool up;
         private RectangleShape direction;
@@ -82,6 +111,11 @@ namespace FireSafety
 
             // Выставляем Origin в центр картинки
             Utilities.CenterOrigin(sprite);
+        }
+
+        public void SetTerrain(Terrain terrain)
+        {
+            _terrain = terrain;
         }
 
         public void RotateBy(float rotation)
@@ -157,6 +191,58 @@ namespace FireSafety
             }
 
             return targets;
+        }
+
+        public void Shoot()
+        {
+            if (waterPressure != 0)
+            {
+                // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
+                Tree treeToExtinguish = null;
+
+                // Если пушка опущена, то можно потушить только ближайшее дерево
+                if (!up)
+                {
+                    foreach (Vector2f coords in GetTargetPositions())
+                    {
+                        treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
+
+                        // Если нашли ближайшее дерево, то остальные не проверяем
+                        if (treeToExtinguish != null)
+                        {
+                            treeToExtinguish.Extinguish();
+                            break;
+                        }
+                    }
+                }
+                // Если пушка поднята, то можно потушить только одно дальнее дерево
+                else
+                {
+                    treeToExtinguish = _terrain.trees.Find(tree => tree.Position == GetTargetPositions()[0]);
+                    treeToExtinguish?.Extinguish();
+                }
+
+                TurretShoot?.Invoke(this, new ShootTurretEventArgs(treeToExtinguish));
+                waterPressure = 0;
+            }
+            else
+            {
+                TurretShootError?.Invoke(this, new ShootTurretErrorEventArgs());
+            }
+        }
+
+        public void Pressure()
+        {
+            if (waterPressure < maxWaterPressure)
+            {
+                waterPressure++;
+
+                TurretPressure?.Invoke(this, new PressureTurretEventArgs());
+            }
+            else
+            {
+                TurretPressureError?.Invoke(this, new PressureTurretErrorEventArgs());
+            }
         }
 
         public override void Draw(RenderTarget target, RenderStates states)

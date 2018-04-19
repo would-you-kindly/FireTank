@@ -19,7 +19,7 @@ namespace FireSafety
         }
 
         // Классы для передачи параметров событий
-        public class CollideEventArgs
+        public class CollideEventArgs : EventArgs
         {
             // Объект, с которым столкнулся танк
             public Entity entity;
@@ -56,7 +56,7 @@ namespace FireSafety
         private Terrain _terrain;
 
         // Параметры танка
-        private Turret turret;
+        public Turret turret;
         public TankColor color;
         private Text number;
         private RectangleShape direction;
@@ -113,6 +113,7 @@ namespace FireSafety
         public void SetTerrain(Terrain terrain)
         {
             _terrain = terrain;
+            turret.SetTerrain(terrain);
         }
 
         public void SetPosition(Vector2f position)
@@ -175,20 +176,20 @@ namespace FireSafety
         private void CheckCollisions()
         {
             // Если танк столкнулся с препятствием на местности, инициируем событие столкновения
-            foreach (Entity item in _terrain)
+            foreach (Entity entity in _terrain)
             {
-                if (sprite.Position - new Vector2f(Utilities.TILE_SIZE / 2, Utilities.TILE_SIZE / 2) == item.Position)
+                if (sprite.Position - new Vector2f(Utilities.TILE_SIZE / 2, Utilities.TILE_SIZE / 2) == entity.Position)
                 {
-                    Collided?.Invoke(this, new CollideEventArgs(item));
+                    Collided?.Invoke(this, new CollideEventArgs(entity));
                 }
             }
 
             // Если танк столкнулся с другим танком (исключая себя), инициируем событие столкновения
-            foreach (Tank item in Game.world.tanks)
+            foreach (Tank tank in Game.world.tanks)
             {
-                if (sprite.Position == item.sprite.Position && item != this)
+                if (sprite.Position == tank.sprite.Position && tank != this)
                 {
-                    Collided?.Invoke(this, new CollideEventArgs(item));
+                    Collided?.Invoke(this, new CollideEventArgs(tank));
                 }
             }
         }
@@ -287,10 +288,7 @@ namespace FireSafety
             switch (command)
             {
                 case ShootCommand.Commands.Pressure:
-                    if (turret.waterPressure < turret.maxWaterPressure)
-                    {
-                        turret.waterPressure++;
-                    }
+                    turret.Pressure();
                     break;
                 default:
                     break;
@@ -320,33 +318,7 @@ namespace FireSafety
                     turret.UpDown(false);
                     break;
                 case FireSafety.TurretCommand.Commands.Shoot:
-                    if (turret.waterPressure != 0)
-                    {
-                        // Если пушка опущена, то можно потушить ближайшее дерево
-                        if (!turret.up)
-                        {
-                            foreach (Vector2f coords in turret.GetTargetPositions())
-                            {
-                                Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
-
-                                // Если нашли ближайшее дерево, то остальные не проверяем
-                                if (treeToExtinguish != null)
-                                {
-                                    treeToExtinguish.Extinguish();
-                                    break;
-                                }
-                            }
-                        }
-                        // Если пушка поднята, то можно потушить только одно дальнее дерево
-                        else
-                        {
-                            Tree treeToExtinguish = _terrain.trees.Find(tree => tree.Position == turret.GetTargetPositions()[0]);
-                            treeToExtinguish?.Extinguish();
-                        }
-
-                        Game.world.traces.Add(new WaterTrace(turret.up, sprite.Position, turret.waterPressure, turret.NormalizedRotation));
-                        turret.waterPressure = 0;
-                    }
+                    turret.Shoot();
                     break;
                 default:
                     break;
@@ -383,11 +355,8 @@ namespace FireSafety
             // Рисуем башню танка (с направлением)
             target.Draw(turret, states);
 
-
-
-
             // Рисуем номер танка
-            target.Draw(number);
+            target.Draw(number, states);
         }
     }
 }
