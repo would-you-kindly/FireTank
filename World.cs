@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FireSafety
 {
@@ -112,6 +113,10 @@ namespace FireSafety
                 tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.SetRotation(tankObject.rotation);
                 tank.SetAlgorithm(_parallelAlgorithm[i]);
+                tank.turret.TurretShootError += delegate (object sender, Turret.ShootTurretErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя выполнять выстрел без давления.", "Ошибка исполнителя Turret");
+                };
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
                 tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
                 tank.turret.UpDown(false);

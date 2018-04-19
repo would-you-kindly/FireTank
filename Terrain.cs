@@ -12,6 +12,16 @@ namespace FireSafety
 {
     public class Terrain : IEnumerable
     {
+        // Классы для передачи параметров событий
+        public class FireOverEventArgs : EventArgs
+        {
+        }
+
+        // События башни
+        public delegate void FireOverEventHandler(object sender, FireOverEventArgs e);
+        public event FireOverEventHandler FireOver;
+
+        // Параметры местности
         public List<Tree> trees;
         public List<Lake> lakes;
 
@@ -69,8 +79,10 @@ namespace FireSafety
 
         public void Update(Time deltaTime)
         {
+            // Поджигаем новые деревья
             SpreadFire();
 
+            // Обновляем объекты местности
             foreach (Tree tree in trees)
             {
                 tree.Update(deltaTime);
@@ -79,6 +91,22 @@ namespace FireSafety
             {
                 lake.Update(deltaTime);
             }
+
+            // Проверяем состояние местности
+            CheckTerrainState();
+        }
+
+        private void CheckTerrainState()
+        {
+            foreach (Tree tree in trees)
+            {
+                if (tree.state.IsBurning())
+                {
+                    return;
+                }
+            }
+
+            FireOver?.Invoke(this, new FireOverEventArgs());
         }
 
         private void SpreadFire()

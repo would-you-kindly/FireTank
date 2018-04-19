@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FireSafety
 {
     [Serializable]
-    public class ShootCommand : Command
+    public class ChargeCommand : Command
     {
         public enum Commands
         {
@@ -17,12 +17,12 @@ namespace FireSafety
 
         public Commands command { get; set; }
 
-        public ShootCommand()
+        public ChargeCommand()
         {
 
         }
 
-        public ShootCommand(Commands command)
+        public ChargeCommand(Commands command)
         {
             this.command = command;
         }

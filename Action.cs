@@ -12,18 +12,20 @@ namespace FireSafety
         public enum Types
         {
             Move = 0,
-            Shoot,
+            Charge,
             Turret,
 
             Count
         }
 
-        public Command[] commands = new Command[(int)Types.Count];
+        public Command[] commands;
 
         public Action()
         {
+            commands = new Command[(int)Types.Count];
+
             commands[(int)Types.Move] = new MoveCommand(MoveCommand.Commands.None);
-            commands[(int)Types.Shoot] = new ShootCommand(ShootCommand.Commands.None);
+            commands[(int)Types.Charge] = new ChargeCommand(ChargeCommand.Commands.None);
             commands[(int)Types.Turret] = new TurretCommand(TurretCommand.Commands.None);
         }
     }

@@ -189,7 +189,7 @@ namespace FireSafety
             switch (dgvAlgorithm.Rows[i].Cells[2].Value.ToString())
             {
                 case "Pressure":
-                    listActions[i].commands[(int)Action.Types.Shoot] = new ShootCommand(ShootCommand.Commands.Pressure);
+                    listActions[i].commands[(int)Action.Types.Charge] = new ChargeCommand(ChargeCommand.Commands.Pressure);
                     break;
                 default:
                     break;

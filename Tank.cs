@@ -283,11 +283,11 @@ namespace FireSafety
             }
         }
 
-        public void ChargeCommand(ShootCommand.Commands command)
+        public void ChargeCommand(ChargeCommand.Commands command)
         {
             switch (command)
             {
-                case ShootCommand.Commands.Pressure:
+                case FireSafety.ChargeCommand.Commands.Pressure:
                     turret.Pressure();
                     break;
                 default:
