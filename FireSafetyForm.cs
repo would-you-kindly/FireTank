@@ -124,6 +124,11 @@ namespace FireSafety
 
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Reload();
+        }
+
+        public void Reload()
+        {
             Game.executing = false;
             algorithmBuilt = false;
             Game.world.BuildWorld();

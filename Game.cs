@@ -83,6 +83,14 @@ namespace FireSafety
                         "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     world.BuildWorld();
                 }
+
+                if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
+                {
+                    MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
+                        $"Спасено деревьев: {world.terrain.trees.Where(tree=>tree.state.IsNormal()).Count()}\n" +
+                        $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");
+                    gui.form.Reload();
+                }
             }
         }
 
