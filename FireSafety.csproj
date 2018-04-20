@@ -101,6 +101,13 @@
     </Compile>
     <Compile Include="Flame.cs" />
     <Compile Include="FontHolder.cs" />
+    <Compile Include="InfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoForm.Designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TankController.cs" />
     <Compile Include="Terrain.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Gui.cs" />
@@ -133,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FireSafetyForm.resx">
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

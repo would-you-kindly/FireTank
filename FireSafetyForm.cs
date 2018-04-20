@@ -20,10 +20,11 @@ namespace FireSafety
         ParallelAlgorithm _parallelAlgorithm;
         public List<AlgorithmForm> algorithmForms;
         public RenderWindow renderWindow;
+        public InfoForm infoForm;
         Form sfmlForm;
         private bool algorithmBuilt = false;
 
-        public FireSafetyForm(ParallelAlgorithm parallelAlgorithm)
+        public FireSafetyForm(List<Tank> tanks, ParallelAlgorithm parallelAlgorithm)
         {
             InitializeComponent();
 
@@ -39,6 +40,10 @@ namespace FireSafety
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
             }
+
+            infoForm = new InfoForm(tanks);
+            infoForm.MdiParent = this;
+            infoForm.Show();
 
             // Задаем параметры формы
             sfmlForm = new Form();

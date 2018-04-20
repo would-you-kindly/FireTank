@@ -29,7 +29,7 @@ namespace FireSafety
         {
             parallelAlgorithm = new ParallelAlgorithm();
             world = new World(parallelAlgorithm);
-            gui = new Gui(parallelAlgorithm);
+            gui = new Gui(world.tanks, parallelAlgorithm);
 
             AssignEvents();
         }

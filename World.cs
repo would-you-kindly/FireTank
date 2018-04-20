@@ -126,6 +126,10 @@ namespace FireSafety
                     traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position, 
                         tank.turret.waterPressure, tank.turret.NormalizedRotation));
                 };
+                //tank.turret.TurretPressure += delegate (object sender, Turret.PressureTurretEventArgs e)
+                //{
+                //    MessageBox.Show("");
+                //};
                 tanks.Add(tank);
             }
 

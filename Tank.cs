@@ -231,55 +231,33 @@ namespace FireSafety
                     RotateTankBy(-45);
                     break;
                 case MoveCommand.Commands.Forward45CW:
-                    if ((NormalizedRotation / 45.0) % 2 == 1)
-                    {
-                        MoveTo(MoveCommand.Commands.Forward);
-                        RotateTankBy(45);
-                    }
-                    else
-                    {
-                        RotateTankBy(45);
-                        MoveTo(MoveCommand.Commands.Forward);
-                    }
+                    MoveAndRotate(MoveCommand.Commands.Forward, 45.0f);
                     break;
                 case MoveCommand.Commands.Forward45CCW:
-                    if ((NormalizedRotation / 45.0) % 2 == 1)
-                    {
-                        MoveTo(MoveCommand.Commands.Forward);
-                        RotateTankBy(-45);
-                    }
-                    else
-                    {
-                        RotateTankBy(-45);
-                        MoveTo(MoveCommand.Commands.Forward);
-                    }
+                    MoveAndRotate(MoveCommand.Commands.Forward, -45.0f);
                     break;
                 case MoveCommand.Commands.Backward45CW:
-                    if ((NormalizedRotation / 45.0) % 2 == 1)
-                    {
-                        MoveTo(MoveCommand.Commands.Backward);
-                        RotateTankBy(45);
-                    }
-                    else
-                    {
-                        RotateTankBy(45);
-                        MoveTo(MoveCommand.Commands.Backward);
-                    }
+                    MoveAndRotate(MoveCommand.Commands.Backward, 45.0f);
                     break;
                 case MoveCommand.Commands.Backward45CCW:
-                    if ((NormalizedRotation / 45.0) % 2 == 1)
-                    {
-                        MoveTo(MoveCommand.Commands.Backward);
-                        RotateTankBy(-45);
-                    }
-                    else
-                    {
-                        RotateTankBy(-45);
-                        MoveTo(MoveCommand.Commands.Backward);
-                    }
+                    MoveAndRotate(MoveCommand.Commands.Backward, -45.0f);
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void MoveAndRotate(MoveCommand.Commands where, float rotation)
+        {
+            if ((NormalizedRotation / 45.0) % 2 == 1)
+            {
+                MoveTo(where);
+                RotateTankBy(rotation);
+            }
+            else
+            {
+                RotateTankBy(rotation);
+                MoveTo(where);
             }
         }
 

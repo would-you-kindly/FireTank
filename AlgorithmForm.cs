@@ -118,26 +118,27 @@ namespace FireSafety
                 dgvAlgorithm.Rows[i].Cells[0].Value = i + 1;
             }
 
+            // Отменяем выделение и ставим фокус на таблице
             dgvAlgorithm.ClearSelection();
             dgvAlgorithm.Focus();
         }
 
-        public void ColorActionRow(int number)
-        {
-            foreach (DataGridViewRow item in dgvAlgorithm.Rows)
-            {
-                item.DefaultCellStyle.BackColor = Color.White;
-            }
+        //public void ColorActionRow(int number)
+        //{
+        //    foreach (DataGridViewRow item in dgvAlgorithm.Rows)
+        //    {
+        //        item.DefaultCellStyle.BackColor = Color.White;
+        //    }
 
-            try
-            {
-                dgvAlgorithm.Rows[number].DefaultCellStyle.BackColor = Color.Yellow;
-            }
-            catch (Exception)
-            {
-                // Ignore exception
-            }
-        }
+        //    try
+        //    {
+        //        dgvAlgorithm.Rows[number].DefaultCellStyle.BackColor = Color.Yellow;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // Ignore exception
+        //    }
+        //}
 
         // Составляет алгоритм на основе данных в элементах управления
         public void BuildAlgorithm()

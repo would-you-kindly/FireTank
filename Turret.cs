@@ -74,7 +74,7 @@ namespace FireSafety
         public event PressureTurretErrorEventHandler TurretPressureError;
 
         // Параметры-ссылки
-        Terrain _terrain;
+        private Terrain _terrain;
 
         // Параметры турели
         public const int maxWaterPressure = 3;

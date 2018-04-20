@@ -15,13 +15,13 @@ namespace FireSafety
 
         public FireSafetyForm form;
 
-        public Gui(ParallelAlgorithm parallelAlgorithm)
+        public Gui(List<Tank> tanks, ParallelAlgorithm parallelAlgorithm)
         {
             _parallelAlgorithm = parallelAlgorithm;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            form = new FireSafetyForm(parallelAlgorithm);
+            form = new FireSafetyForm(tanks, parallelAlgorithm);
             form.Show();
         }
     }
