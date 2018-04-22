@@ -18,6 +18,9 @@ namespace FireSafety
         public class AddActionEventArgs : EventArgs
         {
         }
+        public class ChangeCommandEventArgs : EventArgs
+        {
+        }
         public class SaveEventArgs : EventArgs
         {
         }
@@ -27,12 +30,14 @@ namespace FireSafety
 
         // События параллельного алгоритма
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
+        public delegate void ChangeCommandEventHandler(object sender, ChangeCommandEventArgs e);
         public delegate void SaveEventHandler(object sender, LoadEventArgs e);
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
         public event AddActionEventHandler ActionAdded;
+        public event ChangeCommandEventHandler CommandChanged;
         public event SaveEventHandler Saved;
         public event LoadEventHandler Loaded;
-
+        
         // Переменные параллельного алгоритма
         public List<Algorithm> algorithms;
 
@@ -74,17 +79,17 @@ namespace FireSafety
 
         public void AddAction(int algorithmNumber, Action action)
         {
-            this[algorithmNumber].actions.Add(action);
+            algorithms[algorithmNumber].actions.Add(action);
 
             ActionAdded?.Invoke(this, new AddActionEventArgs());
         }
 
-        //public void ChangeCommand(int algorithmNumber, int , Action action)
-        //{
-        //    this[algorithmNumber].actions.Enqueue(action);
+        public void ChangeCommand(int algorithmNumber, int actionNumber, int commandNumber, Command command)
+        {
+            algorithms[algorithmNumber].actions[actionNumber].commands[commandNumber] = command;
 
-        //    ActionAdded?.Invoke(this, new AddActionEventArgs());
-        //}
+            CommandChanged?.Invoke(this, new ChangeCommandEventArgs());
+        }
 
         public void Load(string filename)
         {
@@ -117,7 +122,7 @@ namespace FireSafety
         public void Clear()
         {
             // TODO: Нужно ли чистить?????
-            //Algorithms.Clear();
+            instance = null;
         }
     }
 }

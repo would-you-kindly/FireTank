@@ -15,23 +15,42 @@ namespace FireSafety
             foreach (AlgorithmForm form in algorithmForms)
             {
                 form.dgvAlgorithm.RowsAdded += DgvAlgorithm_RowsAdded;
-
-                form.dgvAlgorithm.CellValueChanged += delegate (object sender, DataGridViewCellEventArgs e)
-                {
-                    //DataGridViewRow row = form.dgvAlgorithm.Rows[e.RowIndex];
-
-                    //// Собираем команды с добавленного DataGridViewRow
-                    //MoveCommand.Commands moveCommand = Utilities.ToMoveCommand(row.Cells[1].Value.ToString());
-                    //ChargeCommand.Commands chargeCommand = Utilities.ToChargeCommand(row.Cells[2].Value.ToString());
-                    //TurretCommand.Commands turretCommand = Utilities.ToTurretCommand(row.Cells[3].Value.ToString());
-
-                    //// Добавляем Action в соответствующий алгоритм танка
-                    //Action action = new Action(moveCommand, chargeCommand, turretCommand);
-                    //ParallelAlgorithm.GetInstance().AddAction(form.formNumber, action);
-                };
+                form.dgvAlgorithm.CellValueChanged += DgvAlgorithm_CellValueChanged;
             }
 
             // TODO: Почему-то если подписаться здесь ParallelAlgorithm.GetInstance().Loaded, то требует, чтобы этот класс тоже был сериализуемым
+        }
+
+        private static void DgvAlgorithm_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = ((DataGridView)sender).Rows[e.RowIndex];
+            Command command = null;
+
+            // Создаем команду в зависимости от измененного столбца
+            switch (e.ColumnIndex)
+            {
+                case 1:
+                    command = new MoveCommand(Utilities.ToMoveCommand(row.Cells[1].Value.ToString()));
+                    break;
+                case 2:
+                    command = new ChargeCommand(Utilities.ToChargeCommand(row.Cells[2].Value.ToString()));
+                    break;
+                case 3:
+                    command = new TurretCommand(Utilities.ToTurretCommand(row.Cells[3].Value.ToString()));
+                    break;
+                default:
+                    break;
+            }
+
+            // Меняем соответствующую команду алгоритма
+            if (command != null)
+            {
+                ParallelAlgorithm.GetInstance().ChangeCommand((int)((DataGridView)sender).Tag, e.RowIndex, e.ColumnIndex, command);
+            }
+            else
+            {
+                throw new Exception("Команде алгоритма присвоено несуществующее значение");
+            }
         }
 
         public static void ParallelAlgorithmController_Loaded(object sender, ParallelAlgorithm.LoadEventArgs e)
@@ -40,6 +59,7 @@ namespace FireSafety
             foreach (AlgorithmForm form in algorithmForms)
             {
                 form.dgvAlgorithm.RowsAdded -= DgvAlgorithm_RowsAdded;
+                form.dgvAlgorithm.CellValueChanged -= DgvAlgorithm_CellValueChanged;
             }
 
             // Обновляем DataGridView в соответствии с алгоритмом
@@ -66,6 +86,7 @@ namespace FireSafety
             foreach (AlgorithmForm form in algorithmForms)
             {
                 form.dgvAlgorithm.RowsAdded += DgvAlgorithm_RowsAdded;
+                form.dgvAlgorithm.CellValueChanged += DgvAlgorithm_CellValueChanged;
             }
         }
 

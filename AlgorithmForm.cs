@@ -27,19 +27,6 @@ namespace FireSafety
 
             _algorithm = algorithm;
 
-            //// Добавляем команды алгоритма в ComboBox'ы
-            //for (int i = 0; i < (int)MoveCommand.Commands.None; i++)
-            //{
-            //    cbMove.Items.Add(new MoveCommand((MoveCommand.Commands)i));
-            //}
-            //for (int i = 0; i < (int)MoveCommand.Commands.None; i++)
-            //{
-            //    cbShoot.Items.Add(new ChargeCommand((ChargeCommand.Commands)i));
-            //}
-            //for (int i = 0; i < (int)MoveCommand.Commands.None; i++)
-            //{
-            //    cbTurret.Items.Add(new TurretCommand((TurretCommand.Commands)i));
-            //}
 
             dgvAlgorithm.Focus();
             dgvAlgorithm.ClearSelection();
