@@ -47,12 +47,15 @@ namespace FireSafety
         private void AssignEvents()
         {
             gui.form.renderWindow.Closed += Window_Closed;
+            Rendered += Game_Rendered;
+
             // TODO: Почему-то здесь не хочет подписываться на события
             //foreach (Tank tank in world.tanks)
             //{
             //    tank.Collided += Tank_Collide;
             //}
         }
+
 
         public void Run()
         {
@@ -71,39 +74,11 @@ namespace FireSafety
                     if (executing)
                     {
                         Update(timePerFrame);
-                        //Utilities.CURRENT_ACTION_NUMBER++;
                     }
-                    //else
-                    //{
-                    //    Utilities.CURRENT_ACTION_NUMBER = 0;
-                    //}
                 }
 
-                //foreach (AlgorithmForm form in gui.form.algorithmForms)
-                //{
-                //    form.ColorActionRow(Utilities.CURRENT_ACTION_NUMBER);
-                //}
                 Render();
 
-                // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
-                // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
-                // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
-                if (error)
-                {
-                    error = false;
-                    executing = false;
-                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка.\n{errorTank.color.ToString()} танк столкнулся с объектом\n{errorCollideEventArgs.entity.GetType().ToString()}",
-                        "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    world.BuildWorld();
-                }
-
-                if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
-                {
-                    MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
-                        $"Спасено деревьев: {world.terrain.trees.Where(tree=>tree.state.IsNormal()).Count()}\n" +
-                        $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");
-                    gui.form.Reload();
-                }
             }
         }
 
@@ -132,6 +107,30 @@ namespace FireSafety
         private void Window_Closed(object sender, EventArgs e)
         {
             ((RenderWindow)sender).Close();
+        }
+
+        private void Game_Rendered(object sender, RenderEventArgs e)
+        {
+
+            // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
+            // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
+            // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
+            if (error)
+            {
+                error = false;
+                executing = false;
+                MessageBox.Show($"Во время выполнения алгоритма произошла ошибка.\n{errorTank.color.ToString()} танк столкнулся с объектом\n{errorCollideEventArgs.entity.GetType().ToString()}",
+                    "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                world.BuildWorld();
+            }
+
+            if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
+            {
+                MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
+                    $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}\n" +
+                    $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");
+                gui.form.Reload();
+            }
         }
 
         public static void Tank_Collided(object sender, Tank.CollideEventArgs e)
