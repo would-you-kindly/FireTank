@@ -15,6 +15,16 @@ namespace FireSafety
     {
         private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
+        // Классы для передачи параметров событий
+        public class RenderEventArgs : EventArgs
+        {
+        }
+
+        // События игры
+        public delegate void RenderEventHandler(object sender, RenderEventArgs e);
+        public event RenderEventHandler Rendered;
+
+        // Переменные игры
         private ParallelAlgorithm parallelAlgorithm;
         internal static World world;
         public static Gui gui;
@@ -37,10 +47,11 @@ namespace FireSafety
         private void AssignEvents()
         {
             gui.form.renderWindow.Closed += Window_Closed;
-            foreach (Tank tank in world.tanks)
-            {
-                tank.Collided += Tank_Collide;
-            }
+            // TODO: Почему-то здесь не хочет подписываться на события
+            //foreach (Tank tank in world.tanks)
+            //{
+            //    tank.Collided += Tank_Collide;
+            //}
         }
 
         public void Run()
@@ -74,6 +85,8 @@ namespace FireSafety
                 //}
                 Render();
 
+                // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
+                // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
                 // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
                 if (error)
                 {
@@ -112,15 +125,18 @@ namespace FireSafety
             gui.form.renderWindow.Clear();
             gui.form.renderWindow.Draw(world);
             gui.form.renderWindow.Display();
+
+            Rendered?.Invoke(this, new RenderEventArgs());
         }
 
-        private static void Window_Closed(object sender, EventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
             ((RenderWindow)sender).Close();
         }
 
-        public static void Tank_Collide(object sender, Tank.CollideEventArgs e)
+        public static void Tank_Collided(object sender, Tank.CollideEventArgs e)
         {
+            // TODO: Как-то тупо сохраняем параметры
             error = true;
             errorTank = (Tank)sender;
             errorCollideEventArgs = e;

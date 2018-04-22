@@ -9,6 +9,11 @@ namespace FireSafety
 {
     class BurningTreeState : TreeState
     {
+        public BurningTreeState()
+        {
+            // Empty method
+        }
+
         public override void Extinguish(Tree tree)
         {
             tree.state = new NormalTreeState();

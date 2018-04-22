@@ -77,6 +77,7 @@ namespace FireSafety
         {
             states.Transform *= Transform;
 
+            // Рисуем дерево согласно его текущему состоянию
             if (state.IsNormal())
             {
                 target.Draw(sprite, states);

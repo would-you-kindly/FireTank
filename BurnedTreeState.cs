@@ -8,6 +8,11 @@ namespace FireSafety
 {
     class BurnedTreeState : TreeState
     {
+        public BurnedTreeState()
+        {
+            // Empty method
+        }
+
         public override void Extinguish(Tree tree)
         {
             // Empty method

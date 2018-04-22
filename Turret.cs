@@ -128,7 +128,7 @@ namespace FireSafety
 
         public void MoveBy(Vector2f move)
         {
-            // Поворачиваем башню
+            // Перемещаем башню
             sprite.Position += move;
 
             TurretMoved?.Invoke(this, new MoveTurretEventArgs(sprite.Position));

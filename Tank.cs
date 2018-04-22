@@ -94,12 +94,12 @@ namespace FireSafety
             };
 
             // Определяем событие столкновения с объектами сцены
-            Collided += delegate (object sender, CollideEventArgs e)
-            {
-                Game.error = true;
-                Game.errorTank = (Tank)sender;
-                Game.errorCollideEventArgs = e;
-            };
+            //Collided += delegate (object sender, CollideEventArgs e)
+            //{
+            //    Game.error = true;
+            //    Game.errorTank = (Tank)sender;
+            //    Game.errorCollideEventArgs = e;
+            //};
 
             // Выставляем Origin в центр картинки
             Utilities.CenterOrigin(sprite);

@@ -126,6 +126,12 @@ namespace FireSafety
                     traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position, 
                         tank.turret.waterPressure, tank.turret.NormalizedRotation));
                 };
+                // TODO: Лучше бы подписаться в самом Game, но почему-то не подписывается
+                // Обрабатываем ошибку столкновения с игровыми объектами
+                tank.Collided += delegate (object sender, Tank.CollideEventArgs e)
+                {
+                    Game.Tank_Collided(sender, e);
+                };
                 //tank.turret.TurretPressure += delegate (object sender, Turret.PressureTurretEventArgs e)
                 //{
                 //    MessageBox.Show("");
