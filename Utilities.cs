@@ -102,7 +102,6 @@ namespace FireSafety
                     return TurretCommand.Commands.Shoot;
                 case "None":
                     return TurretCommand.Commands.None;
-
             }
 
             throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");

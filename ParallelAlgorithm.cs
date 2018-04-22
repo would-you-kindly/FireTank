@@ -21,6 +21,9 @@ namespace FireSafety
         public class ChangeCommandEventArgs : EventArgs
         {
         }
+        public class RemoveActionEventArgs : EventArgs
+        {
+        }
         public class SaveEventArgs : EventArgs
         {
         }
@@ -31,10 +34,12 @@ namespace FireSafety
         // События параллельного алгоритма
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
         public delegate void ChangeCommandEventHandler(object sender, ChangeCommandEventArgs e);
+        public delegate void RemoveActionEventHandler(object sender, RemoveActionEventArgs e);
         public delegate void SaveEventHandler(object sender, LoadEventArgs e);
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
         public event AddActionEventHandler ActionAdded;
         public event ChangeCommandEventHandler CommandChanged;
+        public event RemoveActionEventHandler ActionRemoved;
         public event SaveEventHandler Saved;
         public event LoadEventHandler Loaded;
         
@@ -89,6 +94,13 @@ namespace FireSafety
             algorithms[algorithmNumber].actions[actionNumber].commands[commandNumber] = command;
 
             CommandChanged?.Invoke(this, new ChangeCommandEventArgs());
+        }
+
+        public void DeleteAction(int algorithmNumber, int actionNumber)
+        {
+            algorithms[algorithmNumber].actions.RemoveAt(actionNumber);
+
+            ActionRemoved?.Invoke(this, new RemoveActionEventArgs());
         }
 
         public void Load(string filename)

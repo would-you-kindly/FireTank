@@ -253,11 +253,11 @@ namespace FireSafety
                     "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            // Пересчитываем номера строк таблицы
-            for (int i = 0; i < dgvAlgorithm.Rows.Count; i++)
-            {
-                dgvAlgorithm.Rows[i].Cells[0].Value = i + 1;
-            }
+            //// Пересчитываем номера строк таблицы
+            //for (int i = 0; i < dgvAlgorithm.Rows.Count; i++)
+            //{
+            //    dgvAlgorithm.Rows[i].Cells[0].Value = i + 1;
+            //}
         }
 
         private void btnDeleteAction_Click(object sender, EventArgs e)
