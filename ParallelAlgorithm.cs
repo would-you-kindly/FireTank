@@ -24,6 +24,9 @@ namespace FireSafety
         public class RemoveActionEventArgs : EventArgs
         {
         }
+        public class ClearEventArgs : EventArgs
+        {
+        }
         public class SaveEventArgs : EventArgs
         {
         }
@@ -35,11 +38,13 @@ namespace FireSafety
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
         public delegate void ChangeCommandEventHandler(object sender, ChangeCommandEventArgs e);
         public delegate void RemoveActionEventHandler(object sender, RemoveActionEventArgs e);
-        public delegate void SaveEventHandler(object sender, LoadEventArgs e);
+        public delegate void ClearEventHandler(object sender, ClearEventArgs e);
+        public delegate void SaveEventHandler(object sender, SaveEventArgs e);
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
         public event AddActionEventHandler ActionAdded;
         public event ChangeCommandEventHandler CommandChanged;
         public event RemoveActionEventHandler ActionRemoved;
+        public event ClearEventHandler Cleared;
         public event SaveEventHandler Saved;
         public event LoadEventHandler Loaded;
         
@@ -65,6 +70,8 @@ namespace FireSafety
 
                 // При загрузке алгоритма заполняем таблицу данными алгоритма
                 instance.Loaded += ParallelAlgorithmController.ParallelAlgorithmController_Loaded;
+                // При очистке алгоритма очищаем таблицу
+                instance.Cleared += ParallelAlgorithmController.ParallelAlgorithmController_Cleared;
             }
 
             return instance;
@@ -122,7 +129,7 @@ namespace FireSafety
                 formatter.Serialize(fs, this);
             }
 
-            Saved?.Invoke(this, new LoadEventArgs());
+            Saved?.Invoke(this, new SaveEventArgs());
         }
 
         public void Execute()
@@ -133,8 +140,10 @@ namespace FireSafety
 
         public void Clear()
         {
-            // TODO: Нужно ли чистить?????
+            // TODO: Нужно ли чистить????? instance = null, а в памяти весь хлам остался
             instance = null;
+
+            Cleared?.Invoke(this, new ClearEventArgs());
         }
     }
 }

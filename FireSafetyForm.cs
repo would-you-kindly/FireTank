@@ -86,7 +86,7 @@ namespace FireSafety
             SaveFileDialog sfd = new SaveFileDialog();
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                ParallelAlgorithm.GetInstance().Save(sfd.FileName);
+                controller.SaveAlgorithm(sfd.FileName);
             }
         }
 
@@ -95,7 +95,7 @@ namespace FireSafety
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                ParallelAlgorithm.GetInstance().Load(ofd.FileName);
+                controller.LoadAlgorithm(ofd.FileName);
             }
         }
 
@@ -225,11 +225,9 @@ namespace FireSafety
             {
                 Game.executing = false;
                 Game.world.BuildWorld();
-                //ParallelAlgorithm.GetInstance().Clear();
-                foreach (AlgorithmForm form in algorithmForms)
-                {
-                    form.dgvAlgorithm.Rows.Clear();
-                }
+
+                controller.ClearAlgorithm();
+                
             }
         }
 

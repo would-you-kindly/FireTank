@@ -12,19 +12,14 @@ namespace FireSafety
         {
             algorithmForms = algoForms;
 
-            foreach (AlgorithmForm form in algorithmForms)
-            {
-                form.dgvAlgorithm.RowsAdded += DgvAlgorithm_RowsAdded;
-                form.dgvAlgorithm.CellValueChanged += DgvAlgorithm_CellValueChanged;
-                form.dgvAlgorithm.RowsRemoved += DgvAlgorithm_RowsRemoved;
-            }
+            AttachEvents();
 
             // TODO: Почему-то если подписаться здесь ParallelAlgorithm.GetInstance().Loaded, то требует, чтобы этот класс тоже был сериализуемым
         }
 
         private static void DgvAlgorithm_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            // Удаляем дейтсвие
+            // Удаляем действие
             ParallelAlgorithm.GetInstance().DeleteAction((int)((DataGridView)sender).Tag, e.RowIndex);
 
             // Обновляем номера строк в таблице
@@ -68,13 +63,7 @@ namespace FireSafety
 
         public static void ParallelAlgorithmController_Loaded(object sender, ParallelAlgorithm.LoadEventArgs e)
         {
-            // Отключаем изменение действий при изменении строки в таблице, чтобы события не зациклились
-            foreach (AlgorithmForm form in algorithmForms)
-            {
-                form.dgvAlgorithm.RowsAdded -= DgvAlgorithm_RowsAdded;
-                form.dgvAlgorithm.CellValueChanged -= DgvAlgorithm_CellValueChanged;
-                form.dgvAlgorithm.RowsRemoved -= DgvAlgorithm_RowsRemoved;
-            }
+            DetachEvents();
 
             // Обновляем DataGridView в соответствии с алгоритмом
             for (int i = 0; i < algorithmForms.Count; i++)
@@ -96,13 +85,17 @@ namespace FireSafety
                 }
             }
 
-            // Возвращаем изменение действий при изменении строки в таблице
-            foreach (AlgorithmForm form in algorithmForms)
-            {
-                form.dgvAlgorithm.RowsAdded += DgvAlgorithm_RowsAdded;
-                form.dgvAlgorithm.CellValueChanged += DgvAlgorithm_CellValueChanged;
-                form.dgvAlgorithm.RowsRemoved += DgvAlgorithm_RowsRemoved;
-            }
+            AttachEvents();
+        }
+
+        public void LoadAlgorithm(string fileName)
+        {
+            ParallelAlgorithm.GetInstance().Load(fileName);
+        }
+
+        public void SaveAlgorithm(string fileName)
+        {
+            ParallelAlgorithm.GetInstance().Save(fileName);
         }
 
         private static void DgvAlgorithm_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -117,6 +110,45 @@ namespace FireSafety
             // Добавляем Action в соответствующий алгоритм танка
             Action action = new Action(moveCommand, chargeCommand, turretCommand);
             ParallelAlgorithm.GetInstance().AddAction((int)((DataGridView)sender).Tag, action);
+        }
+
+        public void ClearAlgorithm()
+        {
+            ParallelAlgorithm.GetInstance().Clear();
+        }
+
+        public static void ParallelAlgorithmController_Cleared(object sender, ParallelAlgorithm.ClearEventArgs e)
+        {
+            DetachEvents();
+
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                form.dgvAlgorithm.Rows.Clear();
+            }
+
+            AttachEvents();
+        }
+
+        private static void AttachEvents()
+        {
+            // Подключаем изменение действий при изменении строки в таблице
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                form.dgvAlgorithm.RowsAdded += DgvAlgorithm_RowsAdded;
+                form.dgvAlgorithm.CellValueChanged += DgvAlgorithm_CellValueChanged;
+                form.dgvAlgorithm.RowsRemoved += DgvAlgorithm_RowsRemoved;
+            }
+        }
+
+        private static void DetachEvents()
+        {
+            // Отключаем изменение действий при изменении строки в таблице, чтобы события не зациклились
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                form.dgvAlgorithm.RowsAdded -= DgvAlgorithm_RowsAdded;
+                form.dgvAlgorithm.CellValueChanged -= DgvAlgorithm_CellValueChanged;
+                form.dgvAlgorithm.RowsRemoved -= DgvAlgorithm_RowsRemoved;
+            }
         }
     }
 }
