@@ -16,17 +16,15 @@ namespace FireSafety
     {
         Algorithm _algorithm;
 
-        public int formNumber;
 
         Stopwatch clock = new Stopwatch();
         bool keyPressed = false;
         private const int timeToHold = 200;
 
-        public AlgorithmForm(Algorithm algorithm, int formNumber)
+        public AlgorithmForm(Algorithm algorithm)
         {
             InitializeComponent();
 
-            this.formNumber = formNumber;
             _algorithm = algorithm;
 
             //// Добавляем команды алгоритма в ComboBox'ы

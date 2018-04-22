@@ -32,7 +32,8 @@ namespace FireSafety
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i], i);
+                AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i]);
+                algorithmForm.dgvAlgorithm.Tag = i;
                 algorithmForm.MdiParent = this;
                 algorithmForm.Text = $"{(i + 1)}. {Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString()}";
                 algorithmForm.Show();
@@ -78,36 +79,23 @@ namespace FireSafety
             //_parallelAlgorithm.Execute();
             Game.executing = true;
             algorithmBuilt = false;
-
-            var t = ParallelAlgorithm.GetInstance();
-
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < algorithmForms.Count; i++)
-            {
-                algorithmForms[i].BuildAlgorithm();
-            }
-
-            BinaryFormatter formatter = new BinaryFormatter();
             SaveFileDialog sfd = new SaveFileDialog();
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write))
-                {
-                    formatter.Serialize(fs, ParallelAlgorithm.GetInstance());
-                }
+                ParallelAlgorithm.GetInstance().Save(sfd.FileName);
             }
         }
 
         private void openAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                OpenAlgorithm(Path.Combine(ofd.FileName));
+                ParallelAlgorithm.GetInstance().Load(ofd.FileName);
             }
         }
 
@@ -154,7 +142,7 @@ namespace FireSafety
                 algorithmForms.Clear();
                 for (int i = 0; i < Utilities.TANKS_COUNT; i++)
                 {
-                    AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i], i);
+                    AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i]);
                     algorithmForm.MdiParent = this;
                     algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
                     algorithmForm.Show();
@@ -164,28 +152,10 @@ namespace FireSafety
                 // Если указан обучающий алгоритм, загружаем его
                 if (Game.world.map.properties["algorithm"] != string.Empty)
                 {
-                    OpenAlgorithm(Path.Combine(Path.GetFullPath(ofd.FileName), Game.world.map.properties["algorithm"]));
+                    ParallelAlgorithm.GetInstance().Load(Path.Combine(Path.GetFullPath(ofd.FileName), Game.world.map.properties["algorithm"]));
                 }
 
                 SmartLayout();
-            }
-        }
-
-        private void OpenAlgorithm(string filename)
-        {
-            ParallelAlgorithm.GetInstance().Load(filename);
-
-            // Записываем шаги алгоритма в элементы управления формы
-            for (int i = 0; i < algorithmForms.Count; i++)
-            {
-                algorithmForms[i].dgvAlgorithm.Rows.Clear();
-                int actionCount = ParallelAlgorithm.GetInstance().algorithms[i].actions.Count;
-                for (int j = 0; j < actionCount; j++)
-                {
-                    Action action = ParallelAlgorithm.GetInstance().algorithms[i].actions.Last();
-                    algorithmForms[i].dgvAlgorithm.Rows.Add(j + 1, action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
-                }
-                algorithmForms[i].dgvAlgorithm.ClearSelection();
             }
         }
 

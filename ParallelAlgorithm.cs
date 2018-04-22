@@ -18,10 +18,20 @@ namespace FireSafety
         public class AddActionEventArgs : EventArgs
         {
         }
+        public class SaveEventArgs : EventArgs
+        {
+        }
+        public class LoadEventArgs : EventArgs
+        {
+        }
 
         // События параллельного алгоритма
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
+        public delegate void SaveEventHandler(object sender, LoadEventArgs e);
+        public delegate void LoadEventHandler(object sender, LoadEventArgs e);
         public event AddActionEventHandler ActionAdded;
+        public event SaveEventHandler Saved;
+        public event LoadEventHandler Loaded;
 
         // Переменные параллельного алгоритма
         public List<Algorithm> algorithms;
@@ -42,6 +52,9 @@ namespace FireSafety
             if (instance == null)
             {
                 instance = new ParallelAlgorithm();
+
+                // При загрузке алгоритма заполняем таблицу данными алгоритма
+                instance.Loaded += ParallelAlgorithmController.ParallelAlgorithmController_Loaded;
             }
 
             return instance;
@@ -80,6 +93,8 @@ namespace FireSafety
             {
                 instance = (ParallelAlgorithm)formatter.Deserialize(fs);
             }
+
+            Loaded?.Invoke(this, new LoadEventArgs());
         }
         
         public void Save(string filename)
@@ -89,6 +104,8 @@ namespace FireSafety
             {
                 formatter.Serialize(fs, this);
             }
+
+            Saved?.Invoke(this, new LoadEventArgs());
         }
 
         public void Execute()
