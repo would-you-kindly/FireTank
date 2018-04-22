@@ -30,5 +30,14 @@ namespace FireSafety
             commands[(int)Types.Charge] = new ChargeCommand(chargeCommand);
             commands[(int)Types.Turret] = new TurretCommand(turretCommand);
         }
+
+        public Action(MoveCommand moveCommand, ChargeCommand chargeCommand, TurretCommand turretCommand)
+        {
+            commands = new Command[(int)Types.Count];
+
+            commands[(int)Types.Move] = moveCommand;
+            commands[(int)Types.Charge] = chargeCommand;
+            commands[(int)Types.Turret] = turretCommand;
+        }
     }
 }

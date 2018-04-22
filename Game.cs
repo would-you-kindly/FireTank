@@ -13,7 +13,7 @@ namespace FireSafety
 {
     public class Game
     {
-        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 60.0f);
 
         // Классы для передачи параметров событий
         public class RenderEventArgs : EventArgs

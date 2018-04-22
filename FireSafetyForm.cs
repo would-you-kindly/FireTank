@@ -17,6 +17,7 @@ namespace FireSafety
 {
     public partial class FireSafetyForm : Form
     {
+        ParallelAlgorithmController controller;
         public List<AlgorithmForm> algorithmForms;
         public RenderWindow renderWindow;
         public InfoForm infoForm;
@@ -37,6 +38,8 @@ namespace FireSafety
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
             }
+
+            controller = new ParallelAlgorithmController(algorithmForms);
 
             infoForm = new InfoForm();
             infoForm.MdiParent = this;
@@ -179,7 +182,7 @@ namespace FireSafety
                 int actionCount = ParallelAlgorithm.GetInstance().algorithms[i].actions.Count;
                 for (int j = 0; j < actionCount; j++)
                 {
-                    Action action = ParallelAlgorithm.GetInstance().algorithms[i].actions.Dequeue();
+                    Action action = ParallelAlgorithm.GetInstance().algorithms[i].actions.Last();
                     algorithmForms[i].dgvAlgorithm.Rows.Add(j + 1, action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
                 }
                 algorithmForms[i].dgvAlgorithm.ClearSelection();

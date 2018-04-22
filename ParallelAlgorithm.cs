@@ -14,6 +14,16 @@ namespace FireSafety
         [NonSerialized]
         private static ParallelAlgorithm instance;
 
+        // Классы для передачи параметров событий
+        public class AddActionEventArgs : EventArgs
+        {
+        }
+
+        // События параллельного алгоритма
+        public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
+        public event AddActionEventHandler ActionAdded;
+
+        // Переменные параллельного алгоритма
         public List<Algorithm> algorithms;
 
         private ParallelAlgorithm()
@@ -51,8 +61,17 @@ namespace FireSafety
 
         public void AddAction(int algorithmNumber, Action action)
         {
+            this[algorithmNumber].actions.Add(action);
 
+            ActionAdded?.Invoke(this, new AddActionEventArgs());
         }
+
+        //public void ChangeCommand(int algorithmNumber, int , Action action)
+        //{
+        //    this[algorithmNumber].actions.Enqueue(action);
+
+        //    ActionAdded?.Invoke(this, new AddActionEventArgs());
+        //}
 
         public void Load(string filename)
         {

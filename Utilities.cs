@@ -37,5 +37,75 @@ namespace FireSafety
             FloatRect rect = shape.GetLocalBounds();
             shape.Origin = new Vector2f(rect.Width / 2.0f + shiftX, rect.Height / 2.0f + shiftY);
         }
+
+        public static MoveCommand.Commands ToMoveCommand(string value)
+        {
+            switch (value)
+            {
+                case "Forward":
+                    return MoveCommand.Commands.Forward;
+                case "Backward":
+                    return MoveCommand.Commands.Backward;
+                case "Rotate 90 CW":
+                    return MoveCommand.Commands.Rotate90CW;
+                case "Rotate 90 CCW":
+                    return MoveCommand.Commands.Rotate90CCW;
+                case "Rotate 45 CW":
+                    return MoveCommand.Commands.Rotate45CW;
+                case "Rotate 45 CCW":
+                    return MoveCommand.Commands.Rotate45CCW;
+                case "Forward 45 CW":
+                    return MoveCommand.Commands.Forward45CW;
+                case "Forward 45 CCW":
+                    return MoveCommand.Commands.Forward45CCW;
+                case "Backward 45 CW":
+                    return MoveCommand.Commands.Backward45CW;
+                case "Backward 45 CCW":
+                    return MoveCommand.Commands.Backward45CCW;
+                case "None":
+                    return MoveCommand.Commands.None;
+            }
+
+            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует");
+        }
+
+        public static ChargeCommand.Commands ToChargeCommand(string value)
+        {
+            switch (value)
+            {
+                case "Pressure":
+                    return ChargeCommand.Commands.Pressure;
+                case "None":
+                    return ChargeCommand.Commands.None;
+            }
+
+            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует");
+        }
+
+        public static TurretCommand.Commands ToTurretCommand(string value)
+        {
+            switch (value)
+            {
+                case "Rotate 45 CW":
+                    return TurretCommand.Commands.Rotate45CW;
+                case "Rotate 45 CCW":
+                    return TurretCommand.Commands.Rotate45CCW;
+                case "Rotate 90 CW":
+                    return TurretCommand.Commands.Rotate90CW;
+                case "Rotate 90 CCW":
+                    return TurretCommand.Commands.Rotate90CCW;
+                case "Up":
+                    return TurretCommand.Commands.Up;
+                case "Down":
+                    return TurretCommand.Commands.Down;
+                case "Shoot":
+                    return TurretCommand.Commands.Shoot;
+                case "None":
+                    return TurretCommand.Commands.None;
+
+            }
+
+            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
+        }
     }
 }

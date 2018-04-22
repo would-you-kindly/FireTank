@@ -16,7 +16,7 @@ namespace FireSafety
     {
         Algorithm _algorithm;
 
-        int formNumber;
+        public int formNumber;
 
         Stopwatch clock = new Stopwatch();
         bool keyPressed = false;
@@ -25,8 +25,23 @@ namespace FireSafety
         public AlgorithmForm(Algorithm algorithm, int formNumber)
         {
             InitializeComponent();
+
             this.formNumber = formNumber;
             _algorithm = algorithm;
+
+            //// Добавляем команды алгоритма в ComboBox'ы
+            //for (int i = 0; i < (int)MoveCommand.Commands.None; i++)
+            //{
+            //    cbMove.Items.Add(new MoveCommand((MoveCommand.Commands)i));
+            //}
+            //for (int i = 0; i < (int)MoveCommand.Commands.None; i++)
+            //{
+            //    cbShoot.Items.Add(new ChargeCommand((ChargeCommand.Commands)i));
+            //}
+            //for (int i = 0; i < (int)MoveCommand.Commands.None; i++)
+            //{
+            //    cbTurret.Items.Add(new TurretCommand((TurretCommand.Commands)i));
+            //}
 
             dgvAlgorithm.Focus();
             dgvAlgorithm.ClearSelection();
@@ -100,9 +115,11 @@ namespace FireSafety
             // Вставляем новое действие в конец алгоритма
             else
             {
-                dgvAlgorithm.Rows.Add("", "None", "None", "None");
-                dgvAlgorithm.Rows[dgvAlgorithm.RowCount - 1].Cells[index].Value = cb.SelectedItem.ToString();
-                //ParallelAlgorithm.GetInstance().AddAction(formNumber, new Action());
+                int number = dgvAlgorithm.RowCount;
+                string move = index == 1 ? cb.SelectedItem.ToString() : "None";
+                string charge = index == 2 ? cb.SelectedItem.ToString() : "None";
+                string turret = index == 3 ? cb.SelectedItem.ToString() : "None";
+                dgvAlgorithm.Rows.Add(number, move, charge, turret);
             }
 
             // Перемещаем таблицу вниз, чтобы были видны новые добавленные дейтсвия
@@ -155,7 +172,7 @@ namespace FireSafety
                 SetTurretCommands(listActions, i);
             }
 
-            _algorithm.actions = new Queue<Action>(listActions);
+            _algorithm.actions = listActions;
         }
 
         private void SetTurretCommands(List<Action> listActions, int i)
@@ -445,6 +462,11 @@ namespace FireSafety
         {
 
             dgvAlgorithm.Focus();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var t = ParallelAlgorithm.GetInstance();
         }
 
         //private const int GWL_STYLE = -16;
