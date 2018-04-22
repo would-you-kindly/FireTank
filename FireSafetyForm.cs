@@ -17,31 +17,28 @@ namespace FireSafety
 {
     public partial class FireSafetyForm : Form
     {
-        ParallelAlgorithm _parallelAlgorithm;
         public List<AlgorithmForm> algorithmForms;
         public RenderWindow renderWindow;
         public InfoForm infoForm;
         Form sfmlForm;
         private bool algorithmBuilt = false;
 
-        public FireSafetyForm(List<Tank> tanks, ParallelAlgorithm parallelAlgorithm)
+        public FireSafetyForm()
         {
             InitializeComponent();
-
-            _parallelAlgorithm = parallelAlgorithm;
 
             // Создаем окна алгоритмов
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                AlgorithmForm algorithmForm = new AlgorithmForm(_parallelAlgorithm[i]);
+                AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i], i);
                 algorithmForm.MdiParent = this;
                 algorithmForm.Text = $"{(i + 1)}. {Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString()}";
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
             }
 
-            infoForm = new InfoForm(tanks);
+            infoForm = new InfoForm();
             infoForm.MdiParent = this;
             infoForm.Show();
 
@@ -57,10 +54,6 @@ namespace FireSafety
             surface.Size = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
             sfmlForm.Controls.Add(surface);
             sfmlForm.ControlBox = false;
-            //sfmlForm.ClientSizeChanged += delegate (object sender, EventArgs e)
-            //{
-            //    surface.Size = sfmlForm.ClientSize;
-            //};
 
             // Creates our SFML RenderWindow on our surface control
             renderWindow = new RenderWindow(surface.Handle);
@@ -82,6 +75,9 @@ namespace FireSafety
             //_parallelAlgorithm.Execute();
             Game.executing = true;
             algorithmBuilt = false;
+
+            var t = ParallelAlgorithm.GetInstance();
+
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,7 +93,7 @@ namespace FireSafety
             {
                 using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write))
                 {
-                    formatter.Serialize(fs, _parallelAlgorithm);
+                    formatter.Serialize(fs, ParallelAlgorithm.GetInstance());
                 }
             }
         }
@@ -155,7 +151,7 @@ namespace FireSafety
                 algorithmForms.Clear();
                 for (int i = 0; i < Utilities.TANKS_COUNT; i++)
                 {
-                    AlgorithmForm algorithmForm = new AlgorithmForm(_parallelAlgorithm[i]);
+                    AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i], i);
                     algorithmForm.MdiParent = this;
                     algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
                     algorithmForm.Show();
@@ -174,20 +170,16 @@ namespace FireSafety
 
         private void OpenAlgorithm(string filename)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
-            {
-                _parallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
-            }
+            ParallelAlgorithm.GetInstance().Load(filename);
 
             // Записываем шаги алгоритма в элементы управления формы
             for (int i = 0; i < algorithmForms.Count; i++)
             {
                 algorithmForms[i].dgvAlgorithm.Rows.Clear();
-                int actionCount = _parallelAlgorithm.Algorithms[i].Actions.Count;
+                int actionCount = ParallelAlgorithm.GetInstance().algorithms[i].actions.Count;
                 for (int j = 0; j < actionCount; j++)
                 {
-                    Action action = _parallelAlgorithm.Algorithms[i].Actions.Dequeue();
+                    Action action = ParallelAlgorithm.GetInstance().algorithms[i].actions.Dequeue();
                     algorithmForms[i].dgvAlgorithm.Rows.Add(j + 1, action.commands[0].ToString(), action.commands[1].ToString(), action.commands[2].ToString());
                 }
                 algorithmForms[i].dgvAlgorithm.ClearSelection();
@@ -260,7 +252,7 @@ namespace FireSafety
             {
                 Game.executing = false;
                 Game.world.BuildWorld();
-                _parallelAlgorithm.Clear();
+                //ParallelAlgorithm.GetInstance().Clear();
                 foreach (AlgorithmForm form in algorithmForms)
                 {
                     form.dgvAlgorithm.Rows.Clear();

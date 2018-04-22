@@ -11,28 +11,47 @@ namespace FireSafety
     [Serializable]
     public class ParallelAlgorithm
     {
-        public List<Algorithm> Algorithms { get; set; }
+        [NonSerialized]
+        private static ParallelAlgorithm instance;
 
-        public ParallelAlgorithm()
+        public List<Algorithm> algorithms;
+
+        private ParallelAlgorithm()
         {
-            Algorithms = new List<Algorithm>();
+            algorithms = new List<Algorithm>();
 
+            // Создаем алгоритмы сразу для максимального количества танков
             for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
             {
-                Algorithms.Add(new Algorithm());
+                algorithms.Add(new Algorithm());
             }
+        }
+
+        public static ParallelAlgorithm GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ParallelAlgorithm();
+            }
+
+            return instance;
         }
 
         public Algorithm this[int index]
         {
             get
             {
-                return Algorithms[index];
+                return algorithms[index];
             }
             set
             {
-                Algorithms[index] = value;
+                algorithms[index] = value;
             }
+        }
+
+        public void AddAction(int algorithmNumber, Action action)
+        {
+
         }
 
         public void Load(string filename)
@@ -40,8 +59,7 @@ namespace FireSafety
             BinaryFormatter formatter = new BinaryFormatter();
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
-                ParallelAlgorithm loadedParallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
-                this.Algorithms = loadedParallelAlgorithm.Algorithms;
+                instance = (ParallelAlgorithm)formatter.Deserialize(fs);
             }
         }
         

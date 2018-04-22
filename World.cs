@@ -19,12 +19,9 @@ namespace FireSafety
         public Terrain terrain;
         public static Wind wind;
         public List<WaterTrace> traces;
-        private ParallelAlgorithm _parallelAlgorithm;
 
-        public World(ParallelAlgorithm parallelAlgorithm)
+        public World()
         {
-            _parallelAlgorithm = parallelAlgorithm;
-
             LoadResources();
             BuildWorld();
         }
@@ -112,7 +109,7 @@ namespace FireSafety
                 tank.SetTerrain(terrain);
                 tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.SetRotation(tankObject.rotation);
-                tank.SetAlgorithm(_parallelAlgorithm[i]);
+                tank.SetAlgorithm(ParallelAlgorithm.GetInstance()[i]);
                 tank.turret.TurretShootError += delegate (object sender, Turret.ShootTurretErrorEventArgs e)
                 {
                     MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя выполнять выстрел без давления.", "Ошибка исполнителя Turret");

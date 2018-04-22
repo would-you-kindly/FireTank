@@ -21,12 +21,7 @@ namespace FireSafety
             None
         }
 
-        public Commands command { get; set; }
-
-        public TurretCommand()
-        {
-
-        }
+        public Commands command;
 
         public TurretCommand(Commands command)
         {

@@ -14,11 +14,11 @@ namespace FireSafety
     {
         public TankController tankController;
 
-        public InfoForm(List<Tank> tanks)
+        public InfoForm()
         {
             InitializeComponent();
 
-            tankController = new TankController(tanks, label3);
+            //tankController = new TankController(label3);
         }
     }
 }

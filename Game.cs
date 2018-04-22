@@ -25,7 +25,6 @@ namespace FireSafety
         public event RenderEventHandler Rendered;
 
         // Переменные игры
-        private ParallelAlgorithm parallelAlgorithm;
         internal static World world;
         public static Gui gui;
         public static bool executing = false;
@@ -37,9 +36,8 @@ namespace FireSafety
 
         public Game()
         {
-            parallelAlgorithm = new ParallelAlgorithm();
-            world = new World(parallelAlgorithm);
-            gui = new Gui(world.tanks, parallelAlgorithm);
+            world = new World();
+            gui = new Gui();
 
             AssignEvents();
         }

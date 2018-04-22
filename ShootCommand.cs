@@ -15,12 +15,7 @@ namespace FireSafety
             None
         }
 
-        public Commands command { get; set; }
-
-        public ChargeCommand()
-        {
-
-        }
+        public Commands command;
 
         public ChargeCommand(Commands command)
         {
@@ -38,13 +33,11 @@ namespace FireSafety
             {
                 case Commands.Pressure:
                     return "Pressure";
-
                 case Commands.None:
                     return "None";
             }
 
             throw new NotImplementedException();
-
         }
     }
 }

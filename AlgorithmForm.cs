@@ -16,14 +16,16 @@ namespace FireSafety
     {
         Algorithm _algorithm;
 
+        int formNumber;
+
         Stopwatch clock = new Stopwatch();
         bool keyPressed = false;
         private const int timeToHold = 200;
 
-        public AlgorithmForm(Algorithm algorithm)
+        public AlgorithmForm(Algorithm algorithm, int formNumber)
         {
             InitializeComponent();
-
+            this.formNumber = formNumber;
             _algorithm = algorithm;
 
             dgvAlgorithm.Focus();
@@ -100,6 +102,7 @@ namespace FireSafety
             {
                 dgvAlgorithm.Rows.Add("", "None", "None", "None");
                 dgvAlgorithm.Rows[dgvAlgorithm.RowCount - 1].Cells[index].Value = cb.SelectedItem.ToString();
+                //ParallelAlgorithm.GetInstance().AddAction(formNumber, new Action());
             }
 
             // Перемещаем таблицу вниз, чтобы были видны новые добавленные дейтсвия
@@ -152,7 +155,7 @@ namespace FireSafety
                 SetTurretCommands(listActions, i);
             }
 
-            _algorithm.Actions = new Queue<Action>(listActions);
+            _algorithm.actions = new Queue<Action>(listActions);
         }
 
         private void SetTurretCommands(List<Action> listActions, int i)

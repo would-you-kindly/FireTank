@@ -8,17 +8,17 @@ namespace FireSafety
     {
         public List<Control> controls;
 
-        public TankController(List<Tank> tanks, params Control[] controls)
+        public TankController(params Control[] controls)
         {
-            this.controls = new List<Control>(controls);
+            //this.controls = new List<Control>(controls);
 
-            foreach (Tank tank in tanks)
-            {
-                tank.turret.TurretPressure += (sender, e) =>
-                {
-                    controls[0].Text = ((Turret)sender).waterPressure.ToString();
-                };
-            }
+            //foreach (Tank tank in tanks)
+            //{
+            //    tank.turret.TurretPressure += (sender, e) =>
+            //    {
+            //        controls[0].Text = ((Turret)sender).waterPressure.ToString();
+            //    };
+            //}
         }
     }
 }

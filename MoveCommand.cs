@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-
     [Serializable]
     public class MoveCommand : Command
     {
@@ -25,12 +24,7 @@ namespace FireSafety
             None
         }
 
-        public Commands command { get; set; }
-
-        public MoveCommand()
-        {
-
-        }
+        public Commands command;
 
         public MoveCommand(Commands command)
         {

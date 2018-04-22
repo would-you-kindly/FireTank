@@ -20,13 +20,15 @@ namespace FireSafety
 
         public Command[] commands;
 
-        public Action()
+        public Action(MoveCommand.Commands moveCommand = MoveCommand.Commands.None,
+            ChargeCommand.Commands chargeCommand = ChargeCommand.Commands.None,
+            TurretCommand.Commands turretCommand = TurretCommand.Commands.None)
         {
             commands = new Command[(int)Types.Count];
 
-            commands[(int)Types.Move] = new MoveCommand(MoveCommand.Commands.None);
-            commands[(int)Types.Charge] = new ChargeCommand(ChargeCommand.Commands.None);
-            commands[(int)Types.Turret] = new TurretCommand(TurretCommand.Commands.None);
+            commands[(int)Types.Move] = new MoveCommand(moveCommand);
+            commands[(int)Types.Charge] = new ChargeCommand(chargeCommand);
+            commands[(int)Types.Turret] = new TurretCommand(turretCommand);
         }
     }
 }
