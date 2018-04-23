@@ -68,8 +68,9 @@ namespace FireSafety
                     timeSinceLastUpdate -= timePerFrame;
 
                     ProcessInput();
-                    if (ParallelAlgorithm.GetInstance().running)
+                    if (ParallelAlgorithm.GetInstance().running || ParallelAlgorithm.GetInstance().step)
                     {
+                        ParallelAlgorithm.GetInstance().step = false;
                         Update(timePerFrame);
                     }
                 }

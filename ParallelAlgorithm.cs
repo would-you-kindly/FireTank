@@ -63,12 +63,15 @@ namespace FireSafety
         [NonSerialized]
         public bool running;
         [NonSerialized]
+        public bool step;
+        [NonSerialized]
         public int currentAction;
 
         private ParallelAlgorithm()
         {
             algorithms = new List<Algorithm>();
             running = false;
+            step = false;
             currentAction = 0;
 
             // Создаем алгоритмы сразу для максимального количества танков

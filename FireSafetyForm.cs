@@ -26,8 +26,6 @@ namespace FireSafety
         private Form sfmlForm;
         public RenderWindow renderWindow;
 
-        private bool algorithmBuilt = false;
-
         public FireSafetyForm()
         {
             InitializeComponent();
@@ -75,14 +73,7 @@ namespace FireSafety
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Game.world.BuildWorld();
-
-            //for (int i = 0; i < algorithmForms.Count; i++)
-            //{
-            //    algorithmForms[i].BuildAlgorithm();
-            //}
-            //_parallelAlgorithm.Execute();
             controller.RunAlgorithm();
-            algorithmBuilt = false;
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,8 +116,7 @@ namespace FireSafety
 
         public void Reload()
         {
-            controller.SetAlgorithmState(false);
-            algorithmBuilt = false;
+            controller.SetAlgorithmRunningState(false);
             Game.world.BuildWorld();
         }
 
@@ -138,7 +128,7 @@ namespace FireSafety
                 // Загружаем новую карту
                 Game.world.LoadMap(ofd.FileName);
                 Game.world.BuildWorld();
-                controller.SetAlgorithmState(false);
+                controller.SetAlgorithmRunningState(false);
                 sfmlForm.Text = World.wind.ToString();
 
                 // Создаем окна алгоритмов
@@ -227,7 +217,7 @@ namespace FireSafety
             if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм? Все несохраненные данные будут утеряны.",
                 "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                controller.SetAlgorithmState(false);
+                controller.SetAlgorithmRunningState(false);
                 Game.world.BuildWorld();
 
                 controller.ClearAlgorithm();
@@ -237,18 +227,7 @@ namespace FireSafety
 
         private void stepToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!algorithmBuilt)
-            {
-                //for (int i = 0; i < algorithmForms.Count; i++)
-                //{
-                //    algorithmForms[i].BuildAlgorithm();
-                //}
-
-                algorithmBuilt = true;
-            }
-
-            Game.Update(new SFML.System.Time());
-            controller.SetAlgorithmState(false);
+            controller.SetAlgorithmStep(true);
         }
 
         private void AddActionMessage()

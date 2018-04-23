@@ -128,7 +128,7 @@ namespace FireSafety
             ParallelAlgorithm.GetInstance().Save(fileName);
         }
 
-        public void SetAlgorithmState(bool running)
+        public void SetAlgorithmRunningState(bool running)
         {
             ParallelAlgorithm.GetInstance().running = running;
         }
@@ -184,6 +184,11 @@ namespace FireSafety
                 form.dgvAlgorithm.CellValueChanged -= DgvAlgorithm_CellValueChanged;
                 form.dgvAlgorithm.RowsRemoved -= DgvAlgorithm_RowsRemoved;
             }
+        }
+
+        public void SetAlgorithmStep(bool step)
+        {
+            ParallelAlgorithm.GetInstance().step = step;
         }
     }
 }

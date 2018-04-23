@@ -123,23 +123,6 @@ namespace FireSafety
             dgvAlgorithm.Focus();
         }
 
-        //public void ColorActionRow(int number)
-        //{
-        //    foreach (DataGridViewRow item in dgvAlgorithm.Rows)
-        //    {
-        //        item.DefaultCellStyle.BackColor = Color.White;
-        //    }
-
-        //    try
-        //    {
-        //        dgvAlgorithm.Rows[number].DefaultCellStyle.BackColor = Color.Yellow;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        // Ignore exception
-        //    }
-        //}
-
         private void DeleteAction()
         {
             if (dgvAlgorithm.SelectedRows.Count != 0)
