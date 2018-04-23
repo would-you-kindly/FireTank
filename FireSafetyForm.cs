@@ -15,13 +15,17 @@ using System.Xml.Serialization;
 
 namespace FireSafety
 {
+    // TODO: Есть атрибут, который запрещает использовать в данном классе определенный класс, типа [Forbidden(typeof(ParallelAlgorithm))]
     public partial class FireSafetyForm : Form
     {
         ParallelAlgorithmController controller;
+
         public List<AlgorithmForm> algorithmForms;
-        public RenderWindow renderWindow;
         public InfoForm infoForm;
-        Form sfmlForm;
+
+        private Form sfmlForm;
+        public RenderWindow renderWindow;
+
         private bool algorithmBuilt = false;
 
         public FireSafetyForm()

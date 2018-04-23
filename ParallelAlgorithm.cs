@@ -50,10 +50,16 @@ namespace FireSafety
         
         // Переменные параллельного алгоритма
         public List<Algorithm> algorithms;
+        [NonSerialized]
+        public int currentAction;
+        [NonSerialized]
+        public bool running;
 
         private ParallelAlgorithm()
         {
             algorithms = new List<Algorithm>();
+            currentAction = 0;
+            running = false;
 
             // Создаем алгоритмы сразу для максимального количества танков
             for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
@@ -68,6 +74,7 @@ namespace FireSafety
             {
                 instance = new ParallelAlgorithm();
 
+                // TODO: Модель начинает знать что-то о контроллере - плохо
                 // При загрузке алгоритма заполняем таблицу данными алгоритма
                 instance.Loaded += ParallelAlgorithmController.ParallelAlgorithmController_Loaded;
                 // При очистке алгоритма очищаем таблицу
@@ -130,6 +137,23 @@ namespace FireSafety
             }
 
             Saved?.Invoke(this, new SaveEventArgs());
+        }
+
+        public void Run()
+        {
+            currentAction = 0;
+            running = true;
+        }
+
+        public void Stop()
+        {
+            running = false;
+        }
+
+        public void Reload()
+        {
+            currentAction = 0;
+            running = false;
         }
 
         public void Execute()

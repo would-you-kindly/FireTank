@@ -89,7 +89,6 @@
     <Compile Include="BurnedTreeState.cs" />
     <Compile Include="BurningTreeState.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="Delegates.cs" />
     <Compile Include="DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>

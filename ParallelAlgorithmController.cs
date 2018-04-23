@@ -53,7 +53,7 @@ namespace FireSafety
             // Меняем соответствующую команду алгоритма
             if (command != null)
             {
-                ParallelAlgorithm.GetInstance().ChangeCommand((int)((DataGridView)sender).Tag, e.RowIndex, e.ColumnIndex, command);
+                ParallelAlgorithm.GetInstance().ChangeCommand((int)((DataGridView)sender).Tag, e.RowIndex, e.ColumnIndex - 1, command);
             }
             else
             {
@@ -83,6 +83,9 @@ namespace FireSafety
 
                     algorithmForms[i].dgvAlgorithm.Rows.Add(number, move, charge, turret);
                 }
+
+                // Отменяем выделение
+                algorithmForms[i].dgvAlgorithm.ClearSelection();
             }
 
             AttachEvents();
