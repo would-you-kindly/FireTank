@@ -76,12 +76,12 @@ namespace FireSafety
         {
             Game.world.BuildWorld();
 
-            for (int i = 0; i < algorithmForms.Count; i++)
-            {
-                algorithmForms[i].BuildAlgorithm();
-            }
+            //for (int i = 0; i < algorithmForms.Count; i++)
+            //{
+            //    algorithmForms[i].BuildAlgorithm();
+            //}
             //_parallelAlgorithm.Execute();
-            Game.executing = true;
+            controller.RunAlgorithm();
             algorithmBuilt = false;
         }
 
@@ -125,7 +125,7 @@ namespace FireSafety
 
         public void Reload()
         {
-            Game.executing = false;
+            controller.SetAlgorithmState(false);
             algorithmBuilt = false;
             Game.world.BuildWorld();
         }
@@ -138,7 +138,7 @@ namespace FireSafety
                 // Загружаем новую карту
                 Game.world.LoadMap(ofd.FileName);
                 Game.world.BuildWorld();
-                Game.executing = false;
+                controller.SetAlgorithmState(false);
                 sfmlForm.Text = World.wind.ToString();
 
                 // Создаем окна алгоритмов
@@ -227,11 +227,11 @@ namespace FireSafety
             if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм? Все несохраненные данные будут утеряны.",
                 "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Game.executing = false;
+                controller.SetAlgorithmState(false);
                 Game.world.BuildWorld();
 
                 controller.ClearAlgorithm();
-                
+
             }
         }
 
@@ -239,16 +239,16 @@ namespace FireSafety
         {
             if (!algorithmBuilt)
             {
-                for (int i = 0; i < algorithmForms.Count; i++)
-                {
-                    algorithmForms[i].BuildAlgorithm();
-                }
+                //for (int i = 0; i < algorithmForms.Count; i++)
+                //{
+                //    algorithmForms[i].BuildAlgorithm();
+                //}
 
                 algorithmBuilt = true;
             }
 
             Game.Update(new SFML.System.Time());
-            Game.executing = false;
+            controller.SetAlgorithmState(false);
         }
 
         private void AddActionMessage()

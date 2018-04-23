@@ -11,24 +11,36 @@ namespace FireSafety
     [Serializable]
     public class Algorithm
     {
+        // Классы для передачи параметров событий
+        public class PerformNextActionEventArgs : EventArgs
+        {
+        }
+
+        // События алгоритма
+        public delegate void PerformNextActionEventHandler(object sender, PerformNextActionEventArgs e);
+        public event PerformNextActionEventHandler NextActionPerforming;
+
+        // Переменные алгоритма
         public List<Action> actions;
+        [NonSerialized]
+        public int currentAction;
 
         public Algorithm()
         {
             actions = new List<Action>();
+            currentAction = 0;
         }
 
         public Action GetNextAction()
         {
-            Action action = actions.Last();
-            actions.RemoveAt(actions.Count - 1);
+            NextActionPerforming?.Invoke(this, new PerformNextActionEventArgs());
 
-            return action;
+            return actions[currentAction++];
         }
 
-        public bool HasCommands()
+        public bool HasActions()
         {
-            return actions.Count != 0;
+            return actions.Count != currentAction;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace FireSafety
@@ -13,8 +14,29 @@ namespace FireSafety
             algorithmForms = algoForms;
 
             AttachEvents();
-
             // TODO: Почему-то если подписаться здесь ParallelAlgorithm.GetInstance().Loaded, то требует, чтобы этот класс тоже был сериализуемым
+        }
+
+        public static void ParallelAlgorithmController_NextActionPerforming(object sender, ParallelAlgorithm.PerformNextActionEventArgs e)
+        {
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                // Очищаем цвета всех строк
+                foreach (DataGridViewRow row in form.dgvAlgorithm.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+
+                // Подсвечиваем текущее выполняющееся действие (если оно есть)
+                try
+                {
+                    form.dgvAlgorithm.Rows[ParallelAlgorithm.GetInstance().currentAction].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                catch (Exception)
+                {
+                    // Ignore exception
+                }
+            }
         }
 
         private static void DgvAlgorithm_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -91,6 +113,11 @@ namespace FireSafety
             AttachEvents();
         }
 
+        public void RunAlgorithm()
+        {
+            ParallelAlgorithm.GetInstance().Run();
+        }
+
         public void LoadAlgorithm(string fileName)
         {
             ParallelAlgorithm.GetInstance().Load(fileName);
@@ -99,6 +126,11 @@ namespace FireSafety
         public void SaveAlgorithm(string fileName)
         {
             ParallelAlgorithm.GetInstance().Save(fileName);
+        }
+
+        public void SetAlgorithmState(bool running)
+        {
+            ParallelAlgorithm.GetInstance().running = running;
         }
 
         private static void DgvAlgorithm_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

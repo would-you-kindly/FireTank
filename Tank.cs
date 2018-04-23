@@ -306,7 +306,7 @@ namespace FireSafety
         // Пошагово выполняет алгоритм, заложенный в Algorithm
         public void Execute(Algorithm algorithm)
         {
-            if (algorithm.HasCommands())
+            if (algorithm.HasActions())
             {
                 Action action = algorithm.GetNextAction();
 

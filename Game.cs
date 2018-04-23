@@ -13,7 +13,7 @@ namespace FireSafety
 {
     public class Game
     {
-        private Time timePerFrame = Time.FromSeconds(1.0f / 60.0f);
+        private Time timePerFrame = Time.FromSeconds(1.0f / 2.0f);
 
         // Классы для передачи параметров событий
         public class RenderEventArgs : EventArgs
@@ -27,7 +27,6 @@ namespace FireSafety
         // Переменные игры
         internal static World world;
         public static Gui gui;
-        public static bool executing = false;
 
         // Переменные для обработки ошибок
         public static bool error = false;
@@ -69,14 +68,13 @@ namespace FireSafety
                     timeSinceLastUpdate -= timePerFrame;
 
                     ProcessInput();
-                    if (executing)
+                    if (ParallelAlgorithm.GetInstance().running)
                     {
                         Update(timePerFrame);
                     }
                 }
 
                 Render();
-
             }
         }
 
@@ -116,7 +114,7 @@ namespace FireSafety
             if (error)
             {
                 error = false;
-                executing = false;
+                ParallelAlgorithm.GetInstance().running = false;
                 MessageBox.Show($"Во время выполнения алгоритма произошла ошибка.\n{errorTank.color.ToString()} танк столкнулся с объектом\n{errorCollideEventArgs.entity.GetType().ToString()}",
                     "Ошибка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 world.BuildWorld();
@@ -128,6 +126,7 @@ namespace FireSafety
                     $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}\n" +
                     $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");
                 gui.form.Reload();
+                ParallelAlgorithm.GetInstance().running = false;
             }
         }
 

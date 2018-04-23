@@ -33,6 +33,12 @@ namespace FireSafety
         public class LoadEventArgs : EventArgs
         {
         }
+        public class PerformNextActionEventArgs : EventArgs
+        {
+        }
+        public class ExecuteEventArgs : EventArgs
+        {
+        }
 
         // События параллельного алгоритма
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
@@ -41,25 +47,29 @@ namespace FireSafety
         public delegate void ClearEventHandler(object sender, ClearEventArgs e);
         public delegate void SaveEventHandler(object sender, SaveEventArgs e);
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
+        public delegate void PerformNexActionEventHandler(object sender, PerformNextActionEventArgs e);
+        public delegate void ExecuteEventHandler(object sender, ExecuteEventArgs e);
         public event AddActionEventHandler ActionAdded;
         public event ChangeCommandEventHandler CommandChanged;
         public event RemoveActionEventHandler ActionRemoved;
         public event ClearEventHandler Cleared;
         public event SaveEventHandler Saved;
         public event LoadEventHandler Loaded;
-        
+        public event PerformNexActionEventHandler NextActionPerforming;
+        public event ExecuteEventHandler Executed;
+
         // Переменные параллельного алгоритма
         public List<Algorithm> algorithms;
         [NonSerialized]
-        public int currentAction;
-        [NonSerialized]
         public bool running;
+        [NonSerialized]
+        public int currentAction;
 
         private ParallelAlgorithm()
         {
             algorithms = new List<Algorithm>();
-            currentAction = 0;
             running = false;
+            currentAction = 0;
 
             // Создаем алгоритмы сразу для максимального количества танков
             for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
@@ -79,9 +89,32 @@ namespace FireSafety
                 instance.Loaded += ParallelAlgorithmController.ParallelAlgorithmController_Loaded;
                 // При очистке алгоритма очищаем таблицу
                 instance.Cleared += ParallelAlgorithmController.ParallelAlgorithmController_Cleared;
+                // При переходе алгоритма к следующему шагу подсвечиваем соответствующие строки таблицы
+                instance.NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
+
+                foreach (Algorithm algorithm in instance.algorithms)
+                {
+                    algorithm.NextActionPerforming += Algorithm_NextActionPerforming;
+                }
+                instance.NextActionPerforming += Instance_NextActionPerforming;
             }
 
             return instance;
+        }
+
+        private static void Instance_NextActionPerforming(object sender, PerformNextActionEventArgs e)
+        {
+            if (instance.currentAction == instance.algorithms.Max(algo => algo.actions.Count) - 1)
+            {
+                instance.Executed?.Invoke(instance, new ExecuteEventArgs());
+            }
+        }
+
+        private static void Algorithm_NextActionPerforming(object sender, Algorithm.PerformNextActionEventArgs e)
+        {
+            instance.currentAction = instance.algorithms.Max(algo => algo.currentAction);
+
+            instance.NextActionPerforming?.Invoke(instance, new PerformNextActionEventArgs());
         }
 
         public Algorithm this[int index]
@@ -141,7 +174,11 @@ namespace FireSafety
 
         public void Run()
         {
-            currentAction = 0;
+            foreach (Algorithm algorithm in algorithms)
+            {
+                algorithm.currentAction = 0;
+            }
+
             running = true;
         }
 
@@ -152,7 +189,11 @@ namespace FireSafety
 
         public void Reload()
         {
-            currentAction = 0;
+            foreach (Algorithm algorithm in algorithms)
+            {
+                algorithm.currentAction = 0;
+            }
+
             running = false;
         }
 
