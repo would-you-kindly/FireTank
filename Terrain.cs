@@ -111,17 +111,7 @@ namespace FireSafety
 
         private void SpreadFire()
         {
-            // Огонь распространяется через каждые timeToSpread шагов
             // TODO: Ошибка в том, что после тушения иногда дерево загорается на этом же шаге и кажется будто оно вообще не было потушено
-            //currentTimeToSpread++;
-            //if (currentTimeToSpread != timeToSpread)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    currentTimeToSpread = 0;
-            //}
 
             // Ищем дерево, которое загорится следующим
             List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state.IsBurning()));

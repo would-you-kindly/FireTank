@@ -17,6 +17,7 @@ namespace FireSafety
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             form = new FireSafetyForm();
             form.Show();
         }

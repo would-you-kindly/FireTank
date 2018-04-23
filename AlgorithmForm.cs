@@ -14,22 +14,13 @@ namespace FireSafety
 {
     public partial class AlgorithmForm : Form
     {
-        Algorithm _algorithm;
-
-
         Stopwatch clock = new Stopwatch();
         bool keyPressed = false;
         private const int timeToHold = 200;
 
-        public AlgorithmForm(Algorithm algorithm)
+        public AlgorithmForm()
         {
             InitializeComponent();
-
-            _algorithm = algorithm;
-
-
-            dgvAlgorithm.Focus();
-            dgvAlgorithm.ClearSelection();
         }
 
         // Блокируем кнопку закрытия окна

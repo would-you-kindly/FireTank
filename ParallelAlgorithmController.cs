@@ -156,6 +156,7 @@ namespace FireSafety
         {
             DetachEvents();
 
+            // Очищаем таблицы
             foreach (AlgorithmForm form in algorithmForms)
             {
                 form.dgvAlgorithm.Rows.Clear();

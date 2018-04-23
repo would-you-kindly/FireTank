@@ -19,10 +19,15 @@ namespace FireSafety
         public class RenderEventArgs : EventArgs
         {
         }
+        public class EndEventArgs : EventArgs
+        {
+        }
 
         // События игры
         public delegate void RenderEventHandler(object sender, RenderEventArgs e);
+        public delegate void EndEventHandler(object sender, EndEventArgs e);
         public event RenderEventHandler Rendered;
+        public event EndEventHandler Ended;
 
         // Переменные игры
         internal static World world;
@@ -63,6 +68,9 @@ namespace FireSafety
             {
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
+
+                Application.DoEvents();
+
                 while (timeSinceLastUpdate > timePerFrame)
                 {
                     timeSinceLastUpdate -= timePerFrame;
@@ -83,7 +91,6 @@ namespace FireSafety
         {
             // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
             // Handle form events
-            Application.DoEvents();
             gui.form.renderWindow.DispatchEvents();
         }
 
@@ -108,7 +115,7 @@ namespace FireSafety
 
         private void Game_Rendered(object sender, RenderEventArgs e)
         {
-
+            CheckGameState();
             // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
             // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
             // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
@@ -121,8 +128,16 @@ namespace FireSafety
                 world.BuildWorld();
             }
 
+
+        }
+
+        private void CheckGameState()
+        {
+            // Если горящих деревьев больше нет
             if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
             {
+                Ended?.Invoke(this, new EndEventArgs());
+
                 MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
                     $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}\n" +
                     $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");

@@ -34,7 +34,7 @@ namespace FireSafety
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
-                AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i]);
+                AlgorithmForm algorithmForm = new AlgorithmForm();
                 algorithmForm.dgvAlgorithm.Tag = i;
                 algorithmForm.MdiParent = this;
                 algorithmForm.Text = $"{(i + 1)}. {Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString()}";
@@ -136,7 +136,7 @@ namespace FireSafety
                 algorithmForms.Clear();
                 for (int i = 0; i < Utilities.TANKS_COUNT; i++)
                 {
-                    AlgorithmForm algorithmForm = new AlgorithmForm(ParallelAlgorithm.GetInstance()[i]);
+                    AlgorithmForm algorithmForm = new AlgorithmForm();
                     algorithmForm.MdiParent = this;
                     algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
                     algorithmForm.Show();
