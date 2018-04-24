@@ -125,6 +125,7 @@ namespace FireSafety
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                ParallelAlgorithm.GetInstance().Clear();
                 // Загружаем новую карту
                 Game.world.LoadMap(ofd.FileName);
                 Game.world.BuildWorld();
@@ -144,10 +145,10 @@ namespace FireSafety
                 }
 
                 // Если указан обучающий алгоритм, загружаем его
-                if (Game.world.map.properties["algorithm"] != string.Empty)
-                {
-                    ParallelAlgorithm.GetInstance().Load(Path.Combine(Path.GetFullPath(ofd.FileName), Game.world.map.properties["algorithm"]));
-                }
+                //if (Game.world.map.properties["algorithm"] != string.Empty)
+                //{
+                //    ParallelAlgorithm.GetInstance().Load(Path.Combine(Path.GetFullPath(ofd.FileName), Game.world.map.properties["algorithm"]));
+                //}
 
                 SmartLayout();
             }

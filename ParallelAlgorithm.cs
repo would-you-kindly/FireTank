@@ -94,6 +94,8 @@ namespace FireSafety
                 instance.Cleared += ParallelAlgorithmController.ParallelAlgorithmController_Cleared;
                 // При переходе алгоритма к следующему шагу подсвечиваем соответствующие строки таблицы
                 instance.NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
+                // При окончании работы алгоритма перезапускаем алгоритм и отключаем подсветку строк в таблице
+                instance.Executed += ParallelAlgorithmController.ParallelAlgorithmController_Executed;
 
                 foreach (Algorithm algorithm in instance.algorithms)
                 {
@@ -107,15 +109,15 @@ namespace FireSafety
 
         private static void Instance_NextActionPerforming(object sender, PerformNextActionEventArgs e)
         {
-            if (instance.currentAction == instance.algorithms.Max(algo => algo.actions.Count) - 1)
-            {
-                instance.Executed?.Invoke(instance, new ExecuteEventArgs());
-            }
+            //if (instance.currentAction == instance.algorithms.Max(algo => algo.actions.Count) - 1)
+            //{
+            //    instance.Executed?.Invoke(instance, new ExecuteEventArgs());
+            //}
         }
 
         private static void Algorithm_NextActionPerforming(object sender, Algorithm.PerformNextActionEventArgs e)
         {
-            instance.currentAction = instance.algorithms.Max(algo => algo.currentAction);
+            instance.currentAction = instance.algorithms.Max(algo => algo.currentAction) - 1;
 
             instance.NextActionPerforming?.Invoke(instance, new PerformNextActionEventArgs());
         }
@@ -163,7 +165,7 @@ namespace FireSafety
 
             Loaded?.Invoke(this, new LoadEventArgs());
         }
-        
+
         public void Save(string filename)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -182,6 +184,7 @@ namespace FireSafety
                 algorithm.currentAction = 0;
             }
 
+            currentAction = 0;
             running = true;
         }
 
@@ -197,7 +200,18 @@ namespace FireSafety
                 algorithm.currentAction = 0;
             }
 
+            currentAction = 0;
             running = false;
+        }
+
+        public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees,
+            double totalTrees, double burnedTrees)
+        {
+            double mapComplexity = (initiallyBurningTrees / totalTrees) * (mapWidth * mapHeight);
+            double algorithmEfficiency = instance.algorithms.Sum(algo => algo.actions.Count);
+            double result = mapComplexity * algorithmEfficiency / (1 + burnedTrees);
+
+            return result;
         }
 
         public void Execute()

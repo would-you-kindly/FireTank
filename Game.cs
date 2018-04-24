@@ -58,7 +58,6 @@ namespace FireSafety
             //}
         }
 
-
         public void Run()
         {
             Clock clock = new Clock();
@@ -116,6 +115,10 @@ namespace FireSafety
         private void Game_Rendered(object sender, RenderEventArgs e)
         {
             CheckGameState();
+        }
+
+        private void CheckGameState()
+        {
             // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
             // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
             // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
@@ -128,11 +131,6 @@ namespace FireSafety
                 world.BuildWorld();
             }
 
-
-        }
-
-        private void CheckGameState()
-        {
             // Если горящих деревьев больше нет
             if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
             {
@@ -143,6 +141,9 @@ namespace FireSafety
                     $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");
                 gui.form.Reload();
                 ParallelAlgorithm.GetInstance().running = false;
+
+                MessageBox.Show(ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
+                    7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()).ToString());
             }
         }
 

@@ -18,6 +18,7 @@ namespace FireSafety
         {
             try
             {
+                Settings.GetInstance();
                 Game game = new Game();
                 game.Run();
             }

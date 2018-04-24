@@ -106,5 +106,19 @@ namespace FireSafety
 
             throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
         }
+
+        public static float NormalizedRotation(float rotation)
+        {
+            while (rotation < 0)
+            {
+                rotation += 360;
+            }
+            while (rotation >= 360)
+            {
+                rotation -= 360;
+            }
+
+            return rotation;
+        }
     }
 }

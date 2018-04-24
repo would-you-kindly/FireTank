@@ -1,23 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="FireSafety.Action" Collapsed="true">
-    <Position X="12" Y="0.5" Width="1.5" />
+  <Class Name="FireSafety.Action">
+    <Position X="15.5" Y="6.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="FireSafety.Action.Types" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Action.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Action.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FireSafety.Algorithm" Collapsed="true">
-    <Position X="13.75" Y="0.5" Width="1.5" />
+  <Class Name="FireSafety.Algorithm">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="FireSafety.Algorithm.PerformNextActionEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Algorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="FireSafety.Algorithm.PerformNextActionEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Algorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAEACAAAAgCIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Algorithm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FireSafety.AlgorithmForm" Collapsed="true">
     <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AhICAAIAQCAgEAUAKGKEAAWCAAIETCAgZEACADAQQhA=</HashCode>
+      <HashCode>AhICAAIAACAAEAAAKGKEAAWCAAIMRCAgZEACADAAQhA=</HashCode>
       <FileName>AlgorithmForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,7 +58,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="FireSafety.Command">
-    <Position X="2.75" Y="9.25" Width="1.5" />
+    <Position X="17.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Command.cs</FileName>
@@ -60,7 +82,7 @@
   <Class Name="FireSafety.FireSafetyForm" Collapsed="true">
     <Position X="19" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BJDVoBAgBCGCAENEi4jiKBkChQgVBAddniXjMCLI5CE=</HashCode>
+      <HashCode>BJDVoBAgBCGCAENEi4jiKBkChQgVBAddniXjMCLI4CE=</HashCode>
       <FileName>FireSafetyForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -81,14 +103,14 @@
   <Class Name="FireSafety.Game" Collapsed="true">
     <Position X="13.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAGABAAAAgAAAJAAEAAAAAAAAgBACAQBAAAAAAAAI=</HashCode>
+      <HashCode>AAYAEABAAAAgAAEJAAEAACAAAAAgAACAQBAABAAAAAI=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FireSafety.Gui" Collapsed="true">
     <Position X="15.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Gui.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -152,10 +174,95 @@
       <FileName>NormalTreeState.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FireSafety.ParallelAlgorithm" Collapsed="true">
-    <Position X="15.5" Y="2.5" Width="1.5" />
+  <Class Name="FireSafety.ParallelAlgorithm">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="FireSafety.ParallelAlgorithm.AddActionEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="FireSafety.ParallelAlgorithm.ClearEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="FireSafety.ParallelAlgorithm.SaveEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="FireSafety.ParallelAlgorithm.RemoveActionEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="FireSafety.ParallelAlgorithm.ChangeCommandEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="FireSafety.ParallelAlgorithm.ClearEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FireSafety.ParallelAlgorithm.PerformNextActionEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="FireSafety.ParallelAlgorithm.LoadEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="FireSafety.ParallelAlgorithm.ExecuteEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FireSafety.ParallelAlgorithm.SaveEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FireSafety.ParallelAlgorithm.ChangeCommandEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="FireSafety.ParallelAlgorithm.PerformNexActionEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="FireSafety.ParallelAlgorithm.AddActionEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FireSafety.ParallelAlgorithm.LoadEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="FireSafety.ParallelAlgorithm.RemoveActionEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="FireSafety.ParallelAlgorithm.ExecuteEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ParallelAlgorithm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAQACAAAAAAIAAAAAAAAAAAAAABAAAA=</HashCode>
+      <HashCode>AAkAgIAAAAEAAAQACAhKAAAARAhgCAAAKABAQBBkYAI=</HashCode>
       <FileName>ParallelAlgorithm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -199,18 +306,6 @@
   </Class>
   <Class Name="FireSafety.Terrain" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="12" Y="3.5" Width="1.5" />
-    <NestedTypes>
-      <Class Name="FireSafety.Terrain.FireOverEventArgs" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Terrain.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Delegate Name="FireSafety.Terrain.FireOverEventHandler" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Terrain.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAQAEQAAAQECAhAAAAAAAAIgAAAAAAAAAgAAAAQAAAA=</HashCode>
       <FileName>Terrain.cs</FileName>
@@ -263,9 +358,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="FireSafety.Utilities" Collapsed="true">
-    <Position X="15.5" Y="3.5" Width="1.5" />
+    <Position X="17.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQACwAAAACAAAAIAAAAAAABAAEAAAAAAAAEAAA=</HashCode>
+      <HashCode>AAAAAAQACwAAgACAAAAIAAAAAAABQAEEAACAAAAEAAA=</HashCode>
       <FileName>Utilities.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -286,7 +381,7 @@
   <Class Name="FireSafety.World" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="12" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQEUAAAAEAAAgAAAAAAAAkAEAAAAAgAAgAAAABQBAA=</HashCode>
+      <HashCode>AAQEUAAAAEAAAgAAAAAAAAkAEAAAAAgAAAAAAABQBAA=</HashCode>
       <FileName>World.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />

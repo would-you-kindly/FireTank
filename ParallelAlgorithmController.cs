@@ -39,6 +39,20 @@ namespace FireSafety
             }
         }
 
+        public static void ParallelAlgorithmController_Executed(object sender, ParallelAlgorithm.ExecuteEventArgs e)
+        {
+            //foreach (AlgorithmForm form in algorithmForms)
+            //{
+            //    // Очищаем цвета всех строк
+            //    foreach (DataGridViewRow row in form.dgvAlgorithm.Rows)
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.White;
+            //    }
+            //}
+
+            //ParallelAlgorithm.GetInstance().Reload();
+        }
+
         private static void DgvAlgorithm_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             // Удаляем действие

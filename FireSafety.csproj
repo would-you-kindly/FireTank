@@ -108,6 +108,7 @@
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ParallelAlgorithmController.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TankController.cs" />
     <Compile Include="Terrain.cs" />
     <Compile Include="Game.cs" />

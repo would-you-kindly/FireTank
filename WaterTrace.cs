@@ -28,7 +28,7 @@ namespace FireSafety
             }
             trace.Position = position;
             trace.Rotation = degrees - 90;
-            if ((trace.Rotation / 45) % 2 == 1)
+            if ((Utilities.NormalizedRotation(trace.Rotation) / 45) % 2 == 1)
             {
                 trace.Size = new Vector2f(pressure * (float)Math.Sqrt(Math.Pow(Utilities.TILE_SIZE, 2.0) + Math.Pow(Utilities.TILE_SIZE, 2.0)), 1);
             }

@@ -16,7 +16,6 @@ namespace FireSafety
     {
         Stopwatch clock = new Stopwatch();
         bool keyPressed = false;
-        private const int timeToHold = 200;
 
         public AlgorithmForm()
         {
@@ -233,7 +232,7 @@ namespace FireSafety
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд движения
             if (e.KeyCode == Keys.NumPad8)
             {
-                if (clock.ElapsedMilliseconds < timeToHold)
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
                     cbMove.SelectedIndex = -1;
                     cbMove.SelectedItem = "Rotate 45 CW";
@@ -247,7 +246,7 @@ namespace FireSafety
 
             if (e.KeyCode == Keys.NumPad2)
             {
-                if (clock.ElapsedMilliseconds < timeToHold)
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
                     cbMove.SelectedIndex = -1;
                     cbMove.SelectedItem = "Rotate 45 CCW";
@@ -262,7 +261,7 @@ namespace FireSafety
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд турели
             if (e.KeyCode == Keys.NumPad6)
             {
-                if (clock.ElapsedMilliseconds < timeToHold)
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
                     cbTurret.SelectedIndex = -1;
                     cbTurret.SelectedItem = "Rotate 45 CW";
@@ -276,7 +275,7 @@ namespace FireSafety
 
             if (e.KeyCode == Keys.NumPad4)
             {
-                if (clock.ElapsedMilliseconds < timeToHold)
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
                     cbTurret.SelectedIndex = -1;
                     cbTurret.SelectedItem = "Rotate 45 CCW";

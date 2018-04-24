@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireSafetyAdmin", "..\FireS
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FireTankSetup", "..\FireTankSetup\FireTankSetup.vdproj", "{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{9401DF7F-F976-4AD8-8760-B54E539A9684}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Debug|x64.ActiveCfg = Debug
 		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Release|Any CPU.ActiveCfg = Release
 		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Release|x64.ActiveCfg = Release
+		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Debug|Any CPU.ActiveCfg = Debug
+		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Debug|x64.ActiveCfg = Debug
+		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Release|Any CPU.ActiveCfg = Release
+		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
