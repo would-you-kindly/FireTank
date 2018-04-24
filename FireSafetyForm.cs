@@ -22,6 +22,7 @@ namespace FireSafety
 
         public List<AlgorithmForm> algorithmForms;
         public InfoForm infoForm;
+        public SettingsForm settingsForm;
 
         private Form sfmlForm;
         public RenderWindow renderWindow;
@@ -419,6 +420,21 @@ namespace FireSafety
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
                 AddActionMessage();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Открываем максимум одно окно настроек
+            if (settingsForm == null)
+            {
+                settingsForm = new SettingsForm();
+                settingsForm.MdiParent = this;
+                settingsForm.Show();
+            }
+            else
+            {
+                settingsForm.Focus();
+            }
         }
     }
 }

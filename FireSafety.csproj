@@ -109,6 +109,13 @@
     </Compile>
     <Compile Include="ParallelAlgorithmController.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="SettingsController.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TankController.cs" />
     <Compile Include="Terrain.cs" />
     <Compile Include="Game.cs" />
@@ -146,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

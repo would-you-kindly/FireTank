@@ -107,6 +107,75 @@ namespace FireSafety
             throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
         }
 
+        public static string ToMoveString(MoveCommand.Commands value)
+        {
+            switch (value)
+            {
+                case MoveCommand.Commands.Forward:
+                    return "Forward";
+                case MoveCommand.Commands.Backward:
+                    return "Backward";
+                case MoveCommand.Commands.Rotate90CW:
+                    return "Rotate 90 CW";
+                case MoveCommand.Commands.Rotate90CCW:
+                    return "Rotate 90 CCW";
+                case MoveCommand.Commands.Rotate45CW:
+                    return "Rotate 45 CW";
+                case MoveCommand.Commands.Rotate45CCW:
+                    return "Rotate 45 CCW";
+                case MoveCommand.Commands.Forward45CW:
+                    return "Forward 45 CW";
+                case MoveCommand.Commands.Forward45CCW:
+                    return "Forward 45 CCW";
+                case MoveCommand.Commands.Backward45CW:
+                    return "Backward 45 CW";
+                case MoveCommand.Commands.Backward45CCW:
+                    return "Backward 45 CCW";
+                case MoveCommand.Commands.None:
+                    return "None";
+            }
+
+            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует");
+        }
+
+        public static string ToChargeString(ChargeCommand.Commands value)
+        {
+            switch (value)
+            {
+                case ChargeCommand.Commands.Pressure:
+                    return "Pressure";
+                case ChargeCommand.Commands.None:
+                    return "None";
+            }
+
+            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует");
+        }
+
+        public static string ToTurretString(TurretCommand.Commands value)
+        {
+            switch (value)
+            {
+                case TurretCommand.Commands.Rotate45CW:
+                    return "Rotate 45 CW";
+                case TurretCommand.Commands.Rotate45CCW:
+                    return "Rotate 45 CCW";
+                case TurretCommand.Commands.Rotate90CW:
+                    return "Rotate 90 CW";
+                case TurretCommand.Commands.Rotate90CCW:
+                    return "Rotate 90 CCW";
+                case TurretCommand.Commands.Up:
+                    return "Up";
+                case TurretCommand.Commands.Down:
+                    return "Down";
+                case TurretCommand.Commands.Shoot:
+                    return "Shoot";
+                case TurretCommand.Commands.None:
+                    return "None";
+            }
+
+            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
+        }
+
         public static float NormalizedRotation(float rotation)
         {
             while (rotation < 0)

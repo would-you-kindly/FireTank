@@ -120,17 +120,33 @@ namespace FireSafety
             currentUserLastName = lastName;
         }
 
+        public void SetShortcut(string command, Keys key)
+        {
+            switch (command)
+            {
+
+                default:
+                    break;
+            }
+        }
+
         public void Save()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
             using (FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
             {
-                serializer.Serialize(fs, this);
+                serializer.Serialize(fs, instance);
             }
         }
 
         public void Load()
         {
+            // Если файл с настройками не найден, то восстанавливаем его с настройками по умолчанию
+            if (!File.Exists(filename))
+            {
+                Default();
+            }
+
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
@@ -157,8 +173,41 @@ namespace FireSafety
             turretShoot = turretShootDefault;
             turretRotateCW = turretRotateCWDefault;
             turretRotateCCW = turretRotateCCWDefault;
+
             timeToHold = timeToHoldDefault;
             connectionString = connectionStringDefault;
+
+            Save();
+        }
+
+        public List<Tuple<string, string, Keys>> GenerateShortcutList()
+        {
+            // Исполнитель, команда, shortcut
+            List<Tuple<string, string, Keys>> shortcuts = new List<Tuple<string, string, Keys>>();
+
+            shortcuts.Add(new Tuple<string, string, Keys>("Common", Utilities.ToMoveString(MoveCommand.Commands.None), none));
+
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Forward), moveForward));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Backward), moveBackward));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Forward45CW), moveForward45CW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Forward45CCW), moveForward45CCW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Backward45CW), moveBackward45CW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Backward45CCW), moveBackward45CCW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Rotate45CW), moveRotateCW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Rotate45CCW), moveRotateCCW));
+
+            shortcuts.Add(new Tuple<string, string, Keys>("Charge", Utilities.ToChargeString(ChargeCommand.Commands.Pressure), chargePressure));
+
+            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Up), turretUp));
+            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Down), turretDown));
+            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Shoot), turretShoot));
+            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Rotate45CW), turretRotateCW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Rotate45CCW), turretRotateCCW));
+
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Clear selection", clearSelection));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Delete action", deleteAction));
+
+            return shortcuts;
         }
     }
 }
