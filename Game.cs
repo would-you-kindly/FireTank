@@ -30,8 +30,8 @@ namespace FireSafety
         public event EndEventHandler Ended;
 
         // Переменные игры
-        internal static World world;
-        public static Gui gui;
+        public World world;
+        public Gui gui;
 
         // Переменные для обработки ошибок
         public static bool error = false;
@@ -99,7 +99,7 @@ namespace FireSafety
             gui.form.renderWindow.DispatchEvents();
         }
 
-        public static void Update(Time deltaTime)
+        public void Update(Time deltaTime)
         {
             world.Update(deltaTime);
         }

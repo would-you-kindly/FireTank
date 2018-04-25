@@ -45,11 +45,18 @@
             this.dgvtbcPerformer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtbcCommand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtbcShortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFPS = new System.Windows.Forms.Label();
+            this.nudFPS = new System.Windows.Forms.NumericUpDown();
+            this.gbOpenMode = new System.Windows.Forms.GroupBox();
+            this.rbtnOpenModeFromFiles = new System.Windows.Forms.RadioButton();
+            this.rbtnOpenModeFromDataBase = new System.Windows.Forms.RadioButton();
             this.tcSettings.SuspendLayout();
             this.tpCommon.SuspendLayout();
             this.tpShortcuts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFPS)).BeginInit();
+            this.gbOpenMode.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcSettings
@@ -65,6 +72,9 @@
             // 
             // tpCommon
             // 
+            this.tpCommon.Controls.Add(this.gbOpenMode);
+            this.tpCommon.Controls.Add(this.nudFPS);
+            this.tpCommon.Controls.Add(this.lblFPS);
             this.tpCommon.Controls.Add(this.tbUser);
             this.tpCommon.Controls.Add(this.lblUser);
             this.tpCommon.Controls.Add(this.btnChangeConnectionString);
@@ -242,6 +252,69 @@
             this.dgvtbcShortcut.ReadOnly = true;
             this.dgvtbcShortcut.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // lblFPS
+            // 
+            this.lblFPS.AutoSize = true;
+            this.lblFPS.Location = new System.Drawing.Point(8, 81);
+            this.lblFPS.Name = "lblFPS";
+            this.lblFPS.Size = new System.Drawing.Size(329, 13);
+            this.lblFPS.TabIndex = 5;
+            this.lblFPS.Text = "Количество кадров в секунду во время выполнения алгоритма";
+            // 
+            // nudFPS
+            // 
+            this.nudFPS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudFPS.Location = new System.Drawing.Point(8, 97);
+            this.nudFPS.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudFPS.Name = "nudFPS";
+            this.nudFPS.Size = new System.Drawing.Size(560, 20);
+            this.nudFPS.TabIndex = 6;
+            this.nudFPS.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // gbOpenMode
+            // 
+            this.gbOpenMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbOpenMode.Controls.Add(this.rbtnOpenModeFromDataBase);
+            this.gbOpenMode.Controls.Add(this.rbtnOpenModeFromFiles);
+            this.gbOpenMode.Location = new System.Drawing.Point(8, 123);
+            this.gbOpenMode.Name = "gbOpenMode";
+            this.gbOpenMode.Size = new System.Drawing.Size(560, 66);
+            this.gbOpenMode.TabIndex = 8;
+            this.gbOpenMode.TabStop = false;
+            this.gbOpenMode.Text = "Режим открытия карт и алгоритмов";
+            // 
+            // rbtnOpenModeFromFiles
+            // 
+            this.rbtnOpenModeFromFiles.AutoSize = true;
+            this.rbtnOpenModeFromFiles.Location = new System.Drawing.Point(6, 19);
+            this.rbtnOpenModeFromFiles.Name = "rbtnOpenModeFromFiles";
+            this.rbtnOpenModeFromFiles.Size = new System.Drawing.Size(80, 17);
+            this.rbtnOpenModeFromFiles.TabIndex = 0;
+            this.rbtnOpenModeFromFiles.TabStop = true;
+            this.rbtnOpenModeFromFiles.Text = "Из файлов";
+            this.rbtnOpenModeFromFiles.UseVisualStyleBackColor = true;
+            // 
+            // rbtnOpenModeFromDataBase
+            // 
+            this.rbtnOpenModeFromDataBase.AutoSize = true;
+            this.rbtnOpenModeFromDataBase.Location = new System.Drawing.Point(6, 42);
+            this.rbtnOpenModeFromDataBase.Name = "rbtnOpenModeFromDataBase";
+            this.rbtnOpenModeFromDataBase.Size = new System.Drawing.Size(108, 17);
+            this.rbtnOpenModeFromDataBase.TabIndex = 0;
+            this.rbtnOpenModeFromDataBase.TabStop = true;
+            this.rbtnOpenModeFromDataBase.Text = "Из базы данных";
+            this.rbtnOpenModeFromDataBase.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,6 +333,9 @@
             this.tpShortcuts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFPS)).EndInit();
+            this.gbOpenMode.ResumeLayout(false);
+            this.gbOpenMode.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -282,5 +358,10 @@
         private System.Windows.Forms.Label lblUser;
         public System.Windows.Forms.TextBox tbConnectionString;
         public System.Windows.Forms.TextBox tbUser;
+        private System.Windows.Forms.GroupBox gbOpenMode;
+        private System.Windows.Forms.RadioButton rbtnOpenModeFromDataBase;
+        private System.Windows.Forms.RadioButton rbtnOpenModeFromFiles;
+        private System.Windows.Forms.NumericUpDown nudFPS;
+        private System.Windows.Forms.Label lblFPS;
     }
 }
