@@ -150,7 +150,7 @@ namespace FireSafety
                 tank.MapLeft += delegate (object sender, Tank.MapLeftEventArgs e)
                 {
                     //ParallelAlgorithm.GetInstance().Reload();
-                    MessageBox.Show("left");
+                    MessageBox.Show("left map");
                 };
                 tank.NearLakeError += delegate (object sender, Tank.NearLakeErrorEventArgs e)
                 {
