@@ -45,16 +45,26 @@ namespace FireSafety
         public class RotateTankEventArgs : EventArgs
         {
         }
+        public class NearLakeErrorEventArgs : EventArgs
+        {
+        }
+        public class RefuelErrorEventArgs : EventArgs
+        {
+        }
 
         // События танка
         public delegate void CollideEventHandler(object sender, CollideEventArgs e);
         public delegate void MapLeftEventHandler(object sender, MapLeftEventArgs e);
         public delegate void MoveTankEventHandler(object sender, MoveTankEventArgs e);
         public delegate void RotateTankEventHandler(object sender, RotateTankEventArgs e);
+        public delegate void NearLakeErrorEventHandler(object sender, NearLakeErrorEventArgs e);
+        public delegate void RefuelErrorEventHandler(object sender, RefuelErrorEventArgs e);
         public event CollideEventHandler Collided;
         public event MapLeftEventHandler MapLeft;
         public event MoveTankEventHandler TankMoved;
         public event RotateTankEventHandler TankRotated;
+        public event NearLakeErrorEventHandler NearLakeError;
+        public event RefuelErrorEventHandler RefuelError;
 
         // Параметры-ссылки
         private Algorithm _algorithm;
@@ -132,6 +142,23 @@ namespace FireSafety
         public void SetTurretRotation(float rotation)
         {
             turret.RotateBy(rotation);
+        }
+
+        public bool NearLake()
+        {
+            foreach (Lake lake in _terrain.lakes)
+            {
+                // Если рядом с танком (по вертикали или горизонтали) есть озеро, возвращаем true
+                if (sprite.Position == lake.sprite.Position - new Vector2f(Utilities.TILE_SIZE, 0) ||
+                    sprite.Position == lake.sprite.Position + new Vector2f(Utilities.TILE_SIZE, 0) ||
+                    sprite.Position == lake.sprite.Position - new Vector2f(0, Utilities.TILE_SIZE) ||
+                    sprite.Position == lake.sprite.Position + new Vector2f(0, Utilities.TILE_SIZE))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void MoveBy(Vector2f move)
@@ -272,8 +299,22 @@ namespace FireSafety
         {
             switch (command)
             {
-                case FireSafety.ChargeCommand.Commands.Pressure:
-                    turret.Pressure();
+                case FireSafety.ChargeCommand.Commands.PressureX1:
+                    // Увеличить давление на 1
+                    turret.Pressure(1);
+                    break;
+                case FireSafety.ChargeCommand.Commands.PressureX2:
+                    // Увеличить давление на 2
+                    turret.Pressure(2);
+                    break;
+                case FireSafety.ChargeCommand.Commands.Refuel:
+                    Refuel();
+                    break;
+                case FireSafety.ChargeCommand.Commands.Charge1:
+                    turret.Charge(0);
+                    break;
+                case FireSafety.ChargeCommand.Commands.Charge2:
+                    turret.Charge(1);
                     break;
                 default:
                     break;
@@ -302,11 +343,36 @@ namespace FireSafety
                 case FireSafety.TurretCommand.Commands.Down:
                     turret.UpDown(false);
                     break;
-                case FireSafety.TurretCommand.Commands.Shoot:
-                    turret.Shoot();
+                case FireSafety.TurretCommand.Commands.Shoot1:
+                    // Стреляем из первой пушки
+                    turret.Shoot(0);
+                    break;
+                case FireSafety.TurretCommand.Commands.Shoot2:
+                    // Стреляем из второй пушки
+                    turret.Shoot(1);
                     break;
                 default:
                     break;
+            }
+        }
+
+        // Пополнение запасов
+        public void Refuel()
+        {
+            if (!NearLake())
+            {
+                NearLakeError?.Invoke(this, new NearLakeErrorEventArgs());
+
+                return;
+            }
+
+            if (turret.waterCapacity < turret.maxWaterCapacity)
+            {
+                turret.waterCapacity++;
+            }
+            else
+            {
+                RefuelError?.Invoke(this, new RefuelErrorEventArgs());
             }
         }
 

@@ -11,7 +11,15 @@ namespace FireSafety
     {
         public enum Commands
         {
-            Pressure,
+            // Увеличение давления воды (дальности стрельбы)
+            PressureX1,
+            PressureX2,
+            // Пополнение запасов воды (из озера)
+            Refuel,
+            // Перезарядка (подготовка к выстрелу)
+            Charge1,
+            Charge2,
+
             None
         }
 
@@ -31,8 +39,16 @@ namespace FireSafety
         {
             switch (command)
             {
-                case Commands.Pressure:
-                    return "Pressure";
+                case Commands.PressureX1:
+                    return "Pressure x1";
+                case Commands.PressureX2:
+                    return "Pressure x2";
+                case Commands.Refuel:
+                    return "Refuel";
+                case Commands.Charge1:
+                    return "Charge 1";
+                case Commands.Charge2:
+                    return "Charge 2";
                 case Commands.None:
                     return "None";
             }

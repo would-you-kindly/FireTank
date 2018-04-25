@@ -56,9 +56,45 @@ namespace FireSafety
         }
         public class PressureTurretEventArgs : EventArgs
         {
+            public int count;
+
+            public PressureTurretEventArgs(int count)
+            {
+                this.count = count;
+            }
         }
         public class PressureTurretErrorEventArgs : EventArgs
         {
+        }
+        public class InsufficientlyWaterErrorEventArgs : EventArgs
+        {
+        }
+        public class WeaponChargeEventArgs : EventArgs
+        {
+            public int weaponNumber;
+
+            public WeaponChargeEventArgs(int weaponNumber)
+            {
+                this.weaponNumber = weaponNumber;
+            }
+        }
+        public class WeaponAlreadyChargeErrorEventArgs : EventArgs
+        {
+            public int weaponNumber;
+
+            public WeaponAlreadyChargeErrorEventArgs(int weaponNumber)
+            {
+                this.weaponNumber = weaponNumber;
+            }
+        }
+        public class WeaponUnchargeErrorEventArgs : EventArgs
+        {
+            public int weaponNumber;
+
+            public WeaponUnchargeErrorEventArgs(int weaponNumber)
+            {
+                this.weaponNumber = weaponNumber;
+            }
         }
 
         // События башни
@@ -72,6 +108,10 @@ namespace FireSafety
         public delegate void ShootTurretErrorEventHandler(object sender, ShootTurretErrorEventArgs e);
         public delegate void PressureTurretEventHandler(object sender, PressureTurretEventArgs e);
         public delegate void PressureTurretErrorEventHandler(object sender, PressureTurretErrorEventArgs e);
+        public delegate void InsufficientlyWaterErrorEventHandler(object sender, InsufficientlyWaterErrorEventArgs e);
+        public delegate void WeaponChargeEventHandler(object sender, WeaponChargeEventArgs e);
+        public delegate void WeaponAlreadyChargeErrorEventHandler(object sender, WeaponAlreadyChargeErrorEventArgs e);
+        public delegate void WeaponUnchargeErrorEventHandler(object sender, WeaponUnchargeErrorEventArgs e);
         public event MoveTurretEventHandler TurretMoved;
         public event RotateTurretEventHandler TurretRotated;
         public event UpTurretEventHandler TurretUp;
@@ -82,14 +122,27 @@ namespace FireSafety
         public event ShootTurretErrorEventHandler TurretShootError;
         public event PressureTurretEventHandler TurretPressure;
         public event PressureTurretErrorEventHandler TurretPressureError;
+        public event InsufficientlyWaterErrorEventHandler InsufficientlyWaterError;
+        public event WeaponChargeEventHandler WeaponCharged;
+        public event WeaponAlreadyChargeErrorEventHandler WeaponAlreadyChargedError;
+        public event WeaponUnchargeErrorEventHandler WeaponUnchargedError;
 
         // Параметры-ссылки
         private Terrain _terrain;
 
         // Параметры турели
-        public const int maxWaterPressure = 3;
+        public int minWaterPressure = 1;
+        public int maxWaterPressure = 5;
         public int waterPressure;
+
+        public int minWaterCapacity = 0;
+        public int maxWaterCapacity = 8;
+        public int waterCapacity;
+
         public bool up;
+        private const int weaponsCount = 2;
+        public bool[] weaponsReady;
+
         private RectangleShape direction;
 
         public Turret(Textures.ID id, TextureHolder<Textures.ID> textures) :
@@ -97,7 +150,9 @@ namespace FireSafety
         {
             // Задаем параметры турели
             waterPressure = 0;
+            waterCapacity = maxWaterCapacity;
             up = false;
+            weaponsReady = new bool[weaponsCount] { false, false };
 
             // Создаем полоску для указания направления турели
             direction = new RectangleShape(new Vector2f(2, 32));
@@ -218,8 +273,24 @@ namespace FireSafety
             return targets;
         }
 
-        public void Shoot()
+        public void Shoot(int weaponNumber)
         {
+            // Недостаточное количество воды в запасе
+            if (waterCapacity == 0)
+            {
+                InsufficientlyWaterError?.Invoke(this, new InsufficientlyWaterErrorEventArgs());
+
+                return;
+            }
+
+            // Пушка не подготовлена
+            if (!weaponsReady[weaponNumber])
+            {
+                WeaponUnchargedError?.Invoke(this, new WeaponUnchargeErrorEventArgs(weaponNumber));
+
+                return;
+            }
+
             if (waterPressure != 0)
             {
                 // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
@@ -249,6 +320,8 @@ namespace FireSafety
 
                 TurretShoot?.Invoke(this, new ShootTurretEventArgs(treeToExtinguish));
                 waterPressure = 0;
+                waterCapacity--;
+                weaponsReady[weaponNumber] = false;
             }
             else
             {
@@ -256,17 +329,38 @@ namespace FireSafety
             }
         }
 
-        public void Pressure()
+        // Увеличение давления воды
+        public void Pressure(int count)
         {
-            if (waterPressure < maxWaterPressure)
+            if (waterPressure + count <= maxWaterPressure)
             {
-                waterPressure++;
+                waterPressure += count;
 
-                TurretPressure?.Invoke(this, new PressureTurretEventArgs());
+                TurretPressure?.Invoke(this, new PressureTurretEventArgs(count));
             }
             else
             {
                 TurretPressureError?.Invoke(this, new PressureTurretErrorEventArgs());
+            }
+        }
+
+        // Подготовка заряда (первого или второго)
+        public void Charge(int weaponNumber)
+        {
+            if (weaponNumber != 0 || weaponNumber != 1)
+            {
+                throw new Exception("У танка наготове может быть только две пушки (0 или 1)");
+            }
+
+            if (weaponsReady[weaponNumber])
+            {
+                WeaponAlreadyChargedError?.Invoke(this, new WeaponAlreadyChargeErrorEventArgs(weaponNumber));
+            }
+            else
+            {
+                weaponsReady[weaponNumber] = true;
+
+                WeaponCharged?.Invoke(this, new WeaponChargeEventArgs(weaponNumber));
             }
         }
 

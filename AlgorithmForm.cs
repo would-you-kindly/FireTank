@@ -194,7 +194,7 @@ namespace FireSafety
             // Обрабатываем горячие клавиши добавления команд выстрела
             if (e.KeyCode == Settings.GetInstance().chargePressure)
             {
-                Shortcut(cbShoot, Utilities.ToChargeString(ChargeCommand.Commands.Pressure));
+                Shortcut(cbShoot, Utilities.ToChargeString(ChargeCommand.Commands.PressureX1));
             }
 
             // Обрабатываем горячие клавиши добавления команд турели
@@ -210,7 +210,7 @@ namespace FireSafety
 
             if (e.KeyCode == Settings.GetInstance().turretShoot)
             {
-                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot));
+                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot1));
             }
         }
 

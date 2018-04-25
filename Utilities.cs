@@ -74,7 +74,7 @@ namespace FireSafety
             switch (value)
             {
                 case "Pressure":
-                    return ChargeCommand.Commands.Pressure;
+                    return ChargeCommand.Commands.PressureX1;
                 case "None":
                     return ChargeCommand.Commands.None;
             }
@@ -99,7 +99,7 @@ namespace FireSafety
                 case "Down":
                     return TurretCommand.Commands.Down;
                 case "Shoot":
-                    return TurretCommand.Commands.Shoot;
+                    return TurretCommand.Commands.Shoot1;
                 case "None":
                     return TurretCommand.Commands.None;
             }
@@ -142,7 +142,7 @@ namespace FireSafety
         {
             switch (value)
             {
-                case ChargeCommand.Commands.Pressure:
+                case ChargeCommand.Commands.PressureX1:
                     return "Pressure";
                 case ChargeCommand.Commands.None:
                     return "None";
@@ -167,7 +167,7 @@ namespace FireSafety
                     return "Up";
                 case TurretCommand.Commands.Down:
                     return "Down";
-                case TurretCommand.Commands.Shoot:
+                case TurretCommand.Commands.Shoot1:
                     return "Shoot";
                 case TurretCommand.Commands.None:
                     return "None";
