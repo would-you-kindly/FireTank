@@ -76,7 +76,7 @@ namespace FireSafety
             currentAction = 0;
 
             // Создаем алгоритмы сразу для максимального количества танков
-            for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
+            for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
                 algorithms.Add(new Algorithm());
             }
@@ -227,6 +227,11 @@ namespace FireSafety
 
         public void Clear()
         {
+            foreach (Algorithm algorithm in instance.algorithms)
+            {
+                algorithm.actions.Clear();
+            }
+
             // TODO: Нужно ли чистить????? instance = null, а в памяти весь хлам остался
             instance = null;
 

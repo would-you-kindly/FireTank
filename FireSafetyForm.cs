@@ -18,7 +18,8 @@ namespace FireSafety
     // TODO: Есть атрибут, который запрещает использовать в данном классе определенный класс, типа [Forbidden(typeof(ParallelAlgorithm))]
     public partial class FireSafetyForm : Form
     {
-        ParallelAlgorithmController controller;
+        ParallelAlgorithmController algorithmController;
+        WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
         public InfoForm infoForm;
@@ -31,6 +32,11 @@ namespace FireSafety
         {
             InitializeComponent();
 
+            Init();
+        }
+
+        private void Init()
+        {
             // Создаем окна алгоритмов
             algorithmForms = new List<AlgorithmForm>();
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
@@ -43,7 +49,8 @@ namespace FireSafety
                 algorithmForms.Add(algorithmForm);
             }
 
-            controller = new ParallelAlgorithmController(algorithmForms);
+            algorithmController = new ParallelAlgorithmController(algorithmForms);
+            worldController = new WorldController();
 
             infoForm = new InfoForm();
             infoForm.MdiParent = this;
@@ -68,13 +75,13 @@ namespace FireSafety
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game.gui.form.renderWindow.Close();
+            Clear();
         }
 
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Game.world.BuildWorld();
-            controller.RunAlgorithm();
+            algorithmController.RunAlgorithm();
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,7 +89,7 @@ namespace FireSafety
             SaveFileDialog sfd = new SaveFileDialog();
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                controller.SaveAlgorithm(sfd.FileName);
+                algorithmController.SaveAlgorithm(sfd.FileName);
             }
         }
 
@@ -91,7 +98,7 @@ namespace FireSafety
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                controller.LoadAlgorithm(ofd.FileName);
+                algorithmController.LoadAlgorithm(ofd.FileName);
             }
         }
 
@@ -117,7 +124,7 @@ namespace FireSafety
 
         public void Reload()
         {
-            controller.SetAlgorithmRunningState(false);
+            algorithmController.SetAlgorithmRunningState(false);
             Game.world.BuildWorld();
         }
 
@@ -126,33 +133,48 @@ namespace FireSafety
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                ParallelAlgorithm.GetInstance().Clear();
-                // Загружаем новую карту
-                Game.world.LoadMap(ofd.FileName);
-                Game.world.BuildWorld();
-                controller.SetAlgorithmRunningState(false);
-                sfmlForm.Text = World.wind.ToString();
+                // Очищаем алгоритм и окна перед открытием новой карты
+                Clear();
 
-                // Создаем окна алгоритмов
-                algorithmForms.ForEach(form => form.Close());
-                algorithmForms.Clear();
-                for (int i = 0; i < Utilities.TANKS_COUNT; i++)
-                {
-                    AlgorithmForm algorithmForm = new AlgorithmForm();
-                    algorithmForm.MdiParent = this;
-                    algorithmForm.Text = Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString();
-                    algorithmForm.Show();
-                    algorithmForms.Add(algorithmForm);
-                }
+                // Перестраиваем мир по новой карте
+                RebuildWorld(ofd.FileName);
 
-                // Если указан обучающий алгоритм, загружаем его
-                //if (Game.world.map.properties["algorithm"] != string.Empty)
-                //{
-                //    ParallelAlgorithm.GetInstance().Load(Path.Combine(Path.GetFullPath(ofd.FileName), Game.world.map.properties["algorithm"]));
-                //}
+                // Создаем новые окна
+                Init();
 
+                // Применяем компоновку окон
                 SmartLayout();
+
+                // Загружаем тренировочный алгоритм (если он есть)
+                LoadTrainingAlgorithm(ofd.FileName);
             }
+        }
+
+        private void LoadTrainingAlgorithm(string filename)
+        {
+            // Если указан обучающий алгоритм, загружаем его
+            //if (Game.world.map.properties["algorithm"] != string.Empty)
+            //{
+            //    ParallelAlgorithm.GetInstance().Load(Path.Combine(Path.GetFullPath(filename), Game.world.map.properties["algorithm"]));
+            //}
+        }
+
+        private void RebuildWorld(string filename)
+        {
+            Game.world.LoadMap(filename);
+            Game.world.BuildWorld();
+        }
+
+        private void Clear()
+        {
+            // Очищаем алгоритм
+            algorithmController.ClearAlgorithm();
+
+            // Закрываем окна
+            algorithmForms.ForEach(form => form?.Close());
+            infoForm?.Close();
+            renderWindow?.Close();
+            sfmlForm?.Close();
         }
 
         private void smartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,14 +226,9 @@ namespace FireSafety
             //}
         }
 
-        private void FireSafetyForm_Load(object sender, EventArgs e)
-        {
-            SmartLayout();
-        }
-
         private void FireSafetyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Game.gui.form.renderWindow.Close();
+            Clear();
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,17 +236,17 @@ namespace FireSafety
             if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм? Все несохраненные данные будут утеряны.",
                 "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                controller.SetAlgorithmRunningState(false);
+                algorithmController.SetAlgorithmRunningState(false);
                 Game.world.BuildWorld();
 
-                controller.ClearAlgorithm();
+                algorithmController.ClearAlgorithm();
 
             }
         }
 
         private void stepToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.SetAlgorithmStep(true);
+            algorithmController.SetAlgorithmStep(true);
         }
 
         private void AddActionMessage()
@@ -428,6 +445,11 @@ namespace FireSafety
             settingsForm = new SettingsForm();
             //settingsForm.MdiParent = this;
             settingsForm.ShowDialog();
+        }
+
+        private void FireSafetyForm_Load(object sender, EventArgs e)
+        {
+            SmartLayout();
         }
     }
 }

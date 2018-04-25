@@ -304,11 +304,11 @@ namespace FireSafety
         }
 
         // Пошагово выполняет алгоритм, заложенный в Algorithm
-        public void Execute(Algorithm algorithm)
+        private void Execute()
         {
-            if (algorithm.HasActions())
+            if (_algorithm.HasActions())
             {
-                Action action = algorithm.GetNextAction();
+                Action action = _algorithm.GetNextAction();
 
                 foreach (Command command in action.commands)
                 {
@@ -319,7 +319,7 @@ namespace FireSafety
 
         public override void Update(Time deltaTime)
         {
-            Execute(_algorithm);
+            Execute();
         }
 
         public override void Draw(RenderTarget target, RenderStates states)

@@ -145,6 +145,7 @@
     <Compile Include="WaterTrace.cs" />
     <Compile Include="Wind.cs" />
     <Compile Include="World.cs" />
+    <Compile Include="WorldController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

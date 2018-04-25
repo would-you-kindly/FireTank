@@ -109,7 +109,7 @@ namespace FireSafety
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            ((RenderWindow)sender).Close();
+            ((RenderWindow)sender)?.Close();
         }
 
         private void Game_Rendered(object sender, RenderEventArgs e)
