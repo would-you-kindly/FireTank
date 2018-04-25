@@ -138,152 +138,141 @@ namespace FireSafety
             {
                 return;
             }
-            keyPressed = true;
 
+            // Включаем таймер
+            keyPressed = true;
             clock.Restart();
 
             // Отменяем выделение
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Settings.GetInstance().clearSelection)
             {
                 dgvAlgorithm.ClearSelection();
             }
 
             // Удаляем выделенное действие
-            if (e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Settings.GetInstance().deleteAction)
             {
                 DeleteAction();
             }
 
             // Обрабатываем горячие клавиши добавления команд движения
-            if (e.KeyCode == Keys.F)
+            if (e.KeyCode == Settings.GetInstance().moveForward)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "Forward";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Forward));
             }
 
-            if (e.KeyCode == Keys.B)
+            if (e.KeyCode == Settings.GetInstance().moveBackward)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "Backward";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Backward));
             }
 
-            if (e.KeyCode == Keys.NumPad9)
+            if (e.KeyCode == Settings.GetInstance().moveForward45CW)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "Forward 45 CW";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Forward45CW));
             }
 
-            if (e.KeyCode == Keys.NumPad7)
+            if (e.KeyCode == Settings.GetInstance().moveForward45CCW)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "Forward 45 CCW";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Forward45CCW));
             }
 
-            if (e.KeyCode == Keys.NumPad1)
+            if (e.KeyCode == Settings.GetInstance().moveBackward45CW)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "Backward 45 CW";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Backward45CW));
             }
 
-            if (e.KeyCode == Keys.NumPad3)
+            if (e.KeyCode == Settings.GetInstance().moveBackward45CCW)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "Backward 45 CCW";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Backward45CCW));
             }
 
-            if (e.KeyCode == Keys.N)
+            if (e.KeyCode == Settings.GetInstance().none)
             {
-                cbMove.SelectedIndex = -1;
-                cbMove.SelectedItem = "None";
+                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.None));
             }
 
             // Обрабатываем горячие клавиши добавления команд выстрела
-            if (e.KeyCode == Keys.P)
+            if (e.KeyCode == Settings.GetInstance().chargePressure)
             {
-                cbShoot.SelectedIndex = -1;
-                cbShoot.SelectedItem = "Pressure";
+                Shortcut(Utilities.ToChargeString(ChargeCommand.Commands.Pressure));
             }
 
             // Обрабатываем горячие клавиши добавления команд турели
-            if (e.KeyCode == Keys.U)
+            if (e.KeyCode == Settings.GetInstance().turretUp)
             {
-                cbTurret.SelectedIndex = -1;
-                cbTurret.SelectedItem = "Up";
+                Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Up));
             }
 
-            if (e.KeyCode == Keys.D)
+            if (e.KeyCode == Settings.GetInstance().turretDown)
             {
-                cbTurret.SelectedIndex = -1;
-                cbTurret.SelectedItem = "Down";
+                Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Down));
             }
 
-            if (e.KeyCode == Keys.S)
+            if (e.KeyCode == Settings.GetInstance().turretShoot)
             {
-                cbTurret.SelectedIndex = -1;
-                cbTurret.SelectedItem = "Shoot";
+                Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Shoot));
             }
+        }
+
+        private void Shortcut(string command)
+        {
+            cbMove.SelectedIndex = -1;
+            cbMove.SelectedItem = command;
         }
 
         private void dgvAlgorithm_KeyUp(object sender, KeyEventArgs e)
         {
+            // Выключаем таймер
             keyPressed = false;
             clock.Stop();
 
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд движения
-            if (e.KeyCode == Keys.NumPad8)
+            if (e.KeyCode == Settings.GetInstance().moveRotateCW)
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    cbMove.SelectedIndex = -1;
-                    cbMove.SelectedItem = "Rotate 45 CW";
+                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate45CW));
                 }
                 else
                 {
-                    cbMove.SelectedIndex = -1;
-                    cbMove.SelectedItem = "Rotate 90 CW";
+                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate90CW));
                 }
             }
 
-            if (e.KeyCode == Keys.NumPad2)
+            if (e.KeyCode == Settings.GetInstance().moveRotateCCW)
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    cbMove.SelectedIndex = -1;
-                    cbMove.SelectedItem = "Rotate 45 CCW";
+                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate45CCW));
                 }
                 else
                 {
-                    cbMove.SelectedIndex = -1;
-                    cbMove.SelectedItem = "Rotate 90 CCW";
+                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate90CCW));
                 }
             }
 
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд турели
-            if (e.KeyCode == Keys.NumPad6)
+            if (e.KeyCode == Settings.GetInstance().turretRotateCW)
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    cbTurret.SelectedIndex = -1;
-                    cbTurret.SelectedItem = "Rotate 45 CW";
+                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate45CW));
                 }
                 else
                 {
-                    cbTurret.SelectedIndex = -1;
-                    cbTurret.SelectedItem = "Rotate 90 CW";
+                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate90CW));
                 }
             }
 
-            if (e.KeyCode == Keys.NumPad4)
+            if (e.KeyCode == Settings.GetInstance().turretRotateCCW)
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    cbTurret.SelectedIndex = -1;
-                    cbTurret.SelectedItem = "Rotate 45 CCW";
+                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate45CCW));
                 }
                 else
                 {
-                    cbTurret.SelectedIndex = -1;
-                    cbTurret.SelectedItem = "Rotate 90 CCW";
+                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate90CCW));
                 }
             }
         }

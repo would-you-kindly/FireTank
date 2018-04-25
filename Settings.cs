@@ -15,6 +15,28 @@ namespace FireSafety
         [NonSerialized]
         private static Settings instance;
 
+        // Классы для передачи параметров событий
+        public class UpdateShortcutEventArgs : EventArgs
+        {
+            private object command;
+            private Keys key;
+
+            public UpdateShortcutEventArgs(object command, Keys key)
+            {
+                this.command = command;
+                this.key = key;
+            }
+        }
+        public class DefaultShortcutEventArgs : EventArgs
+        {
+        }
+
+        // События настроек
+        public delegate void UpdateShortcutEventHandler(object sender, UpdateShortcutEventArgs e);
+        public delegate void DefaultShortcutEventHandler(object sender, DefaultShortcutEventArgs e);
+        public event UpdateShortcutEventHandler ShortcutUpdated;
+        public event DefaultShortcutEventHandler Defaulted;
+
         [NonSerialized]
         private const string filename = "Settings.xml";
         [NonSerialized]
@@ -108,9 +130,16 @@ namespace FireSafety
 
                 // Грузим настройки из файла
                 instance.Load();
+
+                instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }
 
             return instance;
+        }
+
+        private static void Settings_ShortcutUpdated(object sender, UpdateShortcutEventArgs e)
+        {
+            instance.Save();
         }
 
         public void SetUser(Guid user, string name, string lastName)
@@ -120,14 +149,83 @@ namespace FireSafety
             currentUserLastName = lastName;
         }
 
-        public void SetShortcut(string command, Keys key)
+        public string GetUserString()
+        {
+            return $"{currentUserName} {currentUserLastName}";
+        }
+
+        public void SetShortcut(string performer, object command, Keys key)
         {
             switch (command)
             {
-
+                case MoveCommand.Commands.None:
+                    none = key;
+                    break;
+                case MoveCommand.Commands.Forward:
+                    moveForward = key;
+                    break;
+                case MoveCommand.Commands.Backward:
+                    moveBackward = key;
+                    break;
+                case MoveCommand.Commands.Forward45CW:
+                    moveForward45CW = key;
+                    break;
+                case MoveCommand.Commands.Forward45CCW:
+                    moveForward45CCW = key;
+                    break;
+                case MoveCommand.Commands.Backward45CW:
+                    moveBackward45CW = key;
+                    break;
+                case MoveCommand.Commands.Backward45CCW:
+                    moveBackward45CCW = key;
+                    break;
+                case MoveCommand.Commands.Rotate45CW:
+                    if (performer == "Move")
+                    {
+                        moveRotateCW = key;
+                    }
+                    break;
+                case MoveCommand.Commands.Rotate45CCW:
+                    if (performer == "Move")
+                    {
+                        moveRotateCCW = key;
+                    }
+                    break;
+                case ChargeCommand.Commands.Pressure:
+                    chargePressure = key;
+                    break;
+                case TurretCommand.Commands.Up:
+                    turretUp = key;
+                    break;
+                case TurretCommand.Commands.Down:
+                    turretDown = key;
+                    break;
+                case TurretCommand.Commands.Shoot:
+                    turretShoot = key;
+                    break;
+                case TurretCommand.Commands.Rotate45CW:
+                    if (performer == "Turret")
+                    {
+                        turretRotateCW = key;
+                    }
+                    break;
+                case TurretCommand.Commands.Rotate45CCW:
+                    if (performer == "Turret")
+                    {
+                        turretRotateCCW = key;
+                    }
+                    break;
+                case "Clear selection":
+                    clearSelection = key;
+                    break;
+                case "Delete action":
+                    deleteAction = key;
+                    break;
                 default:
                     break;
             }
+
+            ShortcutUpdated?.Invoke(this, new UpdateShortcutEventArgs(command, key));
         }
 
         public void Save()
@@ -178,34 +276,36 @@ namespace FireSafety
             connectionString = connectionStringDefault;
 
             Save();
+
+            Defaulted?.Invoke(this, new DefaultShortcutEventArgs());
         }
 
-        public List<Tuple<string, string, Keys>> GenerateShortcutList()
+        public List<Tuple<string, object, Keys>> GenerateShortcutList()
         {
             // Исполнитель, команда, shortcut
-            List<Tuple<string, string, Keys>> shortcuts = new List<Tuple<string, string, Keys>>();
+            List<Tuple<string, object, Keys>> shortcuts = new List<Tuple<string, object, Keys>>();
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Common", Utilities.ToMoveString(MoveCommand.Commands.None), none));
+            shortcuts.Add(new Tuple<string, object, Keys>("Common", MoveCommand.Commands.None, none));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Forward), moveForward));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Backward), moveBackward));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Forward45CW), moveForward45CW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Forward45CCW), moveForward45CCW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Backward45CW), moveBackward45CW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Backward45CCW), moveBackward45CCW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Rotate45CW), moveRotateCW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Move", Utilities.ToMoveString(MoveCommand.Commands.Rotate45CCW), moveRotateCCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward, moveForward));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward, moveBackward));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward45CW, moveForward45CW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward45CCW, moveForward45CCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward45CW, moveBackward45CW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward45CCW, moveBackward45CCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CW, moveRotateCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CCW, moveRotateCCW));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Charge", Utilities.ToChargeString(ChargeCommand.Commands.Pressure), chargePressure));
+            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Pressure, chargePressure));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Up), turretUp));
-            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Down), turretDown));
-            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Shoot), turretShoot));
-            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Rotate45CW), turretRotateCW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Turret", Utilities.ToTurretString(TurretCommand.Commands.Rotate45CCW), turretRotateCCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Up, turretUp));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Down, turretDown));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Shoot, turretShoot));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CW, turretRotateCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CCW, turretRotateCCW));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Clear selection", clearSelection));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Delete action", deleteAction));
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Clear selection", clearSelection));
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Delete action", deleteAction));
 
             return shortcuts;
         }

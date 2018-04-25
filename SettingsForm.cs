@@ -30,7 +30,11 @@ namespace FireSafety
 
         private void btnDefault_Click(object sender, EventArgs e)
         {
-            controller.Default();
+            if (MessageBox.Show("Вы уверены, что хотите вернуть настройки по умолчанию?", 
+                "Восстановаление настроек", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                controller.Default();
+            }
         }
 
         private void dgvShortcuts_KeyDown(object sender, KeyEventArgs e)
@@ -51,7 +55,8 @@ namespace FireSafety
 
                 // TODO: Лучше создать событие и подписаться
                 dgvShortcuts.SelectedRows[0].Cells[2].Value = value;
-                controller.SetShortcut(dgvShortcuts.SelectedRows[0].Cells[1].Value.ToString(), value);
+                controller.SetShortcut(dgvShortcuts.SelectedRows[0].Cells[0].Value.ToString(),
+                    dgvShortcuts.SelectedRows[0].Cells[1].Value, value);
             }
         }
     }

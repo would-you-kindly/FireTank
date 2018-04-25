@@ -31,25 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpCommon = new System.Windows.Forms.TabPage();
+            this.tbUser = new System.Windows.Forms.TextBox();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.btnChangeConnectionString = new System.Windows.Forms.Button();
+            this.lblConnectionString = new System.Windows.Forms.Label();
+            this.tbConnectionString = new System.Windows.Forms.TextBox();
             this.tpShortcuts = new System.Windows.Forms.TabPage();
+            this.lblTimeToHold = new System.Windows.Forms.Label();
+            this.nudTimeToHold = new System.Windows.Forms.NumericUpDown();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnDefault = new System.Windows.Forms.Button();
             this.dgvShortcuts = new System.Windows.Forms.DataGridView();
             this.dgvtbcPerformer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtbcCommand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtbcShortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nudTimeToHold = new System.Windows.Forms.NumericUpDown();
-            this.tbConnectionString = new System.Windows.Forms.TextBox();
-            this.lblTimeToHold = new System.Windows.Forms.Label();
-            this.lblConnectionString = new System.Windows.Forms.Label();
-            this.btnChangeConnectionString = new System.Windows.Forms.Button();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.tbUser = new System.Windows.Forms.TextBox();
             this.tcSettings.SuspendLayout();
             this.tpCommon.SuspendLayout();
             this.tpShortcuts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).BeginInit();
             this.SuspendLayout();
             // 
             // tcSettings
@@ -78,6 +78,53 @@
             this.tpCommon.Text = "Common";
             this.tpCommon.UseVisualStyleBackColor = true;
             // 
+            // tbUser
+            // 
+            this.tbUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUser.Location = new System.Drawing.Point(8, 58);
+            this.tbUser.Name = "tbUser";
+            this.tbUser.ReadOnly = true;
+            this.tbUser.Size = new System.Drawing.Size(560, 20);
+            this.tbUser.TabIndex = 4;
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(8, 42);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(103, 13);
+            this.lblUser.TabIndex = 3;
+            this.lblUser.Text = "Имя пользователя";
+            // 
+            // btnChangeConnectionString
+            // 
+            this.btnChangeConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeConnectionString.Location = new System.Drawing.Point(493, 17);
+            this.btnChangeConnectionString.Name = "btnChangeConnectionString";
+            this.btnChangeConnectionString.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeConnectionString.TabIndex = 2;
+            this.btnChangeConnectionString.Text = "Изменить";
+            this.btnChangeConnectionString.UseVisualStyleBackColor = true;
+            // 
+            // lblConnectionString
+            // 
+            this.lblConnectionString.AutoSize = true;
+            this.lblConnectionString.Location = new System.Drawing.Point(8, 3);
+            this.lblConnectionString.Name = "lblConnectionString";
+            this.lblConnectionString.Size = new System.Drawing.Size(189, 13);
+            this.lblConnectionString.TabIndex = 1;
+            this.lblConnectionString.Text = "Строка подключения к базе данных";
+            // 
+            // tbConnectionString
+            // 
+            this.tbConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbConnectionString.Location = new System.Drawing.Point(8, 19);
+            this.tbConnectionString.Name = "tbConnectionString";
+            this.tbConnectionString.Size = new System.Drawing.Size(479, 20);
+            this.tbConnectionString.TabIndex = 0;
+            // 
             // tpShortcuts
             // 
             this.tpShortcuts.Controls.Add(this.lblTimeToHold);
@@ -92,6 +139,39 @@
             this.tpShortcuts.TabIndex = 1;
             this.tpShortcuts.Text = "Shortcuts";
             this.tpShortcuts.UseVisualStyleBackColor = true;
+            // 
+            // lblTimeToHold
+            // 
+            this.lblTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTimeToHold.AutoSize = true;
+            this.lblTimeToHold.Location = new System.Drawing.Point(367, 365);
+            this.lblTimeToHold.Name = "lblTimeToHold";
+            this.lblTimeToHold.Size = new System.Drawing.Size(145, 13);
+            this.lblTimeToHold.TabIndex = 4;
+            this.lblTimeToHold.Text = "Время удержания клавиши";
+            // 
+            // nudTimeToHold
+            // 
+            this.nudTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudTimeToHold.Location = new System.Drawing.Point(370, 381);
+            this.nudTimeToHold.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudTimeToHold.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudTimeToHold.Name = "nudTimeToHold";
+            this.nudTimeToHold.Size = new System.Drawing.Size(200, 20);
+            this.nudTimeToHold.TabIndex = 3;
+            this.nudTimeToHold.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // lblDescription
             // 
@@ -162,86 +242,6 @@
             this.dgvtbcShortcut.ReadOnly = true;
             this.dgvtbcShortcut.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // nudTimeToHold
-            // 
-            this.nudTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudTimeToHold.Location = new System.Drawing.Point(370, 381);
-            this.nudTimeToHold.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nudTimeToHold.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nudTimeToHold.Name = "nudTimeToHold";
-            this.nudTimeToHold.Size = new System.Drawing.Size(200, 20);
-            this.nudTimeToHold.TabIndex = 3;
-            this.nudTimeToHold.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // tbConnectionString
-            // 
-            this.tbConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbConnectionString.Location = new System.Drawing.Point(8, 19);
-            this.tbConnectionString.Name = "tbConnectionString";
-            this.tbConnectionString.Size = new System.Drawing.Size(479, 20);
-            this.tbConnectionString.TabIndex = 0;
-            // 
-            // lblTimeToHold
-            // 
-            this.lblTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTimeToHold.AutoSize = true;
-            this.lblTimeToHold.Location = new System.Drawing.Point(367, 365);
-            this.lblTimeToHold.Name = "lblTimeToHold";
-            this.lblTimeToHold.Size = new System.Drawing.Size(145, 13);
-            this.lblTimeToHold.TabIndex = 4;
-            this.lblTimeToHold.Text = "Время удержания клавиши";
-            // 
-            // lblConnectionString
-            // 
-            this.lblConnectionString.AutoSize = true;
-            this.lblConnectionString.Location = new System.Drawing.Point(8, 3);
-            this.lblConnectionString.Name = "lblConnectionString";
-            this.lblConnectionString.Size = new System.Drawing.Size(189, 13);
-            this.lblConnectionString.TabIndex = 1;
-            this.lblConnectionString.Text = "Строка подключения к базе данных";
-            // 
-            // btnChangeConnectionString
-            // 
-            this.btnChangeConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChangeConnectionString.Location = new System.Drawing.Point(493, 17);
-            this.btnChangeConnectionString.Name = "btnChangeConnectionString";
-            this.btnChangeConnectionString.Size = new System.Drawing.Size(75, 23);
-            this.btnChangeConnectionString.TabIndex = 2;
-            this.btnChangeConnectionString.Text = "Изменить";
-            this.btnChangeConnectionString.UseVisualStyleBackColor = true;
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(8, 42);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(103, 13);
-            this.lblUser.TabIndex = 3;
-            this.lblUser.Text = "Имя пользователя";
-            // 
-            // tbUser
-            // 
-            this.tbUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbUser.Location = new System.Drawing.Point(8, 58);
-            this.tbUser.Name = "tbUser";
-            this.tbUser.ReadOnly = true;
-            this.tbUser.Size = new System.Drawing.Size(560, 20);
-            this.tbUser.TabIndex = 4;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,8 +258,8 @@
             this.tpCommon.PerformLayout();
             this.tpShortcuts.ResumeLayout(false);
             this.tpShortcuts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,11 +276,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcShortcut;
         private System.Windows.Forms.Label lblDescription;
         public System.Windows.Forms.NumericUpDown nudTimeToHold;
-        private System.Windows.Forms.TextBox tbConnectionString;
         private System.Windows.Forms.Label lblTimeToHold;
         private System.Windows.Forms.Button btnChangeConnectionString;
         private System.Windows.Forms.Label lblConnectionString;
-        private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.Label lblUser;
+        public System.Windows.Forms.TextBox tbConnectionString;
+        public System.Windows.Forms.TextBox tbUser;
     }
 }

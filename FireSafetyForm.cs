@@ -425,16 +425,9 @@ namespace FireSafety
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Открываем максимум одно окно настроек
-            if (settingsForm == null)
-            {
-                settingsForm = new SettingsForm();
-                settingsForm.MdiParent = this;
-                settingsForm.Show();
-            }
-            else
-            {
-                settingsForm.Focus();
-            }
+            settingsForm = new SettingsForm();
+            //settingsForm.MdiParent = this;
+            settingsForm.ShowDialog();
         }
     }
 }

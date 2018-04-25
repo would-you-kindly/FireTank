@@ -118,10 +118,10 @@ namespace FireSafety
 
         private static void Algorithm_NextActionPerforming(object sender, Algorithm.PerformNextActionEventArgs e)
         {
-            // Если currentAction всех алгоритмов равны
-            if (instance.algorithms.MaxBy(algo => algo.actions.Count).currentAction != instance.currentAction)
+            // Если currentAction всех алгоритмов, которые еще выполняются равны, то берем currentAction самого длинного алгоритма
+            if (instance.algorithms.Where(algo => algo.HasActions()).Select(algo => algo.currentAction).Distinct().Count() == 1)
             {
-                instance.currentAction++;
+                instance.currentAction = instance.algorithms.MaxBy(algo => algo.actions.Count).currentAction;
             }
 
             instance.NextActionPerforming?.Invoke(instance, new PerformNextActionEventArgs());
