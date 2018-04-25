@@ -32,7 +32,7 @@ namespace FireSafety
             LoadTextures();
         }
 
-        public void LoadMap(string filename = "Media/Maps/map6.tmx")
+        public void LoadMap(string filename = "Media/Maps/Map2.tmx")
         {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();

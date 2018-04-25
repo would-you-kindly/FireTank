@@ -159,7 +159,7 @@ namespace FireSafety
             string algorithmFilename = worldController.GetMapProperty("algorithm");
             if (algorithmFilename != string.Empty)
             {
-                filename = Path.Combine(Path.GetFullPath(filename), algorithmFilename);
+                filename = Path.Combine(Path.GetDirectoryName(filename), algorithmFilename);
                 ParallelAlgorithm.GetInstance().Load(filename);
             }
         }

@@ -70,6 +70,12 @@ namespace FireSafety
 
                 Application.DoEvents();
 
+                // Чтобы быстрее реагировало на пошаговое выполнение, искусственно добавляем время
+                if (ParallelAlgorithm.GetInstance().step)
+                {
+                    timeSinceLastUpdate += timePerFrame;
+                }
+
                 while (timeSinceLastUpdate > timePerFrame)
                 {
                     timeSinceLastUpdate -= timePerFrame;

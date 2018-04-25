@@ -47,7 +47,7 @@ namespace FireSafety
 
         public bool HasActions()
         {
-            Executed?.Invoke(this, new ExecuteEventArgs());
+            //Executed?.Invoke(this, new ExecuteEventArgs());
 
             return actions.Count != currentAction;
         }
