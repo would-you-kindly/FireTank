@@ -123,12 +123,12 @@ namespace FireSafety
 
         public void SetRotation(float rotation)
         {
-            RotateTankBy(rotation);
+            RotateBy(rotation);
         }
 
         public void SetTurretRotation(float rotation)
         {
-            RotateTurretBy(rotation);
+            turret.RotateBy(rotation);
         }
 
         private void MoveBy(Vector2f move)
@@ -194,16 +194,11 @@ namespace FireSafety
             }
         }
 
-        private void RotateTurretBy(float degrees)
-        {
-            turret.RotateBy(degrees);
-        }
-
-        private void RotateTankBy(float degrees)
+        private void RotateBy(float degrees)
         {
             // Поворачиваем танк и башню
             sprite.Rotation += degrees;
-            turret.sprite.Rotation += degrees;
+            turret.RotateBy(degrees);
 
             TankRotated?.Invoke(this, new RotateTankEventArgs());
         }
@@ -219,16 +214,16 @@ namespace FireSafety
                     MoveTo(MoveCommand.Commands.Backward);
                     break;
                 case MoveCommand.Commands.Rotate90CW:
-                    RotateTankBy(90);
+                    RotateBy(90);
                     break;
                 case MoveCommand.Commands.Rotate90CCW:
-                    RotateTankBy(-90);
+                    RotateBy(-90);
                     break;
                 case MoveCommand.Commands.Rotate45CW:
-                    RotateTankBy(45);
+                    RotateBy(45);
                     break;
                 case MoveCommand.Commands.Rotate45CCW:
-                    RotateTankBy(-45);
+                    RotateBy(-45);
                     break;
                 case MoveCommand.Commands.Forward45CW:
                     MoveAndRotate(MoveCommand.Commands.Forward, 45.0f);
@@ -252,11 +247,11 @@ namespace FireSafety
             if ((NormalizedRotation / 45.0) % 2 == 1)
             {
                 MoveTo(where);
-                RotateTankBy(rotation);
+                RotateBy(rotation);
             }
             else
             {
-                RotateTankBy(rotation);
+                RotateBy(rotation);
                 MoveTo(where);
             }
         }
@@ -278,16 +273,16 @@ namespace FireSafety
             switch (command)
             {
                 case FireSafety.TurretCommand.Commands.Rotate45CW:
-                    RotateTurretBy(45);
+                    turret.RotateBy(45);
                     break;
                 case FireSafety.TurretCommand.Commands.Rotate45CCW:
-                    RotateTurretBy(-45);
+                    turret.RotateBy(-45);
                     break;
                 case FireSafety.TurretCommand.Commands.Rotate90CW:
-                    RotateTurretBy(90);
+                    turret.RotateBy(90);
                     break;
                 case FireSafety.TurretCommand.Commands.Rotate90CCW:
-                    RotateTurretBy(-90);
+                    turret.RotateBy(-90);
                     break;
                 case FireSafety.TurretCommand.Commands.Up:
                     turret.UpDown(true);
