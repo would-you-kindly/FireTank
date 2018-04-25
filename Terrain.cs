@@ -17,19 +17,20 @@ namespace FireSafety
         {
         }
 
-        // События башни
+        // События местности
         public delegate void FireOverEventHandler(object sender, FireOverEventArgs e);
         public event FireOverEventHandler FireOver;
 
         // Параметры местности
         public List<Tree> trees;
         public List<Lake> lakes;
+        public Wind wind;
 
-        public Terrain(List<Object> objects, TextureHolder<Textures.ID> textures) :
-            base()
+        public Terrain(List<Object> objects, TextureHolder<Textures.ID> textures, Wind wind)
         {
             trees = new List<Tree>();
             lakes = new List<Lake>();
+            this.wind = wind;
 
             foreach (Object item in objects)
             {
@@ -92,7 +93,7 @@ namespace FireSafety
                 lake.Update(deltaTime);
             }
 
-            // Проверяем состояние местности
+            // Проверяем состояние местности на наличие пожара
             CheckTerrainState();
         }
 
@@ -111,13 +112,11 @@ namespace FireSafety
 
         private void SpreadFire()
         {
-            // TODO: Ошибка в том, что после тушения иногда дерево загорается на этом же шаге и кажется будто оно вообще не было потушено
-
             // Ищем дерево, которое загорится следующим
             List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state.IsBurning()));
             foreach (Tree tree in burningTrees)
             {
-                switch (World.wind.direction)
+                switch (wind.direction)
                 {
                     case Wind.Direction.Up:
                         trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();

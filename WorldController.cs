@@ -20,5 +20,15 @@ namespace FireSafety
         {
             world.LoadMap(filename);
         }
+
+        public string GetMapProperty(string property)
+        {
+            return world.map.properties[property];
+        }
+
+        public Wind.Direction GetWindDirection()
+        {
+            return world.terrain.wind.direction;
+        }
     }
 }

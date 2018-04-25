@@ -158,72 +158,73 @@ namespace FireSafety
             // Обрабатываем горячие клавиши добавления команд движения
             if (e.KeyCode == Settings.GetInstance().moveForward)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Forward));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Forward));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveBackward)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Backward));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Backward));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveForward45CW)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Forward45CW));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Forward45CW));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveForward45CCW)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Forward45CCW));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Forward45CCW));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveBackward45CW)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Backward45CW));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Backward45CW));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveBackward45CCW)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Backward45CCW));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Backward45CCW));
             }
 
             if (e.KeyCode == Settings.GetInstance().none)
             {
-                Shortcut(Utilities.ToMoveString(MoveCommand.Commands.None));
+                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.None));
             }
 
             // Обрабатываем горячие клавиши добавления команд выстрела
             if (e.KeyCode == Settings.GetInstance().chargePressure)
             {
-                Shortcut(Utilities.ToChargeString(ChargeCommand.Commands.Pressure));
+                Shortcut(cbShoot, Utilities.ToChargeString(ChargeCommand.Commands.Pressure));
             }
 
             // Обрабатываем горячие клавиши добавления команд турели
             if (e.KeyCode == Settings.GetInstance().turretUp)
             {
-                Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Up));
+                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Up));
             }
 
             if (e.KeyCode == Settings.GetInstance().turretDown)
             {
-                Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Down));
+                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Down));
             }
 
             if (e.KeyCode == Settings.GetInstance().turretShoot)
             {
-                Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Shoot));
+                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot));
             }
+
+            keyPressed = false;
         }
 
-        private void Shortcut(string command)
+        private void Shortcut(ComboBox cb, string command)
         {
-            cbMove.SelectedIndex = -1;
-            cbMove.SelectedItem = command;
+            cb.SelectedIndex = -1;
+            cb.SelectedItem = command;
         }
 
         private void dgvAlgorithm_KeyUp(object sender, KeyEventArgs e)
         {
             // Выключаем таймер
-            keyPressed = false;
             clock.Stop();
 
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд движения
@@ -231,11 +232,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate45CW));
+                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate45CW));
                 }
                 else
                 {
-                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate90CW));
+                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate90CW));
                 }
             }
 
@@ -243,11 +244,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate45CCW));
+                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate45CCW));
                 }
                 else
                 {
-                    Shortcut(Utilities.ToMoveString(MoveCommand.Commands.Rotate90CCW));
+                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate90CCW));
                 }
             }
 
@@ -256,11 +257,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate45CW));
+                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate45CW));
                 }
                 else
                 {
-                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate90CW));
+                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate90CW));
                 }
             }
 
@@ -268,11 +269,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate45CCW));
+                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate45CCW));
                 }
                 else
                 {
-                    Shortcut(Utilities.ToTurretString(TurretCommand.Commands.Rotate90CCW));
+                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate90CCW));
                 }
             }
         }

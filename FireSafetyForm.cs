@@ -31,9 +31,9 @@ namespace FireSafety
         {
             InitializeComponent();
 
-            Init();
-
             worldController = new WorldController(world);
+
+            Init();
         }
 
         private void Init()
@@ -56,12 +56,12 @@ namespace FireSafety
             infoForm.MdiParent = this;
             infoForm.Show();
 
-            // Задаем параметры формы
+            // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
-            sfmlForm.Text = World.wind.direction.ToString();
-            sfmlForm.Show();
+            sfmlForm.Text = worldController.GetWindDirection().ToString(); 
             sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            sfmlForm.Show();
 
             // Создаем surface на форме для рисования через контекст SFML
             DrawingSurface surface = new DrawingSurface();
@@ -153,10 +153,12 @@ namespace FireSafety
         private void LoadTrainingAlgorithm(string filename)
         {
             // Если указан обучающий алгоритм, загружаем его
-            //if (Game.world.map.properties["algorithm"] != string.Empty)
-            //{
-            //    ParallelAlgorithm.GetInstance().Load(Path.Combine(Path.GetFullPath(filename), Game.world.map.properties["algorithm"]));
-            //}
+            string algorithmFilename = worldController.GetMapProperty("algorithm");
+            if (algorithmFilename != string.Empty)
+            {
+                filename = Path.Combine(Path.GetFullPath(filename), algorithmFilename);
+                ParallelAlgorithm.GetInstance().Load(filename);
+            }
         }
 
         private void RebuildWorld(string filename)

@@ -17,7 +17,6 @@ namespace FireSafety
 
         public List<Tank> tanks;
         public Terrain terrain;
-        public static Wind wind;
         public List<WaterTrace> traces;
 
         public World()
@@ -78,6 +77,7 @@ namespace FireSafety
             traces = new List<WaterTrace>();
 
             // Устанавливаем направление ветра
+            Wind wind;
             switch (map.properties["wind"])
             {
                 case "up":
@@ -97,7 +97,7 @@ namespace FireSafety
             }
 
             // Устанавливаем начальное положение объектов местности (деревьев, озер, гор)
-            terrain = new Terrain(map.GetAllObjects(), textures);
+            terrain = new Terrain(map.GetAllObjects(), textures, wind);
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
