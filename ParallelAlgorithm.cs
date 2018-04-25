@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -117,7 +118,11 @@ namespace FireSafety
 
         private static void Algorithm_NextActionPerforming(object sender, Algorithm.PerformNextActionEventArgs e)
         {
-            instance.currentAction = instance.algorithms.Max(algo => algo.currentAction) - 1;
+            // Если currentAction всех алгоритмов равны
+            if (instance.algorithms.MaxBy(algo => algo.actions.Count).currentAction != instance.currentAction)
+            {
+                instance.currentAction++;
+            }
 
             instance.NextActionPerforming?.Invoke(instance, new PerformNextActionEventArgs());
         }

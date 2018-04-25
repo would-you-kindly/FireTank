@@ -15,10 +15,15 @@ namespace FireSafety
         public class PerformNextActionEventArgs : EventArgs
         {
         }
+        public class ExecuteEventArgs : EventArgs
+        {
+        }
 
         // События алгоритма
         public delegate void PerformNextActionEventHandler(object sender, PerformNextActionEventArgs e);
+        public delegate void ExecuteEventHandler(object sender, ExecuteEventArgs e);
         public event PerformNextActionEventHandler NextActionPerforming;
+        public event ExecuteEventHandler Executed;
 
         // Переменные алгоритма
         public List<Action> actions;
@@ -29,6 +34,8 @@ namespace FireSafety
         {
             actions = new List<Action>();
             currentAction = 0;
+
+            Executed += ParallelAlgorithmController.ParallelAlgorithmController_AlgorithmExecuted;
         }
 
         public Action GetNextAction()
@@ -40,6 +47,8 @@ namespace FireSafety
 
         public bool HasActions()
         {
+            Executed?.Invoke(this, new ExecuteEventArgs());
+
             return actions.Count != currentAction;
         }
     }

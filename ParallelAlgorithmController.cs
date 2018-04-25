@@ -21,7 +21,7 @@ namespace FireSafety
         {
             foreach (AlgorithmForm form in algorithmForms)
             {
-                // Очищаем цвета всех строк
+                // Очищаем цвета всех строк в таблице
                 foreach (DataGridViewRow row in form.dgvAlgorithm.Rows)
                 {
                     row.DefaultCellStyle.BackColor = Color.White;
@@ -36,6 +36,17 @@ namespace FireSafety
                 {
                     // Ignore exception
                 }
+            }
+        }
+
+        public static void ParallelAlgorithmController_AlgorithmExecuted(object sender, Algorithm.ExecuteEventArgs e)
+        {
+            int index = ParallelAlgorithm.GetInstance().algorithms.FindIndex(algo => algo == (Algorithm)sender);
+
+            // Очищаем цвета всех строк в таблице
+            foreach (DataGridViewRow row in algorithmForms[index].dgvAlgorithm.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.White;
             }
         }
 
