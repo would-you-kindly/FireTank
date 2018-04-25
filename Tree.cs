@@ -41,6 +41,9 @@ namespace FireSafety
 
             flame = new Flame(Textures.ID.Fire, textures);
             burnedTreeSprite = new Sprite(textures.Get(Textures.ID.BurnedTree));
+
+            Utilities.CenterOrigin(burnedTreeSprite);
+            Utilities.CenterOrigin(sprite);
         }
 
         // Тушит дерево

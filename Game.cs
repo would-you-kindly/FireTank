@@ -148,6 +148,8 @@ namespace FireSafety
                 gui.form.Reload();
                 ParallelAlgorithm.GetInstance().running = false;
 
+
+                // TODO: Не 7 !!!!
                 MessageBox.Show(ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
                     7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()).ToString());
             }

@@ -42,11 +42,11 @@ namespace FireSafety
         [NonSerialized]
         private const string connectionStringDefault = @"data source =.\sqlexpress;initial catalog = FireSafetyAdmin; integrated security = True; MultipleActiveResultSets=True;App=EntityFramework";
         [NonSerialized]
-        public static Guid currentUser;
+        public static Guid currentUser = Guid.Parse("9d59277f-dd0e-4257-863f-b580c5c9e68f");
         [NonSerialized]
-        public static string currentUserName;
+        public static string currentUserName = "Алексей";
         [NonSerialized]
-        public static string currentUserLastName;
+        public static string currentUserLastName = "Чусовлянкин";
 
         [NonSerialized]
         private const Keys clearSelectionDefault = Keys.Escape;

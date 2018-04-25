@@ -83,17 +83,29 @@ namespace FireSafety
                 case "up":
                     wind = new Wind(Wind.Direction.Up);
                     break;
+                case "upleft":
+                    wind = new Wind(Wind.Direction.UpLeft);
+                    break;
                 case "left":
                     wind = new Wind(Wind.Direction.Left);
+                    break;
+                case "leftdown":
+                    wind = new Wind(Wind.Direction.LeftDown);
                     break;
                 case "down":
                     wind = new Wind(Wind.Direction.Down);
                     break;
+                case "downright":
+                    wind = new Wind(Wind.Direction.DownRight);
+                    break;
                 case "right":
                     wind = new Wind(Wind.Direction.Right);
                     break;
+                case "rightup":
+                    wind = new Wind(Wind.Direction.RightUp);
+                    break;
                 default:
-                    throw new Exception("Неверно указано направление ветра");
+                    throw new Exception("Неверно указано направление ветра. Проверьте правильность значений переменных карты.");
             }
 
             // Устанавливаем начальное положение объектов местности (деревьев, озер, гор)
@@ -104,51 +116,84 @@ namespace FireSafety
             tanks = new List<Tank>();
             for (int i = 0; i < map.GetObjects("tank").Count; i++)
             {
+                // Создаем экземпляр танка
                 Object tankObject = map.GetObjects("tank")[i];
                 Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, fonts, (Tank.TankColor)i);
                 tank.SetTerrain(terrain);
                 tank.SetTanks(tanks);
-                tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
-                tank.SetRotation(tankObject.rotation);
                 tank.SetAlgorithm(ParallelAlgorithm.GetInstance()[i]);
-                tank.turret.TurretShootError += delegate (object sender, Turret.ShootTurretErrorEventArgs e)
+                switch (Utilities.NormalizedRotation(tankObject.rotation))
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя выполнять выстрел без давления.", "Ошибка исполнителя Turret");
-                };
-                Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
-                tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
-                tank.turret.UpDown(false);
-                // При выстреле сохраняем след от выстрела
-                tank.turret.TurretShoot += delegate (object sender, Turret.ShootTurretEventArgs e)
-                {
-                    traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position,
-                        tank.turret.waterPressure, tank.turret.NormalizedRotation));
-                };
+                    case 0:
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top - Utilities.TILE_SIZE / 2));
+                        break;
+                    case 90:
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
+                        break;
+                    case 180:
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left - Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
+                        break;
+                    case 270:
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left - Utilities.TILE_SIZE / 2, tankObject.rect.Top - Utilities.TILE_SIZE / 2));
+                        break;
+                    default:
+                        throw new Exception("Неверно указаны координаты танка. Проверьте правильность значений переменных танка.");
+                }
+                tank.SetRotation(tankObject.rotation);
                 // TODO: Лучше бы подписаться в самом Game, но почему-то не подписывается
                 // Обрабатываем ошибку столкновения с игровыми объектами
                 tank.Collided += delegate (object sender, Tank.CollideEventArgs e)
                 {
                     Game.Tank_Collided(sender, e);
                 };
+                // Обрабатываем ошибку выхода за пределы карты
                 tank.MapLeft += delegate (object sender, Tank.MapLeftEventArgs e)
                 {
                     //ParallelAlgorithm.GetInstance().Reload();
                     MessageBox.Show("left");
                 };
+
+                // Создаем экземпляр пушки
+                Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
+                tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
+                tank.turret.UpDown(false);
+                // Обрабатываем ошибки исполнителя turret
+                tank.turret.TurretShootError += delegate (object sender, Turret.ShootTurretErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя выполнять выстрел без давления.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.turret.TurretPressureError += delegate (object sender, Turret.PressureTurretErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя переполнять давление воды.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.turret.TurretUpError += delegate (object sender, Turret.UpTurretErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя поднимать пушку, если она уже поднята.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.turret.TurretDownError += delegate (object sender, Turret.DownTurretErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя опускать пушку, если она уже опущена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                // При выстреле сохраняем след от выстрела
+                tank.turret.TurretShoot += delegate (object sender, Turret.ShootTurretEventArgs e)
+                {
+                    traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position,
+                        tank.turret.waterPressure, tank.turret.NormalizedRotation));
+                };
+
                 tanks.Add(tank);
             }
-
-
         }
 
         public void Update(Time deltaTime)
         {
+            // TODO: Важный момент, кто изменяется первым, новый огонь или действие игрока
             foreach (var tank in tanks)
             {
                 tank.Update(deltaTime);
             }
+
             terrain.Update(deltaTime);
-            // TODO: Важный момент, кто изменяется первым, новый огонь или действие игрока
         }
 
         public void Draw(RenderTarget target, RenderStates states)

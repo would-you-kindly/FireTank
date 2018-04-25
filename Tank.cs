@@ -181,7 +181,7 @@ namespace FireSafety
             // Если танк столкнулся с препятствием на местности, инициируем событие столкновения
             foreach (Entity entity in _terrain)
             {
-                if (sprite.Position - new Vector2f(Utilities.TILE_SIZE / 2, Utilities.TILE_SIZE / 2) == entity.Position)
+                if (sprite.Position == entity.Position)
                 {
                     Collided?.Invoke(this, new CollideEventArgs(entity));
                 }

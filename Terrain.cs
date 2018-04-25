@@ -38,7 +38,7 @@ namespace FireSafety
                 if (item.name == "tree")
                 {
                     Tree tree = new Tree(Textures.ID.Tree, textures);
-                    tree.Position = new Vector2f(item.rect.Left, item.rect.Top);
+                    tree.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
                     if (item.GetPropertyBool("burns"))
                     {
                         // TODO: Такое себе место
@@ -52,7 +52,7 @@ namespace FireSafety
                 if (item.name == "lake")
                 {
                     Lake lake = new Lake(Textures.ID.Lake, textures);
-                    lake.Position = new Vector2f(item.rect.Left, item.rect.Top);
+                    lake.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
                     lakes.Add(lake);
                 }
             }
@@ -121,14 +121,26 @@ namespace FireSafety
                     case Wind.Direction.Up:
                         trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
                         break;
+                    case Wind.Direction.UpLeft:
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        break;
                     case Wind.Direction.Left:
                         trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y))?.Fire();
+                        break;
+                    case Wind.Direction.LeftDown:
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.Down:
                         trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
                         break;
+                    case Wind.Direction.DownRight:
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        break;
                     case Wind.Direction.Right:
                         trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y))?.Fire();
+                        break;
+                    case Wind.Direction.RightUp:
+                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
                         break;
                     default:
                         break;

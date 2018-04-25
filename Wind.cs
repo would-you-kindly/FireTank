@@ -12,9 +12,13 @@ namespace FireSafety
         public enum Direction
         {
             Up,
+            UpLeft,
             Left,
+            LeftDown,
             Down,
-            Right
+            DownRight,
+            Right,
+            RightUp
         }
 
         public Direction direction;

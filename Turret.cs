@@ -33,7 +33,13 @@ namespace FireSafety
         public class UpTurretEventArgs : EventArgs
         {
         }
+        public class UpTurretErrorEventArgs : EventArgs
+        {
+        }
         public class DownTurretEventArgs : EventArgs
+        {
+        }
+        public class DownTurretErrorEventArgs : EventArgs
         {
         }
         public class ShootTurretEventArgs : EventArgs
@@ -59,7 +65,9 @@ namespace FireSafety
         public delegate void MoveTurretEventHandler(object sender, MoveTurretEventArgs e);
         public delegate void RotateTurretEventHandler(object sender, RotateTurretEventArgs e);
         public delegate void UpTurretEventHandler(object sender, UpTurretEventArgs e);
+        public delegate void UpTurretErrorEventHandler(object sender, UpTurretErrorEventArgs e);
         public delegate void DownTurretEventHandler(object sender, DownTurretEventArgs e);
+        public delegate void DownTurretErrorEventHandler(object sender, DownTurretErrorEventArgs e);
         public delegate void ShootTurretEventHandler(object sender, ShootTurretEventArgs e);
         public delegate void ShootTurretErrorEventHandler(object sender, ShootTurretErrorEventArgs e);
         public delegate void PressureTurretEventHandler(object sender, PressureTurretEventArgs e);
@@ -67,7 +75,9 @@ namespace FireSafety
         public event MoveTurretEventHandler TurretMoved;
         public event RotateTurretEventHandler TurretRotated;
         public event UpTurretEventHandler TurretUp;
+        public event UpTurretErrorEventHandler TurretUpError;
         public event DownTurretEventHandler TurretDown;
+        public event DownTurretErrorEventHandler TurretDownError;
         public event ShootTurretEventHandler TurretShoot;
         public event ShootTurretErrorEventHandler TurretShootError;
         public event PressureTurretEventHandler TurretPressure;
@@ -136,6 +146,21 @@ namespace FireSafety
 
         public void UpDown(bool up)
         {
+            // Проверяем команду на ошибки
+            if (this.up == up)
+            {
+                if (up)
+                {
+                    TurretUpError?.Invoke(this, new UpTurretErrorEventArgs());
+                }
+                else
+                {
+                    TurretDownError?.Invoke(this, new DownTurretErrorEventArgs());
+                }
+
+                //return;
+            }
+
             // Поднимаем/опускаем башню
             this.up = up;
 
@@ -166,28 +191,28 @@ namespace FireSafety
 
                 // Вверх
                 if (NormalizedRotation == rotation * 0)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2, sprite.Position.Y - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1)));
+                    targets.Add(new Vector2f(sprite.Position.X, sprite.Position.Y - Utilities.TILE_SIZE * (i + 1)));
                 // Вверх-вправо
                 if (NormalizedRotation == rotation * 1)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1)));
+                    targets.Add(new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1)));
                 // Вправо
                 if (NormalizedRotation == rotation * 2)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2));
+                    targets.Add(new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y));
                 // Вправо-вниз
                 if (NormalizedRotation == rotation * 3)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1)));
+                    targets.Add(new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1)));
                 // Вниз
                 if (NormalizedRotation == rotation * 4)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2, sprite.Position.Y - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1)));
+                    targets.Add(new Vector2f(sprite.Position.X, sprite.Position.Y + Utilities.TILE_SIZE * (i + 1)));
                 // Вниз-влево
                 if (NormalizedRotation == rotation * 5)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 + Utilities.TILE_SIZE * (i + 1)));
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1)));
                 // Влево
                 if (NormalizedRotation == rotation * 6)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2));
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y));
                 // Влево-вверх
                 if (NormalizedRotation == rotation * 7)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE / 2 - Utilities.TILE_SIZE * (i + 1)));
+                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1)));
             }
 
             return targets;

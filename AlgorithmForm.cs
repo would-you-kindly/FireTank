@@ -212,8 +212,6 @@ namespace FireSafety
             {
                 Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot));
             }
-
-            keyPressed = false;
         }
 
         private void Shortcut(ComboBox cb, string command)
@@ -225,6 +223,7 @@ namespace FireSafety
         private void dgvAlgorithm_KeyUp(object sender, KeyEventArgs e)
         {
             // Выключаем таймер
+            keyPressed = false;
             clock.Stop();
 
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд движения
