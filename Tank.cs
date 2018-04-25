@@ -29,6 +29,9 @@ namespace FireSafety
                 this.entity = entity;
             }
         }
+        public class MapLeftEventArgs : EventArgs
+        {
+        }
         public class MoveTankEventArgs : EventArgs
         {
             // Новая позиция танка
@@ -45,15 +48,18 @@ namespace FireSafety
 
         // События танка
         public delegate void CollideEventHandler(object sender, CollideEventArgs e);
+        public delegate void MapLeftEventHandler(object sender, MapLeftEventArgs e);
         public delegate void MoveTankEventHandler(object sender, MoveTankEventArgs e);
         public delegate void RotateTankEventHandler(object sender, RotateTankEventArgs e);
         public event CollideEventHandler Collided;
+        public event MapLeftEventHandler MapLeft;
         public event MoveTankEventHandler TankMoved;
         public event RotateTankEventHandler TankRotated;
 
         // Параметры-ссылки
         private Algorithm _algorithm;
         private Terrain _terrain;
+        private List<Tank> _tanks;
 
         // Параметры танка
         public Turret turret;
@@ -93,14 +99,6 @@ namespace FireSafety
                 direction.Rotation = sprite.Rotation;
             };
 
-            // Определяем событие столкновения с объектами сцены
-            //Collided += delegate (object sender, CollideEventArgs e)
-            //{
-            //    Game.error = true;
-            //    Game.errorTank = (Tank)sender;
-            //    Game.errorCollideEventArgs = e;
-            //};
-
             // Выставляем Origin в центр картинки
             Utilities.CenterOrigin(sprite);
         }
@@ -114,6 +112,11 @@ namespace FireSafety
         {
             _terrain = terrain;
             turret.SetTerrain(terrain);
+        }
+
+        public void SetTanks(List<Tank> tanks)
+        {
+            _tanks = tanks;
         }
 
         public void SetPosition(Vector2f position)
@@ -185,12 +188,21 @@ namespace FireSafety
             }
 
             // Если танк столкнулся с другим танком (исключая себя), инициируем событие столкновения
-            foreach (Tank tank in Game.world.tanks)
+            foreach (Tank tank in _tanks)
             {
                 if (sprite.Position == tank.sprite.Position && tank != this)
                 {
                     Collided?.Invoke(this, new CollideEventArgs(tank));
                 }
+            }
+
+            // Если танк вышел за пределы карты, инициируем событие 
+            if (sprite.Position.X > Utilities.WINDOW_WIDTH ||
+                sprite.Position.X < 0 ||
+                sprite.Position.Y > Utilities.WINDOW_HEIGHT ||
+                sprite.Position.Y < 0)
+            {
+                MapLeft?.Invoke(this, new MapLeftEventArgs());
             }
         }
 

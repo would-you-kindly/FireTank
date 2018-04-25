@@ -107,6 +107,7 @@ namespace FireSafety
                 Object tankObject = map.GetObjects("tank")[i];
                 Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, fonts, (Tank.TankColor)i);
                 tank.SetTerrain(terrain);
+                tank.SetTanks(tanks);
                 tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
                 tank.SetRotation(tankObject.rotation);
                 tank.SetAlgorithm(ParallelAlgorithm.GetInstance()[i]);
@@ -120,7 +121,7 @@ namespace FireSafety
                 // При выстреле сохраняем след от выстрела
                 tank.turret.TurretShoot += delegate (object sender, Turret.ShootTurretEventArgs e)
                 {
-                    traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position, 
+                    traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position,
                         tank.turret.waterPressure, tank.turret.NormalizedRotation));
                 };
                 // TODO: Лучше бы подписаться в самом Game, но почему-то не подписывается
@@ -129,10 +130,11 @@ namespace FireSafety
                 {
                     Game.Tank_Collided(sender, e);
                 };
-                //tank.turret.TurretPressure += delegate (object sender, Turret.PressureTurretEventArgs e)
-                //{
-                //    MessageBox.Show("");
-                //};
+                tank.MapLeft += delegate (object sender, Tank.MapLeftEventArgs e)
+                {
+                    //ParallelAlgorithm.GetInstance().Reload();
+                    MessageBox.Show("left");
+                };
                 tanks.Add(tank);
             }
 
