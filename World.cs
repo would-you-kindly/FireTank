@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FireSafety
 {
-    class World : Transformable, Drawable
+    public class World : Transformable, Drawable
     {
         public Map map;
         private TextureHolder<Textures.ID> textures;

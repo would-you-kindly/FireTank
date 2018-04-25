@@ -41,7 +41,7 @@ namespace FireSafety
         public Game()
         {
             world = new World();
-            gui = new Gui();
+            gui = new Gui(world);
 
             AssignEvents();
         }

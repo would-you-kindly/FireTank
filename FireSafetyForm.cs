@@ -18,21 +18,22 @@ namespace FireSafety
     // TODO: Есть атрибут, который запрещает использовать в данном классе определенный класс, типа [Forbidden(typeof(ParallelAlgorithm))]
     public partial class FireSafetyForm : Form
     {
-        ParallelAlgorithmController algorithmController;
-        WorldController worldController;
+        private ParallelAlgorithmController algorithmController;
+        private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
         public InfoForm infoForm;
         public SettingsForm settingsForm;
-
-        private Form sfmlForm;
+        public Form sfmlForm;
         public RenderWindow renderWindow;
 
-        public FireSafetyForm()
+        public FireSafetyForm(World world)
         {
             InitializeComponent();
 
             Init();
+
+            worldController = new WorldController(world);
         }
 
         private void Init()
@@ -50,7 +51,6 @@ namespace FireSafety
             }
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
-            worldController = new WorldController();
 
             infoForm = new InfoForm();
             infoForm.MdiParent = this;
@@ -80,7 +80,7 @@ namespace FireSafety
 
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game.world.BuildWorld();
+            worldController.BuildWorld();
             algorithmController.RunAlgorithm();
         }
 
@@ -125,7 +125,7 @@ namespace FireSafety
         public void Reload()
         {
             algorithmController.SetAlgorithmRunningState(false);
-            Game.world.BuildWorld();
+            worldController.BuildWorld();
         }
 
         private void openMapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,8 +161,8 @@ namespace FireSafety
 
         private void RebuildWorld(string filename)
         {
-            Game.world.LoadMap(filename);
-            Game.world.BuildWorld();
+            worldController.LoadMap(filename);
+            worldController.BuildWorld();
         }
 
         private void Clear()
@@ -236,11 +236,8 @@ namespace FireSafety
             if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм? Все несохраненные данные будут утеряны.",
                 "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                algorithmController.SetAlgorithmRunningState(false);
-                Game.world.BuildWorld();
-
+                worldController.BuildWorld();
                 algorithmController.ClearAlgorithm();
-
             }
         }
 

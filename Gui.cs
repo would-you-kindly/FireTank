@@ -13,12 +13,12 @@ namespace FireSafety
     {
         public FireSafetyForm form;
 
-        public Gui()
+        public Gui(World world)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            form = new FireSafetyForm();
+            form = new FireSafetyForm(world);
             form.Show();
         }
     }
