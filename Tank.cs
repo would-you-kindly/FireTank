@@ -149,10 +149,10 @@ namespace FireSafety
             foreach (Lake lake in _terrain.lakes)
             {
                 // Если рядом с танком (по вертикали или горизонтали) есть озеро, возвращаем true
-                if (sprite.Position == lake.sprite.Position - new Vector2f(Utilities.TILE_SIZE, 0) ||
-                    sprite.Position == lake.sprite.Position + new Vector2f(Utilities.TILE_SIZE, 0) ||
-                    sprite.Position == lake.sprite.Position - new Vector2f(0, Utilities.TILE_SIZE) ||
-                    sprite.Position == lake.sprite.Position + new Vector2f(0, Utilities.TILE_SIZE))
+                if (sprite.Position == lake.Position - new Vector2f(Utilities.TILE_SIZE, 0) ||
+                    sprite.Position == lake.Position + new Vector2f(Utilities.TILE_SIZE, 0) ||
+                    sprite.Position == lake.Position - new Vector2f(0, Utilities.TILE_SIZE) ||
+                    sprite.Position == lake.Position + new Vector2f(0, Utilities.TILE_SIZE))
                 {
                     return true;
                 }

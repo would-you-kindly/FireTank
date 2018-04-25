@@ -152,6 +152,14 @@ namespace FireSafety
                     //ParallelAlgorithm.GetInstance().Reload();
                     MessageBox.Show("left");
                 };
+                tank.NearLakeError += delegate (object sender, Tank.NearLakeErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя пополнять запасы воды, не находясь рядом с озером.", "Ошибка исполнителя Charge", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.RefuelError += delegate (object sender, Tank.RefuelErrorEventArgs e)
+                {
+                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя переполнять запасы воды.", "Ошибка исполнителя Charge", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
 
                 // Создаем экземпляр пушки
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
@@ -173,6 +181,18 @@ namespace FireSafety
                 tank.turret.TurretDownError += delegate (object sender, Turret.DownTurretErrorEventArgs e)
                 {
                     MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя опускать пушку, если она уже опущена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.turret.WeaponAlreadyChargedError += delegate (object sender, Turret.WeaponAlreadyChargeErrorEventArgs e)
+                {
+                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка. Нельзя заряжать пушку (#{e.weaponNumber + 1}), которая уже заряжена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.turret.WeaponUnchargedError += delegate (object sender, Turret.WeaponUnchargeErrorEventArgs e)
+                {
+                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка. Нельзя стрелять из пушки (#{e.weaponNumber + 1}), которая еще не заряжена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                };
+                tank.turret.InsufficientlyWaterError += delegate (object sender, Turret.InsufficientlyWaterErrorEventArgs e)
+                {
+                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка. Нельзя стрелять, если в запасе недостаточно воды.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 };
                 // При выстреле сохраняем след от выстрела
                 tank.turret.TurretShoot += delegate (object sender, Turret.ShootTurretEventArgs e)

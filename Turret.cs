@@ -131,7 +131,7 @@ namespace FireSafety
         private Terrain _terrain;
 
         // Параметры турели
-        public int minWaterPressure = 1;
+        public int minWaterPressure = 1; //
         public int maxWaterPressure = 5;
         public int waterPressure;
 
@@ -150,7 +150,7 @@ namespace FireSafety
         {
             // Задаем параметры турели
             waterPressure = 0;
-            waterCapacity = maxWaterCapacity;
+            waterCapacity = maxWaterCapacity - 3;
             up = false;
             weaponsReady = new bool[weaponsCount] { false, false };
 
@@ -276,7 +276,7 @@ namespace FireSafety
         public void Shoot(int weaponNumber)
         {
             // Недостаточное количество воды в запасе
-            if (waterCapacity == 0)
+            if (waterCapacity == minWaterCapacity)
             {
                 InsufficientlyWaterError?.Invoke(this, new InsufficientlyWaterErrorEventArgs());
 
