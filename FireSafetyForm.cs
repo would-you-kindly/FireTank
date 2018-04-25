@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace FireSafety
 {
-    // TODO: Есть атрибут, который запрещает использовать в данном классе определенный класс, типа [Forbidden(typeof(ParallelAlgorithm))]
+    // TODO: Есть атрибут, который запрещает использовать в данном классе определенный класс, типа [Forbidden(typeof(ParallelAlgorithm))]?
     public partial class FireSafetyForm : Form
     {
         private ParallelAlgorithmController algorithmController;
@@ -87,6 +87,7 @@ namespace FireSafety
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 algorithmController.SaveAlgorithm(sfd.FileName);
@@ -96,6 +97,7 @@ namespace FireSafety
         private void openAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 algorithmController.LoadAlgorithm(ofd.FileName);
@@ -124,13 +126,14 @@ namespace FireSafety
 
         public void Reload()
         {
-            algorithmController.SetAlgorithmRunningState(false);
+            algorithmController.ReloadAlgorithm();
             worldController.BuildWorld();
         }
 
         private void openMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Fire tank maps files (*.tmx)|*.tmx;";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 // Очищаем алгоритм и окна перед открытием новой карты

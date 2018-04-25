@@ -17,6 +17,18 @@ namespace FireSafety
             // TODO: Почему-то если подписаться здесь ParallelAlgorithm.GetInstance().Loaded, то требует, чтобы этот класс тоже был сериализуемым
         }
 
+        public static void ParallelAlgorithmController_Reloaded(object sender, ParallelAlgorithm.ReloadEventArgs e)
+        {
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                // Очищаем цвета всех строк в таблице
+                foreach (DataGridViewRow row in form.dgvAlgorithm.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
+
         public static void ParallelAlgorithmController_NextActionPerforming(object sender, ParallelAlgorithm.PerformNextActionEventArgs e)
         {
             foreach (AlgorithmForm form in algorithmForms)
@@ -136,6 +148,11 @@ namespace FireSafety
             }
 
             AttachEvents();
+        }
+
+        public void ReloadAlgorithm()
+        {
+            ParallelAlgorithm.GetInstance().Reload();
         }
 
         public void RunAlgorithm()

@@ -34,6 +34,9 @@ namespace FireSafety
         public class LoadEventArgs : EventArgs
         {
         }
+        public class ReloadEventArgs : EventArgs
+        {
+        }
         public class PerformNextActionEventArgs : EventArgs
         {
         }
@@ -48,6 +51,7 @@ namespace FireSafety
         public delegate void ClearEventHandler(object sender, ClearEventArgs e);
         public delegate void SaveEventHandler(object sender, SaveEventArgs e);
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
+        public delegate void ReloadEventHandler(object sender, ReloadEventArgs e);
         public delegate void PerformNexActionEventHandler(object sender, PerformNextActionEventArgs e);
         public delegate void ExecuteEventHandler(object sender, ExecuteEventArgs e);
         public event AddActionEventHandler ActionAdded;
@@ -56,6 +60,7 @@ namespace FireSafety
         public event ClearEventHandler Cleared;
         public event SaveEventHandler Saved;
         public event LoadEventHandler Loaded;
+        public event ReloadEventHandler Reloaded;
         public event PerformNexActionEventHandler NextActionPerforming;
         public event ExecuteEventHandler Executed;
 
@@ -97,6 +102,8 @@ namespace FireSafety
                 instance.NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
                 // При окончании работы алгоритма перезапускаем алгоритм и отключаем подсветку строк в таблице
                 instance.Executed += ParallelAlgorithmController.ParallelAlgorithmController_Executed;
+                // При перезагрузке алгоритма отключаем подсветку строк в таблице
+                instance.Reloaded += ParallelAlgorithmController.ParallelAlgorithmController_Reloaded;
 
                 foreach (Algorithm algorithm in instance.algorithms)
                 {
@@ -189,13 +196,9 @@ namespace FireSafety
                 algorithm.currentAction = 0;
             }
 
-            currentAction = 0;
             running = true;
-        }
-
-        public void Stop()
-        {
-            running = false;
+            step = false;
+            currentAction = 0;
         }
 
         public void Reload()
@@ -205,8 +208,11 @@ namespace FireSafety
                 algorithm.currentAction = 0;
             }
 
-            currentAction = 0;
             running = false;
+            step = false;
+            currentAction = 0;
+
+            Reloaded?.Invoke(this, new ReloadEventArgs());
         }
 
         public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees,
@@ -217,12 +223,6 @@ namespace FireSafety
             double result = mapComplexity * algorithmEfficiency / (1 + burnedTrees);
 
             return result;
-        }
-
-        public void Execute()
-        {
-            // TODO: Контролируем конфликты
-            throw new NotImplementedException();
         }
 
         public void Clear()
