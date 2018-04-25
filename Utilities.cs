@@ -46,14 +46,14 @@ namespace FireSafety
                     return MoveCommand.Commands.Forward;
                 case "Backward":
                     return MoveCommand.Commands.Backward;
-                case "Rotate 90 CW":
-                    return MoveCommand.Commands.Rotate90CW;
-                case "Rotate 90 CCW":
-                    return MoveCommand.Commands.Rotate90CCW;
                 case "Rotate 45 CW":
                     return MoveCommand.Commands.Rotate45CW;
+                case "Rotate 90 CW":
+                    return MoveCommand.Commands.Rotate90CW;
                 case "Rotate 45 CCW":
                     return MoveCommand.Commands.Rotate45CCW;
+                case "Rotate 90 CCW":
+                    return MoveCommand.Commands.Rotate90CCW;
                 case "Forward 45 CW":
                     return MoveCommand.Commands.Forward45CW;
                 case "Forward 45 CCW":
@@ -73,8 +73,16 @@ namespace FireSafety
         {
             switch (value)
             {
-                case "Pressure":
+                case "Refuel":
+                    return ChargeCommand.Commands.Refuel;
+                case "Pressure x1":
                     return ChargeCommand.Commands.PressureX1;
+                case "Pressure x2":
+                    return ChargeCommand.Commands.PressureX2;
+                case "Charge 1":
+                    return ChargeCommand.Commands.Charge1;
+                case "Charge 2":
+                    return ChargeCommand.Commands.Charge2;
                 case "None":
                     return ChargeCommand.Commands.None;
             }
@@ -98,8 +106,10 @@ namespace FireSafety
                     return TurretCommand.Commands.Up;
                 case "Down":
                     return TurretCommand.Commands.Down;
-                case "Shoot":
+                case "Shoot 1":
                     return TurretCommand.Commands.Shoot1;
+                case "Shoot 2":
+                    return TurretCommand.Commands.Shoot2;
                 case "None":
                     return TurretCommand.Commands.None;
             }
@@ -143,7 +153,15 @@ namespace FireSafety
             switch (value)
             {
                 case ChargeCommand.Commands.PressureX1:
-                    return "Pressure";
+                    return "Pressure x1";
+                case ChargeCommand.Commands.PressureX2:
+                    return "Pressure x2";
+                case ChargeCommand.Commands.Refuel:
+                    return "Refuel";
+                case ChargeCommand.Commands.Charge1:
+                    return "Charge 1";
+                case ChargeCommand.Commands.Charge2:
+                    return "Charge 2";
                 case ChargeCommand.Commands.None:
                     return "None";
             }
@@ -168,7 +186,9 @@ namespace FireSafety
                 case TurretCommand.Commands.Down:
                     return "Down";
                 case TurretCommand.Commands.Shoot1:
-                    return "Shoot";
+                    return "Shoot 1";
+                case TurretCommand.Commands.Shoot2:
+                    return "Shoot 2";
                 case TurretCommand.Commands.None:
                     return "None";
             }

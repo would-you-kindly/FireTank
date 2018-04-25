@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cbMove = new System.Windows.Forms.ComboBox();
-            this.cbShoot = new System.Windows.Forms.ComboBox();
+            this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +41,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lblTurretCommands = new System.Windows.Forms.Label();
             this.btnDeleteAction = new System.Windows.Forms.Button();
-            this.lblShootCommands = new System.Windows.Forms.Label();
+            this.lblChargeCommands = new System.Windows.Forms.Label();
             this.btnMoveActionDown = new System.Windows.Forms.Button();
             this.lblMoveCommands = new System.Windows.Forms.Label();
             this.btnMoveActionUp = new System.Windows.Forms.Button();
@@ -75,18 +75,22 @@
             this.cbMove.TabIndex = 2;
             this.cbMove.SelectedIndexChanged += new System.EventHandler(this.cbShootCommandsCommands_SelectedIndexChanged);
             // 
-            // cbShoot
+            // cbCharge
             // 
-            this.cbShoot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbShoot.FormattingEnabled = true;
-            this.cbShoot.Items.AddRange(new object[] {
-            "Pressure",
+            this.cbCharge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCharge.FormattingEnabled = true;
+            this.cbCharge.Items.AddRange(new object[] {
+            "Pressure x1",
+            "Pressure x2",
+            "Refuel",
+            "Charge 1",
+            "Charge 2",
             "None"});
-            this.cbShoot.Location = new System.Drawing.Point(124, 32);
-            this.cbShoot.Name = "cbShoot";
-            this.cbShoot.Size = new System.Drawing.Size(112, 21);
-            this.cbShoot.TabIndex = 2;
-            this.cbShoot.SelectedIndexChanged += new System.EventHandler(this.cbShoot_SelectedIndexChanged);
+            this.cbCharge.Location = new System.Drawing.Point(124, 32);
+            this.cbCharge.Name = "cbCharge";
+            this.cbCharge.Size = new System.Drawing.Size(112, 21);
+            this.cbCharge.TabIndex = 2;
+            this.cbCharge.SelectedIndexChanged += new System.EventHandler(this.cbShoot_SelectedIndexChanged);
             // 
             // cbTurret
             // 
@@ -99,7 +103,8 @@
             "Rotate 90 CCW",
             "Up",
             "Down",
-            "Shoot",
+            "Shoot 1",
+            "Shoot 2",
             "None"});
             this.cbTurret.Location = new System.Drawing.Point(242, 32);
             this.cbTurret.Name = "cbTurret";
@@ -170,12 +175,12 @@
             this.gbControls.Controls.Add(this.button1);
             this.gbControls.Controls.Add(this.lblTurretCommands);
             this.gbControls.Controls.Add(this.btnDeleteAction);
-            this.gbControls.Controls.Add(this.lblShootCommands);
+            this.gbControls.Controls.Add(this.lblChargeCommands);
             this.gbControls.Controls.Add(this.btnMoveActionDown);
             this.gbControls.Controls.Add(this.lblMoveCommands);
             this.gbControls.Controls.Add(this.btnMoveActionUp);
             this.gbControls.Controls.Add(this.cbTurret);
-            this.gbControls.Controls.Add(this.cbShoot);
+            this.gbControls.Controls.Add(this.cbCharge);
             this.gbControls.Controls.Add(this.cbMove);
             this.gbControls.Controls.Add(this.rbtnInsertAfter);
             this.gbControls.Controls.Add(this.rbtnInsertBefore);
@@ -215,14 +220,14 @@
             this.btnDeleteAction.UseVisualStyleBackColor = true;
             this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
             // 
-            // lblShootCommands
+            // lblChargeCommands
             // 
-            this.lblShootCommands.AutoSize = true;
-            this.lblShootCommands.Location = new System.Drawing.Point(121, 16);
-            this.lblShootCommands.Name = "lblShootCommands";
-            this.lblShootCommands.Size = new System.Drawing.Size(89, 13);
-            this.lblShootCommands.TabIndex = 3;
-            this.lblShootCommands.Text = "Shoot commands";
+            this.lblChargeCommands.AutoSize = true;
+            this.lblChargeCommands.Location = new System.Drawing.Point(121, 16);
+            this.lblChargeCommands.Name = "lblChargeCommands";
+            this.lblChargeCommands.Size = new System.Drawing.Size(95, 13);
+            this.lblChargeCommands.TabIndex = 3;
+            this.lblChargeCommands.Text = "Charge commands";
             // 
             // btnMoveActionDown
             // 
@@ -310,7 +315,7 @@
 
         #endregion
         public System.Windows.Forms.ComboBox cbMove;
-        public System.Windows.Forms.ComboBox cbShoot;
+        public System.Windows.Forms.ComboBox cbCharge;
         public System.Windows.Forms.ComboBox cbTurret;
         public System.Windows.Forms.DataGridView dgvAlgorithm;
         private System.Windows.Forms.GroupBox gbControls;
@@ -321,7 +326,7 @@
         private System.Windows.Forms.RadioButton rbtnInsertBefore;
         private System.Windows.Forms.RadioButton rbtnChange;
         private System.Windows.Forms.Label lblTurretCommands;
-        private System.Windows.Forms.Label lblShootCommands;
+        private System.Windows.Forms.Label lblChargeCommands;
         private System.Windows.Forms.Label lblMoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;

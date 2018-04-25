@@ -77,16 +77,23 @@ namespace FireSafety
 
         // Команды перезарядки
         [NonSerialized]
+        private const Keys chargeRefuelDefault = Keys.R;
+        // Короткие/долгие команды перезарядки (короткое нажатие - увеличение давления на 1, долгое нажатие - увеличение давления на 2)
+        [NonSerialized]
         private const Keys chargePressureDefault = Keys.P;
+        // Короткие/долгие команды перезарядки (короткое нажатие - заряд пушки 1, долгое нажатие - заряд пушки 2)
+        [NonSerialized]
+        private const Keys chargeChargeDefault = Keys.C;
 
         // Команды башни
         [NonSerialized]
         private const Keys turretUpDefault = Keys.U;
         [NonSerialized]
         private const Keys turretDownDefault = Keys.D;
+        // Короткие/долгие команды башни (короткое нажатие - выстрел из пушки 1, долгое нажатие - выстрел из пушки 2)
         [NonSerialized]
         private const Keys turretShootDefault = Keys.S;
-        // Короткие/долгие команды башни (короткое нажатие - 45, долгое нажатие - 90)
+        // Короткие/долгие команды башни (короткое нажатие - 45 градусов, долгое нажатие - 90 градусов)
         [NonSerialized]
         private const Keys turretRotateCWDefault = Keys.NumPad6;
         [NonSerialized]
@@ -96,9 +103,12 @@ namespace FireSafety
         [NonSerialized]
         private const int timeToHoldDefault = 200;
 
+        // Shortcuts
         public Keys clearSelection;
         public Keys deleteAction;
+
         public Keys none;
+
         public Keys moveForward;
         public Keys moveBackward;
         public Keys moveForward45CW;
@@ -107,19 +117,24 @@ namespace FireSafety
         public Keys moveBackward45CCW;
         public Keys moveRotateCW;
         public Keys moveRotateCCW;
+
+        public Keys chargeRefuel;
         public Keys chargePressure;
+        public Keys chargeCharge;
+
         public Keys turretUp;
         public Keys turretDown;
         public Keys turretShoot;
         public Keys turretRotateCW;
         public Keys turretRotateCCW;
+
         public int timeToHold;
         public string connectionString;
 
         public Settings()
         {
-            //Default();
-            //Save();
+            Default();
+            Save();
         }
 
         public static Settings GetInstance()
@@ -129,7 +144,7 @@ namespace FireSafety
                 instance = new Settings();
 
                 // Грузим настройки из файла
-                instance.Load();
+                //instance.Load();
 
                 instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }
@@ -191,8 +206,14 @@ namespace FireSafety
                         moveRotateCCW = key;
                     }
                     break;
+                case ChargeCommand.Commands.Refuel:
+                    chargeRefuel = key;
+                    break;
                 case ChargeCommand.Commands.PressureX1:
                     chargePressure = key;
+                    break;
+                case ChargeCommand.Commands.Charge1:
+                    chargeCharge = key;
                     break;
                 case TurretCommand.Commands.Up:
                     turretUp = key;
@@ -256,7 +277,9 @@ namespace FireSafety
         {
             clearSelection = clearSelectionDefault;
             deleteAction = deleteActionDefault;
+
             none = noneDefault;
+
             moveForward = moveForwardDefault;
             moveBackward = moveBackwardDefault;
             moveForward45CW = moveForward45CWDefault;
@@ -265,7 +288,11 @@ namespace FireSafety
             moveBackward45CCW = moveBackward45CCWDefault;
             moveRotateCW = moveRotateCWDefault;
             moveRotateCCW = moveRotateCCWDefault;
+
+            chargeRefuel = chargeRefuelDefault;
             chargePressure = chargePressureDefault;
+            chargeCharge = chargeChargeDefault;
+
             turretUp = turretUpDefault;
             turretDown = turretDownDefault;
             turretShoot = turretShootDefault;
@@ -296,7 +323,9 @@ namespace FireSafety
             shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CW, moveRotateCW));
             shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CCW, moveRotateCCW));
 
+            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Refuel, chargeRefuel));
             shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.PressureX1, chargePressure));
+            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Charge1, chargeCharge));
 
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Up, turretUp));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Down, turretDown));

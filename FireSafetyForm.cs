@@ -332,7 +332,7 @@ namespace FireSafety
         private void pressureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (algorithmForms.Any(form => form.ContainsFocus))
-                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbShoot, ((ToolStripMenuItem)sender).Text);
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
             else
                 AddActionMessage();
         }
@@ -340,7 +340,7 @@ namespace FireSafety
         private void noneShootToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (algorithmForms.Any(form => form.ContainsFocus))
-                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbShoot, ((ToolStripMenuItem)sender).Text);
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
             else
                 AddActionMessage();
         }

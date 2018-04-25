@@ -61,7 +61,7 @@ namespace FireSafety
                 case "cbMove":
                     index = 1;
                     break;
-                case "cbShoot":
+                case "cbCharge":
                     index = 2;
                     break;
                 case "cbTurret":
@@ -191,10 +191,10 @@ namespace FireSafety
                 Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.None));
             }
 
-            // Обрабатываем горячие клавиши добавления команд выстрела
-            if (e.KeyCode == Settings.GetInstance().chargePressure)
+            // Обрабатываем горячие клавиши добавления команд перезарядки
+            if (e.KeyCode == Settings.GetInstance().chargeRefuel)
             {
-                Shortcut(cbShoot, Utilities.ToChargeString(ChargeCommand.Commands.PressureX1));
+                Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.Refuel));
             }
 
             // Обрабатываем горячие клавиши добавления команд турели
@@ -206,11 +206,6 @@ namespace FireSafety
             if (e.KeyCode == Settings.GetInstance().turretDown)
             {
                 Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Down));
-            }
-
-            if (e.KeyCode == Settings.GetInstance().turretShoot)
-            {
-                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot1));
             }
         }
 
@@ -251,6 +246,31 @@ namespace FireSafety
                 }
             }
 
+            // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд перезарядки
+            if (e.KeyCode == Settings.GetInstance().chargePressure)
+            {
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
+                {
+                    Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.PressureX1));
+                }
+                else
+                {
+                    Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.PressureX2));
+                }
+            }
+
+            if (e.KeyCode == Settings.GetInstance().chargeCharge)
+            {
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
+                {
+                    Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.Charge1));
+                }
+                else
+                {
+                    Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.Charge2));
+                }
+            }
+
             // Обрабатываем короткое/долгое нажатие горячей клавиши для добавления разных команд турели
             if (e.KeyCode == Settings.GetInstance().turretRotateCW)
             {
@@ -273,6 +293,18 @@ namespace FireSafety
                 else
                 {
                     Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate90CCW));
+                }
+            }
+
+            if (e.KeyCode == Settings.GetInstance().turretShoot)
+            {
+                if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
+                {
+                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot1));
+                }
+                else
+                {
+                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot2));
                 }
             }
         }

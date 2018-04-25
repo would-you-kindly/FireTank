@@ -347,7 +347,7 @@ namespace FireSafety
         // Подготовка заряда (первого или второго)
         public void Charge(int weaponNumber)
         {
-            if (weaponNumber != 0 || weaponNumber != 1)
+            if (weaponNumber < 0 && weaponNumber > 1)
             {
                 throw new Exception("У танка наготове может быть только две пушки (0 или 1)");
             }
