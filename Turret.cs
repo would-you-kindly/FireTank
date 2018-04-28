@@ -149,7 +149,7 @@ namespace FireSafety
             base(id, textures)
         {
             // Задаем параметры турели
-            waterPressure = 0;
+            waterPressure = minWaterPressure;
             waterCapacity = maxWaterCapacity - 3;
             up = false;
             weaponsReady = new bool[weaponsCount] { false, false };
@@ -292,7 +292,7 @@ namespace FireSafety
             }
 
             // TODO: Сделать минимально 1 или оставить 0 ????
-            if (waterPressure != 0)
+            //if (waterPressure != minWaterPressure)
             {
                 // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
                 Tree treeToExtinguish = null;
@@ -320,14 +320,16 @@ namespace FireSafety
                 }
 
                 TurretShoot?.Invoke(this, new ShootTurretEventArgs(treeToExtinguish));
-                waterPressure = 0;
+
+                // После выстрела сбрасываем давление, уменьшаем запасы воды, убираем заряд пушки
+                waterPressure = minWaterPressure;
                 waterCapacity--;
                 weaponsReady[weaponNumber] = false;
             }
-            else
-            {
-                TurretShootError?.Invoke(this, new ShootTurretErrorEventArgs());
-            }
+            //else
+            //{
+            //    TurretShootError?.Invoke(this, new ShootTurretErrorEventArgs());
+            //}
         }
 
         // Увеличение давления воды

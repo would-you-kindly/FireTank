@@ -50,6 +50,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\FireSafetyAdmin\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
       <HintPath>packages\morelinq.2.10.0\lib\net40\MoreLinq.dll</HintPath>
     </Reference>
@@ -92,6 +95,8 @@
     <Compile Include="AlgorithmForm.Designer.cs">
       <DependentUpon>AlgorithmForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlgorithmModel.cs" />
+    <Compile Include="AlgorithmRepository.cs" />
     <Compile Include="BurnedTreeState.cs" />
     <Compile Include="BurningTreeState.cs" />
     <Compile Include="Command.cs" />
@@ -113,7 +118,12 @@
     <Compile Include="InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IRepository.cs" />
+    <Compile Include="MapModel.cs" />
+    <Compile Include="MapRepository.cs" />
+    <Compile Include="ModelContext.cs" />
     <Compile Include="ParallelAlgorithmController.cs" />
+    <Compile Include="UserRepository.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingsController.cs" />
     <Compile Include="SettingsForm.cs">
@@ -141,6 +151,7 @@
     <Compile Include="Tree.cs" />
     <Compile Include="Turret.cs" />
     <Compile Include="TurretCommand.cs" />
+    <Compile Include="UserModel.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="WaterTrace.cs" />
     <Compile Include="Wind.cs" />
