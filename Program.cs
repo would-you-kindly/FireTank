@@ -20,10 +20,10 @@ namespace FireSafety
         {
             try
             {
-                Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
-                ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
-                context.Maps.Add(new MapModel());
-                context.SaveChanges();
+                //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
+                //ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
+                //context.Maps.Add(new MapModel());
+                //context.SaveChanges();
 
                 Game game = new Game();
                 game.Run();
@@ -40,7 +40,6 @@ namespace FireSafety
                             ve.PropertyName, ve.ErrorMessage));
                     }
                 }
-                //throw;
             }
             catch (Exception e)
             {

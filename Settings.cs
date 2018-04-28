@@ -44,9 +44,7 @@ namespace FireSafety
         [NonSerialized]
         public static Guid currentUser = Guid.Parse("9d59277f-dd0e-4257-863f-b580c5c9e68f");
         [NonSerialized]
-        public static string currentUserName = "Алексей";
-        [NonSerialized]
-        public static string currentUserLastName = "Чусовлянкин";
+        public static Guid currentMap = Guid.Parse("9d59277f-dd0e-4257-863f-b580c5c9e68f");
 
         [NonSerialized]
         private const Keys clearSelectionDefault = Keys.Escape;
@@ -131,6 +129,11 @@ namespace FireSafety
         public int timeToHold;
         public string connectionString;
 
+        [NonSerialized]
+        IRepository<MapModel> mapRepository;
+        [NonSerialized]
+        IRepository<UserModel> userRepository;
+
         public Settings()
         {
             Default();
@@ -157,16 +160,22 @@ namespace FireSafety
             instance.Save();
         }
 
-        public void SetUser(Guid user, string name, string lastName)
+        public void SetCurrentUser(Guid user)
         {
             currentUser = user;
-            currentUserName = name;
-            currentUserLastName = lastName;
+        }
+
+        public void SetCurrentMap(Guid map)
+        {
+            currentMap = map;
         }
 
         public string GetUserString()
         {
-            return $"{currentUserName} {currentUserLastName}";
+            ModelContext context = new ModelContext(connectionString);
+            userRepository = new UserRepository(context);
+
+            return $"{userRepository.Read(currentUser).Name} {userRepository.Read(currentUser).Lastname}";
         }
 
         public void SetShortcut(string performer, object command, Keys key)
