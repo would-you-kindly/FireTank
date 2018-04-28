@@ -72,6 +72,8 @@ namespace FireSafety
         public bool step;
         [NonSerialized]
         public int currentAction;
+        [NonSerialized]
+        IRepository<AlgorithmModel> repository;
 
         private ParallelAlgorithm()
         {
@@ -79,6 +81,9 @@ namespace FireSafety
             running = false;
             step = false;
             currentAction = 0;
+
+            ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
+            repository = new AlgorithmRepository(context);
 
             // Создаем алгоритмы сразу для максимального количества танков
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
@@ -189,6 +194,33 @@ namespace FireSafety
             Saved?.Invoke(this, new SaveEventArgs());
         }
 
+        public void SaveInDatabase()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            byte[] bytes;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                formatter.Serialize(ms, this);
+                bytes = ms.ToArray();
+            }
+
+            // TODO: Стремно пока тут
+            AlgorithmModel algorithm = new AlgorithmModel();
+            algorithm.Id = Guid.NewGuid();
+            algorithm.Bytes = bytes;
+            algorithm.Result = /*ComputeEfficiency();*/ 10.0; // TODO: !!!
+            algorithm.CreationDate = DateTime.Now;
+            algorithm.Success = true; // TODO: !!!
+            UserRepository r = new UserRepository(new ModelContext(Settings.GetInstance().connectionString));
+            algorithm.User = r.Read(Settings.currentUser);
+            //algorithm.Map = 
+
+            repository.Create(algorithm);
+            repository.Save();
+
+            Saved?.Invoke(this, new SaveEventArgs());
+        }
+
         public void Run()
         {
             foreach (Algorithm algorithm in algorithms)
@@ -218,6 +250,7 @@ namespace FireSafety
         public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees,
             double totalTrees, double burnedTrees)
         {
+            // TODO: Пока такая себе формула
             double mapComplexity = (initiallyBurningTrees / totalTrees) * (mapWidth * mapHeight);
             double algorithmEfficiency = instance.algorithms.Sum(algo => algo.actions.Count);
             double result = mapComplexity * algorithmEfficiency / (1 + burnedTrees);

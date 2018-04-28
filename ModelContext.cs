@@ -9,8 +9,8 @@ namespace FireSafety
 {
     public class ModelContext : DbContext
     {
-        protected ModelContext() :
-            base("DefaultConnection")
+        public ModelContext(string connectionString) :
+            base(connectionString)
         {
         }
 

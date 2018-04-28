@@ -18,7 +18,10 @@ namespace FireSafety
         {
             try
             {
-                Settings.GetInstance();
+
+                ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
+                context.Users.Add(new UserModel());
+                context.SaveChanges();
                 Game game = new Game();
                 game.Run();
             }
