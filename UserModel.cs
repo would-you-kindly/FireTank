@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FireSafety
 {
@@ -10,12 +11,26 @@ namespace FireSafety
             this.Algorithms = new HashSet<AlgorithmModel>();
         }
 
+        [Key]
+        [Required]
         public Guid Id { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Lastname { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Login { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Password { get; set; }
 
-        public ICollection<AlgorithmModel> Algorithms { get; set; }
+        public virtual ICollection<AlgorithmModel> Algorithms { get; set; }
     }
 }
