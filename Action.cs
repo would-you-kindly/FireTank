@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace FireSafety
 {
@@ -18,7 +19,13 @@ namespace FireSafety
             Count
         }
 
+        [XmlArray("Commands"), XmlArrayItem(typeof(Command), ElementName = "Command")]
         public Command[] commands;
+
+        public Action()
+        {
+
+        }
 
         public Action(MoveCommand.Commands moveCommand = MoveCommand.Commands.None,
             ChargeCommand.Commands chargeCommand = ChargeCommand.Commands.None,

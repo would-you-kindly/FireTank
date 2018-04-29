@@ -6,12 +6,14 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace FireSafety
 {
     [Serializable]
     public class ParallelAlgorithm
     {
+        [XmlIgnore]
         [NonSerialized]
         private static ParallelAlgorithm instance;
 
@@ -65,13 +67,18 @@ namespace FireSafety
         public event ExecuteEventHandler Executed;
 
         // Переменные параллельного алгоритма
+        [XmlArray("Algorithms"), XmlArrayItem(typeof(Algorithm), ElementName = "Algorithm")]
         public List<Algorithm> algorithms;
+        [XmlIgnore]
         [NonSerialized]
         public bool running;
+        [XmlIgnore]
         [NonSerialized]
         public bool step;
+        [XmlIgnore]
         [NonSerialized]
         public int currentAction;
+        [XmlIgnore]
         [NonSerialized]
         IRepository<AlgorithmModel> repository;
 
@@ -85,7 +92,6 @@ namespace FireSafety
             ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
             repository = new AlgorithmRepository(context);
 
-            // Создаем алгоритмы сразу для максимального количества танков
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
                 algorithms.Add(new Algorithm());
@@ -174,10 +180,15 @@ namespace FireSafety
 
         public void Load(string filename)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            //Clear();
+
+            XmlSerializer formatter = new XmlSerializer(typeof(ParallelAlgorithm));
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
                 instance = (ParallelAlgorithm)formatter.Deserialize(fs);
+
+                // TODO: Почему-то грузит алгоритмы два раза
+                instance.algorithms.RemoveRange(0, instance.algorithms.Count / 2);
             }
 
             Loaded?.Invoke(this, new LoadEventArgs());
@@ -185,7 +196,7 @@ namespace FireSafety
 
         public void Save(string filename)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            XmlSerializer formatter = new XmlSerializer(typeof(ParallelAlgorithm));
             using (FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
             {
                 formatter.Serialize(fs, this);
@@ -216,7 +227,6 @@ namespace FireSafety
             //algorithm.Map = 
 
             repository.Create(algorithm);
-            repository.Save();
 
             Saved?.Invoke(this, new SaveEventArgs());
         }

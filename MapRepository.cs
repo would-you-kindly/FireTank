@@ -20,6 +20,8 @@ namespace FireSafety
         public void Create(MapModel item)
         {
             context.Maps.Add(item);
+
+            context.SaveChanges();
         }
 
         public MapModel Read(Guid id)
@@ -30,6 +32,8 @@ namespace FireSafety
         public void Update(MapModel item)
         {
             context.Entry(item).State = EntityState.Modified;
+
+            context.SaveChanges();
         }
 
         public void Delete(Guid id)
@@ -39,17 +43,14 @@ namespace FireSafety
             if (map != null)
             {
                 context.Maps.Remove(map);
+
+                context.SaveChanges();
             }
         }
 
         public IEnumerable<MapModel> GetList()
         {
             return context.Maps;
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
         }
 
         public virtual void Dispose(bool disposing)
@@ -69,6 +70,11 @@ namespace FireSafety
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        ~MapRepository()
+        {
+            Dispose(false);
         }
     }
 }

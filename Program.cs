@@ -43,6 +43,7 @@ namespace FireSafety
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.InnerException.ToString());
                 MessageBox.Show(e.Message);
             }
         }

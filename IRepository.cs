@@ -13,6 +13,5 @@ namespace FireSafety
         T Read(Guid id);
         void Update(T item);
         void Delete(Guid id);
-        void Save();
     }
 }

@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace FireSafety
 {
     [Serializable]
+    //[XmlRoot("ParallelAlgorithm")]
     public class Algorithm
     {
         // Классы для передачи параметров событий
@@ -26,7 +28,9 @@ namespace FireSafety
         public event ExecuteEventHandler Executed;
 
         // Переменные алгоритма
+        [XmlArray("Actions"), XmlArrayItem(typeof(Action), ElementName = "Action")]
         public List<Action> actions;
+        [XmlIgnore]
         [NonSerialized]
         public int currentAction;
 
