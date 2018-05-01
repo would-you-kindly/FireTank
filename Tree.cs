@@ -34,13 +34,13 @@ namespace FireSafety
         private Flame flame;
         private Sprite burnedTreeSprite;
 
-        public Tree(Textures.ID idTree, TextureHolder<Textures.ID> textures) :
-            base(idTree, textures)
+        public Tree(Textures.ID idTree, ResourceHolder resources) :
+            base(idTree, resources)
         {
             state = new NormalTreeState();
 
-            flame = new Flame(Textures.ID.Fire, textures);
-            burnedTreeSprite = new Sprite(textures.Get(Textures.ID.BurnedTree));
+            flame = new Flame(Textures.ID.Fire, resources);
+            burnedTreeSprite = new Sprite(resources.GetTexture(Textures.ID.BurnedTree));
 
             Utilities.CenterOrigin(burnedTreeSprite);
             Utilities.CenterOrigin(sprite);

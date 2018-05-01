@@ -145,8 +145,8 @@ namespace FireSafety
 
         private RectangleShape direction;
 
-        public Turret(Textures.ID id, TextureHolder<Textures.ID> textures) :
-            base(id, textures)
+        public Turret(Textures.ID id, ResourceHolder resources) :
+            base(id, resources)
         {
             // Задаем параметры турели
             waterPressure = minWaterPressure;
@@ -230,7 +230,7 @@ namespace FireSafety
         }
 
         // Возвращает список координат, куда может попасть вода (или одну координату, если пушка поднята)
-        public List<Vector2f> GetTargetPositions()
+        private List<Vector2f> GetTargetPositions()
         {
             const int rotation = 45;
             List<Vector2f> targets = new List<Vector2f>();

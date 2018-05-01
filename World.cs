@@ -9,11 +9,10 @@ using System.Windows.Forms;
 
 namespace FireSafety
 {
-    public class World : Transformable, Drawable
+    public class World : Drawable
     {
         public Map map;
-        private TextureHolder<Textures.ID> textures;
-        private FontHolder<Fonts.ID> fonts;
+        private ResourceHolder resources;
 
         public List<Tank> tanks;
         public Terrain terrain;
@@ -42,25 +41,24 @@ namespace FireSafety
         private void LoadTextures()
         {
             // Загружаем текстуры
-            textures = new TextureHolder<Textures.ID>();
-            textures.Load(Textures.ID.BurnedTree, "Media/Textures/burnedTree.png");
-            textures.Load(Textures.ID.Grass, "Media/Textures/grass.png");
-            textures.Load(Textures.ID.House, "Media/Textures/house.png");
-            textures.Load(Textures.ID.Fire, "Media/Textures/fire.png");
-            textures.Load(Textures.ID.RedTank, "Media/Textures/redtank.png");
-            textures.Load(Textures.ID.RedTurret, "Media/Textures/redturret.png");
-            textures.Load(Textures.ID.BlueTank, "Media/Textures/bluetank.png");
-            textures.Load(Textures.ID.BlueTurret, "Media/Textures/blueturret.png");
-            textures.Load(Textures.ID.YellowTank, "Media/Textures/yellowtank.png");
-            textures.Load(Textures.ID.YellowTurret, "Media/Textures/yellowturret.png");
-            textures.Load(Textures.ID.GreenTank, "Media/Textures/greentank.png");
-            textures.Load(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
-            textures.Load(Textures.ID.Tree, "Media/Textures/greentree.png");
-            textures.Load(Textures.ID.Lake, "Media/Textures/Lake.png");
+            resources = new ResourceHolder();
+            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/burnedTree.png");
+            resources.LoadTexture(Textures.ID.Grass, "Media/Textures/grass.png");
+            resources.LoadTexture(Textures.ID.House, "Media/Textures/house.png");
+            resources.LoadTexture(Textures.ID.Fire, "Media/Textures/fire.png");
+            resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/redtank.png");
+            resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/redturret.png");
+            resources.LoadTexture(Textures.ID.BlueTank, "Media/Textures/bluetank.png");
+            resources.LoadTexture(Textures.ID.BlueTurret, "Media/Textures/blueturret.png");
+            resources.LoadTexture(Textures.ID.YellowTank, "Media/Textures/yellowtank.png");
+            resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/yellowturret.png");
+            resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/greentank.png");
+            resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
+            resources.LoadTexture(Textures.ID.Tree, "Media/Textures/greentree.png");
+            resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
 
             // Загружаем шрифты
-            fonts = new FontHolder<Fonts.ID>();
-            fonts.Load(Fonts.ID.Sansation, "Media/Sansation.ttf");
+            resources.LoadFont(Fonts.ID.Sansation, "Media/Sansation.ttf");
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов
@@ -109,7 +107,7 @@ namespace FireSafety
             }
 
             // Устанавливаем начальное положение объектов местности (деревьев, озер, гор)
-            terrain = new Terrain(map.GetAllObjects(), textures, wind);
+            terrain = new Terrain(map.GetAllObjects(), resources, wind);
 
             // TODO: Добавить проверки на корректные цифры из файла карты (кратные цифры...)
             // Устанавливаем начальное положение танков
@@ -118,7 +116,7 @@ namespace FireSafety
             {
                 // Создаем экземпляр танка
                 Object tankObject = map.GetObjects("tank")[i];
-                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), textures, fonts, (Tank.TankColor)i);
+                Tank tank = new Tank((Textures.ID)(i * 2), (Textures.ID)(i * 2 + 1), resources, (Tank.TankColor)i);
                 tank.SetTerrain(terrain);
                 tank.SetTanks(tanks);
                 tank.SetAlgorithm(ParallelAlgorithm.GetInstance()[i]);

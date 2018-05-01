@@ -4,8 +4,8 @@ namespace FireSafety
 {
     public class Lake : Entity
     {
-        public Lake(Textures.ID idLake, TextureHolder<Textures.ID> textures)
-            : base(idLake, textures)
+        public Lake(Textures.ID idLake, ResourceHolder resources)
+            : base(idLake, resources)
         {
             Utilities.CenterOrigin(sprite);
         }

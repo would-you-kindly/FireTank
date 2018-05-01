@@ -10,8 +10,8 @@ namespace FireSafety
 {
     class Flame : Entity
     {
-        public Flame(Textures.ID id, TextureHolder<Textures.ID> textures) :
-            base(id, textures)
+        public Flame(Textures.ID id, ResourceHolder resources) :
+            base(id, resources)
         {
             Utilities.CenterOrigin(sprite);
         }

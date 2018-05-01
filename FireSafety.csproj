@@ -115,7 +115,6 @@
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Flame.cs" />
-    <Compile Include="FontHolder.cs" />
     <Compile Include="InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +126,7 @@
     <Compile Include="MapRepository.cs" />
     <Compile Include="ModelContext.cs" />
     <Compile Include="ParallelAlgorithmController.cs" />
+    <Compile Include="ResourceHolder.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingsController.cs" />
@@ -151,7 +151,6 @@
     <Compile Include="ResourceIdentifiers.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="ChargeCommand.cs" />
-    <Compile Include="TextureHolder.cs" />
     <Compile Include="Tree.cs" />
     <Compile Include="Turret.cs" />
     <Compile Include="TurretCommand.cs" />

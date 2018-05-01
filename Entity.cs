@@ -18,11 +18,11 @@ namespace FireSafety
             sprite = new Sprite();
         }
 
-        public Entity(Textures.ID id, TextureHolder<Textures.ID> textures)
+        public Entity(Textures.ID id, ResourceHolder resources)
         {
-            Texture texture = textures.Get(id);
+            Texture texture = resources.GetTexture(id);
             sprite = new Sprite(texture);
-        }
+        }   
 
         public float NormalizedRotation
         {

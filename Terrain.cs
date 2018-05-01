@@ -26,7 +26,7 @@ namespace FireSafety
         public List<Lake> lakes;
         public Wind wind;
 
-        public Terrain(List<Object> objects, TextureHolder<Textures.ID> textures, Wind wind)
+        public Terrain(List<Object> objects, ResourceHolder resources, Wind wind)
         {
             trees = new List<Tree>();
             lakes = new List<Lake>();
@@ -37,7 +37,7 @@ namespace FireSafety
                 // Создаем деревья
                 if (item.name == "tree")
                 {
-                    Tree tree = new Tree(Textures.ID.Tree, textures);
+                    Tree tree = new Tree(Textures.ID.Tree, resources);
                     tree.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
                     if (item.GetPropertyBool("burns"))
                     {
@@ -51,7 +51,7 @@ namespace FireSafety
                 // Создаем озера
                 if (item.name == "lake")
                 {
-                    Lake lake = new Lake(Textures.ID.Lake, textures);
+                    Lake lake = new Lake(Textures.ID.Lake, resources);
                     lake.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
                     lakes.Add(lake);
                 }

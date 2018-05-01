@@ -77,17 +77,17 @@ namespace FireSafety
         private Text number;
         private RectangleShape direction;
 
-        public Tank(Textures.ID idTank, Textures.ID idTurret, TextureHolder<Textures.ID> textures, FontHolder<Fonts.ID> fonts, TankColor color) :
-            base(idTank, textures)
+        public Tank(Textures.ID idTank, Textures.ID idTurret, ResourceHolder resources, TankColor color) :
+            base(idTank, resources)
         {
             // Создаем турель (башню) танка
-            turret = new Turret(idTurret, textures);
+            turret = new Turret(idTurret, resources);
 
             // Определяем цвет танка
             this.color = color;
 
             // Определяем номер танка
-            number = new Text(((int)color + 1).ToString(), fonts.Get(Fonts.ID.Sansation), 20);
+            number = new Text(((int)color + 1).ToString(), resources.GetFont(Fonts.ID.Sansation), 20);
             number.FillColor = Color.Red;
             number.OutlineThickness = 0.75f;
             Utilities.CenterOrigin(number);
@@ -357,7 +357,7 @@ namespace FireSafety
         }
 
         // Пополнение запасов
-        public void Refuel()
+        private void Refuel()
         {
             if (!NearLake())
             {

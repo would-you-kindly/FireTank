@@ -28,14 +28,5 @@ namespace FireSafety
         {
             this.direction = direction;
         }
-
-        // Устанавливает новое направление ветра и возвращает предыдущее
-        public Direction ChangeDirection(Direction newDirection)
-        {
-            Direction prevDirection = direction;
-            direction = newDirection;
-
-            return prevDirection;
-        }
     }
 }
