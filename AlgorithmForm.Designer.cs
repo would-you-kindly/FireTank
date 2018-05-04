@@ -83,8 +83,7 @@
             "Pressure x1",
             "Pressure x2",
             "Refuel",
-            "Charge 1",
-            "Charge 2",
+            "Charge",
             "None"});
             this.cbCharge.Location = new System.Drawing.Point(124, 32);
             this.cbCharge.Name = "cbCharge";
@@ -103,8 +102,7 @@
             "Rotate 90 CCW",
             "Up",
             "Down",
-            "Shoot 1",
-            "Shoot 2",
+            "Shoot",
             "None"});
             this.cbTurret.Location = new System.Drawing.Point(242, 32);
             this.cbTurret.Name = "cbTurret";

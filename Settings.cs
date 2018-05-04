@@ -221,7 +221,7 @@ namespace FireSafety
                 case ChargeCommand.Commands.PressureX1:
                     chargePressure = key;
                     break;
-                case ChargeCommand.Commands.Charge1:
+                case ChargeCommand.Commands.Charge:
                     chargeCharge = key;
                     break;
                 case TurretCommand.Commands.Up:
@@ -230,7 +230,7 @@ namespace FireSafety
                 case TurretCommand.Commands.Down:
                     turretDown = key;
                     break;
-                case TurretCommand.Commands.Shoot1:
+                case TurretCommand.Commands.Shoot:
                     turretShoot = key;
                     break;
                 case TurretCommand.Commands.Rotate45CW:
@@ -334,11 +334,11 @@ namespace FireSafety
 
             shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Refuel, chargeRefuel));
             shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.PressureX1, chargePressure));
-            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Charge1, chargeCharge));
+            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Charge, chargeCharge));
 
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Up, turretUp));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Down, turretDown));
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Shoot1, turretShoot));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Shoot, turretShoot));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CW, turretRotateCW));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CCW, turretRotateCCW));
 

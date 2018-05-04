@@ -18,8 +18,7 @@ namespace FireSafety
             // Пополнение запасов воды (из озера)
             Refuel,
             // Перезарядка (подготовка к выстрелу)
-            Charge1,
-            Charge2,
+            Charge,
 
             None
         }
@@ -51,10 +50,8 @@ namespace FireSafety
                     return "Pressure x2";
                 case Commands.Refuel:
                     return "Refuel";
-                case Commands.Charge1:
-                    return "Charge 1";
-                case Commands.Charge2:
-                    return "Charge 2";
+                case Commands.Charge:
+                    return "Charge";
                 case Commands.None:
                     return "None";
             }

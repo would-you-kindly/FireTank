@@ -151,11 +151,11 @@ namespace FireSafety
                 };
                 tank.NearLakeError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new NearLakeError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new NearLakeError((Tank)sender));
                 };
                 tank.RefuelError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new RefuelError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new RefuelError((Tank)sender));
                 };
 
                 // Создаем экземпляр башни танка
@@ -164,10 +164,6 @@ namespace FireSafety
                 tank.turret.UpDown(false);
 
                 // Подписываемся на обруботку ошибок башни танка
-                tank.turret.TurretShootError += (sender, e) =>
-                {
-                    ParallelAlgorithm.GetInstance().errors.Add(new ShootError());
-                };
                 tank.turret.TurretPressureError += (sender, e) =>
                 {
                     ParallelAlgorithm.GetInstance().errors.Add(new PressureError());

@@ -310,11 +310,8 @@ namespace FireSafety
                 case FireSafety.ChargeCommand.Commands.Refuel:
                     Refuel();
                     break;
-                case FireSafety.ChargeCommand.Commands.Charge1:
-                    turret.Charge(0);
-                    break;
-                case FireSafety.ChargeCommand.Commands.Charge2:
-                    turret.Charge(1);
+                case FireSafety.ChargeCommand.Commands.Charge:
+                    turret.Charge();
                     break;
                 default:
                     break;
@@ -343,13 +340,8 @@ namespace FireSafety
                 case FireSafety.TurretCommand.Commands.Down:
                     turret.UpDown(false);
                     break;
-                case FireSafety.TurretCommand.Commands.Shoot1:
-                    // Стреляем из первой пушки
-                    turret.Shoot(0);
-                    break;
-                case FireSafety.TurretCommand.Commands.Shoot2:
-                    // Стреляем из второй пушки
-                    turret.Shoot(1);
+                case FireSafety.TurretCommand.Commands.Shoot:
+                    turret.Shoot();
                     break;
                 default:
                     break;
@@ -408,6 +400,29 @@ namespace FireSafety
 
             // Рисуем номер танка
             target.Draw(number, states);
+        }
+
+        public override string ToString()
+        {
+            string result = string.Empty;
+
+            switch (color)
+            {
+                case TankColor.Red:
+                    result += $"Красный танк (#{number})";
+                    break;
+                case TankColor.Blue:
+                    result += $"Синий танк (#{number})";
+                    break;
+                case TankColor.Yellow:
+                    result += $"Желтый танк (#{number})";
+                    break;
+                case TankColor.Green:
+                    result += $"Зеленый танк (#{number})";
+                    break;
+            }
+
+            return result;
         }
     }
 }

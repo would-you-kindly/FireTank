@@ -18,8 +18,7 @@ namespace FireSafety
             Rotate90CCW,
             Up,
             Down,
-            Shoot1,
-            Shoot2,
+            Shoot,
             None
         }
 
@@ -56,10 +55,8 @@ namespace FireSafety
                     return "Up";
                 case Commands.Down:
                     return "Down";
-                case Commands.Shoot1:
-                    return "Shoot1";
-                case Commands.Shoot2:
-                    return "Shoot2";
+                case Commands.Shoot:
+                    return "Shoot";
                 case Commands.None:
                     return "None";
             }

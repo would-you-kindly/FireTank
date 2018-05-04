@@ -113,7 +113,6 @@
     <Compile Include="Errors\Errors.cs" />
     <Compile Include="Errors\InsufficientlyWaterError.cs" />
     <Compile Include="Errors\PressureError.cs" />
-    <Compile Include="Errors\ShootError.cs" />
     <Compile Include="Errors\UpError.cs" />
     <Compile Include="Errors\WeaponAlreadyChargedError.cs" />
     <Compile Include="Errors\WeaponUnchargedError.cs" />

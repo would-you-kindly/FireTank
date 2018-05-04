@@ -98,5 +98,10 @@ namespace FireSafety
                 target.Draw(burnedTreeSprite, states);
             }
         }
+
+        public override string ToString()
+        {
+            return "Дерево";
+        }
     }
 }

@@ -71,30 +71,12 @@ namespace FireSafety
         }
         public class WeaponChargeEventArgs : EventArgs
         {
-            public int weaponNumber;
-
-            public WeaponChargeEventArgs(int weaponNumber)
-            {
-                this.weaponNumber = weaponNumber;
-            }
         }
         public class WeaponAlreadyChargeErrorEventArgs : EventArgs
         {
-            public int weaponNumber;
-
-            public WeaponAlreadyChargeErrorEventArgs(int weaponNumber)
-            {
-                this.weaponNumber = weaponNumber;
-            }
         }
         public class WeaponUnchargeErrorEventArgs : EventArgs
         {
-            public int weaponNumber;
-
-            public WeaponUnchargeErrorEventArgs(int weaponNumber)
-            {
-                this.weaponNumber = weaponNumber;
-            }
         }
 
         // События башни
@@ -119,7 +101,6 @@ namespace FireSafety
         public event DownTurretEventHandler TurretDown;
         public event DownTurretErrorEventHandler TurretDownError;
         public event ShootTurretEventHandler TurretShoot;
-        public event ShootTurretErrorEventHandler TurretShootError;
         public event PressureTurretEventHandler TurretPressure;
         public event PressureTurretErrorEventHandler TurretPressureError;
         public event InsufficientlyWaterErrorEventHandler InsufficientlyWaterError;
@@ -140,8 +121,7 @@ namespace FireSafety
         public int waterCapacity;
 
         public bool up;
-        private const int weaponsCount = 2;
-        public bool[] weaponsReady;
+        public bool weaponReady;
 
         private RectangleShape direction;
 
@@ -152,7 +132,7 @@ namespace FireSafety
             waterPressure = minWaterPressure;
             waterCapacity = maxWaterCapacity - 3;
             up = false;
-            weaponsReady = new bool[weaponsCount] { false, false };
+            weaponReady = false;
 
             // Создаем полоску для указания направления турели
             direction = new RectangleShape(new Vector2f(2, 32));
@@ -273,7 +253,7 @@ namespace FireSafety
             return targets;
         }
 
-        public void Shoot(int weaponNumber)
+        public void Shoot()
         {
             // Недостаточное количество воды в запасе
             if (waterCapacity == minWaterCapacity)
@@ -284,52 +264,44 @@ namespace FireSafety
             }
 
             // Пушка не подготовлена
-            if (!weaponsReady[weaponNumber])
+            if (!weaponReady)
             {
-                WeaponUnchargedError?.Invoke(this, new WeaponUnchargeErrorEventArgs(weaponNumber));
+                WeaponUnchargedError?.Invoke(this, new WeaponUnchargeErrorEventArgs());
 
                 return;
             }
 
-            // TODO: Сделать минимально 1 или оставить 0 ????
-            //if (waterPressure != minWaterPressure)
+            // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
+            Tree treeToExtinguish = null;
+
+            // Если пушка опущена, то можно потушить только ближайшее дерево
+            if (!up)
             {
-                // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
-                Tree treeToExtinguish = null;
-
-                // Если пушка опущена, то можно потушить только ближайшее дерево
-                if (!up)
+                foreach (Vector2f coords in GetTargetPositions())
                 {
-                    foreach (Vector2f coords in GetTargetPositions())
-                    {
-                        treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
+                    treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
 
-                        // Если нашли ближайшее дерево, то остальные не проверяем
-                        if (treeToExtinguish != null)
-                        {
-                            treeToExtinguish.Extinguish();
-                            break;
-                        }
+                    // Если нашли ближайшее дерево, то остальные не проверяем
+                    if (treeToExtinguish != null)
+                    {
+                        treeToExtinguish.Extinguish();
+                        break;
                     }
                 }
-                // Если пушка поднята, то можно потушить только одно дальнее дерево
-                else
-                {
-                    treeToExtinguish = _terrain.trees.Find(tree => tree.Position == GetTargetPositions()[0]);
-                    treeToExtinguish?.Extinguish();
-                }
-
-                TurretShoot?.Invoke(this, new ShootTurretEventArgs(treeToExtinguish));
-
-                // После выстрела сбрасываем давление, уменьшаем запасы воды, убираем заряд пушки
-                waterPressure = minWaterPressure;
-                waterCapacity--;
-                weaponsReady[weaponNumber] = false;
             }
-            //else
-            //{
-            //    TurretShootError?.Invoke(this, new ShootTurretErrorEventArgs());
-            //}
+            // Если пушка поднята, то можно потушить только одно дальнее дерево
+            else
+            {
+                treeToExtinguish = _terrain.trees.Find(tree => tree.Position == GetTargetPositions()[0]);
+                treeToExtinguish?.Extinguish();
+            }
+
+            TurretShoot?.Invoke(this, new ShootTurretEventArgs(treeToExtinguish));
+
+            // После выстрела сбрасываем давление, уменьшаем запасы воды, убираем заряд пушки
+            waterPressure = minWaterPressure;
+            waterCapacity--;
+            weaponReady = false;
         }
 
         // Увеличение давления воды
@@ -348,22 +320,17 @@ namespace FireSafety
         }
 
         // Подготовка заряда (первого или второго)
-        public void Charge(int weaponNumber)
+        public void Charge()
         {
-            if (weaponNumber < 0 && weaponNumber > 1)
+            if (weaponReady)
             {
-                throw new Exception("У танка наготове может быть только две пушки (0 или 1)");
-            }
-
-            if (weaponsReady[weaponNumber])
-            {
-                WeaponAlreadyChargedError?.Invoke(this, new WeaponAlreadyChargeErrorEventArgs(weaponNumber));
+                WeaponAlreadyChargedError?.Invoke(this, new WeaponAlreadyChargeErrorEventArgs());
             }
             else
             {
-                weaponsReady[weaponNumber] = true;
+                weaponReady = true;
 
-                WeaponCharged?.Invoke(this, new WeaponChargeEventArgs(weaponNumber));
+                WeaponCharged?.Invoke(this, new WeaponChargeEventArgs());
             }
         }
 

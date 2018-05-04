@@ -79,10 +79,8 @@ namespace FireSafety
                     return ChargeCommand.Commands.PressureX1;
                 case "Pressure x2":
                     return ChargeCommand.Commands.PressureX2;
-                case "Charge 1":
-                    return ChargeCommand.Commands.Charge1;
-                case "Charge 2":
-                    return ChargeCommand.Commands.Charge2;
+                case "Charge":
+                    return ChargeCommand.Commands.Charge;
                 case "None":
                     return ChargeCommand.Commands.None;
             }
@@ -106,10 +104,8 @@ namespace FireSafety
                     return TurretCommand.Commands.Up;
                 case "Down":
                     return TurretCommand.Commands.Down;
-                case "Shoot 1":
-                    return TurretCommand.Commands.Shoot1;
-                case "Shoot 2":
-                    return TurretCommand.Commands.Shoot2;
+                case "Shoot":
+                    return TurretCommand.Commands.Shoot;
                 case "None":
                     return TurretCommand.Commands.None;
             }
@@ -158,10 +154,8 @@ namespace FireSafety
                     return "Pressure x2";
                 case ChargeCommand.Commands.Refuel:
                     return "Refuel";
-                case ChargeCommand.Commands.Charge1:
-                    return "Charge 1";
-                case ChargeCommand.Commands.Charge2:
-                    return "Charge 2";
+                case ChargeCommand.Commands.Charge:
+                    return "Charge";
                 case ChargeCommand.Commands.None:
                     return "None";
             }
@@ -185,10 +179,8 @@ namespace FireSafety
                     return "Up";
                 case TurretCommand.Commands.Down:
                     return "Down";
-                case TurretCommand.Commands.Shoot1:
-                    return "Shoot 1";
-                case TurretCommand.Commands.Shoot2:
-                    return "Shoot 2";
+                case TurretCommand.Commands.Shoot:
+                    return "Shoot";
                 case TurretCommand.Commands.None:
                     return "None";
             }

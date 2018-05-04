@@ -8,10 +8,10 @@ namespace FireSafety
 {
     public class RefuelError : Error
     {
-        public RefuelError()
+        public RefuelError(Tank tank)
         : base()
         {
-            message += $"Нельзя переполнять запасы воды.";
+            message += $"Нельзя переполнять запасы воды ({tank.ToString()}).";
         }
 
         public override string ToString()

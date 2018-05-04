@@ -9,5 +9,10 @@ namespace FireSafety
         {
             Utilities.CenterOrigin(sprite);
         }
+
+        public override string ToString()
+        {
+            return "Озеро";
+        }
     }
 }
