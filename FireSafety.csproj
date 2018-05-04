@@ -116,6 +116,7 @@
     <Compile Include="Errors\UpError.cs" />
     <Compile Include="Errors\WeaponAlreadyChargedError.cs" />
     <Compile Include="Errors\WeaponUnchargedError.cs" />
+    <Compile Include="Errors\WeaponUpChargeError.cs" />
     <Compile Include="FireSafetyForm.cs">
       <SubType>Form</SubType>
     </Compile>

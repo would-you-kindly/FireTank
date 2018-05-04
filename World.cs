@@ -180,6 +180,10 @@ namespace FireSafety
                 {
                     ParallelAlgorithm.GetInstance().errors.Add(new WeaponAlreadyChargedError());
                 };
+                tank.turret.WeaponUpChargeError += (sender, e) =>
+                {
+                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponUpChargeError());
+                };
                 tank.turret.WeaponUnchargedError += (sender, e) =>
                 {
                     ParallelAlgorithm.GetInstance().errors.Add(new WeaponUnchargedError());

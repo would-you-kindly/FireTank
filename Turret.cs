@@ -78,6 +78,9 @@ namespace FireSafety
         public class WeaponUnchargeErrorEventArgs : EventArgs
         {
         }
+        public class WeaponUpChargeEventArgs : EventArgs
+        {
+        }
 
         // События башни
         public delegate void MoveTurretEventHandler(object sender, MoveTurretEventArgs e);
@@ -94,6 +97,7 @@ namespace FireSafety
         public delegate void WeaponChargeEventHandler(object sender, WeaponChargeEventArgs e);
         public delegate void WeaponAlreadyChargeErrorEventHandler(object sender, WeaponAlreadyChargeErrorEventArgs e);
         public delegate void WeaponUnchargeErrorEventHandler(object sender, WeaponUnchargeErrorEventArgs e);
+        public delegate void WeaponUpChargeErrorEventHandler(object sender, WeaponUpChargeEventArgs e);
         public event MoveTurretEventHandler TurretMoved;
         public event RotateTurretEventHandler TurretRotated;
         public event UpTurretEventHandler TurretUp;
@@ -107,6 +111,7 @@ namespace FireSafety
         public event WeaponChargeEventHandler WeaponCharged;
         public event WeaponAlreadyChargeErrorEventHandler WeaponAlreadyChargedError;
         public event WeaponUnchargeErrorEventHandler WeaponUnchargedError;
+        public event WeaponUpChargeErrorEventHandler WeaponUpChargeError;
 
         // Параметры-ссылки
         private Terrain _terrain;
@@ -319,19 +324,27 @@ namespace FireSafety
             }
         }
 
-        // Подготовка заряда (первого или второго)
+        // Подготовка заряда
         public void Charge()
         {
-            if (weaponReady)
+            if (weaponReady || up)
             {
-                WeaponAlreadyChargedError?.Invoke(this, new WeaponAlreadyChargeErrorEventArgs());
-            }
-            else
-            {
-                weaponReady = true;
+                if (weaponReady)
+                {
+                    WeaponAlreadyChargedError?.Invoke(this, new WeaponAlreadyChargeErrorEventArgs());
+                }
 
-                WeaponCharged?.Invoke(this, new WeaponChargeEventArgs());
+                if (up)
+                {
+                    WeaponUpChargeError?.Invoke(this, new WeaponUpChargeEventArgs());
+                }
+
+                return;
             }
+
+            weaponReady = true;
+
+            WeaponCharged?.Invoke(this, new WeaponChargeEventArgs());
         }
 
         public override void Draw(RenderTarget target, RenderStates states)
