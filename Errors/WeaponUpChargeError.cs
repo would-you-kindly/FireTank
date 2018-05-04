@@ -8,10 +8,10 @@ namespace FireSafety
 {
     public class WeaponUpChargeError : Error
     {
-        public WeaponUpChargeError()
+        public WeaponUpChargeError(Tank tank)
             : base()
         {
-            message += $"Нельзя заряжать пушку, если она поднята.";
+            message += $"Нельзя заряжать пушку, если она поднята ({tank.ToString()}).";
         }
 
         public override string ToString()

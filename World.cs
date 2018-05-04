@@ -166,31 +166,31 @@ namespace FireSafety
                 // Подписываемся на обруботку ошибок башни танка
                 tank.turret.TurretPressureError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new PressureError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new PressureError(((Turret)sender).tank));
                 };
                 tank.turret.TurretUpError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new UpError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new UpError(((Turret)sender).tank));
                 };
                 tank.turret.TurretDownError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new DownError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new DownError(((Turret)sender).tank));
                 };
                 tank.turret.WeaponAlreadyChargedError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponAlreadyChargedError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponAlreadyChargedError(((Turret)sender).tank));
                 };
                 tank.turret.WeaponUpChargeError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponUpChargeError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponUpChargeError(((Turret)sender).tank));
                 };
                 tank.turret.WeaponUnchargedError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponUnchargedError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponUnchargedError(((Turret)sender).tank));
                 };
                 tank.turret.InsufficientlyWaterError += (sender, e) =>
                 {
-                    ParallelAlgorithm.GetInstance().errors.Add(new InsufficientlyWaterError());
+                    ParallelAlgorithm.GetInstance().errors.Add(new InsufficientlyWaterError(((Turret)sender).tank));
                 };
                 // При выстреле сохраняем след от выстрела
                 tank.turret.TurretShoot += (sender, e) =>

@@ -116,7 +116,7 @@ namespace FireSafety
         // Параметры-ссылки
         private Terrain _terrain;
         private List<Tank> _tanks;
-        public Tank _tank;
+        public Tank tank;
 
         // Параметры турели
         public int minWaterPressure = 1; //
@@ -136,7 +136,7 @@ namespace FireSafety
             base(id, resources)
         {
             // Задаем параметры турели
-            _tank = tank;
+            this.tank = tank;
             waterPressure = minWaterPressure;
             waterCapacity = maxWaterCapacity - 3;
             up = false;

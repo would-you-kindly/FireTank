@@ -8,10 +8,10 @@ namespace FireSafety
 {
     public class DownError : Error
     {
-        public DownError()
+        public DownError(Tank tank)
             : base()
         {
-            message += $"Нельзя опускать пушку, если она уже опущена.";
+            message += $"Нельзя опускать пушку, если она уже опущена ({tank.ToString()}).";
         }
 
         public override string ToString()
