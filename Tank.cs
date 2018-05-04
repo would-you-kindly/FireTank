@@ -81,7 +81,7 @@ namespace FireSafety
             base(idTank, resources)
         {
             // Создаем турель (башню) танка
-            turret = new Turret(idTurret, resources);
+            turret = new Turret(idTurret, resources, this);
 
             // Определяем цвет танка
             this.color = color;
@@ -127,6 +127,7 @@ namespace FireSafety
         public void SetTanks(List<Tank> tanks)
         {
             _tanks = tanks;
+            turret.SetTanks(tanks);
         }
 
         public void SetPosition(Vector2f position)

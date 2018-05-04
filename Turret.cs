@@ -115,6 +115,8 @@ namespace FireSafety
 
         // Параметры-ссылки
         private Terrain _terrain;
+        private List<Tank> _tanks;
+        public Tank _tank;
 
         // Параметры турели
         public int minWaterPressure = 1; //
@@ -130,10 +132,11 @@ namespace FireSafety
 
         private RectangleShape direction;
 
-        public Turret(Textures.ID id, ResourceHolder resources) :
+        public Turret(Textures.ID id, ResourceHolder resources, Tank tank) :
             base(id, resources)
         {
             // Задаем параметры турели
+            _tank = tank;
             waterPressure = minWaterPressure;
             waterCapacity = maxWaterCapacity - 3;
             up = false;
@@ -166,6 +169,11 @@ namespace FireSafety
         public void SetTerrain(Terrain terrain)
         {
             _terrain = terrain;
+        }
+
+        public void SetTanks(List<Tank> tanks)
+        {
+            _tanks = tanks;
         }
 
         public void RotateBy(float rotation)
@@ -229,30 +237,42 @@ namespace FireSafety
                     continue;
                 }
 
+                Vector2f target = new Vector2f();
+
                 // Вверх
                 if (NormalizedRotation == rotation * 0)
-                    targets.Add(new Vector2f(sprite.Position.X, sprite.Position.Y - Utilities.TILE_SIZE * (i + 1)));
+                    target = new Vector2f(sprite.Position.X, sprite.Position.Y - Utilities.TILE_SIZE * (i + 1));
                 // Вверх-вправо
                 if (NormalizedRotation == rotation * 1)
-                    targets.Add(new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1)));
+                    target = new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1));
                 // Вправо
                 if (NormalizedRotation == rotation * 2)
-                    targets.Add(new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y));
+                    target = new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y);
                 // Вправо-вниз
                 if (NormalizedRotation == rotation * 3)
-                    targets.Add(new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1)));
+                    target = new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1));
                 // Вниз
                 if (NormalizedRotation == rotation * 4)
-                    targets.Add(new Vector2f(sprite.Position.X, sprite.Position.Y + Utilities.TILE_SIZE * (i + 1)));
+                    target = new Vector2f(sprite.Position.X, sprite.Position.Y + Utilities.TILE_SIZE * (i + 1));
                 // Вниз-влево
                 if (NormalizedRotation == rotation * 5)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1)));
+                    target = new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1));
                 // Влево
                 if (NormalizedRotation == rotation * 6)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y));
+                    target = new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y);
                 // Влево-вверх
                 if (NormalizedRotation == rotation * 7)
-                    targets.Add(new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1)));
+                    target = new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1));
+
+                targets.Add(target);
+
+                // Если на пути выстрела находится танк, цели за ним не добавляем
+                if (_tanks.Find(tank => tank.sprite.Position == target) != null && !up)
+                {
+                    targets.Remove(target);
+
+                    break;
+                }
             }
 
             return targets;
