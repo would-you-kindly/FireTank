@@ -108,6 +108,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entity.cs" />
+    <Compile Include="Errors\DownError.cs" />
+    <Compile Include="Errors\Error.cs" />
+    <Compile Include="Errors\Errors.cs" />
+    <Compile Include="Errors\InsufficientlyWaterError.cs" />
+    <Compile Include="Errors\PressureError.cs" />
+    <Compile Include="Errors\ShootError.cs" />
+    <Compile Include="Errors\UpError.cs" />
+    <Compile Include="Errors\WeaponAlreadyChargedError.cs" />
+    <Compile Include="Errors\WeaponUnchargedError.cs" />
     <Compile Include="FireSafetyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,11 +131,16 @@
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IRepository.cs" />
+    <Compile Include="IUpdatable.cs" />
     <Compile Include="MapModel.cs" />
     <Compile Include="MapRepository.cs" />
     <Compile Include="ModelContext.cs" />
     <Compile Include="ParallelAlgorithmController.cs" />
+    <Compile Include="Errors\NearLakeError.cs" />
+    <Compile Include="Errors\RefuelError.cs" />
     <Compile Include="ResourceHolder.cs" />
+    <Compile Include="Errors\CollidedError.cs" />
+    <Compile Include="Errors\LeftMapError.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingsController.cs" />

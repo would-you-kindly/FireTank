@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FireSafety
 {
-    public class World : Drawable
+    public class World : Drawable, IUpdatable
     {
         public Map map;
         private ResourceHolder resources;
@@ -20,15 +20,17 @@ namespace FireSafety
 
         public World()
         {
-            LoadResources();
+            Load();
             BuildWorld();
         }
 
         // Загружает ресурсы в память (текстуры, звуки, шрифты, карты...)
-        private void LoadResources()
+        private void Load()
         {
+            resources = new ResourceHolder();
+
             LoadMap();
-            LoadTextures();
+            LoadResources();
         }
 
         public void LoadMap(string filename = "Media/Maps/Map2.tmx")
@@ -38,10 +40,9 @@ namespace FireSafety
             map.LoadFromFile(filename);
         }
 
-        private void LoadTextures()
+        private void LoadResources()
         {
             // Загружаем текстуры
-            resources = new ResourceHolder();
             resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/burnedTree.png");
             resources.LoadTexture(Textures.ID.Grass, "Media/Textures/grass.png");
             resources.LoadTexture(Textures.ID.House, "Media/Textures/house.png");
@@ -138,62 +139,61 @@ namespace FireSafety
                         throw new Exception("Неверно указаны координаты танка. Проверьте правильность значений переменных танка.");
                 }
                 tank.SetRotation(tankObject.rotation);
-                // TODO: Лучше бы подписаться в самом Game, но почему-то не подписывается
-                // Обрабатываем ошибку столкновения с игровыми объектами
-                tank.Collided += delegate (object sender, Tank.CollideEventArgs e)
+
+                // Подписываемся на обруботку ошибок танка
+                tank.Collided += (sender, e) =>
                 {
-                    Game.Tank_Collided(sender, e);
+                    ParallelAlgorithm.GetInstance().errors.Add(new CollidedError((Tank)sender, e.entity));
                 };
-                // Обрабатываем ошибку выхода за пределы карты
-                tank.MapLeft += delegate (object sender, Tank.MapLeftEventArgs e)
+                tank.MapLeft += (sender, e) =>
                 {
-                    //ParallelAlgorithm.GetInstance().Reload();
-                    MessageBox.Show("left map");
+                    ParallelAlgorithm.GetInstance().errors.Add(new LeftMapError((Tank)sender));
                 };
-                tank.NearLakeError += delegate (object sender, Tank.NearLakeErrorEventArgs e)
+                tank.NearLakeError += (sender, e) =>
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя пополнять запасы воды, не находясь рядом с озером.", "Ошибка исполнителя Charge", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new NearLakeError());
                 };
-                tank.RefuelError += delegate (object sender, Tank.RefuelErrorEventArgs e)
+                tank.RefuelError += (sender, e) =>
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя переполнять запасы воды.", "Ошибка исполнителя Charge", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new RefuelError());
                 };
 
-                // Создаем экземпляр пушки
+                // Создаем экземпляр башни танка
                 Object turretObject = map.GetObjects("turret").Find(turret => turret.rect.Left == tankObject.rect.Left && turret.rect.Top == tankObject.rect.Top);
                 tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
                 tank.turret.UpDown(false);
-                // Обрабатываем ошибки исполнителя turret
-                tank.turret.TurretShootError += delegate (object sender, Turret.ShootTurretErrorEventArgs e)
+
+                // Подписываемся на обруботку ошибок башни танка
+                tank.turret.TurretShootError += (sender, e) =>
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя выполнять выстрел без давления.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new ShootError());
                 };
-                tank.turret.TurretPressureError += delegate (object sender, Turret.PressureTurretErrorEventArgs e)
+                tank.turret.TurretPressureError += (sender, e) =>
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя переполнять давление воды.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new PressureError());
                 };
-                tank.turret.TurretUpError += delegate (object sender, Turret.UpTurretErrorEventArgs e)
+                tank.turret.TurretUpError += (sender, e) =>
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя поднимать пушку, если она уже поднята.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new UpError());
                 };
-                tank.turret.TurretDownError += delegate (object sender, Turret.DownTurretErrorEventArgs e)
+                tank.turret.TurretDownError += (sender, e) =>
                 {
-                    MessageBox.Show("Во время выполнения алгоритма произошла ошибка. Нельзя опускать пушку, если она уже опущена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new DownError());
                 };
-                tank.turret.WeaponAlreadyChargedError += delegate (object sender, Turret.WeaponAlreadyChargeErrorEventArgs e)
+                tank.turret.WeaponAlreadyChargedError += (sender, e) =>
                 {
-                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка. Нельзя заряжать пушку (#{e.weaponNumber + 1}), которая уже заряжена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponAlreadyChargedError());
                 };
-                tank.turret.WeaponUnchargedError += delegate (object sender, Turret.WeaponUnchargeErrorEventArgs e)
+                tank.turret.WeaponUnchargedError += (sender, e) =>
                 {
-                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка. Нельзя стрелять из пушки (#{e.weaponNumber + 1}), которая еще не заряжена.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new WeaponUnchargedError());
                 };
-                tank.turret.InsufficientlyWaterError += delegate (object sender, Turret.InsufficientlyWaterErrorEventArgs e)
+                tank.turret.InsufficientlyWaterError += (sender, e) =>
                 {
-                    MessageBox.Show($"Во время выполнения алгоритма произошла ошибка. Нельзя стрелять, если в запасе недостаточно воды.", "Ошибка исполнителя Turret", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ParallelAlgorithm.GetInstance().errors.Add(new InsufficientlyWaterError());
                 };
                 // При выстреле сохраняем след от выстрела
-                tank.turret.TurretShoot += delegate (object sender, Turret.ShootTurretEventArgs e)
+                tank.turret.TurretShoot += (sender, e) =>
                 {
                     traces.Add(new WaterTrace(tank.turret.up, tank.turret.sprite.Position,
                         tank.turret.waterPressure, tank.turret.NormalizedRotation));

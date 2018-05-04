@@ -71,6 +71,9 @@ namespace FireSafety
         public List<Algorithm> algorithms;
         [XmlIgnore]
         [NonSerialized]
+        public Errors errors;
+        [XmlIgnore]
+        [NonSerialized]
         public bool running;
         [XmlIgnore]
         [NonSerialized]
@@ -85,6 +88,7 @@ namespace FireSafety
         private ParallelAlgorithm()
         {
             algorithms = new List<Algorithm>();
+            errors = new Errors();
             running = false;
             step = false;
             currentAction = 0;

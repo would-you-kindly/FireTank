@@ -33,11 +33,6 @@ namespace FireSafety
         public World world;
         public Gui gui;
 
-        // Переменные для обработки ошибок
-        public static bool error = false;
-        public static Tank errorTank;
-        public static Tank.CollideEventArgs errorCollideEventArgs;
-
         public Game()
         {
             world = new World();
@@ -50,12 +45,6 @@ namespace FireSafety
         {
             gui.form.renderWindow.Closed += Window_Closed;
             Rendered += Game_Rendered;
-
-            // TODO: Почему-то здесь не хочет подписываться на события
-            //foreach (Tank tank in world.tanks)
-            //{
-            //    tank.Collided += Tank_Collide;
-            //}
         }
 
         public void Run()
@@ -127,40 +116,36 @@ namespace FireSafety
         {
             // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
             // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
+
             // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
-            if (error)
+            if (ParallelAlgorithm.GetInstance().errors.Count() != 0)
             {
-                error = false;
-                ParallelAlgorithm.GetInstance().running = false;
-                MessageBox.Show($"Во время выполнения алгоритма произошла ошибка.\n{errorTank.color.ToString()} танк столкнулся с объектом\n{errorCollideEventArgs.entity.GetType().ToString()}",
-                    "Ошибка алгоритма. Столкновение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ParallelAlgorithm.GetInstance().errors.ToString(),
+                    "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                ParallelAlgorithm.GetInstance().errors.Clear();
+                ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();
             }
 
-            // Если горящих деревьев больше нет
+            // Если горящих деревьев больше нет, выводим результат работы алгоритма
             if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
             {
                 Ended?.Invoke(this, new EndEventArgs());
 
                 MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
                     $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}\n" +
-                    $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}");
-                gui.form.Reload();
-                ParallelAlgorithm.GetInstance().running = false;
+                    $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}",
+                    "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                ParallelAlgorithm.GetInstance().Reload();
+                world.BuildWorld();
 
 
                 // TODO: Не 7 !!!!
                 MessageBox.Show(ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
                     7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()).ToString());
             }
-        }
-
-        public static void Tank_Collided(object sender, Tank.CollideEventArgs e)
-        {
-            // TODO: Как-то тупо сохраняем параметры
-            error = true;
-            errorTank = (Tank)sender;
-            errorCollideEventArgs = e;
         }
     }
 }

@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace FireSafety
 {
-    public class Entity : Transformable, Drawable
+    public class Entity : Transformable, Drawable, IUpdatable
     {
         public Sprite sprite;
 

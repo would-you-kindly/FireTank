@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    public class Terrain : IEnumerable
+    public class Terrain : Drawable, IUpdatable, IEnumerable
     {
         // Классы для передачи параметров событий
         public class FireOverEventArgs : EventArgs
