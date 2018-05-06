@@ -247,6 +247,11 @@ namespace FireSafety
             currentAction = 0;
         }
 
+        public void Step()
+        {
+            step = true;
+        }
+
         public void Reload()
         {
             foreach (Algorithm algorithm in algorithms)

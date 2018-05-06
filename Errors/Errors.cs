@@ -28,6 +28,33 @@ namespace FireSafety
             errors.Clear();
         }
 
+        public bool Check()
+        {
+            for (int i = 0; i < errors.Count; i++)
+            {
+                if (errors[i] is CollidedError)
+                {
+                    // Если танки действительно столкнулись, то не удаляем ошибку
+                    if (((CollidedError)errors[i]).CheckTanksCollide() == true)
+                    {
+                        continue;
+                    }
+                    // Если танки на РАЗНЫХ координатах и при этом не столкнулись лоб в лоб, то удаляем ошибку
+                    else if ((((CollidedError)errors[i]).CheckTanksCollide() == false))
+                    {
+                        errors.Remove(errors[i]);
+                        i--;
+                    }
+                    else if ((((CollidedError)errors[i]).CheckTanksCollide() == null))
+                    {
+                        // Столкновение произошло не с танком, значит обрабатываем ошибку
+                    }
+                }
+            }
+
+            return Count() != 0;
+        }
+
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();

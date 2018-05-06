@@ -24,12 +24,14 @@ namespace FireSafety
         // Параметры местности
         public List<Tree> trees;
         public List<Lake> lakes;
+        public List<Rock> rocks;
         public Wind wind;
 
         public Terrain(List<Object> objects, ResourceHolder resources, Wind wind)
         {
             trees = new List<Tree>();
             lakes = new List<Lake>();
+            rocks = new List<Rock>();
             this.wind = wind;
 
             foreach (Object item in objects)
@@ -55,6 +57,14 @@ namespace FireSafety
                     lake.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
                     lakes.Add(lake);
                 }
+
+                // Создаем скалы
+                if (item.name == "rock")
+                {
+                    Rock rock = new Rock(Textures.ID.Rock, resources);
+                    rock.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
+                    rocks.Add(rock);
+                }
             }
         }
 
@@ -78,6 +88,16 @@ namespace FireSafety
             lakes[index] = lake;
         }
 
+        public Rock GetRock(int index)
+        {
+            return rocks[index];
+        }
+
+        public void SetRock(int index, Rock rock)
+        {
+            rocks[index] = rock;
+        }
+
         public void Update(Time deltaTime)
         {
             // Поджигаем новые деревья
@@ -91,6 +111,10 @@ namespace FireSafety
             foreach (Lake lake in lakes)
             {
                 lake.Update(deltaTime);
+            }
+            foreach (Rock rock in rocks)
+            {
+                rock.Update(deltaTime);
             }
 
             // Проверяем состояние местности на наличие пожара
@@ -158,6 +182,10 @@ namespace FireSafety
             {
                 target.Draw(lake, states);
             }
+            foreach (Rock rock in rocks)
+            {
+                target.Draw(rock, states);
+            }
         }
 
         public IEnumerator GetEnumerator()
@@ -169,6 +197,10 @@ namespace FireSafety
             foreach (Lake lake in lakes)
             {
                 yield return lake;
+            }
+            foreach (Rock rock in rocks)
+            {
+                yield return rock;
             }
         }
     }

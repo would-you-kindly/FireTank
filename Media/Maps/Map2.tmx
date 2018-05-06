@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="216">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="234">
  <properties>
   <property name="algorithm" value=""/>
   <property name="wind" value="up"/>
@@ -267,6 +267,26 @@
    <tile gid="19"/>
   </data>
  </layer>
+ <objectgroup name="rocks">
+  <object id="216" name="rock" type="rock" gid="23" x="320" y="448" width="32" height="32"/>
+  <object id="217" name="rock" type="rock" gid="23" x="288" y="448" width="32" height="32"/>
+  <object id="218" name="rock" type="rock" gid="23" x="320" y="416" width="32" height="32"/>
+  <object id="219" name="rock" type="rock" gid="23" x="160" y="128" width="32" height="32"/>
+  <object id="220" name="rock" type="rock" gid="23" x="128" y="128" width="32" height="32"/>
+  <object id="221" name="rock" type="rock" gid="23" x="96" y="128" width="32" height="32"/>
+  <object id="222" name="rock" type="rock" gid="23" x="128" y="96" width="32" height="32"/>
+  <object id="223" name="rock" type="rock" gid="23" x="96" y="96" width="32" height="32"/>
+  <object id="224" name="rock" type="rock" gid="23" x="64" y="96" width="32" height="32"/>
+  <object id="225" name="rock" type="rock" gid="23" x="448" y="64" width="32" height="32"/>
+  <object id="226" name="rock" type="rock" gid="23" x="416" y="64" width="32" height="32"/>
+  <object id="227" name="rock" type="rock" gid="23" x="448" y="96" width="32" height="32"/>
+  <object id="228" name="rock" type="rock" gid="23" x="448" y="128" width="32" height="32"/>
+  <object id="229" name="rock" type="rock" gid="23" x="416" y="96" width="32" height="32"/>
+  <object id="230" name="rock" type="rock" gid="23" x="32" y="352" width="32" height="32"/>
+  <object id="231" name="rock" type="rock" gid="23" x="64" y="352" width="32" height="32"/>
+  <object id="232" name="rock" type="rock" gid="23" x="64" y="384" width="32" height="32"/>
+  <object id="233" name="rock" type="rock" gid="23" x="32" y="320" width="32" height="32"/>
+ </objectgroup>
  <objectgroup name="lakes">
   <object id="208" name="lake" type="lake" gid="22" x="384" y="480" width="32" height="32"/>
   <object id="209" name="lake" type="lake" gid="22" x="384" y="448" width="32" height="32"/>

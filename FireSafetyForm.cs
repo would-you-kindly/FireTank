@@ -248,7 +248,7 @@ namespace FireSafety
 
         private void stepToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            algorithmController.SetAlgorithmStep(true);
+            algorithmController.StepAlgorithm();
         }
 
         private void AddActionMessage()

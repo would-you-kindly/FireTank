@@ -170,11 +170,6 @@ namespace FireSafety
             ParallelAlgorithm.GetInstance().Save(fileName);
         }
 
-        public void SetAlgorithmRunningState(bool running)
-        {
-            ParallelAlgorithm.GetInstance().running = running;
-        }
-
         private static void DgvAlgorithm_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             DataGridViewRow row = ((DataGridView)sender).Rows[e.RowIndex];
@@ -229,9 +224,9 @@ namespace FireSafety
             }
         }
 
-        public void SetAlgorithmStep(bool step)
+        public void StepAlgorithm()
         {
-            ParallelAlgorithm.GetInstance().step = step;
+            ParallelAlgorithm.GetInstance().Step();
         }
     }
 }

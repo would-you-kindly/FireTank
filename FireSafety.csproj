@@ -141,6 +141,7 @@
     <Compile Include="ResourceHolder.cs" />
     <Compile Include="Errors\CollidedError.cs" />
     <Compile Include="Errors\LeftMapError.cs" />
+    <Compile Include="Rock.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingsController.cs" />

@@ -266,8 +266,9 @@ namespace FireSafety
 
                 targets.Add(target);
 
-                // Если на пути выстрела находится танк, цели за ним не добавляем
-                if (_tanks.Find(tank => tank.sprite.Position == target) != null && !up)
+                // Если на пути выстрела находится танк или скала (но не озеро), цели за ними не добавляем
+                if ((_tanks.Find(tank => tank.sprite.Position == target) != null && !up) ||
+                    (_terrain.rocks.Find(rock => rock.Position == target) != null && !up))
                 {
                     targets.Remove(target);
 

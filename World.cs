@@ -57,6 +57,7 @@ namespace FireSafety
             resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
             resources.LoadTexture(Textures.ID.Tree, "Media/Textures/greentree.png");
             resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
+            resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
 
             // Загружаем шрифты
             resources.LoadFont(Fonts.ID.Sansation, "Media/Sansation.ttf");
@@ -140,7 +141,7 @@ namespace FireSafety
                 }
                 tank.SetRotation(tankObject.rotation);
 
-                // Подписываемся на обруботку ошибок танка
+                // Подписываемся на обработку ошибок танка
                 tank.Collided += (sender, e) =>
                 {
                     ParallelAlgorithm.GetInstance().errors.Add(new CollidedError((Tank)sender, e.entity));
@@ -163,7 +164,7 @@ namespace FireSafety
                 tank.SetTurretRotation(tankObject.rotation - turretObject.rotation);
                 tank.turret.UpDown(false);
 
-                // Подписываемся на обруботку ошибок башни танка
+                // Подписываемся на обработку ошибок башни танка
                 tank.turret.TurretPressureError += (sender, e) =>
                 {
                     ParallelAlgorithm.GetInstance().errors.Add(new PressureError(((Turret)sender).tank));

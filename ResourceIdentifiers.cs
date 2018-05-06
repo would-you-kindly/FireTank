@@ -17,7 +17,8 @@
             BurnedTree,
             House,
             Fire,
-            Lake
+            Lake,
+            Rock
         }
     }
 

@@ -70,6 +70,7 @@ namespace FireSafety
                     timeSinceLastUpdate -= timePerFrame;
 
                     ProcessInput();
+                    // TODO: Есть ли синтаксис, который позволяет обратиться к переменной типа bool и после этого ее переключить step = !step
                     if (ParallelAlgorithm.GetInstance().running || ParallelAlgorithm.GetInstance().step)
                     {
                         ParallelAlgorithm.GetInstance().step = false;
@@ -118,7 +119,7 @@ namespace FireSafety
             // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
 
             // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
-            if (ParallelAlgorithm.GetInstance().errors.Count() != 0)
+            if (ParallelAlgorithm.GetInstance().errors.Check())
             {
                 MessageBox.Show(ParallelAlgorithm.GetInstance().errors.ToString(),
                     "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -136,15 +137,14 @@ namespace FireSafety
                 MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
                     $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}\n" +
                     $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}",
-                    "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-
-                ParallelAlgorithm.GetInstance().Reload();
-                world.BuildWorld();
-
+                    "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // TODO: Не 7 !!!!
                 MessageBox.Show(ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
                     7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()).ToString());
+
+                ParallelAlgorithm.GetInstance().Reload();
+                world.BuildWorld();
             }
         }
     }
