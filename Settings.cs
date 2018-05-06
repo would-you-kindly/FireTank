@@ -149,14 +149,9 @@ namespace FireSafety
         public int timeToHold;
         public string connectionString;
 
-        //[NonSerialized]
-        //IRepository<MapModel> mapRepository;
-        //[NonSerialized]
-        //IRepository<UserModel> userRepository;
-
         public Settings()
         {
-            //Default();
+            Default();
         }
 
         public static Settings GetInstance()
@@ -165,9 +160,9 @@ namespace FireSafety
             {
                 instance = new Settings();
                 // Грузим настройки из файла
-                instance.Load();
+                //instance.Load();
 
-                //instance.ShortcutUpdated += Settings_ShortcutUpdated;
+                instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }
 
             return instance;

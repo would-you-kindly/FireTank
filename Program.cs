@@ -24,19 +24,19 @@ namespace FireSafety
                 //{
                 //    Id = Guid.NewGuid(),
                 //    Name = "Имя",
-                //    Patronymic = "",
-                //    Lastname = "",
+                //    Patronymic = "Отчество",
+                //    Lastname = "Фамилия",
                 //    Login = "admin",
                 //    Password = "admin",
                 //    Algorithms = null
                 //};
 
-                Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
-                Utilities.context.Maps.Add(new MapModel());
-                Utilities.context.SaveChanges();
+                //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
+                //Utilities.context.Users.Add(user);
+                //Utilities.context.SaveChanges();
 
-                Settings.GetInstance().SetCurrentUser(Guid.Parse("03B4F988-74B7-4C81-94ED-B2713B859D4E"));
-                Settings.GetInstance().SetCurrentMap(Guid.Parse("FB3FB487-A913-4DDC-8071-1FC7A7048564"));
+                Settings.GetInstance().SetCurrentUser(Guid.Parse("A031D871-0553-41A2-924F-E80B6F340784"));
+                Settings.GetInstance().SetCurrentMap(Guid.Parse("6B790575-5BE1-4063-87E9-015ADD98D327"));
 
                 Game game = new Game();
                 game.Run();
