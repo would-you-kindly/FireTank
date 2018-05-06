@@ -43,8 +43,8 @@ namespace FireSafety
                     tree.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
                     if (item.GetPropertyBool("burns"))
                     {
-                        // TODO: Такое себе место
-                        tree.state.currentTimeToSpread = 3;
+                        // TODO: Такое себе место (чтобы подожглось, нужно сделать так)
+                        tree.state.currentTimeToSpread = tree.state.timeToSpread;
                         tree.Fire();
                     }
                     trees.Add(tree);

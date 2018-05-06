@@ -20,6 +20,8 @@ namespace FireSafety
         public void Create(AlgorithmModel item)
         {
             context.Algorithms.Add(item);
+
+            context.SaveChanges();
         }
 
         public AlgorithmModel Read(Guid id)
@@ -30,6 +32,8 @@ namespace FireSafety
         public void Update(AlgorithmModel item)
         {
             context.Entry(item).State = EntityState.Modified;
+
+            context.SaveChanges();
         }
 
         public void Delete(Guid id)
@@ -39,17 +43,14 @@ namespace FireSafety
             if (algorithm != null)
             {
                 context.Algorithms.Remove(algorithm);
+
+                context.SaveChanges();
             }
         }
 
         public IEnumerable<AlgorithmModel> GetList()
         {
             return context.Algorithms.OrderBy(algorithm => algorithm.Result);
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
         }
 
         public virtual void Dispose(bool disposing)

@@ -57,6 +57,7 @@ namespace FireSafety
                 Time dt = clock.Restart();
                 timeSinceLastUpdate += dt;
 
+                // Handle form events
                 Application.DoEvents();
 
                 // Чтобы быстрее реагировало на пошаговое выполнение, искусственно добавляем время
@@ -85,7 +86,6 @@ namespace FireSafety
         private void ProcessInput()
         {
             // TODO: Тут падало, если игра долго работает, из-за сборщика мусора
-            // Handle form events
             gui.form.renderWindow.DispatchEvents();
         }
 
@@ -124,13 +124,15 @@ namespace FireSafety
                 MessageBox.Show(ParallelAlgorithm.GetInstance().errors.ToString(),
                     "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                ParallelAlgorithm.GetInstance().SaveInDatabase(null);
+
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();
             }
 
             // Если горящих деревьев больше нет, выводим результат работы алгоритма
-            if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0)
+            if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0 && ParallelAlgorithm.GetInstance().IsExecuted())
             {
                 Ended?.Invoke(this, new EndEventArgs());
 
@@ -139,9 +141,13 @@ namespace FireSafety
                     $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}",
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
+                    7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
+                ParallelAlgorithm.GetInstance().SaveInDatabase(result);
+
                 // TODO: Не 7 !!!!
-                MessageBox.Show(ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
-                    7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()).ToString());
+                MessageBox.Show($"Эффективность разработанного алгоритма = {result}",
+                    "Эффективность алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();

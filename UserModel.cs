@@ -21,6 +21,10 @@ namespace FireSafety
 
         [Required]
         [MaxLength(50)]
+        public string Patronymic { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Lastname { get; set; }
 
         [Required]

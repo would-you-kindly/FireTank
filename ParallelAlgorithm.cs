@@ -81,9 +81,6 @@ namespace FireSafety
         [XmlIgnore]
         [NonSerialized]
         public int currentAction;
-        [XmlIgnore]
-        [NonSerialized]
-        IRepository<AlgorithmModel> repository;
 
         private ParallelAlgorithm()
         {
@@ -93,8 +90,8 @@ namespace FireSafety
             step = false;
             currentAction = 0;
 
-            ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
-            repository = new AlgorithmRepository(context);
+            //ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
+            //repository = new AlgorithmRepository(context);
 
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
@@ -209,28 +206,26 @@ namespace FireSafety
             Saved?.Invoke(this, new SaveEventArgs());
         }
 
-        public void SaveInDatabase()
+        public void SaveInDatabase(double? result)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            byte[] bytes;
-            using (MemoryStream ms = new MemoryStream())
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ParallelAlgorithm));
+            string xmlContent = string.Empty;
+            using (StringWriter textWriter = new StringWriter())
             {
-                formatter.Serialize(ms, this);
-                bytes = ms.ToArray();
+                xmlSerializer.Serialize(textWriter, this);
+                xmlContent = textWriter.ToString();
             }
 
-            // TODO: Стремно пока тут
             AlgorithmModel algorithm = new AlgorithmModel();
             algorithm.Id = Guid.NewGuid();
-            algorithm.Bytes = bytes;
-            algorithm.Result = /*ComputeEfficiency();*/ 10.0; // TODO: !!!
+            algorithm.XmlContent = xmlContent;
+            algorithm.Result = result;
             algorithm.CreationDate = DateTime.Now;
-            algorithm.Success = true; // TODO: !!!
-            UserRepository r = new UserRepository(new ModelContext(Settings.GetInstance().connectionString));
-            algorithm.User = r.Read(Settings.currentUser);
-            //algorithm.Map = 
+            algorithm.Map = Settings.GetInstance().currentMap;
+            algorithm.User = Settings.GetInstance().currentUser;
 
-            repository.Create(algorithm);
+            Utilities.context.Algorithms.Add(algorithm);
+            Utilities.context.SaveChanges();
 
             Saved?.Invoke(this, new SaveEventArgs());
         }
@@ -264,6 +259,11 @@ namespace FireSafety
             currentAction = 0;
 
             Reloaded?.Invoke(this, new ReloadEventArgs());
+        }
+
+        public bool IsExecuted()
+        {
+            return instance.algorithms.All(algo => algo.currentAction >= algo.actions.Count);
         }
 
         public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees,

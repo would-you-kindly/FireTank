@@ -20,6 +20,8 @@ namespace FireSafety
         public void Create(UserModel item)
         {
             context.Users.Add(item);
+
+            context.SaveChanges();
         }
 
         public UserModel Read(Guid id)
@@ -30,6 +32,8 @@ namespace FireSafety
         public void Update(UserModel item)
         {
             context.Entry(item).State = EntityState.Modified;
+
+            context.SaveChanges();
         }
 
         public void Delete(Guid id)
@@ -39,17 +43,14 @@ namespace FireSafety
             if (user != null)
             {
                 context.Users.Remove(user);
+
+                context.SaveChanges();
             }
         }
 
         public IEnumerable<UserModel> GetList()
         {
             return context.Users.OrderBy(user => user.Lastname);
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
         }
 
         public virtual void Dispose(bool disposing)

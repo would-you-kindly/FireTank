@@ -10,7 +10,6 @@ namespace FireSafety
 {
     public static class Utilities
     {
-        // TODO: Грузить эти значения из xml
         public static int TILE_SIZE = 32;
         public static int TANKS_COUNT = 2;
         public static uint WIDTH_TILE_COUNT = 16;
@@ -19,6 +18,7 @@ namespace FireSafety
         public static uint WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
         public static int MAX_TANKS_COUNT = 4;
         public static int CURRENT_ACTION_NUMBER = 0;
+        public static ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
 
         public static void CenterOrigin(Sprite sprite)
         {

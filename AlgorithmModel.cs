@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace FireSafety
 {
@@ -10,17 +12,27 @@ namespace FireSafety
         public Guid Id { get; set; }
 
         [Required]
-        public byte[] Bytes { get; set; }
+        [Column(TypeName = "xml")]
+        public string XmlContent { get; set; }
 
-        [Required]
-        public double Result { get; set; }
+        [NotMapped]
+        public XElement XmlValueWrapper
+        {
+            get
+            {
+                return XElement.Parse(XmlContent);
+            }
+            set
+            {
+                XmlContent = value.ToString();
+            }
+        }
+
+        public double? Result { get; set; }
 
         [Required]
         public DateTime CreationDate { get; set; }
 
-        [Required]
-        public bool Success { get; set; }
-        
         [Required]
         public UserModel User { get; set; }
 

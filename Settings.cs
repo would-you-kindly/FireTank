@@ -40,11 +40,13 @@ namespace FireSafety
         [NonSerialized]
         private const string filename = "Settings.xml";
         [NonSerialized]
-        private const string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
+        private string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
+        [XmlIgnore]
         [NonSerialized]
-        public static Guid currentUser = Guid.Parse("9d59277f-dd0e-4257-863f-b580c5c9e68f");
+        public UserModel currentUser;
+        [XmlIgnore]
         [NonSerialized]
-        public static Guid currentMap = Guid.Parse("9d59277f-dd0e-4257-863f-b580c5c9e68f");
+        public MapModel currentMap;
 
         [NonSerialized]
         private const Keys clearSelectionDefault = Keys.Escape;
@@ -97,6 +99,18 @@ namespace FireSafety
         [NonSerialized]
         private const Keys turretRotateCCWDefault = Keys.NumPad4;
 
+        // Команды меню
+        [NonSerialized]
+        private const Keys runDefault = Keys.F5;
+        [NonSerialized]
+        private const Keys reloadDefault = Keys.F6;
+        [NonSerialized]
+        private const Keys stepDefault = Keys.F7;
+        [NonSerialized]
+        private const Keys clearDefault = Keys.F8;
+        [NonSerialized]
+        private const Keys helpDefault = Keys.F1;
+
         // Время, в течение которого нужно держать клавишу, чтобы сработало долгое нажатие
         [NonSerialized]
         private const int timeToHoldDefault = 200;
@@ -126,18 +140,23 @@ namespace FireSafety
         public Keys turretRotateCW;
         public Keys turretRotateCCW;
 
+        public Keys run;
+        public Keys reload;
+        public Keys step;
+        public Keys clear;
+        public Keys help;
+
         public int timeToHold;
         public string connectionString;
 
-        [NonSerialized]
-        IRepository<MapModel> mapRepository;
-        [NonSerialized]
-        IRepository<UserModel> userRepository;
+        //[NonSerialized]
+        //IRepository<MapModel> mapRepository;
+        //[NonSerialized]
+        //IRepository<UserModel> userRepository;
 
         public Settings()
         {
-            Default();
-            Save();
+            //Default();
         }
 
         public static Settings GetInstance()
@@ -145,11 +164,10 @@ namespace FireSafety
             if (instance == null)
             {
                 instance = new Settings();
-
                 // Грузим настройки из файла
-                //instance.Load();
+                instance.Load();
 
-                instance.ShortcutUpdated += Settings_ShortcutUpdated;
+                //instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }
 
             return instance;
@@ -162,20 +180,28 @@ namespace FireSafety
 
         public void SetCurrentUser(Guid user)
         {
-            currentUser = user;
+            UserRepository userRepository = new UserRepository(Utilities.context);
+
+            currentUser = userRepository.Read(user);
         }
 
         public void SetCurrentMap(Guid map)
         {
-            currentMap = map;
+            MapRepository mapRepository = new MapRepository(Utilities.context);
+
+            currentMap = mapRepository.Read(map);
         }
 
         public string GetUserString()
         {
-            ModelContext context = new ModelContext(connectionString);
-            userRepository = new UserRepository(context);
-
-            return $"{userRepository.Read(currentUser).Name} {userRepository.Read(currentUser).Lastname}";
+            if (currentUser != null)
+            {
+                return $"{currentUser.Name} {currentUser.Lastname}";
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         public void SetShortcut(string performer, object command, Keys key)
@@ -251,6 +277,21 @@ namespace FireSafety
                 case "Delete action":
                     deleteAction = key;
                     break;
+                case "Run":
+                    run = key;
+                    break;
+                case "Reload":
+                    reload = key;
+                    break;
+                case "Step":
+                    step = key;
+                    break;
+                case "Clear":
+                    clear = key;
+                    break;
+                case "Help":
+                    help = key;
+                    break;
                 default:
                     break;
             }
@@ -308,6 +349,12 @@ namespace FireSafety
             turretRotateCW = turretRotateCWDefault;
             turretRotateCCW = turretRotateCCWDefault;
 
+            run = runDefault;
+            reload = reloadDefault;
+            step = stepDefault;
+            clear = clearDefault;
+            help = helpDefault;
+
             timeToHold = timeToHoldDefault;
             connectionString = connectionStringDefault;
 
@@ -341,6 +388,12 @@ namespace FireSafety
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Shoot, turretShoot));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CW, turretRotateCW));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CCW, turretRotateCCW));
+
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Run", run));
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Reload", reload));
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Step", step));
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Clear", clear));
+            shortcuts.Add(new Tuple<string, object, Keys>("", "Help", help));
 
             shortcuts.Add(new Tuple<string, object, Keys>("", "Clear selection", clearSelection));
             shortcuts.Add(new Tuple<string, object, Keys>("", "Delete action", deleteAction));

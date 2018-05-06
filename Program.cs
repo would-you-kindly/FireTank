@@ -20,10 +20,23 @@ namespace FireSafety
         {
             try
             {
-                //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
-                //ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
-                //context.Maps.Add(new MapModel());
-                //context.SaveChanges();
+                //UserModel user = new UserModel()
+                //{
+                //    Id = Guid.NewGuid(),
+                //    Name = "Имя",
+                //    Patronymic = "",
+                //    Lastname = "",
+                //    Login = "admin",
+                //    Password = "admin",
+                //    Algorithms = null
+                //};
+
+                Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
+                Utilities.context.Maps.Add(new MapModel());
+                Utilities.context.SaveChanges();
+
+                Settings.GetInstance().SetCurrentUser(Guid.Parse("03B4F988-74B7-4C81-94ED-B2713B859D4E"));
+                Settings.GetInstance().SetCurrentMap(Guid.Parse("FB3FB487-A913-4DDC-8071-1FC7A7048564"));
 
                 Game game = new Game();
                 game.Run();

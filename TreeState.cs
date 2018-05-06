@@ -5,7 +5,7 @@ namespace FireSafety
     public abstract class TreeState
     {
         public int hitPoints = 10;
-        public const int timeToSpread = 3;
+        public readonly int timeToSpread = 3;
         public int currentTimeToSpread = 0;
 
         // Тушит дерево
