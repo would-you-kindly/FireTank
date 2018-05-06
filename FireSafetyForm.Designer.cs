@@ -80,6 +80,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openMapFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +105,7 @@
             this.saveAlgorithmAsToolStripMenuItem,
             this.openAlgorithmToolStripMenuItem,
             this.openMapToolStripMenuItem,
+            this.openMapFromDatabaseToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -528,6 +530,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // openMapFromDatabaseToolStripMenuItem
+            // 
+            this.openMapFromDatabaseToolStripMenuItem.Name = "openMapFromDatabaseToolStripMenuItem";
+            this.openMapFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.openMapFromDatabaseToolStripMenuItem.Text = "Open map from database";
+            this.openMapFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.openMapFromDatabaseToolStripMenuItem_Click);
+            // 
             // FireSafetyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -602,5 +611,6 @@
         private System.Windows.Forms.ToolStripMenuItem backward45CCWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shootToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openMapFromDatabaseToolStripMenuItem;
     }
 }

@@ -16,9 +16,14 @@ namespace FireSafety
             world.BuildWorld();
         }
 
-        public void LoadMap(string filename)
+        public void LoadMapFromFile(string filename)
         {
-            world.LoadMap(filename);
+            world.LoadMapFromFile(filename);
+        }
+
+        public void LoadMapFromDatabase(Guid id)
+        {
+            world.LoadMapFromDatabase(id);
         }
 
         public string GetMapProperty(string property)

@@ -206,7 +206,7 @@ namespace FireSafety
             Saved?.Invoke(this, new SaveEventArgs());
         }
 
-        public void SaveInDatabase(double? result)
+        public void SaveInDatabase(double result, bool success)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(ParallelAlgorithm));
             string xmlContent = string.Empty;
@@ -220,6 +220,7 @@ namespace FireSafety
             algorithm.Id = Guid.NewGuid();
             algorithm.XmlContent = xmlContent;
             algorithm.Result = result;
+            algorithm.Success = success;
             algorithm.CreationDate = DateTime.Now;
             algorithm.Map = Settings.GetInstance().currentMap;
             algorithm.User = Settings.GetInstance().currentUser;

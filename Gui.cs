@@ -15,8 +15,7 @@ namespace FireSafety
 
         public Gui(World world)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+
 
             form = new FireSafetyForm(world);
             form.Show();

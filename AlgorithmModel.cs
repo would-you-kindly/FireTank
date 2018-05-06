@@ -28,7 +28,11 @@ namespace FireSafety
             }
         }
 
-        public double? Result { get; set; }
+        [Required]
+        public double Result { get; set; }
+
+        [Required]
+        public bool Success { get; set; }
 
         [Required]
         public DateTime CreationDate { get; set; }

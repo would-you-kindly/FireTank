@@ -124,7 +124,10 @@ namespace FireSafety
                 MessageBox.Show(ParallelAlgorithm.GetInstance().errors.ToString(),
                     "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                ParallelAlgorithm.GetInstance().SaveInDatabase(null);
+                double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
+                    7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
+
+                ParallelAlgorithm.GetInstance().SaveInDatabase(result, false);
 
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
@@ -136,18 +139,17 @@ namespace FireSafety
             {
                 Ended?.Invoke(this, new EndEventArgs());
 
-                MessageBox.Show($"Количество деревьев: {world.terrain.trees.Count()}\n" +
-                    $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}\n" +
-                    $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}",
-                    "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                // TODO: Не 7 !!!!
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
                     7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
-                ParallelAlgorithm.GetInstance().SaveInDatabase(result);
 
-                // TODO: Не 7 !!!!
-                MessageBox.Show($"Эффективность разработанного алгоритма = {result}",
-                    "Эффективность алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Количество деревьев на карте: {world.terrain.trees.Count()}.\n" +
+                    $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}.\n" +
+                    $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n\n" +
+                    $"Эффективность разработанного алгоритма = {result}.",
+                    "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ParallelAlgorithm.GetInstance().SaveInDatabase(result, true);
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();

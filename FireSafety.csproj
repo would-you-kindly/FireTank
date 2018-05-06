@@ -132,7 +132,19 @@
     </Compile>
     <Compile Include="IRepository.cs" />
     <Compile Include="IUpdatable.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapModel.cs" />
+    <Compile Include="MapOpenerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapOpenerForm.Designer.cs">
+      <DependentUpon>MapOpenerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapRepository.cs" />
     <Compile Include="ModelContext.cs" />
     <Compile Include="ParallelAlgorithmController.cs" />
@@ -190,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapOpenerForm.resx">
+      <DependentUpon>MapOpenerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

@@ -35,11 +35,20 @@ namespace FireSafety
                 //Utilities.context.Users.Add(user);
                 //Utilities.context.SaveChanges();
 
-                Settings.GetInstance().SetCurrentUser(Guid.Parse("A031D871-0553-41A2-924F-E80B6F340784"));
-                Settings.GetInstance().SetCurrentMap(Guid.Parse("6B790575-5BE1-4063-87E9-015ADD98D327"));
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-                Game game = new Game();
-                game.Run();
+                LoginForm login = new LoginForm();
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    Game game = new Game();
+                    game.Run();
+                }
+
+
+                //Settings.GetInstance().SetCurrentUser(Guid.Parse("B7574C35-DEE9-4BCA-AE69-260CAFEB3286"));
+
+
             }
             catch (DbEntityValidationException ex)
             {

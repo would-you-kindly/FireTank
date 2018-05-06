@@ -22,6 +22,7 @@ namespace FireSafety
         private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
+        public MapOpenerForm mapOpenerForm;
         public InfoForm infoForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
@@ -33,10 +34,12 @@ namespace FireSafety
 
             worldController = new WorldController(world);
 
+            mapOpenerForm = new MapOpenerForm(this);
+
             Init();
         }
 
-        private void Init()
+        public void Init()
         {
             // Создаем окна алгоритмов
             algorithmForms = new List<AlgorithmForm>();
@@ -153,7 +156,7 @@ namespace FireSafety
             }
         }
 
-        private void LoadTrainingAlgorithm(string filename)
+        public void LoadTrainingAlgorithm(string filename)
         {
             // Если указан обучающий алгоритм, загружаем его
             string algorithmFilename = worldController.GetMapProperty("algorithm");
@@ -164,13 +167,19 @@ namespace FireSafety
             }
         }
 
-        private void RebuildWorld(string filename)
+        public void RebuildWorld(Guid id)
         {
-            worldController.LoadMap(filename);
+            worldController.LoadMapFromDatabase(id);
             worldController.BuildWorld();
         }
 
-        private void Clear()
+        public void RebuildWorld(string filename)
+        {
+            worldController.LoadMapFromFile(filename);
+            worldController.BuildWorld();
+        }
+
+        public void Clear()
         {
             // Очищаем алгоритм
             algorithmController.ClearAlgorithm();
@@ -187,7 +196,7 @@ namespace FireSafety
             SmartLayout();
         }
 
-        private void SmartLayout()
+        public void SmartLayout()
         {
             // Подбираем размеры для окна карты
             sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
@@ -452,6 +461,11 @@ namespace FireSafety
         private void FireSafetyForm_Load(object sender, EventArgs e)
         {
             SmartLayout();
+        }
+
+        private void openMapFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapOpenerForm.ShowDialog();
         }
     }
 }

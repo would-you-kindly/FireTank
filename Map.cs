@@ -56,6 +56,25 @@ namespace FireSafety
         private List<Layer> layers = new List<Layer>();
         public Dictionary<string, string> properties = new Dictionary<string, string>();
 
+        public bool LoadFromDatabase(Guid id)
+        {
+            // Открываем документ с картой в .xml разметке 
+            XmlDocument xDoc = new XmlDocument();
+            try
+            {
+                MapModel mapModel = Utilities.context.Maps.Find(id);
+                xDoc.LoadXml(mapModel.XmlContent);
+                Settings.GetInstance().SetCurrentMap(id);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Loading level \"" + id.ToString() + "\" failed.");
+                return false;
+            }
+
+            return Load(xDoc);
+        }
+
         public bool LoadFromFile(string filename)
         {
             // Открываем документ с картой в .xml разметке 
@@ -70,6 +89,11 @@ namespace FireSafety
                 return false;
             }
 
+            return Load(xDoc);
+        }
+
+        private bool Load(XmlDocument xDoc)
+        {
             // Получаем информацию о карте (ширину, высоту карты и тайлов)
             XmlElement mapElement = (XmlElement)xDoc.GetElementsByTagName("map")[0];
 
@@ -83,7 +107,7 @@ namespace FireSafety
             // Получаем инфрмацию о свойствах карты
             XmlElement mapPropertiesElement = (XmlElement)mapElement.GetElementsByTagName("properties")[0];
             XmlElement mapPropertyElement = (XmlElement)mapPropertiesElement.GetElementsByTagName("property").Item(0);
-            while (mapPropertyElement!= null)
+            while (mapPropertyElement != null)
             {
                 string propertyName = mapPropertyElement.GetAttribute("name");
                 string propertyValue = mapPropertyElement.GetAttribute("value");
@@ -100,7 +124,7 @@ namespace FireSafety
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
-            Image image = new Image(Path.Combine("Media/", imagePath.Remove(0,3)));
+            Image image = new Image(Path.Combine("Media/", imagePath.Remove(0, 3)));
 
             // TODO: Проверку добавить
             //if (!img.loadFromFile(imagepath))

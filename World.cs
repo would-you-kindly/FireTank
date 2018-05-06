@@ -29,11 +29,18 @@ namespace FireSafety
         {
             resources = new ResourceHolder();
 
-            LoadMap();
+            LoadMapFromDatabase(Guid.Parse("bea49d85-adf7-4a2b-bb9b-7e311afbfb46"));
             LoadResources();
         }
 
-        public void LoadMap(string filename = "Media/Maps/Map2.tmx")
+        public void LoadMapFromDatabase(Guid id)
+        {
+            // Загружаем карту из .xml (.tmx) файла
+            map = new Map();
+            map.LoadFromDatabase(id);
+        }
+
+        public void LoadMapFromFile(string filename = "Media/Maps/Map2.tmx")
         {
             // Загружаем карту из .xml (.tmx) файла
             map = new Map();

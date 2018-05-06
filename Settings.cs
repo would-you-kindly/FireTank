@@ -12,6 +12,7 @@ namespace FireSafety
     [Serializable]
     public class Settings
     {
+        [XmlIgnore]
         [NonSerialized]
         private static Settings instance;
 
@@ -37,8 +38,10 @@ namespace FireSafety
         public event UpdateShortcutEventHandler ShortcutUpdated;
         public event DefaultShortcutEventHandler Defaulted;
 
+        [XmlIgnore]
         [NonSerialized]
         private const string filename = "Settings.xml";
+        [XmlIgnore]
         [NonSerialized]
         private string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
         [XmlIgnore]
