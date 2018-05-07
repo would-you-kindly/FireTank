@@ -80,6 +80,7 @@ namespace FireSafety
             Utilities.HEIGHT_TILE_COUNT = (uint)map.height;
             Utilities.WINDOW_WIDTH = (uint)map.width * (uint)map.tileWidth;
             Utilities.WINDOW_HEIGHT = (uint)map.height * (uint)map.tileHeight;
+            Utilities.INIT_BURNING_TREES = map.GetObjects("tree").Where(obj => obj.GetPropertyBool("burns")).Count();
 
             traces = new List<WaterTrace>();
 

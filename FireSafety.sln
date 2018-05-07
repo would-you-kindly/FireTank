@@ -1,15 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireSafety", "FireSafety.csproj", "{C20A73AA-2FBD-467A-9968-0B9CAECFC6D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireSafetyAdmin", "..\FireSafetyAdmin\FireSafetyAdmin.csproj", "{A0591958-0B15-4A4A-B1CC-363FC195C239}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FireTankSetup", "..\FireTankSetup\FireTankSetup.vdproj", "{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup3", "Setup3\Setup3.vdproj", "{A590E190-2D42-44AD-ADC2-CCFC9BBA1B58}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{9401DF7F-F976-4AD8-8760-B54E539A9684}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup4", "Setup4\Setup4.vdproj", "{9578DD39-8A92-4400-9916-4F4D7448A343}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FireTankSetup", "FireTankSetup\FireTankSetup.vdproj", "{12D1E3A8-5F0D-4A04-8D76-D03BE6577D46}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup6", "Setup6\Setup6.vdproj", "{267C8970-30BA-4E20-B10F-FF92E1426376}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup7", "Setup7\Setup7.vdproj", "{5189B779-336F-4F87-BABA-11FB90EBCC7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +41,27 @@ Global
 		{A0591958-0B15-4A4A-B1CC-363FC195C239}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A0591958-0B15-4A4A-B1CC-363FC195C239}.Release|x64.ActiveCfg = Release|Any CPU
 		{A0591958-0B15-4A4A-B1CC-363FC195C239}.Release|x64.Build.0 = Release|Any CPU
-		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Debug|Any CPU.ActiveCfg = Debug
-		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Debug|x64.ActiveCfg = Debug
-		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Release|Any CPU.ActiveCfg = Release
-		{C9F34EE1-0BFC-46C2-98B5-857BC676C9F1}.Release|x64.ActiveCfg = Release
-		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Debug|Any CPU.ActiveCfg = Debug
-		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Debug|x64.ActiveCfg = Debug
-		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Release|Any CPU.ActiveCfg = Release
-		{9401DF7F-F976-4AD8-8760-B54E539A9684}.Release|x64.ActiveCfg = Release
+		{A590E190-2D42-44AD-ADC2-CCFC9BBA1B58}.Debug|Any CPU.ActiveCfg = Release
+		{A590E190-2D42-44AD-ADC2-CCFC9BBA1B58}.Debug|x64.ActiveCfg = Debug
+		{A590E190-2D42-44AD-ADC2-CCFC9BBA1B58}.Debug|x64.Build.0 = Debug
+		{A590E190-2D42-44AD-ADC2-CCFC9BBA1B58}.Release|Any CPU.ActiveCfg = Release
+		{A590E190-2D42-44AD-ADC2-CCFC9BBA1B58}.Release|x64.ActiveCfg = Release
+		{9578DD39-8A92-4400-9916-4F4D7448A343}.Debug|Any CPU.ActiveCfg = Debug
+		{9578DD39-8A92-4400-9916-4F4D7448A343}.Debug|x64.ActiveCfg = Debug
+		{9578DD39-8A92-4400-9916-4F4D7448A343}.Release|Any CPU.ActiveCfg = Release
+		{9578DD39-8A92-4400-9916-4F4D7448A343}.Release|x64.ActiveCfg = Release
+		{12D1E3A8-5F0D-4A04-8D76-D03BE6577D46}.Debug|Any CPU.ActiveCfg = Debug
+		{12D1E3A8-5F0D-4A04-8D76-D03BE6577D46}.Debug|x64.ActiveCfg = Debug
+		{12D1E3A8-5F0D-4A04-8D76-D03BE6577D46}.Release|Any CPU.ActiveCfg = Release
+		{12D1E3A8-5F0D-4A04-8D76-D03BE6577D46}.Release|x64.ActiveCfg = Release
+		{267C8970-30BA-4E20-B10F-FF92E1426376}.Debug|Any CPU.ActiveCfg = Debug
+		{267C8970-30BA-4E20-B10F-FF92E1426376}.Debug|x64.ActiveCfg = Debug
+		{267C8970-30BA-4E20-B10F-FF92E1426376}.Release|Any CPU.ActiveCfg = Release
+		{267C8970-30BA-4E20-B10F-FF92E1426376}.Release|x64.ActiveCfg = Release
+		{5189B779-336F-4F87-BABA-11FB90EBCC7E}.Debug|Any CPU.ActiveCfg = Debug
+		{5189B779-336F-4F87-BABA-11FB90EBCC7E}.Debug|x64.ActiveCfg = Debug
+		{5189B779-336F-4F87-BABA-11FB90EBCC7E}.Release|Any CPU.ActiveCfg = Release
+		{5189B779-336F-4F87-BABA-11FB90EBCC7E}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,8 +44,6 @@ namespace FireSafety
                     Game game = new Game();
                     game.Run();
                 }
-
-
                 //Settings.GetInstance().SetCurrentUser(Guid.Parse("B7574C35-DEE9-4BCA-AE69-260CAFEB3286"));
 
 

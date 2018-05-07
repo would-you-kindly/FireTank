@@ -43,7 +43,7 @@ namespace FireSafety
         private const string filename = "Settings.xml";
         [XmlIgnore]
         [NonSerialized]
-        private string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
+        private string connectionStringDefault = @"Data Source=STUD-DBA\MSSQLSERVER16;Initial Catalog=FireTankAdmin;User ID=localuser;Password=654321";
         [XmlIgnore]
         [NonSerialized]
         public UserModel currentUser;
@@ -374,18 +374,18 @@ namespace FireSafety
             shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward45CCW, moveForward45CCW));
             shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward45CW, moveBackward45CW));
             shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward45CCW, moveBackward45CCW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CW, moveRotateCW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CCW, moveRotateCCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CW, moveRotateCW)); //
+            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CCW, moveRotateCCW)); //
 
             shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Refuel, chargeRefuel));
-            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.PressureX1, chargePressure));
+            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.PressureX1, chargePressure)); //
             shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Charge, chargeCharge));
 
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Up, turretUp));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Down, turretDown));
             shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Shoot, turretShoot));
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CW, turretRotateCW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CCW, turretRotateCCW));
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CW, turretRotateCW)); //
+            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CCW, turretRotateCCW)); //
 
             shortcuts.Add(new Tuple<string, object, Keys>("", "Run", run));
             shortcuts.Add(new Tuple<string, object, Keys>("", "Reload", reload));

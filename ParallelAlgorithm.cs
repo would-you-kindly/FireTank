@@ -271,9 +271,16 @@ namespace FireSafety
             double totalTrees, double burnedTrees)
         {
             // TODO: Пока такая себе формула
-            double mapComplexity = (initiallyBurningTrees / totalTrees) * (mapWidth * mapHeight);
-            double algorithmEfficiency = instance.algorithms.Sum(algo => algo.actions.Count);
-            double result = mapComplexity * algorithmEfficiency / (1 + burnedTrees);
+            //double mapComplexity = (initiallyBurningTrees / totalTrees) * (mapWidth * mapHeight);
+            //double algorithmEfficiency = instance.algorithms.Sum(algo => algo.actions.Count);
+            //double result = mapComplexity * algorithmEfficiency / (1 + burnedTrees);
+
+            double kTrees = totalTrees / (mapWidth * mapHeight);
+            double kFire = initiallyBurningTrees / (mapWidth * mapHeight);
+            double mapComplexity = kTrees * kFire;
+            double algorithmLength = instance.algorithms.Sum(algo => algo.actions.Count);
+            double result = (algorithmLength / (1 + burnedTrees)) / mapComplexity;
+            //double result = 100 * mapComplexity / (algorithmLength * burnedTrees + 1);
 
             return result;
         }

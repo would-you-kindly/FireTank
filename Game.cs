@@ -125,7 +125,7 @@ namespace FireSafety
                     "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
-                    7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
+                    Utilities.INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
                 ParallelAlgorithm.GetInstance().SaveInDatabase(result, false);
 
@@ -141,7 +141,7 @@ namespace FireSafety
 
                 // TODO: Не 7 !!!!
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
-                    7, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
+                    Utilities.INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
                 MessageBox.Show($"Количество деревьев на карте: {world.terrain.trees.Count()}.\n" +
                     $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}.\n" +
