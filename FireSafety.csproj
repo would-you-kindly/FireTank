@@ -91,14 +91,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\OpenSave\IOpenSave.cs" />
     <Compile Include="src\Map\GameObject.cs" />
     <Compile Include="src\Map\Layer.cs" />
+    <Compile Include="src\OpenSave\DatabaseOpenSave.cs" />
+    <Compile Include="src\OpenSave\FileOpenSave.cs" />
     <Compile Include="src\ParallelAlgorithm\Action.cs" />
     <Compile Include="src\ParallelAlgorithm\Algorithm.cs" />
-    <Compile Include="src\Forms\AlgorithmForm.cs">
+    <Compile Include="src\GUI\AlgorithmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\AlgorithmForm.Designer.cs">
+    <Compile Include="src\GUI\AlgorithmForm.Designer.cs">
       <DependentUpon>AlgorithmForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Models\AlgorithmModel.cs" />
@@ -109,7 +112,7 @@
     <Compile Include="src\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\GameObjects\Entity.cs" />
+    <Compile Include="src\GameWorld\Entity.cs" />
     <Compile Include="src\Errors\DownError.cs" />
     <Compile Include="src\Errors\Error.cs" />
     <Compile Include="src\Errors\Errors.cs" />
@@ -119,32 +122,32 @@
     <Compile Include="src\Errors\WeaponAlreadyChargedError.cs" />
     <Compile Include="src\Errors\WeaponUnchargedError.cs" />
     <Compile Include="src\Errors\WeaponUpChargeError.cs" />
-    <Compile Include="src\Forms\FireSafetyForm.cs">
+    <Compile Include="src\GUI\FireSafetyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\FireSafetyForm.Designer.cs">
+    <Compile Include="src\GUI\FireSafetyForm.Designer.cs">
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\GameObjects\Flame.cs" />
-    <Compile Include="src\Forms\InfoForm.cs">
+    <Compile Include="src\GameWorld\Flame.cs" />
+    <Compile Include="src\GUI\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\InfoForm.Designer.cs">
+    <Compile Include="src\GUI\InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Repositories\IRepository.cs" />
-    <Compile Include="src\IUpdatable.cs" />
-    <Compile Include="src\Forms\LoginForm.cs">
+    <Compile Include="src\GameWorld\IUpdatable.cs" />
+    <Compile Include="src\GUI\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\LoginForm.Designer.cs">
+    <Compile Include="src\GUI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Models\MapModel.cs" />
-    <Compile Include="src\Forms\MapOpenerForm.cs">
+    <Compile Include="src\GUI\MapOpenerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\MapOpenerForm.Designer.cs">
+    <Compile Include="src\GUI\MapOpenerForm.Designer.cs">
       <DependentUpon>MapOpenerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Repositories\MapRepository.cs" />
@@ -155,21 +158,21 @@
     <Compile Include="src\ResourceHolder.cs" />
     <Compile Include="src\Errors\CollidedError.cs" />
     <Compile Include="src\Errors\LeftMapError.cs" />
-    <Compile Include="src\GameObjects\Rock.cs" />
+    <Compile Include="src\GameWorld\Rock.cs" />
     <Compile Include="src\Repositories\UserRepository.cs" />
     <Compile Include="src\Settings.cs" />
     <Compile Include="src\Controllers\SettingsController.cs" />
-    <Compile Include="src\Forms\SettingsForm.cs">
+    <Compile Include="src\GUI\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Forms\SettingsForm.Designer.cs">
+    <Compile Include="src\GUI\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Controllers\TankController.cs" />
-    <Compile Include="src\GameObjects\Terrain.cs" />
-    <Compile Include="src\Game.cs" />
-    <Compile Include="src\Gui.cs" />
-    <Compile Include="src\GameObjects\Lake.cs" />
+    <Compile Include="src\GameWorld\Terrain.cs" />
+    <Compile Include="src\GameWorld\Game.cs" />
+    <Compile Include="src\GUI\Gui.cs" />
+    <Compile Include="src\GameWorld\Lake.cs" />
     <Compile Include="src\States\TreeState.cs" />
     <Compile Include="src\Map\Map.cs" />
     <Compile Include="src\Commands\MoveCommand.cs" />
@@ -178,16 +181,16 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\ResourceIdentifiers.cs" />
-    <Compile Include="src\GameObjects\Tank.cs" />
+    <Compile Include="src\GameWorld\Tank.cs" />
     <Compile Include="src\Commands\ChargeCommand.cs" />
-    <Compile Include="src\GameObjects\Tree.cs" />
-    <Compile Include="src\GameObjects\Turret.cs" />
+    <Compile Include="src\GameWorld\Tree.cs" />
+    <Compile Include="src\GameWorld\Turret.cs" />
     <Compile Include="src\Commands\TurretCommand.cs" />
     <Compile Include="src\Models\UserModel.cs" />
     <Compile Include="src\Utilities.cs" />
-    <Compile Include="src\WaterTrace.cs" />
-    <Compile Include="src\Wind.cs" />
-    <Compile Include="src\World.cs" />
+    <Compile Include="src\GameWorld\WaterTrace.cs" />
+    <Compile Include="src\GameWorld\Wind.cs" />
+    <Compile Include="src\GameWorld\World.cs" />
     <Compile Include="src\Controllers\WorldController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,22 +198,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="src\Forms\AlgorithmForm.resx">
+    <EmbeddedResource Include="src\GUI\AlgorithmForm.resx">
       <DependentUpon>AlgorithmForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\FireSafetyForm.resx">
+    <EmbeddedResource Include="src\GUI\FireSafetyForm.resx">
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\InfoForm.resx">
+    <EmbeddedResource Include="src\GUI\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\LoginForm.resx">
+    <EmbeddedResource Include="src\GUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\MapOpenerForm.resx">
+    <EmbeddedResource Include="src\GUI\MapOpenerForm.resx">
       <DependentUpon>MapOpenerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\SettingsForm.resx">
+    <EmbeddedResource Include="src\GUI\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

@@ -81,6 +81,9 @@ namespace FireSafety
         [XmlIgnore]
         [NonSerialized]
         public int currentAction;
+        [XmlIgnore]
+        [NonSerialized]
+        IOpenSave openSave;
 
         private ParallelAlgorithm()
         {
@@ -89,9 +92,6 @@ namespace FireSafety
             running = false;
             step = false;
             currentAction = 0;
-
-            //ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
-            //repository = new AlgorithmRepository(context);
 
             for (int i = 0; i < Utilities.TANKS_COUNT; i++)
             {
@@ -179,54 +179,26 @@ namespace FireSafety
             ActionRemoved?.Invoke(this, new RemoveActionEventArgs());
         }
 
-        public void Load(string filename)
+        public void LoadFromFile(string filename)
         {
-            //Clear();
-
-            XmlSerializer formatter = new XmlSerializer(typeof(ParallelAlgorithm));
-            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
-            {
-                instance = (ParallelAlgorithm)formatter.Deserialize(fs);
-
-                // TODO: Почему-то грузит алгоритмы два раза
-                instance.algorithms.RemoveRange(0, instance.algorithms.Count / 2);
-            }
+            openSave = new FileOpenSave(filename);
+            instance = openSave.OpenAlgorithm();
 
             Loaded?.Invoke(this, new LoadEventArgs());
         }
 
-        public void Save(string filename)
+        public void SaveInFile(string filename)
         {
-            XmlSerializer formatter = new XmlSerializer(typeof(ParallelAlgorithm));
-            using (FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
-            {
-                formatter.Serialize(fs, this);
-            }
+            openSave = new FileOpenSave(filename);
+            openSave.SaveAlgorithm();
 
             Saved?.Invoke(this, new SaveEventArgs());
         }
 
         public void SaveInDatabase(double result, bool success)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ParallelAlgorithm));
-            string xmlContent = string.Empty;
-            using (StringWriter textWriter = new StringWriter())
-            {
-                xmlSerializer.Serialize(textWriter, this);
-                xmlContent = textWriter.ToString();
-            }
-
-            AlgorithmModel algorithm = new AlgorithmModel();
-            algorithm.Id = Guid.NewGuid();
-            algorithm.XmlContent = xmlContent;
-            algorithm.Result = result;
-            algorithm.Success = success;
-            algorithm.CreationDate = DateTime.Now;
-            algorithm.Map = Settings.GetInstance().currentMap;
-            algorithm.User = Settings.GetInstance().currentUser;
-
-            Utilities.context.Algorithms.Add(algorithm);
-            Utilities.context.SaveChanges();
+            openSave = new DatabaseOpenSave(Guid.NewGuid(), result, success);
+            openSave.SaveAlgorithm();
 
             Saved?.Invoke(this, new SaveEventArgs());
         }
@@ -270,11 +242,6 @@ namespace FireSafety
         public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees,
             double totalTrees, double burnedTrees)
         {
-            // TODO: Пока такая себе формула
-            //double mapComplexity = (initiallyBurningTrees / totalTrees) * (mapWidth * mapHeight);
-            //double algorithmEfficiency = instance.algorithms.Sum(algo => algo.actions.Count);
-            //double result = mapComplexity * algorithmEfficiency / (1 + burnedTrees);
-
             double kTrees = totalTrees / (mapWidth * mapHeight);
             double kFire = initiallyBurningTrees / (mapWidth * mapHeight);
             double mapComplexity = kTrees * kFire;

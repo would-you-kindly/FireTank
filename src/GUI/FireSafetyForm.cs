@@ -163,7 +163,7 @@ namespace FireSafety
             if (algorithmFilename != string.Empty)
             {
                 filename = Path.Combine(Path.GetDirectoryName(filename), algorithmFilename);
-                ParallelAlgorithm.GetInstance().Load(filename);
+                ParallelAlgorithm.GetInstance().LoadFromFile(filename);
             }
         }
 

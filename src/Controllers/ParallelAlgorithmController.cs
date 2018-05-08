@@ -162,12 +162,12 @@ namespace FireSafety
 
         public void LoadAlgorithm(string fileName)
         {
-            ParallelAlgorithm.GetInstance().Load(fileName);
+            ParallelAlgorithm.GetInstance().LoadFromFile(fileName);
         }
 
         public void SaveAlgorithm(string fileName)
         {
-            ParallelAlgorithm.GetInstance().Save(fileName);
+            ParallelAlgorithm.GetInstance().SaveInFile(fileName);
         }
 
         private static void DgvAlgorithm_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

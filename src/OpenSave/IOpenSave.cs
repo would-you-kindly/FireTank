@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FireSafety
 {
-    public interface IOpener
+    public interface IOpenSave
     {
         void SaveAlgorithm();
-        void OpenAlgorithm();
+        ParallelAlgorithm OpenAlgorithm();
         void OpenMap();
     }
 }
