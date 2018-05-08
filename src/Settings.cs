@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -40,8 +41,8 @@ namespace FireSafety
         private const string filename = "Settings.xml";
         [XmlIgnore]
         [NonSerialized]
-        private string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
-        //private string connectionStringDefault = @"Data Source=STUD-DBA\MSSQLSERVER16;Initial Catalog=FireTankAdmin;User ID=localuser;Password=654321";
+        private string connectionStringDefault = ConfigurationManager.ConnectionStrings["LocalServer"].ConnectionString;
+        //private string connectionStringDefault = ConfigurationManager.ConnectionStrings["HSEServer"].ConnectionString;
         [XmlIgnore]
         [NonSerialized]
         public UserModel currentUser;
