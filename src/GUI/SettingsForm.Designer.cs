@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpCommon = new System.Windows.Forms.TabPage();
-            this.gbOpenMode = new System.Windows.Forms.GroupBox();
-            this.rbtnOpenModeFromDataBase = new System.Windows.Forms.RadioButton();
-            this.rbtnOpenModeFromFiles = new System.Windows.Forms.RadioButton();
             this.nudFPS = new System.Windows.Forms.NumericUpDown();
             this.lblFPS = new System.Windows.Forms.Label();
             this.tbUser = new System.Windows.Forms.TextBox();
@@ -52,7 +49,6 @@
             this.dgvtbcShortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcSettings.SuspendLayout();
             this.tpCommon.SuspendLayout();
-            this.gbOpenMode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFPS)).BeginInit();
             this.tpShortcuts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).BeginInit();
@@ -72,7 +68,6 @@
             // 
             // tpCommon
             // 
-            this.tpCommon.Controls.Add(this.gbOpenMode);
             this.tpCommon.Controls.Add(this.nudFPS);
             this.tpCommon.Controls.Add(this.lblFPS);
             this.tpCommon.Controls.Add(this.tbUser);
@@ -87,41 +82,6 @@
             this.tpCommon.TabIndex = 0;
             this.tpCommon.Text = "Common";
             this.tpCommon.UseVisualStyleBackColor = true;
-            // 
-            // gbOpenMode
-            // 
-            this.gbOpenMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbOpenMode.Controls.Add(this.rbtnOpenModeFromDataBase);
-            this.gbOpenMode.Controls.Add(this.rbtnOpenModeFromFiles);
-            this.gbOpenMode.Location = new System.Drawing.Point(8, 123);
-            this.gbOpenMode.Name = "gbOpenMode";
-            this.gbOpenMode.Size = new System.Drawing.Size(610, 66);
-            this.gbOpenMode.TabIndex = 8;
-            this.gbOpenMode.TabStop = false;
-            this.gbOpenMode.Text = "Режим открытия карт и алгоритмов";
-            // 
-            // rbtnOpenModeFromDataBase
-            // 
-            this.rbtnOpenModeFromDataBase.AutoSize = true;
-            this.rbtnOpenModeFromDataBase.Location = new System.Drawing.Point(6, 42);
-            this.rbtnOpenModeFromDataBase.Name = "rbtnOpenModeFromDataBase";
-            this.rbtnOpenModeFromDataBase.Size = new System.Drawing.Size(108, 17);
-            this.rbtnOpenModeFromDataBase.TabIndex = 0;
-            this.rbtnOpenModeFromDataBase.TabStop = true;
-            this.rbtnOpenModeFromDataBase.Text = "Из базы данных";
-            this.rbtnOpenModeFromDataBase.UseVisualStyleBackColor = true;
-            // 
-            // rbtnOpenModeFromFiles
-            // 
-            this.rbtnOpenModeFromFiles.AutoSize = true;
-            this.rbtnOpenModeFromFiles.Location = new System.Drawing.Point(6, 19);
-            this.rbtnOpenModeFromFiles.Name = "rbtnOpenModeFromFiles";
-            this.rbtnOpenModeFromFiles.Size = new System.Drawing.Size(80, 17);
-            this.rbtnOpenModeFromFiles.TabIndex = 0;
-            this.rbtnOpenModeFromFiles.TabStop = true;
-            this.rbtnOpenModeFromFiles.Text = "Из файлов";
-            this.rbtnOpenModeFromFiles.UseVisualStyleBackColor = true;
             // 
             // nudFPS
             // 
@@ -195,6 +155,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbConnectionString.Location = new System.Drawing.Point(8, 19);
             this.tbConnectionString.Name = "tbConnectionString";
+            this.tbConnectionString.ReadOnly = true;
             this.tbConnectionString.Size = new System.Drawing.Size(529, 20);
             this.tbConnectionString.TabIndex = 0;
             // 
@@ -329,8 +290,6 @@
             this.tcSettings.ResumeLayout(false);
             this.tpCommon.ResumeLayout(false);
             this.tpCommon.PerformLayout();
-            this.gbOpenMode.ResumeLayout(false);
-            this.gbOpenMode.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFPS)).EndInit();
             this.tpShortcuts.ResumeLayout(false);
             this.tpShortcuts.PerformLayout();
@@ -358,9 +317,6 @@
         private System.Windows.Forms.Label lblUser;
         public System.Windows.Forms.TextBox tbConnectionString;
         public System.Windows.Forms.TextBox tbUser;
-        private System.Windows.Forms.GroupBox gbOpenMode;
-        private System.Windows.Forms.RadioButton rbtnOpenModeFromDataBase;
-        private System.Windows.Forms.RadioButton rbtnOpenModeFromFiles;
         private System.Windows.Forms.NumericUpDown nudFPS;
         private System.Windows.Forms.Label lblFPS;
     }

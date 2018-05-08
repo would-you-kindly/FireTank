@@ -127,21 +127,10 @@
 (Move) Rotate 90 CW (вместо Rotate 45 CW)
 (Move) Rotate 90 CCW (вместо Rotate 45 CCW)
 (Charge) Pressure x2 (вместо Pressure x1)
-(Charge) Charge 2 (вместо Charge 1)
 (Turret) Rotate 90 CW (вместо Rotate 45 CW)
 (Turret) Rotate 90 CCW (вместо Rotate 45 CCW)
-(Turret) Shoot 2 (вместо Shoot 1)
 </value>
   </data>
-  <metadata name="dgvtbcPerformer.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dgvtbcCommand.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dgvtbcShortcut.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="dgvtbcPerformer.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

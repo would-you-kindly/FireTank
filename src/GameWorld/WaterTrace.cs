@@ -4,7 +4,7 @@ using System;
 
 namespace FireSafety
 {
-    public class WaterTrace
+    public class WaterTrace : Drawable
     {
         RectangleShape trace = new RectangleShape();
         CircleShape centre = new CircleShape();

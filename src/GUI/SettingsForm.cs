@@ -39,9 +39,11 @@ namespace FireSafety
                 foreach (DataGridViewRow key in dgvShortcuts.Rows)
                 {
                     // Если нашли уже существующий shortcut
-                    if (value == (Keys)key.Cells[2].Value || value == Keys.F1)
+                    if (value == (Keys)key.Cells[2].Value)
                     {
-                        MessageBox.Show("shortcut exists");
+                        MessageBox.Show($"Клавиша {value} уже назначена для другой команды. Выберите другую горячую клавишу.", 
+                            "Назначение горячей клавиши", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         return;
                     }
                 }

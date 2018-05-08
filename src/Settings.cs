@@ -301,7 +301,7 @@ namespace FireSafety
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
             using (FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
             {
-                serializer.Serialize(fs, instance);
+                serializer.Serialize(fs, this);
             }
         }
 
