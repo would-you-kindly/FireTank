@@ -1,6 +1,4 @@
-﻿using SFML.Graphics;
-
-namespace FireSafety
+﻿namespace FireSafety
 {
     public class Lake : Entity
     {

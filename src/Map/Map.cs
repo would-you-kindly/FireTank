@@ -1,12 +1,9 @@
-﻿using System;
-using SFML.Graphics;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SFML.Graphics;
 using SFML.System;
-using System.Xml;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 
 namespace FireSafety
 {
