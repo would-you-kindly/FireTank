@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireSafety", "FireSafety.csproj", "{C20A73AA-2FBD-467A-9968-0B9CAECFC6D2}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FireTankSetup", "..\FireTankSetup\FireTankSetup.vdproj", "{157BEDC3-BEBA-4CCE-9F46-972E7CF7865C}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FireTankSetup", "FireTankSetup\FireTankSetup.vdproj", "{B5B1898A-6061-48AD-8F19-D0896C5C2C9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{C20A73AA-2FBD-467A-9968-0B9CAECFC6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C20A73AA-2FBD-467A-9968-0B9CAECFC6D2}.Release|x64.ActiveCfg = Release|Any CPU
 		{C20A73AA-2FBD-467A-9968-0B9CAECFC6D2}.Release|x64.Build.0 = Release|Any CPU
-		{157BEDC3-BEBA-4CCE-9F46-972E7CF7865C}.Debug|Any CPU.ActiveCfg = Debug
-		{157BEDC3-BEBA-4CCE-9F46-972E7CF7865C}.Debug|x64.ActiveCfg = Debug
-		{157BEDC3-BEBA-4CCE-9F46-972E7CF7865C}.Release|Any CPU.ActiveCfg = Release
-		{157BEDC3-BEBA-4CCE-9F46-972E7CF7865C}.Release|x64.ActiveCfg = Release
+		{B5B1898A-6061-48AD-8F19-D0896C5C2C9B}.Debug|Any CPU.ActiveCfg = Debug
+		{B5B1898A-6061-48AD-8F19-D0896C5C2C9B}.Debug|x64.ActiveCfg = Debug
+		{B5B1898A-6061-48AD-8F19-D0896C5C2C9B}.Release|Any CPU.ActiveCfg = Release
+		{B5B1898A-6061-48AD-8F19-D0896C5C2C9B}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
