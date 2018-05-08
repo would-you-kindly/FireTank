@@ -50,19 +50,18 @@ namespace FireSafety
         private void LoadResources()
         {
             // Загружаем текстуры
-            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/burnedTree.png");
-            resources.LoadTexture(Textures.ID.Grass, "Media/Textures/grass.png");
-            resources.LoadTexture(Textures.ID.House, "Media/Textures/house.png");
-            resources.LoadTexture(Textures.ID.Fire, "Media/Textures/fire.png");
-            resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/redtank.png");
-            resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/redturret.png");
-            resources.LoadTexture(Textures.ID.BlueTank, "Media/Textures/bluetank.png");
-            resources.LoadTexture(Textures.ID.BlueTurret, "Media/Textures/blueturret.png");
-            resources.LoadTexture(Textures.ID.YellowTank, "Media/Textures/yellowtank.png");
-            resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/yellowturret.png");
-            resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/greentank.png");
-            resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/greenturret.png");
-            resources.LoadTexture(Textures.ID.Tree, "Media/Textures/greentree.png");
+            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
+            resources.LoadTexture(Textures.ID.House, "Media/Textures/House.png");
+            resources.LoadTexture(Textures.ID.Fire, "Media/Textures/Fire.png");
+            resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/RedTank.png");
+            resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/RedTurret.png");
+            resources.LoadTexture(Textures.ID.BlueTank, "Media/Textures/BlueTank.png");
+            resources.LoadTexture(Textures.ID.BlueTurret, "Media/Textures/BlueTurret.png");
+            resources.LoadTexture(Textures.ID.YellowTank, "Media/Textures/YellowTank.png");
+            resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/YellowTurret.png");
+            resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/GreenTank.png");
+            resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/GreenTurret.png");
+            resources.LoadTexture(Textures.ID.Tree, "Media/Textures/Tree.png");
             resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
             resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
 

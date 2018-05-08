@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.cbMove = new System.Windows.Forms.ComboBox();
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
@@ -38,17 +37,12 @@
             this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControls = new System.Windows.Forms.GroupBox();
+            this.btnClearAlgorithm = new System.Windows.Forms.Button();
+            this.btnDeleteAction = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblTurretCommands = new System.Windows.Forms.Label();
-            this.btnDeleteAction = new System.Windows.Forms.Button();
             this.lblChargeCommands = new System.Windows.Forms.Label();
-            this.btnMoveActionDown = new System.Windows.Forms.Button();
             this.lblMoveCommands = new System.Windows.Forms.Label();
-            this.btnMoveActionUp = new System.Windows.Forms.Button();
-            this.rbtnInsertAfter = new System.Windows.Forms.RadioButton();
-            this.rbtnInsertBefore = new System.Windows.Forms.RadioButton();
-            this.rbtnChange = new System.Windows.Forms.RadioButton();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +126,7 @@
             this.dgvAlgorithm.ReadOnly = true;
             this.dgvAlgorithm.RowHeadersVisible = false;
             this.dgvAlgorithm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlgorithm.Size = new System.Drawing.Size(360, 271);
+            this.dgvAlgorithm.Size = new System.Drawing.Size(360, 294);
             this.dgvAlgorithm.TabIndex = 6;
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
@@ -170,32 +164,47 @@
             // 
             this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbControls.Controls.Add(this.btnClearAlgorithm);
+            this.gbControls.Controls.Add(this.btnDeleteAction);
             this.gbControls.Controls.Add(this.button1);
             this.gbControls.Controls.Add(this.lblTurretCommands);
-            this.gbControls.Controls.Add(this.btnDeleteAction);
             this.gbControls.Controls.Add(this.lblChargeCommands);
-            this.gbControls.Controls.Add(this.btnMoveActionDown);
             this.gbControls.Controls.Add(this.lblMoveCommands);
-            this.gbControls.Controls.Add(this.btnMoveActionUp);
             this.gbControls.Controls.Add(this.cbTurret);
             this.gbControls.Controls.Add(this.cbCharge);
             this.gbControls.Controls.Add(this.cbMove);
-            this.gbControls.Controls.Add(this.rbtnInsertAfter);
-            this.gbControls.Controls.Add(this.rbtnInsertBefore);
-            this.gbControls.Controls.Add(this.rbtnChange);
-            this.gbControls.Location = new System.Drawing.Point(12, 289);
+            this.gbControls.Location = new System.Drawing.Point(12, 312);
             this.gbControls.Name = "gbControls";
-            this.gbControls.Size = new System.Drawing.Size(360, 111);
+            this.gbControls.Size = new System.Drawing.Size(360, 88);
             this.gbControls.TabIndex = 8;
             this.gbControls.TabStop = false;
             // 
+            // btnClearAlgorithm
+            // 
+            this.btnClearAlgorithm.Location = new System.Drawing.Point(242, 59);
+            this.btnClearAlgorithm.Name = "btnClearAlgorithm";
+            this.btnClearAlgorithm.Size = new System.Drawing.Size(112, 23);
+            this.btnClearAlgorithm.TabIndex = 6;
+            this.btnClearAlgorithm.Text = "Clear algorithm";
+            this.btnClearAlgorithm.UseVisualStyleBackColor = true;
+            this.btnClearAlgorithm.Click += new System.EventHandler(this.btnClearAlgorithm_Click);
+            // 
+            // btnDeleteAction
+            // 
+            this.btnDeleteAction.Location = new System.Drawing.Point(6, 59);
+            this.btnDeleteAction.Name = "btnDeleteAction";
+            this.btnDeleteAction.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteAction.TabIndex = 6;
+            this.btnDeleteAction.Text = "Delete action";
+            this.btnDeleteAction.UseVisualStyleBackColor = true;
+            this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(331, 82);
+            this.button1.Location = new System.Drawing.Point(171, 59);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
+            this.button1.Size = new System.Drawing.Size(24, 23);
             this.button1.TabIndex = 5;
-            this.toolTip.SetToolTip(this.button1, "Move action up");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -208,16 +217,6 @@
             this.lblTurretCommands.TabIndex = 4;
             this.lblTurretCommands.Text = "Turret commands";
             // 
-            // btnDeleteAction
-            // 
-            this.btnDeleteAction.Location = new System.Drawing.Point(35, 82);
-            this.btnDeleteAction.Name = "btnDeleteAction";
-            this.btnDeleteAction.Size = new System.Drawing.Size(23, 23);
-            this.btnDeleteAction.TabIndex = 4;
-            this.toolTip.SetToolTip(this.btnDeleteAction, "Delete action");
-            this.btnDeleteAction.UseVisualStyleBackColor = true;
-            this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
-            // 
             // lblChargeCommands
             // 
             this.lblChargeCommands.AutoSize = true;
@@ -227,16 +226,6 @@
             this.lblChargeCommands.TabIndex = 3;
             this.lblChargeCommands.Text = "Charge commands";
             // 
-            // btnMoveActionDown
-            // 
-            this.btnMoveActionDown.Location = new System.Drawing.Point(6, 82);
-            this.btnMoveActionDown.Name = "btnMoveActionDown";
-            this.btnMoveActionDown.Size = new System.Drawing.Size(23, 23);
-            this.btnMoveActionDown.TabIndex = 4;
-            this.toolTip.SetToolTip(this.btnMoveActionDown, "Move action down");
-            this.btnMoveActionDown.UseVisualStyleBackColor = true;
-            this.btnMoveActionDown.Click += new System.EventHandler(this.btnMoveActionDown_Click);
-            // 
             // lblMoveCommands
             // 
             this.lblMoveCommands.AutoSize = true;
@@ -245,51 +234,6 @@
             this.lblMoveCommands.Size = new System.Drawing.Size(88, 13);
             this.lblMoveCommands.TabIndex = 0;
             this.lblMoveCommands.Text = "Move commands";
-            // 
-            // btnMoveActionUp
-            // 
-            this.btnMoveActionUp.Location = new System.Drawing.Point(64, 82);
-            this.btnMoveActionUp.Name = "btnMoveActionUp";
-            this.btnMoveActionUp.Size = new System.Drawing.Size(23, 23);
-            this.btnMoveActionUp.TabIndex = 4;
-            this.toolTip.SetToolTip(this.btnMoveActionUp, "Move action up");
-            this.btnMoveActionUp.UseVisualStyleBackColor = true;
-            this.btnMoveActionUp.Click += new System.EventHandler(this.btnMoveActionUp_Click);
-            // 
-            // rbtnInsertAfter
-            // 
-            this.rbtnInsertAfter.AutoSize = true;
-            this.rbtnInsertAfter.Location = new System.Drawing.Point(74, 59);
-            this.rbtnInsertAfter.Name = "rbtnInsertAfter";
-            this.rbtnInsertAfter.Size = new System.Drawing.Size(75, 17);
-            this.rbtnInsertAfter.TabIndex = 3;
-            this.rbtnInsertAfter.Text = "Insert after";
-            this.rbtnInsertAfter.UseVisualStyleBackColor = true;
-            this.rbtnInsertAfter.CheckedChanged += new System.EventHandler(this.rbtnInsertAfter_CheckedChanged);
-            // 
-            // rbtnInsertBefore
-            // 
-            this.rbtnInsertBefore.AutoSize = true;
-            this.rbtnInsertBefore.Location = new System.Drawing.Point(155, 59);
-            this.rbtnInsertBefore.Name = "rbtnInsertBefore";
-            this.rbtnInsertBefore.Size = new System.Drawing.Size(84, 17);
-            this.rbtnInsertBefore.TabIndex = 3;
-            this.rbtnInsertBefore.Text = "Insert before";
-            this.rbtnInsertBefore.UseVisualStyleBackColor = true;
-            this.rbtnInsertBefore.CheckedChanged += new System.EventHandler(this.rbtnInsertBefore_CheckedChanged);
-            // 
-            // rbtnChange
-            // 
-            this.rbtnChange.AutoSize = true;
-            this.rbtnChange.Checked = true;
-            this.rbtnChange.Location = new System.Drawing.Point(6, 59);
-            this.rbtnChange.Name = "rbtnChange";
-            this.rbtnChange.Size = new System.Drawing.Size(62, 17);
-            this.rbtnChange.TabIndex = 3;
-            this.rbtnChange.TabStop = true;
-            this.rbtnChange.Text = "Change";
-            this.rbtnChange.UseVisualStyleBackColor = true;
-            this.rbtnChange.CheckedChanged += new System.EventHandler(this.rbtnChange_CheckedChanged);
             // 
             // AlgorithmForm
             // 
@@ -317,12 +261,6 @@
         public System.Windows.Forms.ComboBox cbTurret;
         public System.Windows.Forms.DataGridView dgvAlgorithm;
         private System.Windows.Forms.GroupBox gbControls;
-        private System.Windows.Forms.Button btnDeleteAction;
-        private System.Windows.Forms.Button btnMoveActionDown;
-        private System.Windows.Forms.Button btnMoveActionUp;
-        private System.Windows.Forms.RadioButton rbtnInsertAfter;
-        private System.Windows.Forms.RadioButton rbtnInsertBefore;
-        private System.Windows.Forms.RadioButton rbtnChange;
         private System.Windows.Forms.Label lblTurretCommands;
         private System.Windows.Forms.Label lblChargeCommands;
         private System.Windows.Forms.Label lblMoveCommands;
@@ -330,7 +268,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
-        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClearAlgorithm;
+        private System.Windows.Forms.Button btnDeleteAction;
     }
 }

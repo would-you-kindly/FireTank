@@ -14,8 +14,8 @@ namespace FireSafety
 {
     public partial class AlgorithmForm : Form
     {
-        Stopwatch clock = new Stopwatch();
-        bool keyPressed = false;
+        private Stopwatch clock = new Stopwatch();
+        private bool keyPressed = false;
 
         public AlgorithmForm()
         {
@@ -55,6 +55,7 @@ namespace FireSafety
                 return;
             }
 
+            // Задаем номер стобца
             int index = 0;
             switch (cb.Name)
             {
@@ -70,23 +71,9 @@ namespace FireSafety
             }
 
             // Изменяем команды выделенного действия алгоритма
-            if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnChange.Checked)
+            if (dgvAlgorithm.SelectedCells.Count != 0)
             {
                 dgvAlgorithm.Rows[dgvAlgorithm.SelectedCells[0].RowIndex].Cells[index].Value = cb.SelectedItem.ToString();
-            }
-            // Вставляем новое действие выше выделенного
-            else if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnInsertBefore.Checked)
-            {
-                int beforeIndex = dgvAlgorithm.SelectedRows[0].Index;
-                dgvAlgorithm.Rows.Insert(beforeIndex, "", "None", "None", "None");
-                dgvAlgorithm.Rows[beforeIndex].Cells[index].Value = cb.SelectedItem.ToString();
-            }
-            // Вставляем новое действие ниже выделенного
-            else if (dgvAlgorithm.SelectedCells.Count != 0 && rbtnInsertAfter.Checked)
-            {
-                int afterIndex = dgvAlgorithm.SelectedRows[0].Index + 1;
-                dgvAlgorithm.Rows.Insert(afterIndex, "", "None", "None", "None");
-                dgvAlgorithm.Rows[afterIndex].Cells[index].Value = cb.SelectedItem.ToString();
             }
             // Вставляем новое действие в конец алгоритма
             else
@@ -118,6 +105,8 @@ namespace FireSafety
             if (dgvAlgorithm.SelectedRows.Count != 0)
             {
                 dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
+                dgvAlgorithm.ClearSelection();
+                dgvAlgorithm.Focus();
             }
             else
             {
@@ -126,10 +115,26 @@ namespace FireSafety
             }
         }
 
-        private void btnDeleteAction_Click(object sender, EventArgs e)
+        private void ClearAlgorithm()
         {
-            DeleteAction();
-            dgvAlgorithm.Focus();
+            if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
+                    "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                for (int i = dgvAlgorithm.Rows.Count - 1; i >= 0; i--)
+                {
+                    dgvAlgorithm.Rows.RemoveAt(i);
+                }
+
+                dgvAlgorithm.ClearSelection();
+                dgvAlgorithm.Focus();
+            }
+        }
+
+        private void Shortcut(ComboBox cb, string command)
+        {
+            // Задаем индекс -1, т.к. при выборе того же элемента событие SelectedItem не вызывается
+            cb.SelectedIndex = -1;
+            cb.SelectedItem = command;
         }
 
         private void dgvAlgorithm_KeyDown(object sender, KeyEventArgs e)
@@ -219,12 +224,6 @@ namespace FireSafety
             }
         }
 
-        private void Shortcut(ComboBox cb, string command)
-        {
-            cb.SelectedIndex = -1;
-            cb.SelectedItem = command;
-        }
-
         private void dgvAlgorithm_KeyUp(object sender, KeyEventArgs e)
         {
             // Выключаем таймер
@@ -295,52 +294,19 @@ namespace FireSafety
             }
         }
 
-        private void rbtnChange_CheckedChanged(object sender, EventArgs e)
-        {
-            dgvAlgorithm.Focus();
-        }
-
-        private void rbtnInsertBefore_CheckedChanged(object sender, EventArgs e)
-        {
-            dgvAlgorithm.Focus();
-        }
-
-        private void rbtnInsertAfter_CheckedChanged(object sender, EventArgs e)
-        {
-            dgvAlgorithm.Focus();
-        }
-
-        private void btnMoveActionUp_Click(object sender, EventArgs e)
-        {
-
-            dgvAlgorithm.Focus();
-        }
-
-        private void btnMoveActionDown_Click(object sender, EventArgs e)
-        {
-
-            dgvAlgorithm.Focus();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var t = ParallelAlgorithm.GetInstance();
         }
 
-        //private const int GWL_STYLE = -16;
-        //private const int WS_CLIPSIBLINGS = 1 << 26;
+        private void btnDeleteAction_Click(object sender, EventArgs e)
+        {
+            DeleteAction();
+        }
 
-        //[DllImport("user32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
-        //public static extern IntPtr SetWindowLongPtr32(HandleRef hWnd, int nIndex, HandleRef dwNewLong);
-        //[DllImport("user32.dll", CharSet = CharSet.Auto, EntryPoint = "GetWindowLong")]
-        //public static extern IntPtr GetWindowLong32(HandleRef hWnd, int nIndex);
-
-        //protected override void OnLoad(EventArgs e)
-        //{
-        //    int style = (int)((long)GetWindowLong32(new HandleRef(this, this.Handle), GWL_STYLE));
-        //    SetWindowLongPtr32(new HandleRef(this, this.Handle), GWL_STYLE, new HandleRef(null, (IntPtr)(style & ~WS_CLIPSIBLINGS)));
-
-        //    base.OnLoad(e);
-        //}
+        private void btnClearAlgorithm_Click(object sender, EventArgs e)
+        {
+            ClearAlgorithm();
+        }
     }
 }

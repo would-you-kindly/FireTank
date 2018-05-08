@@ -12,7 +12,6 @@
             YellowTurret,
             GreenTank,
             GreenTurret,
-            Grass,
             Tree,
             BurnedTree,
             House,
