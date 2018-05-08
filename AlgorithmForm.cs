@@ -100,7 +100,7 @@ namespace FireSafety
             dgvAlgorithm.Focus();
         }
 
-        private void DeleteAction()
+        public void DeleteAction()
         {
             if (dgvAlgorithm.SelectedRows.Count != 0)
             {
@@ -115,7 +115,7 @@ namespace FireSafety
             }
         }
 
-        private void ClearAlgorithm()
+        public void ClearAlgorithm()
         {
             if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
                     "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

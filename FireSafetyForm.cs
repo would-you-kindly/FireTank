@@ -260,12 +260,12 @@ namespace FireSafety
             algorithmController.StepAlgorithm();
         }
 
-        private void AddActionMessage()
+        private void ChooseAlgorithmFormMessage()
         {
             if (algorithmForms.All(form => !form.ContainsFocus))
             {
-                MessageBox.Show("Необходимо выбрать окно алгоритма, чтобы добавить в него команду.",
-                    "Добавление команды", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Необходимо выбрать окно алгоритма, чтобы выполнить данное действие.",
+                    "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -287,7 +287,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void backwardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -295,7 +295,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate45CWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -303,7 +303,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate45CCWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,7 +311,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate90CWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -319,7 +319,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate90CCWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -327,7 +327,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void noneMoveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,7 +335,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void pressureToolStripMenuItem_Click(object sender, EventArgs e)
@@ -343,7 +343,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void noneShootToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,7 +351,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate45CWToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -359,7 +359,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate45CCWToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -367,7 +367,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate90CWToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -375,7 +375,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void rotate90CCWToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -383,7 +383,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void upToolStripMenuItem_Click(object sender, EventArgs e)
@@ -391,7 +391,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void downToolStripMenuItem_Click(object sender, EventArgs e)
@@ -399,7 +399,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void shootToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -407,7 +407,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void noneTurretToolStripMenuItem_Click(object sender, EventArgs e)
@@ -415,7 +415,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbTurret, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void forward45CWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -423,7 +423,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void forward45CCWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -431,7 +431,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void backward45CWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -439,7 +439,7 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void backward45CCWToolStripMenuItem_Click(object sender, EventArgs e)
@@ -447,14 +447,13 @@ namespace FireSafety
             if (algorithmForms.Any(form => form.ContainsFocus))
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbMove, ((ToolStripMenuItem)sender).Text);
             else
-                AddActionMessage();
+                ChooseAlgorithmFormMessage();
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Открываем максимум одно окно настроек
             settingsForm = new SettingsForm();
-            //settingsForm.MdiParent = this;
             settingsForm.ShowDialog();
         }
 
@@ -466,6 +465,58 @@ namespace FireSafety
         private void openMapFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mapOpenerForm.ShowDialog();
+        }
+
+        private void deleteActionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChooseAlgorithmFormMessage();
+
+            foreach (AlgorithmForm algorithmForm in algorithmForms)
+            {
+                if (algorithmForm.ContainsFocus)
+                {
+                    algorithmForm.DeleteAction();
+                    break;
+                }
+            }
+        }
+
+        private void clearAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChooseAlgorithmFormMessage();
+
+            foreach (AlgorithmForm algorithmForm in algorithmForms)
+            {
+                if (algorithmForm.ContainsFocus)
+                {
+                    algorithmForm.ClearAlgorithm();
+                    break;
+                }
+            }
+        }
+
+        private void pressureX2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
+            else
+                ChooseAlgorithmFormMessage();
+        }
+
+        private void refuelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
+            else
+                ChooseAlgorithmFormMessage();
+        }
+
+        private void chargeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (algorithmForms.Any(form => form.ContainsFocus))
+                Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
+            else
+                ChooseAlgorithmFormMessage();
         }
     }
 }

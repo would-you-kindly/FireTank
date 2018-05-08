@@ -34,6 +34,7 @@
             this.saveAlgorithmAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openMapFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,7 @@
             this.rotate90CCWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shootCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pressureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pressureX1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.turretCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotate45CWToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +63,6 @@
             this.shootToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveActionUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveActionDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.algorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +79,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openMapFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pressureX2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chargeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,6 +147,13 @@
             this.openMapToolStripMenuItem.Text = "Open map";
             this.openMapToolStripMenuItem.Click += new System.EventHandler(this.openMapToolStripMenuItem_Click);
             // 
+            // openMapFromDatabaseToolStripMenuItem
+            // 
+            this.openMapFromDatabaseToolStripMenuItem.Name = "openMapFromDatabaseToolStripMenuItem";
+            this.openMapFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.openMapFromDatabaseToolStripMenuItem.Text = "Open map from database";
+            this.openMapFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.openMapFromDatabaseToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -169,7 +178,7 @@
             this.shootCommandsToolStripMenuItem,
             this.turretCommandsToolStripMenuItem});
             this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
-            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addCommandToolStripMenuItem.Text = "Commands";
             // 
             // moveCommandsToolStripMenuItem
@@ -187,7 +196,7 @@
             this.rotate90CCWToolStripMenuItem,
             this.noneToolStripMenuItem});
             this.moveCommandsToolStripMenuItem.Name = "moveCommandsToolStripMenuItem";
-            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.moveCommandsToolStripMenuItem.Text = "Move";
             // 
             // forwardToolStripMenuItem
@@ -281,25 +290,28 @@
             // shootCommandsToolStripMenuItem
             // 
             this.shootCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pressureToolStripMenuItem,
+            this.pressureX1ToolStripMenuItem,
+            this.pressureX2ToolStripMenuItem,
+            this.refuelToolStripMenuItem,
+            this.chargeToolStripMenuItem,
             this.noneToolStripMenuItem1});
             this.shootCommandsToolStripMenuItem.Name = "shootCommandsToolStripMenuItem";
-            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.shootCommandsToolStripMenuItem.Text = "Shoot";
             // 
-            // pressureToolStripMenuItem
+            // pressureX1ToolStripMenuItem
             // 
-            this.pressureToolStripMenuItem.Name = "pressureToolStripMenuItem";
-            this.pressureToolStripMenuItem.ShortcutKeyDisplayString = "P";
-            this.pressureToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.pressureToolStripMenuItem.Text = "Pressure";
-            this.pressureToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
+            this.pressureX1ToolStripMenuItem.Name = "pressureX1ToolStripMenuItem";
+            this.pressureX1ToolStripMenuItem.ShortcutKeyDisplayString = "P";
+            this.pressureX1ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.pressureX1ToolStripMenuItem.Text = "Pressure x1";
+            this.pressureX1ToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
             // 
             // noneToolStripMenuItem1
             // 
             this.noneToolStripMenuItem1.Name = "noneToolStripMenuItem1";
             this.noneToolStripMenuItem1.ShortcutKeyDisplayString = "N";
-            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.noneToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             this.noneToolStripMenuItem1.Text = "None";
             this.noneToolStripMenuItem1.Click += new System.EventHandler(this.noneShootToolStripMenuItem_Click);
             // 
@@ -315,7 +327,7 @@
             this.shootToolStripMenuItem1,
             this.noneToolStripMenuItem2});
             this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
-            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.turretCommandsToolStripMenuItem.Text = "Turret";
             // 
             // rotate45CWToolStripMenuItem1
@@ -385,30 +397,18 @@
             // reorderingToolStripMenuItem
             // 
             this.reorderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moveActionUpToolStripMenuItem,
-            this.moveActionDownToolStripMenuItem,
-            this.deleteActionToolStripMenuItem});
+            this.deleteActionToolStripMenuItem,
+            this.clearAlgorithmToolStripMenuItem});
             this.reorderingToolStripMenuItem.Name = "reorderingToolStripMenuItem";
-            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reorderingToolStripMenuItem.Text = "Reordering";
-            // 
-            // moveActionUpToolStripMenuItem
-            // 
-            this.moveActionUpToolStripMenuItem.Name = "moveActionUpToolStripMenuItem";
-            this.moveActionUpToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.moveActionUpToolStripMenuItem.Text = "Move action up";
-            // 
-            // moveActionDownToolStripMenuItem
-            // 
-            this.moveActionDownToolStripMenuItem.Name = "moveActionDownToolStripMenuItem";
-            this.moveActionDownToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.moveActionDownToolStripMenuItem.Text = "Move action down";
             // 
             // deleteActionToolStripMenuItem
             // 
             this.deleteActionToolStripMenuItem.Name = "deleteActionToolStripMenuItem";
-            this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.deleteActionToolStripMenuItem.Text = "Delete action";
+            this.deleteActionToolStripMenuItem.Click += new System.EventHandler(this.deleteActionToolStripMenuItem_Click);
             // 
             // algorithmToolStripMenuItem
             // 
@@ -530,12 +530,36 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // openMapFromDatabaseToolStripMenuItem
+            // pressureX2ToolStripMenuItem
             // 
-            this.openMapFromDatabaseToolStripMenuItem.Name = "openMapFromDatabaseToolStripMenuItem";
-            this.openMapFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.openMapFromDatabaseToolStripMenuItem.Text = "Open map from database";
-            this.openMapFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.openMapFromDatabaseToolStripMenuItem_Click);
+            this.pressureX2ToolStripMenuItem.Name = "pressureX2ToolStripMenuItem";
+            this.pressureX2ToolStripMenuItem.ShortcutKeyDisplayString = "P (Hold)";
+            this.pressureX2ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.pressureX2ToolStripMenuItem.Text = "Pressure x2";
+            this.pressureX2ToolStripMenuItem.Click += new System.EventHandler(this.pressureX2ToolStripMenuItem_Click);
+            // 
+            // refuelToolStripMenuItem
+            // 
+            this.refuelToolStripMenuItem.Name = "refuelToolStripMenuItem";
+            this.refuelToolStripMenuItem.ShortcutKeyDisplayString = "R";
+            this.refuelToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.refuelToolStripMenuItem.Text = "Refuel";
+            this.refuelToolStripMenuItem.Click += new System.EventHandler(this.refuelToolStripMenuItem_Click);
+            // 
+            // chargeToolStripMenuItem
+            // 
+            this.chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
+            this.chargeToolStripMenuItem.ShortcutKeyDisplayString = "C";
+            this.chargeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.chargeToolStripMenuItem.Text = "Charge";
+            this.chargeToolStripMenuItem.Click += new System.EventHandler(this.chargeToolStripMenuItem_Click);
+            // 
+            // clearAlgorithmToolStripMenuItem
+            // 
+            this.clearAlgorithmToolStripMenuItem.Name = "clearAlgorithmToolStripMenuItem";
+            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.clearAlgorithmToolStripMenuItem.Text = "Clear algorithm";
+            this.clearAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.clearAlgorithmToolStripMenuItem_Click);
             // 
             // FireSafetyForm
             // 
@@ -587,8 +611,6 @@
         private System.Windows.Forms.ToolStripMenuItem shootCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem turretCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reorderingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moveActionUpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moveActionDownToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteActionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backwardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotate45CWToolStripMenuItem;
@@ -596,7 +618,7 @@
         private System.Windows.Forms.ToolStripMenuItem rotate90CWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotate90CCWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pressureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pressureX1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem rotate45CWToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem rotate45CCWToolStripMenuItem1;
@@ -612,5 +634,9 @@
         private System.Windows.Forms.ToolStripMenuItem shootToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openMapFromDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pressureX2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refuelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chargeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearAlgorithmToolStripMenuItem;
     }
 }
