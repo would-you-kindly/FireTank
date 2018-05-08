@@ -22,6 +22,7 @@ namespace FireSafety
             Rotate45CCW,
             Rotate90CW,
             Rotate90CCW,
+
             None
         }
 

@@ -16,8 +16,6 @@ namespace FireSafety
         public static uint HEIGHT_TILE_COUNT = 16;
         public static uint WINDOW_WIDTH = (uint)TILE_SIZE * WIDTH_TILE_COUNT;
         public static uint WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
-        public static int MAX_TANKS_COUNT = 4;
-        public static int CURRENT_ACTION_NUMBER = 0;
         public static int INIT_BURNING_TREES = 0;
         public static ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
 

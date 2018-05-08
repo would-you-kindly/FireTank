@@ -109,7 +109,7 @@
     <Compile Include="src\States\BurnedTreeState.cs" />
     <Compile Include="src\States\BurningTreeState.cs" />
     <Compile Include="src\ParallelAlgorithm\Command.cs" />
-    <Compile Include="src\DrawingSurface.cs">
+    <Compile Include="src\GUI\DrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\GameWorld\Entity.cs" />

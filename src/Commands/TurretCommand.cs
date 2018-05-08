@@ -19,6 +19,7 @@ namespace FireSafety
             Up,
             Down,
             Shoot,
+
             None
         }
 
