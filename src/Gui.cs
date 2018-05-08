@@ -15,8 +15,6 @@ namespace FireSafety
 
         public Gui(World world)
         {
-
-
             form = new FireSafetyForm(world);
             form.Show();
         }

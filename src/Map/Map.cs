@@ -10,49 +10,12 @@ using System.IO;
 
 namespace FireSafety
 {
-    public class Object
-    {
-        public string name = string.Empty;
-        public string type = string.Empty;
-        public float rotation = 0.0f;
-        public FloatRect rect = new FloatRect();
-        public Dictionary<string, string> properties = new Dictionary<string, string>();
-        public Sprite sprite = new Sprite();
-
-        public int GetPropertyInt(string name)
-        {
-            return int.Parse(properties[name]);
-        }
-
-        public float GetPropertyFloat(string name)
-        {
-            return float.Parse(properties[name]);
-        }
-
-        public string GetPropertyString(string name)
-        {
-            return properties[name];
-        }
-
-        public bool GetPropertyBool(string name)
-        {
-            return bool.Parse(properties[name]);
-        }
-    }
-
-    public class Layer
-    {
-        public int opacity;
-        public List<Sprite> tiles = new List<Sprite>();
-    }
-
     public class Map : Drawable
     {
         public int width, height, tileWidth, tileHeight;
         private int firstTileID;
-        //private FloatRect drawingBounds;
         private Texture tilesetImage;
-        private List<Object> objects = new List<Object>();
+        private List<GameObject> objects = new List<GameObject>();
         private List<Layer> layers = new List<Layer>();
         public Dictionary<string, string> properties = new Dictionary<string, string>();
 
@@ -287,7 +250,7 @@ namespace FireSafety
                         }
 
                         // Экземпляр объекта
-                        Object obj = new Object();
+                        GameObject obj = new GameObject();
                         obj.name = objectName;
                         obj.type = objectType;
                         obj.rotation = objectRotation;
@@ -335,7 +298,7 @@ namespace FireSafety
             return true;
         }
 
-        public Object GetObject(string name)
+        public GameObject GetObject(string name)
         {
             for (int i = 0; i < objects.Count; i++)
             {
@@ -348,9 +311,9 @@ namespace FireSafety
             throw new Exception("No object found...");
         }
 
-        public List<Object> GetObjects(string name)
+        public List<GameObject> GetObjects(string name)
         {
-            List<Object> list = new List<Object>();
+            List<GameObject> list = new List<GameObject>();
 
             for (int i = 0; i < objects.Count; i++)
             {
@@ -363,7 +326,7 @@ namespace FireSafety
             return list;
         }
 
-        public List<Object> GetAllObjects()
+        public List<GameObject> GetAllObjects()
         {
             return objects;
         }

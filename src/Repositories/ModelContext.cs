@@ -17,7 +17,6 @@ namespace FireSafety
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Настройка полей с помощью Fluent API
-            //modelBuilder.Entity<MapModel>().Property(map => map.XmlContent).HasColumnType("xml");
             modelBuilder.Entity<MapModel>().Property(c => c.XmlContent).HasColumnType("xml");
             modelBuilder.Entity<MapModel>().Ignore(c => c.XmlValueWrapper);
         }

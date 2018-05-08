@@ -214,9 +214,7 @@ namespace FireSafety
                 heightForAlgorithmForms = (ClientSize.Height - menuStrip.Size.Height - 3) / 2;
             }
 
-            // Расставляем окна алгоритмов
-            //for (int i = 0; i < Utilities.MAX_TANKS_COUNT; i++)
-            //{
+            // Устанавливаем положение окон
             if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
             {
                 algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, heightForAlgorithmForms);
@@ -237,7 +235,6 @@ namespace FireSafety
                 algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, heightForAlgorithmForms);
                 algorithmForms[3].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height);
             }
-            //}
         }
 
         private void FireSafetyForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -137,6 +137,16 @@ namespace FireSafety
             cb.SelectedItem = command;
         }
 
+        private void btnDeleteAction_Click(object sender, EventArgs e)
+        {
+            DeleteAction();
+        }
+
+        private void btnClearAlgorithm_Click(object sender, EventArgs e)
+        {
+            ClearAlgorithm();
+        }
+
         private void dgvAlgorithm_KeyDown(object sender, KeyEventArgs e)
         {
             if (keyPressed)
@@ -297,16 +307,6 @@ namespace FireSafety
         private void button1_Click(object sender, EventArgs e)
         {
             var t = ParallelAlgorithm.GetInstance();
-        }
-
-        private void btnDeleteAction_Click(object sender, EventArgs e)
-        {
-            DeleteAction();
-        }
-
-        private void btnClearAlgorithm_Click(object sender, EventArgs e)
-        {
-            ClearAlgorithm();
         }
     }
 }

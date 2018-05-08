@@ -27,14 +27,14 @@ namespace FireSafety
         public List<Rock> rocks;
         public Wind wind;
 
-        public Terrain(List<Object> objects, ResourceHolder resources, Wind wind)
+        public Terrain(List<GameObject> objects, ResourceHolder resources, Wind wind)
         {
             trees = new List<Tree>();
             lakes = new List<Lake>();
             rocks = new List<Rock>();
             this.wind = wind;
 
-            foreach (Object item in objects)
+            foreach (GameObject item in objects)
             {
                 // Создаем деревья
                 if (item.name == "tree")
