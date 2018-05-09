@@ -5,13 +5,23 @@ namespace FireSafety
 {
     public partial class OpenMapForm : Form
     {
-        private FireSafetyForm _fireSafetyForm;
+        private Guid guid;
+        public Guid Guid
+        {
+            get
+            {
+                if (guid == null)
+                {
+                    throw new Exception("Guid не задан");
+                }
 
-        public OpenMapForm(FireSafetyForm fireSafetyForm)
+                return guid;
+            }
+        }
+
+        public OpenMapForm()
         {
             InitializeComponent();
-
-            _fireSafetyForm = fireSafetyForm;
 
             Init();
         }
@@ -31,23 +41,9 @@ namespace FireSafety
         {
             if (dgvMaps.SelectedRows.Count != 0)
             {
-                Guid id = (Guid)dgvMaps.SelectedRows[0].Cells[1].Value;
+                guid = (Guid)dgvMaps.SelectedRows[0].Cells[1].Value;
 
-                // Очищаем алгоритм и окна перед открытием новой карты
-                _fireSafetyForm.Clear();
-
-                // Перестраиваем мир по новой карте
-                _fireSafetyForm.RebuildWorld(id);
-
-                // Создаем новые окна
-                _fireSafetyForm.Init();
-
-                // Применяем компоновку окон
-                _fireSafetyForm.SmartLayout();
-
-                // Загружаем тренировочный алгоритм (если он есть)
-                //_fireSafetyForm.LoadTrainingAlgorithm();
-
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }

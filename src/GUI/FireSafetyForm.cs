@@ -15,7 +15,6 @@ namespace FireSafety
         private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
-        public OpenMapForm mapOpenerForm;
         public InfoForm infoForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
@@ -28,7 +27,6 @@ namespace FireSafety
             InitializeComponent();
 
             worldController = new WorldController(world);
-            mapOpenerForm = new OpenMapForm(this);
             savedFilename = string.Empty;
 
             Init();
@@ -152,7 +150,7 @@ namespace FireSafety
                 Clear();
 
                 // Перестраиваем мир по новой карте
-                RebuildWorld(ofd.FileName);
+                RebuildWorld(new FileOpenSave(ofd.FileName));
 
                 // Создаем новые окна
                 Init();
@@ -162,6 +160,28 @@ namespace FireSafety
 
                 // Загружаем тренировочный алгоритм (если он есть)
                 LoadTrainingAlgorithm(ofd.FileName);
+            }
+        }
+
+        private void openMapFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenMapForm omf = new OpenMapForm();
+            if (omf.ShowDialog() == DialogResult.OK)
+            {
+                // Очищаем алгоритм и окна перед открытием новой карты
+                Clear();
+
+                // Перестраиваем мир по новой карте
+                RebuildWorld(new DatabaseOpenSave(omf.Guid));
+
+                // Создаем новые окна
+                Init();
+
+                // Применяем компоновку окон
+                SmartLayout();
+
+                // Загружаем тренировочный алгоритм (если он есть)
+                //LoadTrainingAlgorithm(ofd.FileName);
             }
         }
 
@@ -176,15 +196,9 @@ namespace FireSafety
             }
         }
 
-        public void RebuildWorld(Guid id)
+        public void RebuildWorld(IOpenSave openSave)
         {
-            worldController.LoadMap(new DatabaseOpenSave(id));
-            worldController.BuildWorld();
-        }
-
-        public void RebuildWorld(string filename)
-        {
-            worldController.LoadMap(new FileOpenSave(filename));
+            worldController.LoadMap(openSave);
             worldController.BuildWorld();
         }
 
@@ -468,11 +482,6 @@ namespace FireSafety
         private void FireSafetyForm_Load(object sender, EventArgs e)
         {
             SmartLayout();
-        }
-
-        private void openMapFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            mapOpenerForm.ShowDialog();
         }
 
         private void deleteActionToolStripMenuItem_Click(object sender, EventArgs e)
