@@ -55,7 +55,7 @@ namespace FireSafety
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
-            sfmlForm.Text = worldController.GetWindDirection().ToString(); 
+            sfmlForm.Text = worldController.GetWindDirection().ToString();
             sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
             sfmlForm.Show();
 
@@ -191,21 +191,13 @@ namespace FireSafety
 
         public void SmartLayout()
         {
-            // Подбираем размеры для окна карты
+            // Подбираем размеры и положение для окна карты
             sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
             sfmlForm.Location = new Point(0, 0);
 
             // Подбираем размеры для окон алгоритмов
-            int widthForAlgorithmForms = (ClientSize - sfmlForm.Size).Width;
-            if (Utilities.TANKS_COUNT >= 2)
-            {
-                widthForAlgorithmForms = (ClientSize - sfmlForm.Size).Width / 2;
-            }
-            int heightForAlgorithmForms = ClientSize.Height - menuStrip.Size.Height - 3;
-            if (Utilities.TANKS_COUNT >= 3)
-            {
-                heightForAlgorithmForms = (ClientSize.Height - menuStrip.Size.Height - 3) / 2;
-            }
+            int algorithmFormsCountInColumn = (int)Math.Ceiling((decimal)(Utilities.TANKS_COUNT / 2.0));
+            int heightForAlgorithmForms = (ClientSize.Height - menuStrip.Size.Height - statusStrip.Size.Height - 4) / algorithmFormsCountInColumn;
 
             // Устанавливаем положение окон
             if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
@@ -223,10 +215,20 @@ namespace FireSafety
                 algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, heightForAlgorithmForms);
                 algorithmForms[2].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height);
             }
-            if (algorithmForms.Count == 4 && algorithmForms.ElementAt(3) != null)
+            if (algorithmForms.Count >= 4 && algorithmForms.ElementAt(3) != null)
             {
                 algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, heightForAlgorithmForms);
                 algorithmForms[3].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height);
+            }
+            if (algorithmForms.Count >= 5 && algorithmForms.ElementAt(4) != null)
+            {
+                algorithmForms[4].Size = new Size(algorithmForms[4].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[4].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height + algorithmForms[2].Height);
+            }
+            if (algorithmForms.Count == 6 && algorithmForms.ElementAt(5) != null)
+            {
+                algorithmForms[5].Size = new Size(algorithmForms[5].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[5].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height + algorithmForms[2].Height);
             }
         }
 

@@ -12,7 +12,9 @@ namespace FireSafety
             Red = 0,
             Blue,
             Yellow,
-            Green
+            Green,
+            Pink,
+            Grey
         }
 
         // Классы для передачи параметров событий
@@ -417,6 +419,12 @@ namespace FireSafety
                     break;
                 case TankColor.Green:
                     result += $"Зеленый танк (#{number.DisplayedString})";
+                    break;
+                case TankColor.Pink:
+                    result += $"Розовый танк (#{number.DisplayedString})";
+                    break;
+                case TankColor.Grey:
+                    result += $"Серый танк (#{number.DisplayedString})";
                     break;
             }
 

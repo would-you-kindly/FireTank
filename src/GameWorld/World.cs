@@ -58,6 +58,10 @@ namespace FireSafety
             resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/YellowTurret.png");
             resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/GreenTank.png");
             resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/GreenTurret.png");
+            resources.LoadTexture(Textures.ID.PinkTank, "Media/Textures/PinkTank.png");
+            resources.LoadTexture(Textures.ID.PinkTurret, "Media/Textures/PinkTurret.png");
+            resources.LoadTexture(Textures.ID.GreyTank, "Media/Textures/GreyTank.png");
+            resources.LoadTexture(Textures.ID.GreyTurret, "Media/Textures/GreyTurret.png");
             resources.LoadTexture(Textures.ID.Tree, "Media/Textures/Tree.png");
             resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
             resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");

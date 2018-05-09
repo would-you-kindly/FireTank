@@ -97,7 +97,6 @@ namespace FireSafety
             if (dgvAlgorithm.SelectedRows.Count != 0)
             {
                 dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
-                dgvAlgorithm.ClearSelection();
                 dgvAlgorithm.Focus();
             }
             else
