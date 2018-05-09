@@ -131,6 +131,10 @@ namespace FireSafety
             {
                 tree.Update(deltaTime);
             }
+            foreach (House house in houses)
+            {
+                house.Update(deltaTime);
+            }
             foreach (Lake lake in lakes)
             {
                 lake.Update(deltaTime);
@@ -146,6 +150,7 @@ namespace FireSafety
 
         private void CheckTerrainState()
         {
+            // TODO: Еще дома проверить
             foreach (Tree tree in trees)
             {
                 if (tree.state.IsBurning())
@@ -159,35 +164,45 @@ namespace FireSafety
 
         private void SpreadFire()
         {
-            // Ищем дерево, которое загорится следующим
-            List<Tree> burningTrees = new List<Tree>(trees.Where(found => found.state.IsBurning()));
-            foreach (Tree tree in burningTrees)
+            // Ищем дерево или дом, которые загорятся следующими
+            List<IFlammable> burningTrees = new List<IFlammable>(trees.Where(found => found.state.IsBurning()));
+            List<IFlammable> burningHouses = new List<IFlammable>(houses.Where(found => found.state.IsBurning()));
+
+            foreach (IFlammable entity in burningTrees.Concat(burningHouses))
             {
                 switch (wind.direction)
                 {
                     case Wind.Direction.Up:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y - Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.UpLeft:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.TILE_SIZE, ((Entity)entity).Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.TILE_SIZE, ((Entity)entity).Position.Y - Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.Left:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
                         break;
                     case Wind.Direction.LeftDown:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X - Utilities.TILE_SIZE, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.TILE_SIZE, ((Entity)entity).Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.TILE_SIZE, ((Entity)entity).Position.Y + Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.Down:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y + Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.DownRight:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.TILE_SIZE, ((Entity)entity).Position.Y + Utilities.TILE_SIZE))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.TILE_SIZE, ((Entity)entity).Position.Y + Utilities.TILE_SIZE))?.Fire();
                         break;
                     case Wind.Direction.Right:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
                         break;
                     case Wind.Direction.RightUp:
-                        trees.Find(found => found.Position == new Vector2f(tree.Position.X + Utilities.TILE_SIZE, tree.Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.TILE_SIZE, ((Entity)entity).Position.Y - Utilities.TILE_SIZE))?.Fire();
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.TILE_SIZE, ((Entity)entity).Position.Y - Utilities.TILE_SIZE))?.Fire();
                         break;
                     default:
                         break;
@@ -201,6 +216,10 @@ namespace FireSafety
             {
                 target.Draw(tree, states);
             }
+            foreach (House house in houses)
+            {
+                target.Draw(house, states);
+            }
             foreach (Lake lake in lakes)
             {
                 target.Draw(lake, states);
@@ -211,11 +230,31 @@ namespace FireSafety
             }
         }
 
+        public List<IFlammable> GetFlammableObjects()
+        {
+            List<IFlammable> flammables = new List<IFlammable>();
+
+            foreach (Tree tree in trees)
+            {
+                flammables.Add(tree);
+            }
+            foreach (House house in houses)
+            {
+                flammables.Add(house);
+            }
+
+            return flammables;
+        }
+
         public IEnumerator GetEnumerator()
         {
             foreach (Tree tree in trees)
             {
                 yield return tree;
+            }
+            foreach (House house in houses)
+            {
+                yield return house;
             }
             foreach (Lake lake in lakes)
             {

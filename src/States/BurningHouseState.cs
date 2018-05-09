@@ -18,13 +18,9 @@ namespace FireSafety
 
         public override void Extinguish(House house)
         {
-            if (currentShootsToExtinguishCount >= needShootsToExtinguishCount)
+            if (++currentShootsToExtinguishCount >= needShootsToExtinguishCount)
             {
                 house.state = new NormalHouseState();
-            }
-            else
-            {
-                currentShootsToExtinguishCount++;
             }
         }
 

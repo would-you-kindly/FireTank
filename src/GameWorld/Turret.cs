@@ -40,11 +40,11 @@ namespace FireSafety
         }
         public class ShootTurretEventArgs : EventArgs
         {
-            public Tree treeToExtinguish;
+            public IFlammable objectToExtinguish;
 
-            public ShootTurretEventArgs(Tree treeToExtinguish)
+            public ShootTurretEventArgs(IFlammable treeToExtinguish)
             {
-                this.treeToExtinguish = treeToExtinguish;
+                this.objectToExtinguish = treeToExtinguish;
             }
         }
         public class ShootTurretErrorEventArgs : EventArgs
@@ -294,19 +294,19 @@ namespace FireSafety
             }
 
             // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
-            Tree treeToExtinguish = null;
+            IFlammable objectToExtinguish = null;
 
             // Если пушка опущена, то можно потушить только ближайшее дерево
             if (!up)
             {
                 foreach (Vector2f coords in GetTargetPositions())
                 {
-                    treeToExtinguish = _terrain.trees.Find(tree => tree.Position == coords);
+                    objectToExtinguish = _terrain.GetFlammableObjects().Find(flammable => ((Entity)flammable).Position == coords);
 
                     // Если нашли ближайшее дерево, то остальные не проверяем
-                    if (treeToExtinguish != null)
+                    if (objectToExtinguish != null)
                     {
-                        treeToExtinguish.Extinguish();
+                        objectToExtinguish.Extinguish();
                         break;
                     }
                 }
@@ -314,11 +314,11 @@ namespace FireSafety
             // Если пушка поднята, то можно потушить только одно дальнее дерево
             else
             {
-                treeToExtinguish = _terrain.trees.Find(tree => tree.Position == GetTargetPositions()[0]);
-                treeToExtinguish?.Extinguish();
+                objectToExtinguish = _terrain.GetFlammableObjects().Find(flammable => ((Entity)flammable).Position == GetTargetPositions()[0]);
+                objectToExtinguish?.Extinguish();
             }
 
-            TurretShoot?.Invoke(this, new ShootTurretEventArgs(treeToExtinguish));
+            TurretShoot?.Invoke(this, new ShootTurretEventArgs(objectToExtinguish));
 
             // После выстрела сбрасываем давление, уменьшаем запасы воды, убираем заряд пушки
             waterPressure = minWaterPressure;

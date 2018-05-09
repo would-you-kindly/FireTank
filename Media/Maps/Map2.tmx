@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="239">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="240">
  <properties>
   <property name="algorithm" value=""/>
   <property name="wind" value="up"/>
@@ -613,6 +613,11 @@
    </properties>
   </object>
   <object id="202" name="tree" type="tree" gid="6" x="416" y="288" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="239" name="tree" type="tree" gid="6" x="256" y="224" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
    </properties>

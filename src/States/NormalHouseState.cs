@@ -22,7 +22,7 @@ namespace FireSafety
         {
             if (currentTimeToSpread == timeToSpread)
             {
-                tree.state = new BurningHouseState();
+                house.state = new BurningHouseState();
             }
             else
             {
