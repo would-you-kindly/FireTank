@@ -1,6 +1,6 @@
 ﻿namespace FireSafety
 {
-    partial class MapOpenerForm
+    partial class OpenMapForm
     {
         /// <summary>
         /// Required designer variable.

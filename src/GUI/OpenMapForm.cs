@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 namespace FireSafety
 {
-    public partial class MapOpenerForm : Form
+    public partial class OpenMapForm : Form
     {
-        FireSafetyForm _fireSafetyForm;
+        private FireSafetyForm _fireSafetyForm;
 
-        public MapOpenerForm(FireSafetyForm fireSafetyForm)
+        public OpenMapForm(FireSafetyForm fireSafetyForm)
         {
             InitializeComponent();
 

@@ -2,7 +2,6 @@ D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafet
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.FireSafetyForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.InfoForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.LoginForm.resources
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.MapOpenerForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.SettingsForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.GenerateResource.Cache
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CoreCompileInputs.cache
@@ -20,3 +19,4 @@ D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafet
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.exe
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.pdb
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojResolveAssemblyReference.cache
+D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.OpenMapForm.resources

@@ -52,6 +52,9 @@
             this.noneMoveCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shootCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pressureX1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pressureX2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chargeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noneChargeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turretCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotate45CWTurretToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +67,7 @@
             this.noneToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.algorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,11 +83,14 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pressureX2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chargeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -178,7 +185,7 @@
             this.shootCommandsToolStripMenuItem,
             this.turretCommandsToolStripMenuItem});
             this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
-            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.addCommandToolStripMenuItem.Text = "Commands";
             // 
             // moveCommandsToolStripMenuItem
@@ -196,7 +203,7 @@
             this.rotate90CCWToolStripMenuItem,
             this.noneMoveCommandToolStripMenuItem});
             this.moveCommandsToolStripMenuItem.Name = "moveCommandsToolStripMenuItem";
-            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.moveCommandsToolStripMenuItem.Text = "Move";
             // 
             // forwardToolStripMenuItem
@@ -279,9 +286,9 @@
             this.rotate90CCWToolStripMenuItem.Text = "Rotate 90 CCW";
             this.rotate90CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem_Click);
             // 
-            // noneToolStripMenuItem
+            // noneMoveCommandToolStripMenuItem
             // 
-            this.noneMoveCommandToolStripMenuItem.Name = "noneToolStripMenuItem";
+            this.noneMoveCommandToolStripMenuItem.Name = "noneMoveCommandToolStripMenuItem";
             this.noneMoveCommandToolStripMenuItem.ShortcutKeyDisplayString = "N";
             this.noneMoveCommandToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.noneMoveCommandToolStripMenuItem.Text = "None";
@@ -296,7 +303,7 @@
             this.chargeToolStripMenuItem,
             this.noneChargeToolStripMenuItem});
             this.shootCommandsToolStripMenuItem.Name = "shootCommandsToolStripMenuItem";
-            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.shootCommandsToolStripMenuItem.Text = "Shoot";
             // 
             // pressureX1ToolStripMenuItem
@@ -307,9 +314,33 @@
             this.pressureX1ToolStripMenuItem.Text = "Pressure x1";
             this.pressureX1ToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
             // 
-            // noneToolStripMenuItem1
+            // pressureX2ToolStripMenuItem
             // 
-            this.noneChargeToolStripMenuItem.Name = "noneToolStripMenuItem1";
+            this.pressureX2ToolStripMenuItem.Name = "pressureX2ToolStripMenuItem";
+            this.pressureX2ToolStripMenuItem.ShortcutKeyDisplayString = "P (Hold)";
+            this.pressureX2ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.pressureX2ToolStripMenuItem.Text = "Pressure x2";
+            this.pressureX2ToolStripMenuItem.Click += new System.EventHandler(this.pressureX2ToolStripMenuItem_Click);
+            // 
+            // refuelToolStripMenuItem
+            // 
+            this.refuelToolStripMenuItem.Name = "refuelToolStripMenuItem";
+            this.refuelToolStripMenuItem.ShortcutKeyDisplayString = "R";
+            this.refuelToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.refuelToolStripMenuItem.Text = "Refuel";
+            this.refuelToolStripMenuItem.Click += new System.EventHandler(this.refuelToolStripMenuItem_Click);
+            // 
+            // chargeToolStripMenuItem
+            // 
+            this.chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
+            this.chargeToolStripMenuItem.ShortcutKeyDisplayString = "C";
+            this.chargeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.chargeToolStripMenuItem.Text = "Charge";
+            this.chargeToolStripMenuItem.Click += new System.EventHandler(this.chargeToolStripMenuItem_Click);
+            // 
+            // noneChargeToolStripMenuItem
+            // 
+            this.noneChargeToolStripMenuItem.Name = "noneChargeToolStripMenuItem";
             this.noneChargeToolStripMenuItem.ShortcutKeyDisplayString = "N";
             this.noneChargeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.noneChargeToolStripMenuItem.Text = "None";
@@ -327,36 +358,36 @@
             this.shootToolStripMenuItem,
             this.noneToolStripMenuItem2});
             this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
-            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.turretCommandsToolStripMenuItem.Text = "Turret";
             // 
-            // rotate45CWToolStripMenuItem1
+            // rotate45CWTurretToolStripMenuItem
             // 
-            this.rotate45CWTurretToolStripMenuItem.Name = "rotate45CWToolStripMenuItem1";
+            this.rotate45CWTurretToolStripMenuItem.Name = "rotate45CWTurretToolStripMenuItem";
             this.rotate45CWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 6";
             this.rotate45CWTurretToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate45CWTurretToolStripMenuItem.Text = "Rotate 45 CW";
             this.rotate45CWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem1_Click);
             // 
-            // rotate45CCWToolStripMenuItem1
+            // rotate45CCWTurretToolStripMenuItem
             // 
-            this.rotate45CCWTurretToolStripMenuItem.Name = "rotate45CCWToolStripMenuItem1";
+            this.rotate45CCWTurretToolStripMenuItem.Name = "rotate45CCWTurretToolStripMenuItem";
             this.rotate45CCWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 4";
             this.rotate45CCWTurretToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate45CCWTurretToolStripMenuItem.Text = "Rotate 45 CCW";
             this.rotate45CCWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem1_Click);
             // 
-            // rotate90CWToolStripMenuItem1
+            // rotate90CWTurretToolStripMenuItem
             // 
-            this.rotate90CWTurretToolStripMenuItem.Name = "rotate90CWToolStripMenuItem1";
+            this.rotate90CWTurretToolStripMenuItem.Name = "rotate90CWTurretToolStripMenuItem";
             this.rotate90CWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 6 (Hold)";
             this.rotate90CWTurretToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate90CWTurretToolStripMenuItem.Text = "Rotate 90 CW";
             this.rotate90CWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem1_Click);
             // 
-            // rotate90CCWToolStripMenuItem1
+            // rotate90CCWTurretToolStripMenuItem
             // 
-            this.rotate90CCWTurretToolStripMenuItem.Name = "rotate90CCWToolStripMenuItem1";
+            this.rotate90CCWTurretToolStripMenuItem.Name = "rotate90CCWTurretToolStripMenuItem";
             this.rotate90CCWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 4 (Hold)";
             this.rotate90CCWTurretToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.rotate90CCWTurretToolStripMenuItem.Text = "Rotate 90 CCW";
@@ -378,9 +409,9 @@
             this.downToolStripMenuItem.Text = "Down";
             this.downToolStripMenuItem.Click += new System.EventHandler(this.downToolStripMenuItem_Click);
             // 
-            // shootToolStripMenuItem1
+            // shootToolStripMenuItem
             // 
-            this.shootToolStripMenuItem.Name = "shootToolStripMenuItem1";
+            this.shootToolStripMenuItem.Name = "shootToolStripMenuItem";
             this.shootToolStripMenuItem.ShortcutKeyDisplayString = "S";
             this.shootToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.shootToolStripMenuItem.Text = "Shoot";
@@ -400,7 +431,7 @@
             this.deleteActionToolStripMenuItem,
             this.clearAlgorithmToolStripMenuItem});
             this.reorderingToolStripMenuItem.Name = "reorderingToolStripMenuItem";
-            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.reorderingToolStripMenuItem.Text = "Reordering";
             // 
             // deleteActionToolStripMenuItem
@@ -409,6 +440,13 @@
             this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.deleteActionToolStripMenuItem.Text = "Delete action";
             this.deleteActionToolStripMenuItem.Click += new System.EventHandler(this.deleteActionToolStripMenuItem_Click);
+            // 
+            // clearAlgorithmToolStripMenuItem
+            // 
+            this.clearAlgorithmToolStripMenuItem.Name = "clearAlgorithmToolStripMenuItem";
+            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.clearAlgorithmToolStripMenuItem.Text = "Clear algorithm";
+            this.clearAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.clearAlgorithmToolStripMenuItem_Click);
             // 
             // algorithmToolStripMenuItem
             // 
@@ -530,42 +568,57 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // pressureX2ToolStripMenuItem
+            // toolStripStatusLabel1
             // 
-            this.pressureX2ToolStripMenuItem.Name = "pressureX2ToolStripMenuItem";
-            this.pressureX2ToolStripMenuItem.ShortcutKeyDisplayString = "P (Hold)";
-            this.pressureX2ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.pressureX2ToolStripMenuItem.Text = "Pressure x2";
-            this.pressureX2ToolStripMenuItem.Click += new System.EventHandler(this.pressureX2ToolStripMenuItem_Click);
+            this.toolStripStatusLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(50, 17);
+            this.toolStripStatusLabel1.Text = "Forward";
             // 
-            // refuelToolStripMenuItem
+            // toolStripStatusLabel2
             // 
-            this.refuelToolStripMenuItem.Name = "refuelToolStripMenuItem";
-            this.refuelToolStripMenuItem.ShortcutKeyDisplayString = "R";
-            this.refuelToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.refuelToolStripMenuItem.Text = "Refuel";
-            this.refuelToolStripMenuItem.Click += new System.EventHandler(this.refuelToolStripMenuItem_Click);
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusLabel2.Text = "F";
             // 
-            // chargeToolStripMenuItem
+            // toolStripStatusLabel3
             // 
-            this.chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
-            this.chargeToolStripMenuItem.ShortcutKeyDisplayString = "C";
-            this.chargeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.chargeToolStripMenuItem.Text = "Charge";
-            this.chargeToolStripMenuItem.Click += new System.EventHandler(this.chargeToolStripMenuItem_Click);
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(58, 17);
+            this.toolStripStatusLabel3.Text = "Backward";
             // 
-            // clearAlgorithmToolStripMenuItem
+            // toolStripStatusLabel4
             // 
-            this.clearAlgorithmToolStripMenuItem.Name = "clearAlgorithmToolStripMenuItem";
-            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.clearAlgorithmToolStripMenuItem.Text = "Clear algorithm";
-            this.clearAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.clearAlgorithmToolStripMenuItem_Click);
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(14, 17);
+            this.toolStripStatusLabel4.Text = "B";
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel5,
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4});
+            this.statusStrip.Location = new System.Drawing.Point(0, 240);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(284, 22);
+            this.statusStrip.TabIndex = 3;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(10, 17);
+            this.toolStripStatusLabel5.Text = "|";
             // 
             // FireSafetyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -576,6 +629,8 @@
             this.Load += new System.EventHandler(this.FireSafetyForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,5 +693,11 @@
         private System.Windows.Forms.ToolStripMenuItem shootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openMapFromDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
     }
 }

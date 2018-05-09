@@ -19,6 +19,8 @@ namespace FireSafety
             controller = new SettingsController(this);
 
             controller.InitShortcuts();
+
+            dgvShortcuts.ClearSelection();
         }
 
         private void btnDefault_Click(object sender, EventArgs e)
@@ -48,10 +50,7 @@ namespace FireSafety
                     }
                 }
 
-                // TODO: Лучше создать событие и подписаться
                 dgvShortcuts.SelectedRows[0].Cells[2].Value = value;
-                controller.SetShortcut(dgvShortcuts.SelectedRows[0].Cells[0].Value.ToString(),
-                    dgvShortcuts.SelectedRows[0].Cells[1].Value, value);
             }
         }
     }

@@ -11,20 +11,17 @@ namespace FireSafety
         public SettingsController(SettingsForm settingsForm)
         {
             this.settingsForm = settingsForm;
-            this.settingsForm.dgvShortcuts.ClearSelection();
 
-            Settings.GetInstance().ShortcutUpdated += SettingsController_ShortcutUpdated;
-            Settings.GetInstance().Defaulted += SettingsController_Defaulted;
+            //Settings.GetInstance().ShortcutUpdated += SettingsController_ShortcutUpdated;
+            //Settings.GetInstance().Defaulted += SettingsController_Defaulted;
+
+            settingsForm.dgvShortcuts.CellValueChanged += DgvShortcuts_CellValueChanged;
         }
 
-        private void SettingsController_Defaulted(object sender, Settings.DefaultShortcutEventArgs e)
+        private void DgvShortcuts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateControls();
-        }
-
-        private void SettingsController_ShortcutUpdated(object sender, Settings.UpdateShortcutEventArgs e)
-        {
-
+            SetShortcut(settingsForm.dgvShortcuts.SelectedRows[0].Cells[0].Value.ToString(),
+                settingsForm.dgvShortcuts.SelectedRows[0].Cells[1].Value, (Keys)((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
         }
 
         private void UpdateControls()
@@ -43,7 +40,6 @@ namespace FireSafety
             }
 
             settingsForm.nudTimeToHold.Value = Settings.GetInstance().timeToHold;
-
             settingsForm.tbConnectionString.Text = Settings.GetInstance().connectionString;
             settingsForm.tbUser.Text = Settings.GetInstance().GetUserString();
         }

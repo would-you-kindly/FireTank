@@ -15,7 +15,7 @@ namespace FireSafety
         private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
-        public MapOpenerForm mapOpenerForm;
+        public OpenMapForm mapOpenerForm;
         public InfoForm infoForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
@@ -27,7 +27,7 @@ namespace FireSafety
 
             worldController = new WorldController(world);
 
-            mapOpenerForm = new MapOpenerForm(this);
+            mapOpenerForm = new OpenMapForm(this);
 
             Init();
         }

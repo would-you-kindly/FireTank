@@ -153,7 +153,7 @@ namespace FireSafety
 
         public Settings()
         {
-            Default();
+            //Default();
         }
 
         public static Settings GetInstance()
@@ -161,8 +161,9 @@ namespace FireSafety
             if (instance == null)
             {
                 instance = new Settings();
+
                 // Грузим настройки из файла
-                //instance.Load();
+                instance.Load();
 
                 instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }

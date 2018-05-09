@@ -134,7 +134,6 @@ namespace FireSafety
             {
                 Ended?.Invoke(this, new EndEventArgs());
 
-                // TODO: Не 7 !!!!
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
                     Utilities.INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 

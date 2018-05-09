@@ -103,11 +103,11 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Models\MapModel.cs" />
-    <Compile Include="src\GUI\MapOpenerForm.cs">
+    <Compile Include="src\GUI\OpenMapForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\GUI\MapOpenerForm.Designer.cs">
-      <DependentUpon>MapOpenerForm.cs</DependentUpon>
+    <Compile Include="src\GUI\OpenMapForm.Designer.cs">
+      <DependentUpon>OpenMapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Repositories\MapRepository.cs" />
     <Compile Include="src\Repositories\ModelContext.cs" />
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="src\GUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\GUI\MapOpenerForm.resx">
-      <DependentUpon>MapOpenerForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\GUI\OpenMapForm.resx">
+      <DependentUpon>OpenMapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
