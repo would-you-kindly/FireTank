@@ -20,6 +20,7 @@ namespace FireSafety
 
         // Параметры местности
         public List<Tree> trees;
+        public List<House> houses;
         public List<Lake> lakes;
         public List<Rock> rocks;
         public Wind wind;
@@ -27,6 +28,7 @@ namespace FireSafety
         public Terrain(List<GameObject> objects, ResourceHolder resources, Wind wind)
         {
             trees = new List<Tree>();
+            houses = new List<House>();
             lakes = new List<Lake>();
             rocks = new List<Rock>();
             this.wind = wind;
@@ -45,6 +47,20 @@ namespace FireSafety
                         tree.Fire();
                     }
                     trees.Add(tree);
+                }
+
+                // Создаем дома
+                if (item.name == "house")
+                {
+                    House house = new House(Textures.ID.House, resources);
+                    house.Position = new Vector2f(item.rect.Left + Utilities.TILE_SIZE / 2, item.rect.Top - Utilities.TILE_SIZE / 2);
+                    if (item.GetPropertyBool("burns"))
+                    {
+                        // TODO: Такое себе место (чтобы подожглось, нужно сделать так)
+                        house.state.currentTimeToSpread = house.state.timeToSpread;
+                        house.Fire();
+                    }
+                    houses.Add(house);
                 }
 
                 // Создаем озера
@@ -73,6 +89,16 @@ namespace FireSafety
         public void SetTree(int index, Tree tree)
         {
             trees[index] = tree;
+        }
+
+        public House GetHouse(int index)
+        {
+            return houses[index];
+        }
+
+        public void SetHouse(int index, House house)
+        {
+            houses[index] = house;
         }
 
         public Lake GetLake(int index)

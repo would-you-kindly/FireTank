@@ -4,7 +4,7 @@ using System;
 
 namespace FireSafety
 {
-    public class Tree : Entity
+    public class Tree : Entity, IFlammable
     {
         // Классы для передачи параметров событий
         public class ExtinguishTreeEventArgs : EventArgs
@@ -67,7 +67,6 @@ namespace FireSafety
         {
             if (state.IsBurning() && --state.hitPoints == 0)
             {
-                // TODO: Дерево сгорело, но в списке леса осталось
                 Burn();
             }
         }
@@ -90,7 +89,6 @@ namespace FireSafety
 
             if (state.IsBurned())
             {
-                // TODO: Нужно будет вернуть цвет, если дерево будет потушено
                 target.Draw(burnedTreeSprite, states);
             }
         }

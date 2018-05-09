@@ -19,6 +19,7 @@
             Tree,
             BurnedTree,
             House,
+            BurnedHouse,
             Fire,
             Lake,
             Rock

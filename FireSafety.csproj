@@ -50,6 +50,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="src\GameWorld\House.cs" />
+    <Compile Include="src\GameWorld\IFlammable.cs" />
     <Compile Include="src\OpenSave\IOpenSave.cs" />
     <Compile Include="src\Map\GameObject.cs" />
     <Compile Include="src\Map\Layer.cs" />
@@ -65,7 +67,9 @@
     </Compile>
     <Compile Include="src\Models\AlgorithmModel.cs" />
     <Compile Include="src\Repositories\AlgorithmRepository.cs" />
+    <Compile Include="src\States\BurnedHouseState.cs" />
     <Compile Include="src\States\BurnedTreeState.cs" />
+    <Compile Include="src\States\BurningHouseState.cs" />
     <Compile Include="src\States\BurningTreeState.cs" />
     <Compile Include="src\ParallelAlgorithm\Command.cs" />
     <Compile Include="src\GUI\DrawingSurface.cs">
@@ -132,6 +136,8 @@
     <Compile Include="src\GameWorld\Game.cs" />
     <Compile Include="src\GUI\Gui.cs" />
     <Compile Include="src\GameWorld\Lake.cs" />
+    <Compile Include="src\States\HouseState.cs" />
+    <Compile Include="src\States\NormalHouseState.cs" />
     <Compile Include="src\States\TreeState.cs" />
     <Compile Include="src\Map\Map.cs" />
     <Compile Include="src\Commands\MoveCommand.cs" />

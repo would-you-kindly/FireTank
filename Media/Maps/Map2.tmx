@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="234">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="239">
  <properties>
   <property name="algorithm" value=""/>
   <property name="wind" value="up"/>
@@ -267,6 +267,33 @@
    <tile gid="19"/>
   </data>
  </layer>
+ <objectgroup name="houses">
+  <object id="234" name="house" type="house" gid="25" x="256" y="96" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="235" name="house" type="house" gid="25" x="256" y="64" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="236" name="house" type="house" gid="25" x="448" y="352" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="237" name="house" type="house" gid="25" x="448" y="384" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="238" name="house" type="house" gid="25" x="256" y="256" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="rocks">
   <object id="216" name="rock" type="rock" gid="23" x="320" y="448" width="32" height="32"/>
   <object id="217" name="rock" type="rock" gid="23" x="288" y="448" width="32" height="32"/>

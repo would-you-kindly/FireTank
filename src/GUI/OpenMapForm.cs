@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace FireSafety
 {
@@ -32,6 +33,10 @@ namespace FireSafety
             foreach (MapModel map in Utilities.context.Maps)
             {
                 Guid id = map.Id;
+
+                //XDocument xml = new XDocument();
+                //xml.l
+                //Parse(map.XmlContent);
 
                 dgvMaps.Rows.Add(++i, id);
             }

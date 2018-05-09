@@ -52,8 +52,8 @@ namespace FireSafety
         private void LoadResources()
         {
             // Загружаем текстуры
-            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
             resources.LoadTexture(Textures.ID.House, "Media/Textures/House.png");
+            resources.LoadTexture(Textures.ID.BurnedHouse, "Media/Textures/BurnedHouse.png");
             resources.LoadTexture(Textures.ID.Fire, "Media/Textures/Fire.png");
             resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/RedTank.png");
             resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/RedTurret.png");
@@ -68,6 +68,7 @@ namespace FireSafety
             resources.LoadTexture(Textures.ID.GreyTank, "Media/Textures/GreyTank.png");
             resources.LoadTexture(Textures.ID.GreyTurret, "Media/Textures/GreyTurret.png");
             resources.LoadTexture(Textures.ID.Tree, "Media/Textures/Tree.png");
+            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
             resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
             resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
 
