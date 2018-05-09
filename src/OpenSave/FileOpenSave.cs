@@ -36,9 +36,16 @@ namespace FireSafety
             }
         }
 
-        public void OpenMap()
+        public Map OpenMap()
         {
-            throw new NotImplementedException();
+            Map map = new Map();
+
+            if (!map.LoadFromFile(filename))
+            {
+                throw new Exception("Не удалось загрузить карту");
+            }
+
+            return map;
         }
     }
 }

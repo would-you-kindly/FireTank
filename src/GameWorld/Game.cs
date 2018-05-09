@@ -122,7 +122,7 @@ namespace FireSafety
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.WIDTH_TILE_COUNT, (int)Utilities.HEIGHT_TILE_COUNT,
                     Utilities.INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
-                ParallelAlgorithm.GetInstance().SaveInDatabase(result, false);
+                ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
 
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
@@ -143,7 +143,7 @@ namespace FireSafety
                     $"Эффективность разработанного алгоритма = {result}.",
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                ParallelAlgorithm.GetInstance().SaveInDatabase(result, true);
+                ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();

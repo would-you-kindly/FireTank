@@ -21,13 +21,15 @@ namespace FireSafety
         public Form sfmlForm;
         public RenderWindow renderWindow;
 
+        private string savedFilename;
+
         public FireSafetyForm(World world)
         {
             InitializeComponent();
 
             worldController = new WorldController(world);
-
             mapOpenerForm = new OpenMapForm(this);
+            savedFilename = string.Empty;
 
             Init();
         }
@@ -86,7 +88,8 @@ namespace FireSafety
             sfd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                algorithmController.SaveAlgorithm(sfd.FileName);
+                savedFilename = sfd.FileName;
+                algorithmController.SaveAlgorithm(new FileOpenSave(sfd.FileName));
             }
         }
 
@@ -96,7 +99,8 @@ namespace FireSafety
             ofd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                algorithmController.LoadAlgorithm(ofd.FileName);
+                savedFilename = ofd.FileName;
+                algorithmController.LoadAlgorithm(new FileOpenSave(ofd.FileName));
             }
         }
 
@@ -112,7 +116,19 @@ namespace FireSafety
 
         private void saveAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (savedFilename == string.Empty)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    algorithmController.SaveAlgorithm(new FileOpenSave(sfd.FileName));
+                }
+            }
+            else
+            {
+                algorithmController.SaveAlgorithm(new FileOpenSave(savedFilename));
+            }
         }
 
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -156,19 +172,19 @@ namespace FireSafety
             if (algorithmFilename != string.Empty)
             {
                 filename = Path.Combine(Path.GetDirectoryName(filename), algorithmFilename);
-                ParallelAlgorithm.GetInstance().LoadFromFile(filename);
+                ParallelAlgorithm.GetInstance().LoadAlgorithm(new FileOpenSave(filename));
             }
         }
 
         public void RebuildWorld(Guid id)
         {
-            worldController.LoadMapFromDatabase(id);
+            worldController.LoadMap(new DatabaseOpenSave(id));
             worldController.BuildWorld();
         }
 
         public void RebuildWorld(string filename)
         {
-            worldController.LoadMapFromFile(filename);
+            worldController.LoadMap(new FileOpenSave(filename));
             worldController.BuildWorld();
         }
 
@@ -197,37 +213,37 @@ namespace FireSafety
 
             // Подбираем размеры для окон алгоритмов
             int algorithmFormsCountInColumn = (int)Math.Ceiling((decimal)(Utilities.TANKS_COUNT / 2.0));
-            int heightForAlgorithmForms = (ClientSize.Height - menuStrip.Size.Height - statusStrip.Size.Height - 4) / algorithmFormsCountInColumn;
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height - statusStrip.Size.Height - 4) / algorithmFormsCountInColumn;
 
             // Устанавливаем положение окон
             if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
             {
-                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[0].Location = new Point(sfmlForm.Size.Width, 0);
             }
             if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
             {
-                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[1].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, 0);
             }
             if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
             {
-                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[2].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height);
             }
             if (algorithmForms.Count >= 4 && algorithmForms.ElementAt(3) != null)
             {
-                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[3].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height);
             }
             if (algorithmForms.Count >= 5 && algorithmForms.ElementAt(4) != null)
             {
-                algorithmForms[4].Size = new Size(algorithmForms[4].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[4].Size = new Size(algorithmForms[4].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[4].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height + algorithmForms[2].Height);
             }
             if (algorithmForms.Count == 6 && algorithmForms.ElementAt(5) != null)
             {
-                algorithmForms[5].Size = new Size(algorithmForms[5].MinimumSize.Width, heightForAlgorithmForms);
+                algorithmForms[5].Size = new Size(algorithmForms[5].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[5].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height + algorithmForms[2].Height);
             }
         }

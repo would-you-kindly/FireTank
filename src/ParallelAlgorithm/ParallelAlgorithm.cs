@@ -175,25 +175,15 @@ namespace FireSafety
             ActionRemoved?.Invoke(this, new RemoveActionEventArgs());
         }
 
-        public void LoadFromFile(string filename)
+        public void LoadAlgorithm(IOpenSave openSave)
         {
-            openSave = new FileOpenSave(filename);
             instance = openSave.OpenAlgorithm();
 
             Loaded?.Invoke(this, new LoadEventArgs());
         }
 
-        public void SaveInFile(string filename)
+        public void SaveAlgorithm(IOpenSave openSave)
         {
-            openSave = new FileOpenSave(filename);
-            openSave.SaveAlgorithm();
-
-            Saved?.Invoke(this, new SaveEventArgs());
-        }
-
-        public void SaveInDatabase(double result, bool success)
-        {
-            openSave = new DatabaseOpenSave(Guid.NewGuid(), result, success);
             openSave.SaveAlgorithm();
 
             Saved?.Invoke(this, new SaveEventArgs());
@@ -240,9 +230,9 @@ namespace FireSafety
         {
             double kTrees = totalTrees / (mapWidth * mapHeight);
             double kFire = initiallyBurningTrees / (mapWidth * mapHeight);
-            double mapComplexity = kTrees * kFire;
+            double mapComplexity = kTrees * kFire * 100000;
             double algorithmLength = instance.algorithms.Sum(algo => algo.actions.Count);
-            double result = (algorithmLength / (1 + burnedTrees)) / mapComplexity;
+            double result = mapComplexity / ((algorithmLength + 1) * (burnedTrees + 1));
             //double result = 100 * mapComplexity / (algorithmLength * burnedTrees + 1);
 
             return result;

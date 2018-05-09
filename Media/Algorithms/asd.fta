@@ -29,6 +29,53 @@
             </Command>
           </Commands>
         </Action>
+      </Actions>
+    </Algorithm>
+    <Algorithm>
+      <Actions>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Backward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Backward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+        </Action>
+      </Actions>
+    </Algorithm>
+    <Algorithm>
+      <Actions>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+        </Action>
         <Action>
           <Commands>
             <Command xsi:type="MoveCommand">
@@ -45,13 +92,34 @@
       </Actions>
     </Algorithm>
     <Algorithm>
-      <Actions />
-    </Algorithm>
-    <Algorithm>
-      <Actions />
-    </Algorithm>
-    <Algorithm>
-      <Actions />
+      <Actions>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Backward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Backward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+        </Action>
+      </Actions>
     </Algorithm>
   </Algorithms>
 </ParallelAlgorithm>

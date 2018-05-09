@@ -4,6 +4,6 @@
     {
         void SaveAlgorithm();
         ParallelAlgorithm OpenAlgorithm();
-        void OpenMap();
+        Map OpenMap();
     }
 }

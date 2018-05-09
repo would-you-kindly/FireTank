@@ -12,7 +12,7 @@ namespace FireSafety
         private double result;
         private bool success;
 
-        public DatabaseOpenSave(Guid id, double result, bool success)
+        public DatabaseOpenSave(Guid id, double result = 0.0, bool success = false)
         {
             this.repository = new AlgorithmRepository(Utilities.context);
 
@@ -49,9 +49,16 @@ namespace FireSafety
             throw new NotImplementedException();
         }
 
-        public void OpenMap()
+        public Map OpenMap()
         {
-            throw new NotImplementedException();
+            Map map = new Map();
+
+            if (!map.LoadFromDatabase(id))
+            {
+                throw new Exception("Не удалось загрузить карту");
+            }
+
+            return map;
         }
     }
 }

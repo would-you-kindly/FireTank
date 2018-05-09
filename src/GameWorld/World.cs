@@ -15,6 +15,7 @@ namespace FireSafety
         public Terrain terrain;
         public List<WaterTrace> traces;
 
+
         public World()
         {
             Load();
@@ -24,24 +25,28 @@ namespace FireSafety
         // Загружает ресурсы в память (текстуры, звуки, шрифты, карты...)
         private void Load()
         {
-            resources = new ResourceHolder();
+            LoadMap();
 
-            LoadMapFromDatabase(Guid.Parse("bea49d85-adf7-4a2b-bb9b-7e311afbfb46"));
+            // Загружаем ресурсы
+            resources = new ResourceHolder();
             LoadResources();
         }
 
-        public void LoadMapFromDatabase(Guid id)
+        public void LoadMap(IOpenSave openSaveMap = null)
         {
-            // Загружаем карту из .xml (.tmx) файла
-            map = new Map();
-            map.LoadFromDatabase(id);
-        }
+            // Открываем карту
+            IOpenSave openSave;
+            if (openSaveMap == null)
+            {
+                // По умолчанию открываем карту из базы данных
+                openSave = new DatabaseOpenSave(Guid.Parse("bea49d85-adf7-4a2b-bb9b-7e311afbfb46"));
+            }
+            else
+            {
+                openSave = openSaveMap;
+            }
 
-        public void LoadMapFromFile(string filename = "Media/Maps/Map2.tmx")
-        {
-            // Загружаем карту из .xml (.tmx) файла
-            map = new Map();
-            map.LoadFromFile(filename);
+            map = openSave.OpenMap();
         }
 
         private void LoadResources()
