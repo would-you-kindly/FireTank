@@ -30,7 +30,7 @@ namespace FireSafety
         private void Init()
         {
             int i = 0;
-            foreach (MapModel map in Utilities.context.Maps)
+            foreach (MapModel map in Utilities.GetContext().Maps)
             {
                 Guid id = map.Id;
 

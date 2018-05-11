@@ -13,7 +13,17 @@ namespace FireSafety
         public static uint WINDOW_WIDTH = (uint)TILE_SIZE * WIDTH_TILE_COUNT;
         public static uint WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
         public static int INIT_BURNING_TREES = 0;
-        public static ModelContext context = new ModelContext(Settings.GetInstance().connectionString);
+        private static ModelContext context;
+
+        public static ModelContext GetContext()
+        {
+            if (context == null)
+            {
+                context = new ModelContext(Settings.GetInstance().connectionString);
+            }
+
+            return context;
+        }
 
         public static void CenterOrigin(Sprite sprite)
         {

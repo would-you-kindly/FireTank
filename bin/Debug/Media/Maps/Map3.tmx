@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" nextobjectid="347">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" nextobjectid="374">
  <properties>
   <property name="algorithm" value=""/>
   <property name="wind" value="right"/>
@@ -617,12 +617,39 @@
   <object id="53" name="tank" type="tank" gid="20" x="192" y="576" width="32" height="32" rotation="-360"/>
   <object id="138" name="tank" type="tank" gid="20" x="672" y="384" width="32" height="32" rotation="-810"/>
   <object id="203" name="tank" type="tank" gid="20" x="288" y="96" width="32" height="32" rotation="-540"/>
+  <object id="347" name="tank" type="tank" gid="20" x="544" y="64" width="32" height="32" rotation="-180"/>
+  <object id="348" name="tank" type="tank" gid="20" x="224" y="352" width="32" height="32" rotation="-270"/>
  </objectgroup>
  <objectgroup name="turrets">
   <object id="204" name="turret" type="turret" gid="21" x="576" y="544" width="32" height="32" rotation="-90"/>
   <object id="205" name="turret" type="turret" gid="21" x="192" y="576" width="32" height="32" rotation="-360"/>
   <object id="206" name="turret" type="turret" gid="21" x="672" y="384" width="32" height="32" rotation="-810"/>
   <object id="207" name="turret" type="turret" gid="21" x="288" y="96" width="32" height="32" rotation="-540"/>
+  <object id="349" name="turret" type="turret" gid="21" x="544" y="64" width="32" height="32" rotation="-180"/>
+  <object id="350" name="turret" type="turret" gid="21" x="224" y="352" width="32" height="32" rotation="-270"/>
+ </objectgroup>
+ <objectgroup name="rocks">
+  <object id="351" name="rock" type="rock" gid="23" x="640" y="480" width="32" height="32"/>
+  <object id="352" name="rock" type="rock" gid="23" x="672" y="480" width="32" height="32"/>
+  <object id="353" name="rock" type="rock" gid="23" x="640" y="448" width="32" height="32"/>
+  <object id="354" name="rock" type="rock" gid="23" x="672" y="448" width="32" height="32"/>
+  <object id="355" name="rock" type="rock" gid="23" x="320" y="384" width="32" height="32"/>
+  <object id="356" name="rock" type="rock" gid="23" x="320" y="352" width="32" height="32"/>
+  <object id="357" name="rock" type="rock" gid="23" x="288" y="320" width="32" height="32"/>
+  <object id="358" name="rock" type="rock" gid="23" x="320" y="320" width="32" height="32"/>
+  <object id="359" name="rock" type="rock" gid="23" x="288" y="288" width="32" height="32"/>
+  <object id="360" name="rock" type="rock" gid="23" x="288" y="352" width="32" height="32"/>
+  <object id="361" name="rock" type="rock" gid="23" x="320" y="512" width="32" height="32"/>
+  <object id="362" name="rock" type="rock" gid="23" x="320" y="544" width="32" height="32"/>
+  <object id="365" name="rock" type="rock" gid="23" x="448" y="160" width="32" height="32"/>
+  <object id="366" name="rock" type="rock" gid="23" x="480" y="160" width="32" height="32"/>
+  <object id="367" name="rock" type="rock" gid="23" x="480" y="128" width="32" height="32"/>
+  <object id="368" name="rock" type="rock" gid="23" x="480" y="96" width="32" height="32"/>
+  <object id="369" name="rock" type="rock" gid="23" x="512" y="64" width="32" height="32"/>
+  <object id="370" name="rock" type="rock" gid="23" x="480" y="64" width="32" height="32"/>
+  <object id="371" name="rock" type="rock" gid="23" x="480" y="416" width="32" height="32"/>
+  <object id="372" name="rock" type="rock" gid="23" x="480" y="384" width="32" height="32"/>
+  <object id="373" name="rock" type="rock" gid="23" x="512" y="384" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="trees">
   <object id="147" name="tree" type="tree" gid="6" x="352" y="96" width="32" height="32">

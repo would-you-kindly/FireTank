@@ -293,17 +293,17 @@ namespace FireSafety
                 return;
             }
 
-            // Присваиваем null для случая, когда выстрел не попал ни в какое дерево
+            // Присваиваем null для случая, когда выстрел не попал ни в какое дерево (или дом)
             IFlammable objectToExtinguish = null;
 
-            // Если пушка опущена, то можно потушить только ближайшее дерево
+            // Если пушка опущена, то можно потушить только ближайшее дерево (или дом)
             if (!up)
             {
                 foreach (Vector2f coords in GetTargetPositions())
                 {
                     objectToExtinguish = _terrain.GetFlammableObjects().Find(flammable => ((Entity)flammable).Position == coords);
 
-                    // Если нашли ближайшее дерево, то остальные не проверяем
+                    // Если нашли ближайшее дерево (или дом), то остальные не проверяем
                     if (objectToExtinguish != null)
                     {
                         objectToExtinguish.Extinguish();
@@ -311,7 +311,7 @@ namespace FireSafety
                     }
                 }
             }
-            // Если пушка поднята, то можно потушить только одно дальнее дерево
+            // Если пушка поднята, то можно потушить только одно дальнее дерево (или дом)
             else
             {
                 objectToExtinguish = _terrain.GetFlammableObjects().Find(flammable => ((Entity)flammable).Position == GetTargetPositions()[0]);

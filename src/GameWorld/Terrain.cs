@@ -150,10 +150,13 @@ namespace FireSafety
 
         private void CheckTerrainState()
         {
-            // TODO: Еще дома проверить
-            foreach (Tree tree in trees)
+            foreach (IFlammable flammable in GetFlammableObjects())
             {
-                if (tree.state.IsBurning())
+                if (flammable is Tree && ((Tree)flammable).state.IsBurning())
+                {
+                    return;
+                }
+                if (flammable is House && ((Tree)flammable).state.IsBurning())
                 {
                     return;
                 }
