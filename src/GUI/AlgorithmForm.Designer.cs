@@ -39,7 +39,6 @@
             this.gbControls = new System.Windows.Forms.GroupBox();
             this.btnClearAlgorithm = new System.Windows.Forms.Button();
             this.btnDeleteAction = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblTurretCommands = new System.Windows.Forms.Label();
             this.lblChargeCommands = new System.Windows.Forms.Label();
             this.lblMoveCommands = new System.Windows.Forms.Label();
@@ -166,7 +165,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbControls.Controls.Add(this.btnClearAlgorithm);
             this.gbControls.Controls.Add(this.btnDeleteAction);
-            this.gbControls.Controls.Add(this.button1);
             this.gbControls.Controls.Add(this.lblTurretCommands);
             this.gbControls.Controls.Add(this.lblChargeCommands);
             this.gbControls.Controls.Add(this.lblMoveCommands);
@@ -198,15 +196,6 @@
             this.btnDeleteAction.Text = "Delete action";
             this.btnDeleteAction.UseVisualStyleBackColor = true;
             this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(171, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblTurretCommands
             // 
@@ -268,7 +257,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnClearAlgorithm;
         private System.Windows.Forms.Button btnDeleteAction;
     }

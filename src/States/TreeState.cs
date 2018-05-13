@@ -2,6 +2,7 @@
 {
     public abstract class TreeState
     {
+        public readonly int maxHitPoints = 10;
         public int hitPoints = 10;
         public readonly int timeToSpread = 3;
         public int currentTimeToSpread = 0;

@@ -78,6 +78,13 @@ namespace FireSafety
         {
             worldController.BuildWorld();
             algorithmController.RunAlgorithm();
+
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                form.Enabled = false;
+            }
+
+            menuStrip.Enabled = false;
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,10 +231,11 @@ namespace FireSafety
             // Подбираем размеры и положение для окна карты
             sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
             sfmlForm.Location = new Point(0, 0);
+            infoForm.Location = new Point(0, sfmlForm.Size.Height);
 
             // Подбираем размеры для окон алгоритмов
             int algorithmFormsCountInColumn = (int)Math.Ceiling((decimal)(Utilities.TANKS_COUNT / 2.0));
-            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height - statusStrip.Size.Height - 4) / algorithmFormsCountInColumn;
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - 4) / algorithmFormsCountInColumn;
 
             // Устанавливаем положение окон
             if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)

@@ -35,7 +35,6 @@
             this.lblFPS = new System.Windows.Forms.Label();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.lblUser = new System.Windows.Forms.Label();
-            this.btnChangeConnectionString = new System.Windows.Forms.Button();
             this.lblConnectionString = new System.Windows.Forms.Label();
             this.tbConnectionString = new System.Windows.Forms.TextBox();
             this.tpShortcuts = new System.Windows.Forms.TabPage();
@@ -72,7 +71,6 @@
             this.tpCommon.Controls.Add(this.lblFPS);
             this.tpCommon.Controls.Add(this.tbUser);
             this.tpCommon.Controls.Add(this.lblUser);
-            this.tpCommon.Controls.Add(this.btnChangeConnectionString);
             this.tpCommon.Controls.Add(this.lblConnectionString);
             this.tpCommon.Controls.Add(this.tbConnectionString);
             this.tpCommon.Location = new System.Drawing.Point(4, 22);
@@ -130,16 +128,6 @@
             this.lblUser.TabIndex = 3;
             this.lblUser.Text = "Имя пользователя";
             // 
-            // btnChangeConnectionString
-            // 
-            this.btnChangeConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChangeConnectionString.Location = new System.Drawing.Point(543, 17);
-            this.btnChangeConnectionString.Name = "btnChangeConnectionString";
-            this.btnChangeConnectionString.Size = new System.Drawing.Size(75, 23);
-            this.btnChangeConnectionString.TabIndex = 2;
-            this.btnChangeConnectionString.Text = "Изменить";
-            this.btnChangeConnectionString.UseVisualStyleBackColor = true;
-            // 
             // lblConnectionString
             // 
             this.lblConnectionString.AutoSize = true;
@@ -156,7 +144,7 @@
             this.tbConnectionString.Location = new System.Drawing.Point(8, 19);
             this.tbConnectionString.Name = "tbConnectionString";
             this.tbConnectionString.ReadOnly = true;
-            this.tbConnectionString.Size = new System.Drawing.Size(529, 20);
+            this.tbConnectionString.Size = new System.Drawing.Size(610, 20);
             this.tbConnectionString.TabIndex = 0;
             // 
             // tpShortcuts
@@ -312,7 +300,6 @@
         private System.Windows.Forms.Label lblDescription;
         public System.Windows.Forms.NumericUpDown nudTimeToHold;
         private System.Windows.Forms.Label lblTimeToHold;
-        private System.Windows.Forms.Button btnChangeConnectionString;
         private System.Windows.Forms.Label lblConnectionString;
         private System.Windows.Forms.Label lblUser;
         public System.Windows.Forms.TextBox tbConnectionString;

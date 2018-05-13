@@ -41,8 +41,8 @@ namespace FireSafety
         private const string filename = "Settings.xml";
         [XmlIgnore]
         [NonSerialized]
-        //private string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
-        private string connectionStringDefault = ConfigurationManager.ConnectionStrings["LocalServer"].ConnectionString;
+        private string connectionStringDefault = @"data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;";
+        //private string connectionStringDefault = ConfigurationManager.ConnectionStrings["LocalServer"].ConnectionString;
         //private string connectionStringDefault = @"Data Source=STUD-DBA\MSSQLSERVER16;Initial Catalog=FireTankAdmin;User ID=localuser;Password=654321";
         //private string connectionStringDefault = ConfigurationManager.ConnectionStrings["HSEServer"].ConnectionString;
         [XmlIgnore]
@@ -155,7 +155,8 @@ namespace FireSafety
 
         public Settings()
         {
-            Default();
+            //Default();
+            Load();
         }
 
         public static Settings GetInstance()
