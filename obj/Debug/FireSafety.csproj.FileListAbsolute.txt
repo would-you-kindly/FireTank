@@ -18,3 +18,4 @@ D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafet
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.GenerateResource.Cache
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.exe
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.pdb
+D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojResolveAssemblyReference.cache
