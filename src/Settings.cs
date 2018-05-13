@@ -155,7 +155,7 @@ namespace FireSafety
 
         public Settings()
         {
-            //Default();
+            Default();
             //Load();
         }
 
@@ -166,7 +166,7 @@ namespace FireSafety
                 instance = new Settings();
 
                 // Грузим настройки из файла
-                instance.Load();
+                //instance.Load();
 
                 instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }
@@ -359,7 +359,7 @@ namespace FireSafety
             timeToHold = timeToHoldDefault;
             connectionString = connectionStringDefault;
 
-            Save();
+            //Save();
 
             Defaulted?.Invoke(this, new DefaultShortcutEventArgs());
         }
