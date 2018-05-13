@@ -124,7 +124,7 @@ namespace FireSafety
             if (savedFilename == string.Empty)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
+                sfd.Filter = $"Fire tank algorithms files (*.fta{algorithmForms.Count})|*.fta{algorithmForms.Count};";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     algorithmController.SaveAlgorithm(new FileOpenSave(sfd.FileName));
