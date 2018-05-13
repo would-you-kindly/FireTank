@@ -4,25 +4,37 @@ using System;
 
 namespace FireSafety
 {
-    public static class Utilities
+    public class Utilities
     {
-        public static int TILE_SIZE = 32;
-        public static int TANKS_COUNT = 2;
-        public static uint WIDTH_TILE_COUNT = 16;
-        public static uint HEIGHT_TILE_COUNT = 16;
-        public static uint WINDOW_WIDTH = (uint)TILE_SIZE * WIDTH_TILE_COUNT;
-        public static uint WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
-        public static int INIT_BURNING_TREES = 0;
-        private static ModelContext context;
+        private static Utilities instance;
 
-        public static ModelContext GetContext()
+        public int TILE_SIZE;
+        public int TANKS_COUNT;
+        public uint WIDTH_TILE_COUNT;
+        public uint HEIGHT_TILE_COUNT;
+        public int INIT_BURNING_TREES;
+        public ModelContext context;
+
+        private Utilities()
         {
-            if (context == null)
+            //TILE_SIZE = 32;
+            //TANKS_COUNT = 2;
+            //WIDTH_TILE_COUNT = 16;
+            //HEIGHT_TILE_COUNT = 16;
+            //WINDOW_WIDTH = (uint)TILE_SIZE * WIDTH_TILE_COUNT;
+            //WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
+            //INIT_BURNING_TREES = 0;
+            context = new ModelContext(Settings.GetInstance().connectionString);
+        }
+
+        public static Utilities GetInstance()
+        {
+            if (instance == null)
             {
-                context = new ModelContext(Settings.GetInstance().connectionString);
+                instance = new Utilities();
             }
 
-            return context;
+            return instance;
         }
 
         public static void CenterOrigin(Sprite sprite)

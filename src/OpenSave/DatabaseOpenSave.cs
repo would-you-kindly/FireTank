@@ -14,7 +14,7 @@ namespace FireSafety
 
         public DatabaseOpenSave(Guid id, double result = 0.0, bool success = false)
         {
-            this.repository = new AlgorithmRepository(Utilities.GetContext());
+            this.repository = new AlgorithmRepository(Utilities.GetInstance().context);
 
             this.id = id;
             this.result = result;
@@ -40,8 +40,8 @@ namespace FireSafety
             algorithm.Map = Settings.GetInstance().currentMap;
             algorithm.User = Settings.GetInstance().currentUser;
 
-            Utilities.GetContext().Algorithms.Add(algorithm);
-            Utilities.GetContext().SaveChanges();
+            Utilities.GetInstance().context.Algorithms.Add(algorithm);
+            Utilities.GetInstance().context.SaveChanges();
         }
 
         public ParallelAlgorithm OpenAlgorithm()

@@ -89,7 +89,7 @@ namespace FireSafety
             step = false;
             currentAction = 0;
 
-            for (int i = 0; i < Utilities.TANKS_COUNT; i++)
+            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
             {
                 algorithms.Add(new Algorithm());
             }

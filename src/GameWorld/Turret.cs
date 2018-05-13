@@ -237,28 +237,28 @@ namespace FireSafety
 
                 // Вверх
                 if (NormalizedRotation == rotation * 0)
-                    target = new Vector2f(sprite.Position.X, sprite.Position.Y - Utilities.TILE_SIZE * (i + 1));
+                    target = new Vector2f(sprite.Position.X, sprite.Position.Y - Utilities.GetInstance().TILE_SIZE * (i + 1));
                 // Вверх-вправо
                 if (NormalizedRotation == rotation * 1)
-                    target = new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1));
+                    target = new Vector2f(sprite.Position.X + Utilities.GetInstance().TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.GetInstance().TILE_SIZE * (i + 1));
                 // Вправо
                 if (NormalizedRotation == rotation * 2)
-                    target = new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y);
+                    target = new Vector2f(sprite.Position.X + Utilities.GetInstance().TILE_SIZE * (i + 1), sprite.Position.Y);
                 // Вправо-вниз
                 if (NormalizedRotation == rotation * 3)
-                    target = new Vector2f(sprite.Position.X + Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1));
+                    target = new Vector2f(sprite.Position.X + Utilities.GetInstance().TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.GetInstance().TILE_SIZE * (i + 1));
                 // Вниз
                 if (NormalizedRotation == rotation * 4)
-                    target = new Vector2f(sprite.Position.X, sprite.Position.Y + Utilities.TILE_SIZE * (i + 1));
+                    target = new Vector2f(sprite.Position.X, sprite.Position.Y + Utilities.GetInstance().TILE_SIZE * (i + 1));
                 // Вниз-влево
                 if (NormalizedRotation == rotation * 5)
-                    target = new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.TILE_SIZE * (i + 1));
+                    target = new Vector2f(sprite.Position.X - Utilities.GetInstance().TILE_SIZE * (i + 1), sprite.Position.Y + Utilities.GetInstance().TILE_SIZE * (i + 1));
                 // Влево
                 if (NormalizedRotation == rotation * 6)
-                    target = new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y);
+                    target = new Vector2f(sprite.Position.X - Utilities.GetInstance().TILE_SIZE * (i + 1), sprite.Position.Y);
                 // Влево-вверх
                 if (NormalizedRotation == rotation * 7)
-                    target = new Vector2f(sprite.Position.X - Utilities.TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.TILE_SIZE * (i + 1));
+                    target = new Vector2f(sprite.Position.X - Utilities.GetInstance().TILE_SIZE * (i + 1), sprite.Position.Y - Utilities.GetInstance().TILE_SIZE * (i + 1));
 
                 targets.Add(target);
 

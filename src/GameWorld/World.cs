@@ -80,13 +80,11 @@ namespace FireSafety
         public void BuildWorld()
         {
             // Устанавливаем параметры карты
-            Utilities.TILE_SIZE = map.GetTileSize().X;
-            Utilities.TANKS_COUNT = map.GetObjects("tank").Count;
-            Utilities.WIDTH_TILE_COUNT = (uint)map.width;
-            Utilities.HEIGHT_TILE_COUNT = (uint)map.height;
-            Utilities.WINDOW_WIDTH = (uint)map.width * (uint)map.tileWidth;
-            Utilities.WINDOW_HEIGHT = (uint)map.height * (uint)map.tileHeight;
-            Utilities.INIT_BURNING_TREES = map.GetObjects("tree").Where(obj => obj.GetPropertyBool("burns")).Count();
+            Utilities.GetInstance().TILE_SIZE = map.GetTileSize().X;
+            Utilities.GetInstance().TANKS_COUNT = map.GetObjects("tank").Count;
+            Utilities.GetInstance().WIDTH_TILE_COUNT = (uint)map.width;
+            Utilities.GetInstance().HEIGHT_TILE_COUNT = (uint)map.height;
+            Utilities.GetInstance().INIT_BURNING_TREES = map.GetObjects("tree").Where(obj => obj.GetPropertyBool("burns")).Count();
 
             traces = new List<WaterTrace>();
 
@@ -139,16 +137,16 @@ namespace FireSafety
                 switch (Utilities.NormalizedRotation(tankObject.rotation))
                 {
                     case 0:
-                        tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top - Utilities.TILE_SIZE / 2));
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.GetInstance().TILE_SIZE / 2, tankObject.rect.Top - Utilities.GetInstance().TILE_SIZE / 2));
                         break;
                     case 90:
-                        tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left + Utilities.GetInstance().TILE_SIZE / 2, tankObject.rect.Top + Utilities.GetInstance().TILE_SIZE / 2));
                         break;
                     case 180:
-                        tank.SetPosition(new Vector2f(tankObject.rect.Left - Utilities.TILE_SIZE / 2, tankObject.rect.Top + Utilities.TILE_SIZE / 2));
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left - Utilities.GetInstance().TILE_SIZE / 2, tankObject.rect.Top + Utilities.GetInstance().TILE_SIZE / 2));
                         break;
                     case 270:
-                        tank.SetPosition(new Vector2f(tankObject.rect.Left - Utilities.TILE_SIZE / 2, tankObject.rect.Top - Utilities.TILE_SIZE / 2));
+                        tank.SetPosition(new Vector2f(tankObject.rect.Left - Utilities.GetInstance().TILE_SIZE / 2, tankObject.rect.Top - Utilities.GetInstance().TILE_SIZE / 2));
                         break;
                     default:
                         throw new Exception("Неверно указаны координаты танка. Проверьте правильность значений переменных танка.");

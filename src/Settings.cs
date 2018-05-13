@@ -181,14 +181,14 @@ namespace FireSafety
 
         public void SetCurrentUser(Guid user)
         {
-            UserRepository userRepository = new UserRepository(Utilities.GetContext());
+            UserRepository userRepository = new UserRepository(Utilities.GetInstance().context);
 
             currentUser = userRepository.Read(user);
         }
 
         public void SetCurrentMap(Guid map)
         {
-            MapRepository mapRepository = new MapRepository(Utilities.GetContext());
+            MapRepository mapRepository = new MapRepository(Utilities.GetInstance().context);
 
             currentMap = mapRepository.Read(map);
         }

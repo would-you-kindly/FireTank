@@ -92,7 +92,7 @@ namespace FireSafety
             Utilities.CenterOrigin(number);
             TankMoved += delegate (object sender, MoveTankEventArgs e)
             {
-                number.Position = e.newPosition + new Vector2f(Utilities.TILE_SIZE / 3, Utilities.TILE_SIZE / 3);
+                number.Position = e.newPosition + new Vector2f(Utilities.GetInstance().TILE_SIZE / 3, Utilities.GetInstance().TILE_SIZE / 3);
             };
 
             // Создаем полоску для указания направления танка
@@ -149,10 +149,10 @@ namespace FireSafety
             foreach (Lake lake in _terrain.lakes)
             {
                 // Если рядом с танком (по вертикали или горизонтали) есть озеро, возвращаем true
-                if (sprite.Position == lake.Position - new Vector2f(Utilities.TILE_SIZE, 0) ||
-                    sprite.Position == lake.Position + new Vector2f(Utilities.TILE_SIZE, 0) ||
-                    sprite.Position == lake.Position - new Vector2f(0, Utilities.TILE_SIZE) ||
-                    sprite.Position == lake.Position + new Vector2f(0, Utilities.TILE_SIZE))
+                if (sprite.Position == lake.Position - new Vector2f(Utilities.GetInstance().TILE_SIZE, 0) ||
+                    sprite.Position == lake.Position + new Vector2f(Utilities.GetInstance().TILE_SIZE, 0) ||
+                    sprite.Position == lake.Position - new Vector2f(0, Utilities.GetInstance().TILE_SIZE) ||
+                    sprite.Position == lake.Position + new Vector2f(0, Utilities.GetInstance().TILE_SIZE))
                 {
                     return true;
                 }
@@ -177,28 +177,28 @@ namespace FireSafety
 
             // Вверх
             if (NormalizedRotation == rotation * 0)
-                MoveBy(new Vector2f(0, -Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(0, -Utilities.GetInstance().TILE_SIZE * sign));
             // Вверх-вправо
             if (NormalizedRotation == rotation * 1)
-                MoveBy(new Vector2f(Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(Utilities.GetInstance().TILE_SIZE * sign, -Utilities.GetInstance().TILE_SIZE * sign));
             // Вправо
             if (NormalizedRotation == rotation * 2)
-                MoveBy(new Vector2f(Utilities.TILE_SIZE * sign, 0));
+                MoveBy(new Vector2f(Utilities.GetInstance().TILE_SIZE * sign, 0));
             // Вправо-вниз
             if (NormalizedRotation == rotation * 3)
-                MoveBy(new Vector2f(Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(Utilities.GetInstance().TILE_SIZE * sign, Utilities.GetInstance().TILE_SIZE * sign));
             // Вниз
             if (NormalizedRotation == rotation * 4)
-                MoveBy(new Vector2f(0, Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(0, Utilities.GetInstance().TILE_SIZE * sign));
             // Вниз-влево
             if (NormalizedRotation == rotation * 5)
-                MoveBy(new Vector2f(-Utilities.TILE_SIZE * sign, Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(-Utilities.GetInstance().TILE_SIZE * sign, Utilities.GetInstance().TILE_SIZE * sign));
             // Влево
             if (NormalizedRotation == rotation * 6)
-                MoveBy(new Vector2f(-Utilities.TILE_SIZE * sign, 0));
+                MoveBy(new Vector2f(-Utilities.GetInstance().TILE_SIZE * sign, 0));
             // Влево-вверх
             if (NormalizedRotation == rotation * 7)
-                MoveBy(new Vector2f(-Utilities.TILE_SIZE * sign, -Utilities.TILE_SIZE * sign));
+                MoveBy(new Vector2f(-Utilities.GetInstance().TILE_SIZE * sign, -Utilities.GetInstance().TILE_SIZE * sign));
 
             CheckCollisions();
         }
@@ -224,9 +224,9 @@ namespace FireSafety
             }
 
             // Если танк вышел за пределы карты, инициируем событие 
-            if (sprite.Position.X > Utilities.WINDOW_WIDTH ||
+            if (sprite.Position.X > Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT ||
                 sprite.Position.X < 0 ||
-                sprite.Position.Y > Utilities.WINDOW_HEIGHT ||
+                sprite.Position.Y > Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT ||
                 sprite.Position.Y < 0)
             {
                 MapLeft?.Invoke(this, new MapLeftEventArgs());

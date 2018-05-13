@@ -36,7 +36,7 @@ namespace FireSafety
         {
             // Создаем окна алгоритмов
             algorithmForms = new List<AlgorithmForm>();
-            for (int i = 0; i < Utilities.TANKS_COUNT; i++)
+            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
             {
                 AlgorithmForm algorithmForm = new AlgorithmForm();
                 algorithmForm.dgvAlgorithm.Tag = i;
@@ -56,12 +56,14 @@ namespace FireSafety
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
             sfmlForm.Text = worldController.GetWindDirection().ToString();
-            sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT), 
+                (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Show();
 
             // Создаем surface на форме для рисования через контекст SFML
             DrawingSurface surface = new DrawingSurface();
-            surface.Size = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            surface.Size = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
+                (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Controls.Add(surface);
             sfmlForm.ControlBox = false;
 
@@ -229,12 +231,12 @@ namespace FireSafety
         public void SmartLayout()
         {
             // Подбираем размеры и положение для окна карты
-            sfmlForm.ClientSize = new Size((int)Utilities.WINDOW_WIDTH, (int)Utilities.WINDOW_HEIGHT);
+            sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
+                (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Location = new Point(0, 0);
-            infoForm.Location = new Point(0, sfmlForm.Size.Height);
 
             // Подбираем размеры для окон алгоритмов
-            int algorithmFormsCountInColumn = (int)Math.Ceiling((decimal)(Utilities.TANKS_COUNT / 2.0));
+            int algorithmFormsCountInColumn = (int)Math.Ceiling((decimal)(Utilities.GetInstance().TANKS_COUNT / 2.0));
             int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - 4) / algorithmFormsCountInColumn;
 
             // Устанавливаем положение окон

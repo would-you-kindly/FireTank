@@ -24,8 +24,8 @@ namespace FireSafety
                 //};
 
                 //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelContext>());
-                //Utilities.GetContext().Users.Add(user);
-                //Utilities.GetContext().SaveChanges();
+                //Utilities.GetInstance().GetContext().Users.Add(user);
+                //Utilities.GetInstance().GetContext().SaveChanges();
 
                 try
                 {
