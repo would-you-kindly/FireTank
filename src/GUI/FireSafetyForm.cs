@@ -90,7 +90,7 @@ namespace FireSafety
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
+            sfd.Filter = $"Fire tank algorithms files (*.fta{algorithmForms.Count})|*.fta{algorithmForms.Count};";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 savedFilename = sfd.FileName;
@@ -101,7 +101,7 @@ namespace FireSafety
         private void openAlgorithmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Fire tank algorithms files (*.fta)|*.fta;";
+            ofd.Filter = $"Fire tank algorithms files (*.fta{algorithmForms.Count})|*.fta{algorithmForms.Count};";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 savedFilename = ofd.FileName;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace FireSafety
@@ -26,14 +27,27 @@ namespace FireSafety
                 //Utilities.GetContext().Users.Add(user);
                 //Utilities.GetContext().SaveChanges();
 
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-
-                LoginForm login = new LoginForm();
-                if (login.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    Game game = new Game();
-                    game.Run();
+                    using (SqlConnection connection = new SqlConnection(Settings.GetInstance().connectionString))
+                    {
+                        connection.Open();
+                    }
+
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+
+                    LoginForm login = new LoginForm();
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        Game game = new Game();
+                        game.Run();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Нет доступа к базе данных {Settings.GetInstance().connectionString}.");
+                    Application.Exit();
                 }
             }
             catch (DbEntityValidationException ex)
