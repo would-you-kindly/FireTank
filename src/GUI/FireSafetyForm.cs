@@ -48,9 +48,9 @@ namespace FireSafety
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
 
-            infoForm = new InfoForm();
-            infoForm.MdiParent = this;
-            infoForm.Show();
+            //infoForm = new InfoForm();
+            //infoForm.MdiParent = this;
+            //infoForm.Show();
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();

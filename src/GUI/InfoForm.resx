@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Тренажер предназначен для развития паралелльного мышления. На карте располагается несколько танков, для каждого из которых необходимо написать параллельный алгоритм. У танка имеются три исполнителя, ответственных за передвижение танка, подготовку орудия к выстрелу и вращение башни.</value>
+  </data>
 </root>

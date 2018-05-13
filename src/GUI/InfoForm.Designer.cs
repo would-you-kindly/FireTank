@@ -28,7 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoForm));
+            this.lblDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDescription.Location = new System.Drawing.Point(12, 9);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(260, 244);
+            this.lblDescription.TabIndex = 3;
+            this.lblDescription.Text = resources.GetString("lblDescription.Text");
             // 
             // InfoForm
             // 
@@ -36,6 +49,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.ControlBox = false;
+            this.Controls.Add(this.lblDescription);
             this.Name = "InfoForm";
             this.Text = "InfoForm";
             this.ResumeLayout(false);
@@ -43,5 +57,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblDescription;
     }
 }
