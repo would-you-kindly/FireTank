@@ -156,7 +156,7 @@ namespace FireSafety
                 {
                     return;
                 }
-                if (flammable is House && ((Tree)flammable).state.IsBurning())
+                if (flammable is House && ((House)flammable).state.IsBurning())
                 {
                     return;
                 }

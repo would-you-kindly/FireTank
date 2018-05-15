@@ -32,16 +32,16 @@
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControls = new System.Windows.Forms.GroupBox();
             this.btnClearAlgorithm = new System.Windows.Forms.Button();
             this.btnDeleteAction = new System.Windows.Forms.Button();
             this.lblTurretCommands = new System.Windows.Forms.Label();
             this.lblChargeCommands = new System.Windows.Forms.Label();
             this.lblMoveCommands = new System.Windows.Forms.Label();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             this.SuspendLayout();
@@ -130,35 +130,6 @@
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
-            // Number
-            // 
-            this.Number.HeaderText = "#";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 25;
-            // 
-            // MoveCommands
-            // 
-            this.MoveCommands.HeaderText = "Move";
-            this.MoveCommands.Name = "MoveCommands";
-            this.MoveCommands.ReadOnly = true;
-            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ShootCommands
-            // 
-            this.ShootCommands.HeaderText = "Shoot";
-            this.ShootCommands.Name = "ShootCommands";
-            this.ShootCommands.ReadOnly = true;
-            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TurretCommands
-            // 
-            this.TurretCommands.HeaderText = "Turret";
-            this.TurretCommands.Name = "TurretCommands";
-            this.TurretCommands.ReadOnly = true;
-            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // gbControls
             // 
             this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -224,6 +195,35 @@
             this.lblMoveCommands.TabIndex = 0;
             this.lblMoveCommands.Text = "Move commands";
             // 
+            // Number
+            // 
+            this.Number.HeaderText = "№";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 25;
+            // 
+            // MoveCommands
+            // 
+            this.MoveCommands.HeaderText = "Передвижение";
+            this.MoveCommands.Name = "MoveCommands";
+            this.MoveCommands.ReadOnly = true;
+            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ShootCommands
+            // 
+            this.ShootCommands.HeaderText = "Shoot";
+            this.ShootCommands.Name = "ShootCommands";
+            this.ShootCommands.ReadOnly = true;
+            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TurretCommands
+            // 
+            this.TurretCommands.HeaderText = "Turret";
+            this.TurretCommands.Name = "TurretCommands";
+            this.TurretCommands.ReadOnly = true;
+            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // AlgorithmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,11 +253,11 @@
         private System.Windows.Forms.Label lblTurretCommands;
         private System.Windows.Forms.Label lblChargeCommands;
         private System.Windows.Forms.Label lblMoveCommands;
+        private System.Windows.Forms.Button btnClearAlgorithm;
+        private System.Windows.Forms.Button btnDeleteAction;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
-        private System.Windows.Forms.Button btnClearAlgorithm;
-        private System.Windows.Forms.Button btnDeleteAction;
     }
 }

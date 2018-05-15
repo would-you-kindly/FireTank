@@ -15,15 +15,15 @@ namespace FireSafety
         }
 
         // Блокируем кнопку закрытия окна
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams createParams = base.CreateParams;
-                createParams.ClassStyle = 0x200;
-                return createParams;
-            }
-        }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams createParams = base.CreateParams;
+        //        createParams.ClassStyle = 0x200;
+        //        return createParams;
+        //    }
+        //}
 
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -136,8 +136,10 @@ namespace FireSafety
                 //gui.form.menuStrip.Enabled = true;
             }
 
-            // Если горящих деревьев больше нет, выводим результат работы алгоритма
-            if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0 && ParallelAlgorithm.GetInstance().IsExecuted())
+            // Если горящих деревьев (и домов) больше нет, выводим результат работы алгоритма
+            if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0 &&
+                world.terrain.houses.Where(house => house.state.IsBurning()).Count() == 0 &&
+                ParallelAlgorithm.GetInstance().IsExecuted())
             {
                 Ended?.Invoke(this, new EndEventArgs());
 
@@ -147,9 +149,9 @@ namespace FireSafety
                 MessageBox.Show($"Количество деревьев на карте: {world.terrain.trees.Count()}.\n" +
                     $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}.\n" +
                     $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n\n" +
-                    //$"Количество домов на карте: {world.terrain.houses.Count()}.\n" +
-                    //$"Спасено домов: {world.terrain.houses.Where(house => house.state.IsNormal()).Count()}.\n" +
-                    //$"Сгорело домов: {world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n" +
+                    $"Количество домов на карте: {world.terrain.houses.Count()}.\n" +
+                    $"Спасено домов: {world.terrain.houses.Where(house => house.state.IsNormal()).Count()}.\n" +
+                    $"Сгорело домов: {world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n" +
                     $"Эффективность разработанного алгоритма = {result}.",
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

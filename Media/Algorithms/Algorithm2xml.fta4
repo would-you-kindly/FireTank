@@ -98,32 +98,6 @@
             </Command>
           </Commands>
         </Action>
-        <Action>
-          <Commands>
-            <Command xsi:type="MoveCommand">
-              <command xmlns="MoveCommand">Backward</command>
-            </Command>
-            <Command xsi:type="ChargeCommand">
-              <command xmlns="ChargeCommand">None</command>
-            </Command>
-            <Command xsi:type="TurretCommand">
-              <command xmlns="TurretCommand">None</command>
-            </Command>
-          </Commands>
-        </Action>
-        <Action>
-          <Commands>
-            <Command xsi:type="MoveCommand">
-              <command xmlns="MoveCommand">Backward</command>
-            </Command>
-            <Command xsi:type="ChargeCommand">
-              <command xmlns="ChargeCommand">None</command>
-            </Command>
-            <Command xsi:type="TurretCommand">
-              <command xmlns="TurretCommand">None</command>
-            </Command>
-          </Commands>
-        </Action>
       </Actions>
     </Algorithm>
     <Algorithm>

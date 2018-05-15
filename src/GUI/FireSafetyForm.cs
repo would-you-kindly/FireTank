@@ -166,7 +166,7 @@ namespace FireSafety
                 Init();
 
                 // Применяем компоновку окон
-                SmartLayout();
+                SmartLayoutMapUp();
 
                 // Загружаем тренировочный алгоритм (если он есть)
                 LoadTrainingAlgorithm(ofd.FileName);
@@ -271,6 +271,73 @@ namespace FireSafety
                 algorithmForms[5].Size = new Size(algorithmForms[5].MinimumSize.Width, algorithmFormHeight);
                 algorithmForms[5].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height + algorithmForms[2].Height);
             }
+        }
+
+        private void SmartLayoutMapUp()
+        {
+            // Подбираем размеры и положение для окна карты
+            sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
+                (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
+            sfmlForm.Location = new Point(0, 0);
+
+            // Подбираем размеры для окон алгоритмов
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - sfmlForm.Size.Height - 4);
+
+            // Устанавливаем положение окон
+            if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
+            {
+                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[0].Location = new Point(algorithmForms[0].Width * 0, sfmlForm.Size.Height);
+            }
+            if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
+            {
+                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[1].Location = new Point(algorithmForms[0].Width * 1, sfmlForm.Size.Height);
+            }
+            if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
+            {
+                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[2].Location = new Point(algorithmForms[0].Width * 2, sfmlForm.Size.Height);
+            }
+            if (algorithmForms.Count == 4 && algorithmForms.ElementAt(3) != null)
+            {
+                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[3].Location = new Point(algorithmForms[0].Width * 3, sfmlForm.Size.Height);
+            }
+        }
+
+        private void SmartLayoutMapDown()
+        {
+            // Подбираем размеры и положение для окна карты
+            sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
+                (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
+
+            // Подбираем размеры для окон алгоритмов
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - sfmlForm.Size.Height - 4);
+
+            // Устанавливаем положение окон
+            if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
+            {
+                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[0].Location = new Point(algorithmForms[0].Width * 0, 0);
+            }
+            if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
+            {
+                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[1].Location = new Point(algorithmForms[0].Width * 1, 0);
+            }
+            if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
+            {
+                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[2].Location = new Point(algorithmForms[0].Width * 2, 0);
+            }
+            if (algorithmForms.Count == 4 && algorithmForms.ElementAt(3) != null)
+            {
+                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, algorithmFormHeight);
+                algorithmForms[3].Location = new Point(algorithmForms[0].Width * 3, 0);
+            }
+
+            sfmlForm.Location = new Point(0, algorithmForms[0].Size.Height);
         }
 
         private void FireSafetyForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -492,8 +559,16 @@ namespace FireSafety
 
         private void FireSafetyForm_Load(object sender, EventArgs e)
         {
-            SmartLayout();
+            SmartLayoutMapUp();
+            //SmartLayout();
         }
+
+
+        private void smartToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SmartLayoutMapUp();
+        }
+
 
         private void deleteActionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -545,6 +620,11 @@ namespace FireSafety
                 Shortcut(algorithmForms.First(form => form.ContainsFocus).cbCharge, ((ToolStripMenuItem)sender).Text);
             else
                 ChooseAlgorithmFormMessage();
+        }
+
+        private void smartmapDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SmartLayoutMapDown();
         }
     }
 }

@@ -82,6 +82,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -499,7 +501,9 @@
             this.layoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.smartToolStripMenuItem,
             this.horizontalToolStripMenuItem,
-            this.verticalToolStripMenuItem});
+            this.verticalToolStripMenuItem,
+            this.smartToolStripMenuItem1,
+            this.smartmapDownToolStripMenuItem});
             this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
             this.layoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.layoutToolStripMenuItem.Text = "Layout";
@@ -553,6 +557,20 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // smartToolStripMenuItem1
+            // 
+            this.smartToolStripMenuItem1.Name = "smartToolStripMenuItem1";
+            this.smartToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.smartToolStripMenuItem1.Text = "Smart (map up)";
+            this.smartToolStripMenuItem1.Click += new System.EventHandler(this.smartToolStripMenuItem1_Click);
+            // 
+            // smartmapDownToolStripMenuItem
+            // 
+            this.smartmapDownToolStripMenuItem.Name = "smartmapDownToolStripMenuItem";
+            this.smartmapDownToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.smartmapDownToolStripMenuItem.Text = "Smart (map down)";
+            this.smartmapDownToolStripMenuItem.Click += new System.EventHandler(this.smartmapDownToolStripMenuItem_Click);
             // 
             // FireSafetyForm
             // 
@@ -629,5 +647,7 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openMapFromDatabaseToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem smartToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem smartmapDownToolStripMenuItem;
     }
 }
