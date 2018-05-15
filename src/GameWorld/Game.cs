@@ -122,18 +122,18 @@ namespace FireSafety
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.GetInstance().WIDTH_TILE_COUNT, (int)Utilities.GetInstance().HEIGHT_TILE_COUNT,
                     Utilities.GetInstance().INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
-                ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
+                //ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
 
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();
 
-                foreach (AlgorithmForm form in gui.form.algorithmForms)
-                {
-                    form.Enabled = true;
-                }
+                //foreach (AlgorithmForm form in gui.form.algorithmForms)
+                //{
+                //    form.Enabled = true;
+                //}
 
-                gui.form.menuStrip.Enabled = true;
+                //gui.form.menuStrip.Enabled = true;
             }
 
             // Если горящих деревьев больше нет, выводим результат работы алгоритма
@@ -153,17 +153,17 @@ namespace FireSafety
                     $"Эффективность разработанного алгоритма = {result}.",
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
+                //ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();
 
-                foreach (AlgorithmForm form in gui.form.algorithmForms)
-                {
-                    form.Enabled = true;
-                }
+                //foreach (AlgorithmForm form in gui.form.algorithmForms)
+                //{
+                //    form.Enabled = true;
+                //}
 
-                gui.form.menuStrip.Enabled = true;
+                //gui.form.menuStrip.Enabled = true;
             }
         }
     }

@@ -139,7 +139,6 @@
             // 
             // openMapToolStripMenuItem
             // 
-            this.openMapToolStripMenuItem.Enabled = false;
             this.openMapToolStripMenuItem.Name = "openMapToolStripMenuItem";
             this.openMapToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
@@ -149,6 +148,7 @@
             // 
             // openMapFromDatabaseToolStripMenuItem
             // 
+            this.openMapFromDatabaseToolStripMenuItem.Enabled = false;
             this.openMapFromDatabaseToolStripMenuItem.Name = "openMapFromDatabaseToolStripMenuItem";
             this.openMapFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.openMapFromDatabaseToolStripMenuItem.Text = "Open map from database";
@@ -196,7 +196,7 @@
             this.rotate90CCWToolStripMenuItem,
             this.noneMoveCommandToolStripMenuItem});
             this.moveCommandsToolStripMenuItem.Name = "moveCommandsToolStripMenuItem";
-            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.moveCommandsToolStripMenuItem.Text = "Move";
             // 
             // forwardToolStripMenuItem
@@ -296,7 +296,7 @@
             this.chargeToolStripMenuItem,
             this.noneChargeToolStripMenuItem});
             this.shootCommandsToolStripMenuItem.Name = "shootCommandsToolStripMenuItem";
-            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.shootCommandsToolStripMenuItem.Text = "Shoot";
             // 
             // pressureX1ToolStripMenuItem
@@ -351,7 +351,7 @@
             this.shootToolStripMenuItem,
             this.noneToolStripMenuItem2});
             this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
-            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.turretCommandsToolStripMenuItem.Text = "Turret";
             // 
             // rotate45CWTurretToolStripMenuItem
@@ -463,7 +463,6 @@
             // 
             // reloadToolStripMenuItem
             // 
-            this.reloadToolStripMenuItem.Enabled = false;
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
             this.reloadToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
             this.reloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -472,7 +471,6 @@
             // 
             // stepToolStripMenuItem
             // 
-            this.stepToolStripMenuItem.Enabled = false;
             this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
             this.stepToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
             this.stepToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -529,7 +527,6 @@
             // 
             // settingsToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.Enabled = false;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "Settings";

@@ -15,7 +15,6 @@ namespace FireSafety
         public Terrain terrain;
         public List<WaterTrace> traces;
 
-
         public World()
         {
             Load();
@@ -39,7 +38,8 @@ namespace FireSafety
             if (openSaveMap == null)
             {
                 // По умолчанию открываем карту из базы данных
-                openSave = new DatabaseOpenSave(Guid.Parse("bea49d85-adf7-4a2b-bb9b-7e311afbfb46"));
+                //openSave = new DatabaseOpenSave(Guid.Parse("bea49d85-adf7-4a2b-bb9b-7e311afbfb46"));
+                openSave = new FileOpenSave("Media/Maps/TrainingExample.tmx");
             }
             else
             {

@@ -81,12 +81,13 @@ namespace FireSafety
             worldController.BuildWorld();
             algorithmController.RunAlgorithm();
 
-            foreach (AlgorithmForm form in algorithmForms)
-            {
-                form.Enabled = false;
-            }
+            // Отключаем окна алгоритмов
+            //foreach (AlgorithmForm form in algorithmForms)
+            //{
+            //    form.Enabled = false;
+            //}
 
-            menuStrip.Enabled = false;
+            //menuStrip.Enabled = false;
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)

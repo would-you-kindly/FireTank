@@ -203,6 +203,7 @@ namespace FireSafety
 
         public void Step()
         {
+            running = false;
             step = true;
         }
 
