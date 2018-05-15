@@ -51,17 +51,17 @@
             this.cbMove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMove.FormattingEnabled = true;
             this.cbMove.Items.AddRange(new object[] {
-            "Forward",
-            "Backward",
-            "Rotate 45 CW",
-            "Rotate 45 CCW",
-            "Rotate 90 CW",
-            "Rotate 90 CCW",
-            "Forward 45 CW",
-            "Forward 45 CCW",
-            "Backward 45 CW",
-            "Backward 45 CCW",
-            "None"});
+            "Вперед",
+            "Назад",
+            "45° по ч.с.",
+            "45° пр. ч.с.",
+            "90° по ч.с.",
+            "90° пр. ч.с.",
+            "Вперед 45° по ч.с.",
+            "Вперед 45° пр. ч.с.",
+            "Назад 45° по ч.с.",
+            "Назад 45° пр. ч.с.",
+            "Бездействие"});
             this.cbMove.Location = new System.Drawing.Point(6, 32);
             this.cbMove.Name = "cbMove";
             this.cbMove.Size = new System.Drawing.Size(112, 21);
@@ -73,11 +73,11 @@
             this.cbCharge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCharge.FormattingEnabled = true;
             this.cbCharge.Items.AddRange(new object[] {
-            "Pressure x1",
-            "Pressure x2",
-            "Refuel",
-            "Charge",
-            "None"});
+            "Давление +1",
+            "Давление +2",
+            "Зарядить",
+            "Пополнить запас",
+            "Бездействие"});
             this.cbCharge.Location = new System.Drawing.Point(124, 32);
             this.cbCharge.Name = "cbCharge";
             this.cbCharge.Size = new System.Drawing.Size(112, 21);
@@ -89,14 +89,14 @@
             this.cbTurret.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTurret.FormattingEnabled = true;
             this.cbTurret.Items.AddRange(new object[] {
-            "Rotate 45 CW",
-            "Rotate 45 CCW",
-            "Rotate 90 CW",
-            "Rotate 90 CCW",
-            "Up",
-            "Down",
-            "Shoot",
-            "None"});
+            "45° по ч.с.",
+            "45° пр. ч.с.",
+            "90° по ч.с.",
+            "90° пр. ч.с.",
+            "Поднять",
+            "Опустить",
+            "Выстрелить",
+            "Бездействие"});
             this.cbTurret.Location = new System.Drawing.Point(242, 32);
             this.cbTurret.Name = "cbTurret";
             this.cbTurret.Size = new System.Drawing.Size(112, 21);
@@ -212,14 +212,14 @@
             // 
             // ShootCommands
             // 
-            this.ShootCommands.HeaderText = "Shoot";
+            this.ShootCommands.HeaderText = "Подготовка";
             this.ShootCommands.Name = "ShootCommands";
             this.ShootCommands.ReadOnly = true;
             this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TurretCommands
             // 
-            this.TurretCommands.HeaderText = "Turret";
+            this.TurretCommands.HeaderText = "Башня";
             this.TurretCommands.Name = "TurretCommands";
             this.TurretCommands.ReadOnly = true;
             this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;

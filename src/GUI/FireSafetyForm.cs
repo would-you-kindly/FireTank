@@ -41,7 +41,7 @@ namespace FireSafety
                 AlgorithmForm algorithmForm = new AlgorithmForm();
                 algorithmForm.dgvAlgorithm.Tag = i;
                 algorithmForm.MdiParent = this;
-                algorithmForm.Text = $"{(i + 1)}. {Enum.Parse(typeof(Tank.TankColor), i.ToString()).ToString()}";
+                algorithmForm.Text = $"{(i + 1)}. {worldController.world.tanks[i].ToString()}";
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
             }

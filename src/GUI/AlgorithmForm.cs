@@ -71,9 +71,9 @@ namespace FireSafety
             else
             {
                 int number = dgvAlgorithm.RowCount + 1;
-                string move = index == 1 ? cb.SelectedItem.ToString() : "None";
-                string charge = index == 2 ? cb.SelectedItem.ToString() : "None";
-                string turret = index == 3 ? cb.SelectedItem.ToString() : "None";
+                string move = index == 1 ? cb.SelectedItem.ToString() : "Бездействие";
+                string charge = index == 2 ? cb.SelectedItem.ToString() : "Бездействие";
+                string turret = index == 3 ? cb.SelectedItem.ToString() : "Бездействие";
                 dgvAlgorithm.Rows.Add(number, move, charge, turret);
 
                 // Перемещаем таблицу вниз, чтобы были видны новые добавленные дейтсвия
@@ -164,64 +164,64 @@ namespace FireSafety
             // Обрабатываем горячие клавиши добавления команд движения
             if (e.KeyCode == Settings.GetInstance().moveForward)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Forward));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Forward));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveBackward)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Backward));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Backward));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveForward45CW)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Forward45CW));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CW));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveForward45CCW)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Forward45CCW));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CCW));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveBackward45CW)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Backward45CW));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CW));
             }
 
             if (e.KeyCode == Settings.GetInstance().moveBackward45CCW)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Backward45CCW));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CCW));
             }
 
             if (e.KeyCode == Settings.GetInstance().none)
             {
-                Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.None));
+                Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.None));
             }
 
             // Обрабатываем горячие клавиши добавления команд перезарядки
             if (e.KeyCode == Settings.GetInstance().chargeRefuel)
             {
-                Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.Refuel));
+                Shortcut(cbCharge, Utilities.ToChargeStringRus(ChargeCommand.Commands.Refuel));
             }
 
             if (e.KeyCode == Settings.GetInstance().chargeCharge)
             {
-                Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.Charge));
+                Shortcut(cbCharge, Utilities.ToChargeStringRus(ChargeCommand.Commands.Charge));
             }
 
             // Обрабатываем горячие клавиши добавления команд турели
             if (e.KeyCode == Settings.GetInstance().turretUp)
             {
-                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Up));
+                Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Up));
             }
 
             if (e.KeyCode == Settings.GetInstance().turretDown)
             {
-                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Down));
+                Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Down));
             }
 
             if (e.KeyCode == Settings.GetInstance().turretShoot)
             {
-                Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Shoot));
+                Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Shoot));
             }
         }
 
@@ -236,11 +236,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate45CW));
+                    Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CW));
                 }
                 else
                 {
-                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate90CW));
+                    Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate90CW));
                 }
             }
 
@@ -248,11 +248,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate45CCW));
+                    Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CCW));
                 }
                 else
                 {
-                    Shortcut(cbMove, Utilities.ToMoveString(MoveCommand.Commands.Rotate90CCW));
+                    Shortcut(cbMove, Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate90CCW));
                 }
             }
 
@@ -261,11 +261,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.PressureX1));
+                    Shortcut(cbCharge, Utilities.ToChargeStringRus(ChargeCommand.Commands.PressureX1));
                 }
                 else
                 {
-                    Shortcut(cbCharge, Utilities.ToChargeString(ChargeCommand.Commands.PressureX2));
+                    Shortcut(cbCharge, Utilities.ToChargeStringRus(ChargeCommand.Commands.PressureX2));
                 }
             }
 
@@ -274,11 +274,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate45CW));
+                    Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CW));
                 }
                 else
                 {
-                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate90CW));
+                    Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate90CW));
                 }
             }
 
@@ -286,11 +286,11 @@ namespace FireSafety
             {
                 if (clock.ElapsedMilliseconds < Settings.GetInstance().timeToHold)
                 {
-                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate45CCW));
+                    Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CCW));
                 }
                 else
                 {
-                    Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate90CCW));
+                    Shortcut(cbTurret, Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate90CCW));
                 }
             }
         }

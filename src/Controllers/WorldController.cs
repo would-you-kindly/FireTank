@@ -4,7 +4,7 @@ namespace FireSafety
 {
     public class WorldController
     {
-        private World world;
+        public World world;
 
         public WorldController(World world)
         {

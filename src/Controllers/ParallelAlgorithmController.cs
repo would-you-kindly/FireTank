@@ -97,13 +97,13 @@ namespace FireSafety
             switch (e.ColumnIndex)
             {
                 case 1:
-                    command = new MoveCommand(Utilities.ToMoveCommand(row.Cells[1].Value.ToString()));
+                    command = new MoveCommand(Utilities.ToMoveCommandRus(row.Cells[1].Value.ToString()));
                     break;
                 case 2:
-                    command = new ChargeCommand(Utilities.ToChargeCommand(row.Cells[2].Value.ToString()));
+                    command = new ChargeCommand(Utilities.ToChargeCommandRus(row.Cells[2].Value.ToString()));
                     break;
                 case 3:
-                    command = new TurretCommand(Utilities.ToTurretCommand(row.Cells[3].Value.ToString()));
+                    command = new TurretCommand(Utilities.ToTurretCommandRus(row.Cells[3].Value.ToString()));
                     break;
                 default:
                     return;
@@ -175,9 +175,9 @@ namespace FireSafety
             DataGridViewRow row = ((DataGridView)sender).Rows[e.RowIndex];
 
             // Собираем команды с добавленного DataGridViewRow
-            MoveCommand.Commands moveCommand = Utilities.ToMoveCommand(row.Cells[1].Value.ToString());
-            ChargeCommand.Commands chargeCommand = Utilities.ToChargeCommand(row.Cells[2].Value.ToString());
-            TurretCommand.Commands turretCommand = Utilities.ToTurretCommand(row.Cells[3].Value.ToString());
+            MoveCommand.Commands moveCommand = Utilities.ToMoveCommandRus(row.Cells[1].Value.ToString());
+            ChargeCommand.Commands chargeCommand = Utilities.ToChargeCommandRus(row.Cells[2].Value.ToString());
+            TurretCommand.Commands turretCommand = Utilities.ToTurretCommandRus(row.Cells[3].Value.ToString());
 
             // Добавляем Action в соответствующий алгоритм танка
             Action action = new Action(moveCommand, chargeCommand, turretCommand);
