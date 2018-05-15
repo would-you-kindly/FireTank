@@ -41,9 +41,14 @@ namespace FireSafety
                 AlgorithmForm algorithmForm = new AlgorithmForm();
                 algorithmForm.dgvAlgorithm.Tag = i;
                 algorithmForm.MdiParent = this;
-                algorithmForm.Text = $"{(i + 1)}. {worldController.world.tanks[i].ToString()}";
+                algorithmForm.Text = worldController.world.tanks[i].ToString();
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
+                algorithmsToolStripMenuItem.DropDownItems.Add(worldController.world.tanks[i].ToString(), null, new EventHandler((sender, e) =>
+                {
+                    algorithmForm.Visible = true;
+                    algorithmForm.Select();
+                }));
             }
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
@@ -56,14 +61,15 @@ namespace FireSafety
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
             sfmlForm.Text = worldController.GetWindDirection().ToString();
-            sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT), 
+            sfmlForm.MaximizeBox = false;
+            sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Show();
 
             // Создаем surface на форме для рисования через контекст SFML
             DrawingSurface surface = new DrawingSurface();
             surface.Size = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
-                (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
+                    (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Controls.Add(surface);
             sfmlForm.ControlBox = false;
 
@@ -222,6 +228,9 @@ namespace FireSafety
             infoForm?.Close();
             renderWindow?.Close();
             sfmlForm?.Close();
+
+            // Очищаем пункты меню алгоритмов
+            algorithmsToolStripMenuItem.DropDownItems.Clear();
         }
 
         private void smartToolStripMenuItem_Click(object sender, EventArgs e)

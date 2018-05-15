@@ -84,6 +84,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -491,6 +492,7 @@
             // 
             this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.layoutToolStripMenuItem,
+            this.algorithmsToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
@@ -572,6 +574,12 @@
             this.smartmapDownToolStripMenuItem.Text = "Smart (map down)";
             this.smartmapDownToolStripMenuItem.Click += new System.EventHandler(this.smartmapDownToolStripMenuItem_Click);
             // 
+            // algorithmsToolStripMenuItem
+            // 
+            this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
+            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.algorithmsToolStripMenuItem.Text = "Algorithms";
+            // 
             // FireSafetyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,5 +657,6 @@
         public System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem smartToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem smartmapDownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem algorithmsToolStripMenuItem;
     }
 }

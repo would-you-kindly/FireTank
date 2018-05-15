@@ -299,5 +299,15 @@ namespace FireSafety
         {
             var t = ParallelAlgorithm.GetInstance();
         }
+
+        private void AlgorithmForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
+
+            Visible = false;
+        }
     }
 }

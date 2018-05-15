@@ -409,22 +409,22 @@ namespace FireSafety
             switch (color)
             {
                 case TankColor.Red:
-                    result += $"Красный танк (#{number.DisplayedString})";
+                    result += $"Красный танк (№{number.DisplayedString})";
                     break;
                 case TankColor.Blue:
-                    result += $"Синий танк (#{number.DisplayedString})";
+                    result += $"Синий танк (№{number.DisplayedString})";
                     break;
                 case TankColor.Yellow:
-                    result += $"Желтый танк (#{number.DisplayedString})";
+                    result += $"Желтый танк (№{number.DisplayedString})";
                     break;
                 case TankColor.Green:
-                    result += $"Зеленый танк (#{number.DisplayedString})";
+                    result += $"Зеленый танк (№{number.DisplayedString})";
                     break;
                 case TankColor.Pink:
-                    result += $"Розовый танк (#{number.DisplayedString})";
+                    result += $"Розовый танк (№{number.DisplayedString})";
                     break;
                 case TankColor.Grey:
-                    result += $"Серый танк (#{number.DisplayedString})";
+                    result += $"Серый танк (№{number.DisplayedString})";
                     break;
             }
 

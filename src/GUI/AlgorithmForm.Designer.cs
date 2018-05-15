@@ -237,6 +237,7 @@
             this.Name = "AlgorithmForm";
             this.Tag = "Algorithm";
             this.Text = "Algorithm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlgorithmForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).EndInit();
             this.gbControls.ResumeLayout(false);
             this.gbControls.PerformLayout();
