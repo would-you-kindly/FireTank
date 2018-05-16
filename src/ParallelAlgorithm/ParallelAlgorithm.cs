@@ -223,7 +223,7 @@ namespace FireSafety
 
         public bool IsExecuted()
         {
-            return instance.algorithms.All(algo => algo.currentAction >= algo.actions.Count);
+            return instance.algorithms.Where(algo => !algo.blocked).All(algo => algo.currentAction >= algo.actions.Count);
         }
 
         public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees,

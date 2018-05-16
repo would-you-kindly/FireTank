@@ -309,5 +309,17 @@ namespace FireSafety
 
             Visible = false;
         }
+
+        private void chbBlocked_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+            {
+                ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = true;
+            }
+            else
+            {
+                ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = false;
+            }
+        }
     }
 }

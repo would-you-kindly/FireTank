@@ -28,27 +28,44 @@ namespace FireSafety
         [XmlIgnore]
         [NonSerialized]
         public int currentAction;
+        [XmlIgnore]
+        [NonSerialized]
+        public bool blocked;
 
         public Algorithm()
         {
             actions = new List<Action>();
             currentAction = 0;
+            blocked = false;
 
             Executed += ParallelAlgorithmController.ParallelAlgorithmController_AlgorithmExecuted;
         }
 
         public Action GetNextAction()
         {
-            NextActionPerforming?.Invoke(this, new PerformNextActionEventArgs());
+            if (!blocked)
+            {
+                NextActionPerforming?.Invoke(this, new PerformNextActionEventArgs());
 
-            return actions[currentAction++];
+                return actions[currentAction++];
+            }
+            else
+            {
+                return new Action();
+            }
         }
 
         public bool HasActions()
         {
             //Executed?.Invoke(this, new ExecuteEventArgs());
-
-            return actions.Count != currentAction;
+            if (!blocked)
+            {
+                return actions.Count != currentAction;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

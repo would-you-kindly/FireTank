@@ -42,6 +42,7 @@
             this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chbBlocked = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             this.SuspendLayout();
@@ -134,6 +135,7 @@
             // 
             this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbControls.Controls.Add(this.chbBlocked);
             this.gbControls.Controls.Add(this.btnClearAlgorithm);
             this.gbControls.Controls.Add(this.btnDeleteAction);
             this.gbControls.Controls.Add(this.lblTurretCommands);
@@ -224,6 +226,17 @@
             this.TurretCommands.ReadOnly = true;
             this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // chbBlocked
+            // 
+            this.chbBlocked.AutoSize = true;
+            this.chbBlocked.Location = new System.Drawing.Point(124, 63);
+            this.chbBlocked.Name = "chbBlocked";
+            this.chbBlocked.Size = new System.Drawing.Size(105, 17);
+            this.chbBlocked.TabIndex = 7;
+            this.chbBlocked.Text = "Заблокировано";
+            this.chbBlocked.UseVisualStyleBackColor = true;
+            this.chbBlocked.CheckedChanged += new System.EventHandler(this.chbBlocked_CheckedChanged);
+            // 
             // AlgorithmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,5 +273,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
+        private System.Windows.Forms.CheckBox chbBlocked;
     }
 }
