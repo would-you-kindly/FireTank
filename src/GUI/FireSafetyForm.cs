@@ -60,7 +60,7 @@ namespace FireSafety
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
             sfmlForm.MdiParent = this;
-            sfmlForm.Text = worldController.GetWindDirection().ToString();
+            sfmlForm.Text = $"Направление ветра - {worldController.GetWind().ToString()}";
             sfmlForm.MaximizeBox = false;
             sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));

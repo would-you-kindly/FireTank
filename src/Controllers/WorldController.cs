@@ -26,9 +26,9 @@ namespace FireSafety
             return world.map.properties[property];
         }
 
-        public Wind.Direction GetWindDirection()
+        public Wind GetWind()
         {
-            return world.terrain.wind.direction;
+            return world.terrain.wind;
         }
     }
 }

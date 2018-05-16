@@ -156,7 +156,7 @@
             this.btnClearAlgorithm.Name = "btnClearAlgorithm";
             this.btnClearAlgorithm.Size = new System.Drawing.Size(112, 23);
             this.btnClearAlgorithm.TabIndex = 6;
-            this.btnClearAlgorithm.Text = "Clear algorithm";
+            this.btnClearAlgorithm.Text = "Очистить";
             this.btnClearAlgorithm.UseVisualStyleBackColor = true;
             this.btnClearAlgorithm.Click += new System.EventHandler(this.btnClearAlgorithm_Click);
             // 
@@ -166,7 +166,7 @@
             this.btnDeleteAction.Name = "btnDeleteAction";
             this.btnDeleteAction.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteAction.TabIndex = 6;
-            this.btnDeleteAction.Text = "Delete action";
+            this.btnDeleteAction.Text = "Удалить строку";
             this.btnDeleteAction.UseVisualStyleBackColor = true;
             this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
             // 
@@ -175,27 +175,27 @@
             this.lblTurretCommands.AutoSize = true;
             this.lblTurretCommands.Location = new System.Drawing.Point(239, 16);
             this.lblTurretCommands.Name = "lblTurretCommands";
-            this.lblTurretCommands.Size = new System.Drawing.Size(89, 13);
+            this.lblTurretCommands.Size = new System.Drawing.Size(40, 13);
             this.lblTurretCommands.TabIndex = 4;
-            this.lblTurretCommands.Text = "Turret commands";
+            this.lblTurretCommands.Text = "Башня";
             // 
             // lblChargeCommands
             // 
             this.lblChargeCommands.AutoSize = true;
             this.lblChargeCommands.Location = new System.Drawing.Point(121, 16);
             this.lblChargeCommands.Name = "lblChargeCommands";
-            this.lblChargeCommands.Size = new System.Drawing.Size(95, 13);
+            this.lblChargeCommands.Size = new System.Drawing.Size(67, 13);
             this.lblChargeCommands.TabIndex = 3;
-            this.lblChargeCommands.Text = "Charge commands";
+            this.lblChargeCommands.Text = "Подготовка";
             // 
             // lblMoveCommands
             // 
             this.lblMoveCommands.AutoSize = true;
             this.lblMoveCommands.Location = new System.Drawing.Point(3, 16);
             this.lblMoveCommands.Name = "lblMoveCommands";
-            this.lblMoveCommands.Size = new System.Drawing.Size(88, 13);
+            this.lblMoveCommands.Size = new System.Drawing.Size(83, 13);
             this.lblMoveCommands.TabIndex = 0;
-            this.lblMoveCommands.Text = "Move commands";
+            this.lblMoveCommands.Text = "Передвижение";
             // 
             // Number
             // 
