@@ -68,7 +68,10 @@ namespace FireSafety
                     ProcessInput();
                     // TODO: Есть ли синтаксис, который позволяет обратиться к переменной типа bool и после этого ее переключить step = !step
                     if (ParallelAlgorithm.GetInstance().running || ParallelAlgorithm.GetInstance().step)
-                    {
+                    {           
+                        // TODO: Костыль
+                        ParallelAlgorithm.GetInstance().currentAction++;
+
                         ParallelAlgorithm.GetInstance().step = false;
                         Update(timePerFrame);
                     }
@@ -105,6 +108,7 @@ namespace FireSafety
 
         private void Game_Rendered(object sender, RenderEventArgs e)
         {
+
             CheckGameState();
         }
 
