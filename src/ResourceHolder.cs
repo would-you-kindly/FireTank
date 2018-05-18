@@ -23,11 +23,29 @@ namespace FireSafety
             }
         }
 
+        public void LoadTexture(Textures.ID id, byte[] bytes)
+        {
+            if (!textures.ContainsKey(id))
+            {
+                Texture texture = new Texture(bytes);
+                textures.Add(id, texture);
+            }
+        }
+
         public void LoadFont(Fonts.ID id, string filename)
         {
             if (!fonts.ContainsKey(id))
             {
                 Font font = new Font(filename);
+                fonts.Add(id, font);
+            }
+        }
+
+        public void LoadFont(Fonts.ID id, byte[] bytes)
+        {
+            if (!fonts.ContainsKey(id))
+            {
+                Font font = new Font(bytes);
                 fonts.Add(id, font);
             }
         }

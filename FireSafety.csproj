@@ -28,7 +28,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +51,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="src\GameWorld\House.cs" />
     <Compile Include="src\GameWorld\IFlammable.cs" />
     <Compile Include="src\OpenSave\IOpenSave.cs" />
@@ -160,9 +166,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Media\Sansation.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\AlgorithmForm.resx">
       <DependentUpon>AlgorithmForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +239,66 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BlueTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BlueTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BurnedHouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BurnedTree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Fire.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreenTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreenTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreyTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreyTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\House.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Lake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\PinkTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\PinkTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\RedTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\RedTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Tree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\YellowTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\YellowTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Prototypes\Sprites.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

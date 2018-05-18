@@ -2,6 +2,7 @@
 using SFML.System;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace FireSafety
@@ -52,28 +53,30 @@ namespace FireSafety
         private void LoadResources()
         {
             // Загружаем текстуры
-            resources.LoadTexture(Textures.ID.House, "Media/Textures/House.png");
-            resources.LoadTexture(Textures.ID.BurnedHouse, "Media/Textures/BurnedHouse.png");
-            resources.LoadTexture(Textures.ID.Fire, "Media/Textures/Fire.png");
-            resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/RedTank.png");
-            resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/RedTurret.png");
-            resources.LoadTexture(Textures.ID.BlueTank, "Media/Textures/BlueTank.png");
-            resources.LoadTexture(Textures.ID.BlueTurret, "Media/Textures/BlueTurret.png");
-            resources.LoadTexture(Textures.ID.YellowTank, "Media/Textures/YellowTank.png");
-            resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/YellowTurret.png");
-            resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/GreenTank.png");
-            resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/GreenTurret.png");
-            resources.LoadTexture(Textures.ID.PinkTank, "Media/Textures/PinkTank.png");
-            resources.LoadTexture(Textures.ID.PinkTurret, "Media/Textures/PinkTurret.png");
-            resources.LoadTexture(Textures.ID.GreyTank, "Media/Textures/GreyTank.png");
-            resources.LoadTexture(Textures.ID.GreyTurret, "Media/Textures/GreyTurret.png");
-            resources.LoadTexture(Textures.ID.Tree, "Media/Textures/Tree.png");
-            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
-            resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
-            resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
+            ImageConverter imageConverter = new ImageConverter();
+
+            resources.LoadTexture(Textures.ID.House, (byte[])imageConverter.ConvertTo(Resources.House, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.BurnedHouse, (byte[])imageConverter.ConvertTo(Resources.BurnedHouse, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.Fire, (byte[])imageConverter.ConvertTo(Resources.Fire, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.RedTank, (byte[])imageConverter.ConvertTo(Resources.RedTank, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.RedTurret, (byte[])imageConverter.ConvertTo(Resources.RedTurret, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.BlueTank, (byte[])imageConverter.ConvertTo(Resources.BlueTank, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.BlueTurret, (byte[])imageConverter.ConvertTo(Resources.BlueTurret, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.YellowTank, (byte[])imageConverter.ConvertTo(Resources.YellowTank, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.YellowTurret, (byte[])imageConverter.ConvertTo(Resources.YellowTurret, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.GreenTank, (byte[])imageConverter.ConvertTo(Resources.GreenTank, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.GreenTurret, (byte[])imageConverter.ConvertTo(Resources.GreenTurret, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.PinkTank, (byte[])imageConverter.ConvertTo(Resources.PinkTank, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.PinkTurret, (byte[])imageConverter.ConvertTo(Resources.PinkTurret, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.GreyTank, (byte[])imageConverter.ConvertTo(Resources.GreyTank, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.GreyTurret, (byte[])imageConverter.ConvertTo(Resources.GreyTurret, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.Tree, (byte[])imageConverter.ConvertTo(Resources.Tree, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.BurnedTree, (byte[])imageConverter.ConvertTo(Resources.BurnedTree, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.Lake, (byte[])imageConverter.ConvertTo(Resources.Lake, typeof(byte[])));
+            resources.LoadTexture(Textures.ID.Rock, (byte[])imageConverter.ConvertTo(Resources.Rock, typeof(byte[])));
 
             // Загружаем шрифты
-            resources.LoadFont(Fonts.ID.Sansation, "Media/Sansation.ttf");
+            resources.LoadFont(Fonts.ID.Sansation, Resources.Sansation);
         }
 
         // Выполняет построение мира, инициализирует точки старта объектов

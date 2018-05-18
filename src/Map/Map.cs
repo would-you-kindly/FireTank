@@ -2,6 +2,7 @@
 using SFML.System;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Xml;
 
@@ -84,7 +85,9 @@ namespace FireSafety
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
-            Image image = new Image(Path.Combine("Media/", imagePath.Remove(0, 3)));
+            ImageConverter imageConverter = new ImageConverter();
+            SFML.Graphics.Image image = new SFML.Graphics.Image((byte[])imageConverter.ConvertTo(Resources.Sprites, typeof(byte[])));
+            //Image image = new Image(Path.Combine("Media/", imagePath.Remove(0, 3)));
 
             // TODO: Проверку добавить
             //if (!img.loadFromFile(imagepath))
@@ -93,7 +96,7 @@ namespace FireSafety
             //    return false;
             //}
 
-            image.CreateMaskFromColor(new Color(255, 255, 255));
+            image.CreateMaskFromColor(new SFML.Graphics.Color(255, 255, 255));
             tilesetImage = new Texture(image);
             //tilesetImage.Smooth = false;
 
@@ -167,7 +170,7 @@ namespace FireSafety
                         sprite.Texture = tilesetImage;
                         sprite.TextureRect = subRects[subRectToUse];
                         sprite.Position = new Vector2f(x * tileWidth, y * tileHeight);
-                        sprite.Color = new Color(255, 255, 255, (byte)layer.opacity);
+                        sprite.Color = new SFML.Graphics.Color(255, 255, 255, (byte)layer.opacity);
 
                         layer.tiles.Add(sprite);
                     }

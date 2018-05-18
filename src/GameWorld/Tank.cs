@@ -87,8 +87,8 @@ namespace FireSafety
 
             // Определяем номер танка
             number = new Text(((int)color + 1).ToString(), resources.GetFont(Fonts.ID.Sansation), 20);
-            number.FillColor = Color.Red;
-            number.OutlineThickness = 0.75f;
+            number.Color = Color.Red;
+            //number.OutlineThickness = 0.75f;
             Utilities.CenterOrigin(number);
             TankMoved += delegate (object sender, MoveTankEventArgs e)
             {
