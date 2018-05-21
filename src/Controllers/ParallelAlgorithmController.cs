@@ -42,7 +42,7 @@ namespace FireSafety
                 // Подсвечиваем текущее выполняющееся действие (если оно есть)
                 try
                 {
-                    form.dgvAlgorithm.Rows[ParallelAlgorithm.GetInstance().currentAction].DefaultCellStyle.BackColor = Color.Yellow;
+                    form.dgvAlgorithm.Rows[ParallelAlgorithm.GetInstance().currentAction - 1].DefaultCellStyle.BackColor = Color.Yellow;
                 }
                 catch (Exception)
                 {

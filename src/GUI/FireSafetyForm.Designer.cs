@@ -76,15 +76,15 @@
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,9 +151,8 @@
             // 
             // openMapFromDatabaseToolStripMenuItem
             // 
-            this.openMapFromDatabaseToolStripMenuItem.Enabled = false;
             this.openMapFromDatabaseToolStripMenuItem.Name = "openMapFromDatabaseToolStripMenuItem";
-            this.openMapFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.openMapFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
             this.openMapFromDatabaseToolStripMenuItem.Text = "Open map from database";
             this.openMapFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.openMapFromDatabaseToolStripMenuItem_Click);
             // 
@@ -181,7 +180,7 @@
             this.shootCommandsToolStripMenuItem,
             this.turretCommandsToolStripMenuItem});
             this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
-            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.addCommandToolStripMenuItem.Text = "Commands";
             // 
             // moveCommandsToolStripMenuItem
@@ -427,7 +426,7 @@
             this.deleteActionToolStripMenuItem,
             this.clearAlgorithmToolStripMenuItem});
             this.reorderingToolStripMenuItem.Name = "reorderingToolStripMenuItem";
-            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.reorderingToolStripMenuItem.Text = "Reordering";
             // 
             // deleteActionToolStripMenuItem
@@ -507,34 +506,54 @@
             this.horizontalToolStripMenuItem,
             this.verticalToolStripMenuItem});
             this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
-            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.layoutToolStripMenuItem.Text = "Компоновка";
             // 
             // smartToolStripMenuItem
             // 
             this.smartToolStripMenuItem.Name = "smartToolStripMenuItem";
-            this.smartToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.smartToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.smartToolStripMenuItem.Text = "Smart";
             this.smartToolStripMenuItem.Click += new System.EventHandler(this.smartToolStripMenuItem_Click);
+            // 
+            // smartToolStripMenuItem1
+            // 
+            this.smartToolStripMenuItem1.Name = "smartToolStripMenuItem1";
+            this.smartToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
+            this.smartToolStripMenuItem1.Text = "Smart (map up)";
+            this.smartToolStripMenuItem1.Click += new System.EventHandler(this.smartToolStripMenuItem1_Click);
+            // 
+            // smartmapDownToolStripMenuItem
+            // 
+            this.smartmapDownToolStripMenuItem.Name = "smartmapDownToolStripMenuItem";
+            this.smartmapDownToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.smartmapDownToolStripMenuItem.Text = "Smart (map down)";
+            this.smartmapDownToolStripMenuItem.Click += new System.EventHandler(this.smartmapDownToolStripMenuItem_Click);
             // 
             // horizontalToolStripMenuItem
             // 
             this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.horizontalToolStripMenuItem.Text = "Horizontal";
             this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
             // 
             // verticalToolStripMenuItem
             // 
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.verticalToolStripMenuItem.Text = "Vertical";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
+            // 
+            // algorithmsToolStripMenuItem
+            // 
+            this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
+            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.algorithmsToolStripMenuItem.Text = "Алгоритмы";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.settingsToolStripMenuItem.Text = "Настройки";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -559,26 +578,6 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.aboutToolStripMenuItem.Text = "О программе";
-            // 
-            // smartToolStripMenuItem1
-            // 
-            this.smartToolStripMenuItem1.Name = "smartToolStripMenuItem1";
-            this.smartToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
-            this.smartToolStripMenuItem1.Text = "Smart (map up)";
-            this.smartToolStripMenuItem1.Click += new System.EventHandler(this.smartToolStripMenuItem1_Click);
-            // 
-            // smartmapDownToolStripMenuItem
-            // 
-            this.smartmapDownToolStripMenuItem.Name = "smartmapDownToolStripMenuItem";
-            this.smartmapDownToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.smartmapDownToolStripMenuItem.Text = "Smart (map down)";
-            this.smartmapDownToolStripMenuItem.Click += new System.EventHandler(this.smartmapDownToolStripMenuItem_Click);
-            // 
-            // algorithmsToolStripMenuItem
-            // 
-            this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
-            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.algorithmsToolStripMenuItem.Text = "Алгоритмы";
             // 
             // FireSafetyForm
             // 

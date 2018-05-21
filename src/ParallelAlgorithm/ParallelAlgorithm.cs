@@ -60,6 +60,9 @@ namespace FireSafety
         public event LoadEventHandler Loaded;
         public event ReloadEventHandler Reloaded;
         public event PerformNexActionEventHandler NextActionPerforming;
+
+       
+
         public event ExecuteEventHandler Executed;
 
         // Переменные параллельного алгоритма
@@ -121,6 +124,13 @@ namespace FireSafety
             }
 
             return instance;
+        }
+
+        public void SetNextAction()
+        {
+            currentAction++;
+
+            instance.NextActionPerforming?.Invoke(instance, new PerformNextActionEventArgs());
         }
 
         private static void Instance_NextActionPerforming(object sender, PerformNextActionEventArgs e)

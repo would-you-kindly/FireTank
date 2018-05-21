@@ -27,28 +27,28 @@ namespace FireSafety
                 //Utilities.GetInstance().GetContext().Users.Add(user);
                 //Utilities.GetInstance().GetContext().SaveChanges();
 
-                //try
+                try
                 {
-                    //using (SqlConnection connection = new SqlConnection(Settings.GetInstance().connectionString))
-                    //{
-                    //    connection.Open();
-                    //}
+                    using (SqlConnection connection = new SqlConnection(Settings.GetInstance().connectionString))
+                    {
+                        connection.Open();
+                    }
 
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
 
-                    //LoginForm login = new LoginForm();
-                    //if (login.ShowDialog() == DialogResult.OK)
+                    LoginForm login = new LoginForm();
+                    if (login.ShowDialog() == DialogResult.OK)
                     {
                         Game game = new Game();
                         game.Run();
                     }
                 }
-                //catch (Exception)
-                //{
-                //    MessageBox.Show($"Нет доступа к базе данных {Settings.GetInstance().connectionString}.");
-                //    Application.Exit();
-                //}
+                catch (Exception)
+                {
+                    MessageBox.Show($"Нет доступа к базе данных {Settings.GetInstance().connectionString}.");
+                    Application.Exit();
+                }
             }
             catch (DbEntityValidationException ex)
             {

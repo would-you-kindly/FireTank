@@ -29,6 +29,7 @@ namespace FireSafety
         public TreeState state;
         private Flame flame;
         private Sprite burnedTreeSprite;
+        private Text hitPoints;
 
         public Tree(Textures.ID idTree, ResourceHolder resources) :
             base(idTree, resources)
@@ -37,6 +38,13 @@ namespace FireSafety
 
             flame = new Flame(Textures.ID.Fire, resources);
             burnedTreeSprite = new Sprite(resources.GetTexture(Textures.ID.BurnedTree));
+
+            // Количество жизней дерева
+            hitPoints = new Text(state.hitPoints.ToString(), resources.GetFont(Fonts.ID.Sansation), 12);
+            hitPoints.FillColor = Color.Blue;
+            hitPoints.OutlineThickness = 0.5f;
+            Utilities.CenterOrigin(hitPoints);
+            hitPoints.Position = sprite.Position + new Vector2f(Utilities.GetInstance().TILE_SIZE / 3, Utilities.GetInstance().TILE_SIZE / 3);
 
             Utilities.CenterOrigin(burnedTreeSprite);
             Utilities.CenterOrigin(sprite);
@@ -69,6 +77,8 @@ namespace FireSafety
             {
                 Burn();
             }
+
+            hitPoints.DisplayedString = state.hitPoints.ToString();
         }
 
         public override void Draw(RenderTarget target, RenderStates states)
@@ -85,6 +95,7 @@ namespace FireSafety
             {
                 target.Draw(sprite, states);
                 target.Draw(flame.sprite, states);
+                target.Draw(hitPoints, states);
             }
 
             if (state.IsBurned())

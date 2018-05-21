@@ -29,6 +29,7 @@ namespace FireSafety
         public HouseState state;
         private Flame flame;
         private Sprite burnedHouseSprite;
+        private Text hitPoints;
 
         public House(Textures.ID id, ResourceHolder resources)
             : base(id, resources)
@@ -37,6 +38,13 @@ namespace FireSafety
 
             flame = new Flame(Textures.ID.Fire, resources);
             burnedHouseSprite = new Sprite(resources.GetTexture(Textures.ID.BurnedHouse));
+
+            // Количество жизней дома
+            hitPoints = new Text(state.hitPoints.ToString(), resources.GetFont(Fonts.ID.Sansation), 12);
+            hitPoints.FillColor = Color.Blue;
+            hitPoints.OutlineThickness = 0.5f;
+            Utilities.CenterOrigin(hitPoints);
+            hitPoints.Position = sprite.Position + new Vector2f(Utilities.GetInstance().TILE_SIZE / 3, Utilities.GetInstance().TILE_SIZE / 3);
 
             Utilities.CenterOrigin(burnedHouseSprite);
             Utilities.CenterOrigin(sprite);
@@ -69,6 +77,8 @@ namespace FireSafety
             {
                 Burn();
             }
+
+            hitPoints.DisplayedString = state.hitPoints.ToString();
         }
 
         public override void Draw(RenderTarget target, RenderStates states)
@@ -85,6 +95,7 @@ namespace FireSafety
             {
                 target.Draw(sprite, states);
                 target.Draw(flame.sprite, states);
+                target.Draw(hitPoints, states);
             }
 
             if (state.IsBurned())
