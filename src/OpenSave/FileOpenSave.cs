@@ -42,7 +42,7 @@ namespace FireSafety
 
             if (!map.LoadFromFile(filename))
             {
-                throw new Exception("Не удалось загрузить карту");
+                throw new Exception("Не удалось загрузить карту.");
             }
 
             return map;

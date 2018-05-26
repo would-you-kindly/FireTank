@@ -49,7 +49,7 @@ namespace FireSafety
                     break;
             }
 
-            throw new Exception("Неверно задано наравление ветра");
+            throw new Exception("Неверно задано наравление ветра.");
         }
     }
 }

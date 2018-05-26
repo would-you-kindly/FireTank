@@ -41,18 +41,18 @@ namespace FireSafety
             switch (command)
             {
                 case Commands.PressureX1:
-                    return "Pressure x1";
+                    return "Давление +1";
                 case Commands.PressureX2:
-                    return "Pressure x2";
+                    return "Давление +2";
                 case Commands.Refuel:
-                    return "Refuel";
+                    return "Пополнить запасы";
                 case Commands.Charge:
-                    return "Charge";
+                    return "Зарядить";
                 case Commands.None:
-                    return "None";
+                    return "Бездействие";
             }
 
-            throw new NotImplementedException();
+            throw new Exception("Неверно задано название команды ChargeCommand.");
         }
     }
 }

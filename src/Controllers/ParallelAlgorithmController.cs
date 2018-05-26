@@ -116,7 +116,7 @@ namespace FireSafety
             }
             else
             {
-                throw new Exception("Команде алгоритма присвоено несуществующее значение");
+                throw new Exception("Команде алгоритма присвоено несуществующее значение.");
             }
         }
 

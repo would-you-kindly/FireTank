@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.dgvMaps = new System.Windows.Forms.DataGridView();
-            this.btnOpenMap = new System.Windows.Forms.Button();
             this.dgvtbcNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtbcGuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnOpenMap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaps)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,17 +58,7 @@
             this.dgvMaps.ShowRowErrors = false;
             this.dgvMaps.Size = new System.Drawing.Size(260, 209);
             this.dgvMaps.TabIndex = 0;
-            // 
-            // btnOpenMap
-            // 
-            this.btnOpenMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenMap.Location = new System.Drawing.Point(197, 227);
-            this.btnOpenMap.Name = "btnOpenMap";
-            this.btnOpenMap.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenMap.TabIndex = 1;
-            this.btnOpenMap.Text = "Open map";
-            this.btnOpenMap.UseVisualStyleBackColor = true;
-            this.btnOpenMap.Click += new System.EventHandler(this.btnOpenMap_Click);
+            this.dgvMaps.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMaps_CellMouseDoubleClick);
             // 
             // dgvtbcNumber
             // 
@@ -82,15 +72,26 @@
             this.dgvtbcGuid.Name = "dgvtbcGuid";
             this.dgvtbcGuid.ReadOnly = true;
             // 
-            // MapOpenerForm
+            // btnOpenMap
+            // 
+            this.btnOpenMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenMap.Location = new System.Drawing.Point(197, 227);
+            this.btnOpenMap.Name = "btnOpenMap";
+            this.btnOpenMap.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenMap.TabIndex = 1;
+            this.btnOpenMap.Text = "Open map";
+            this.btnOpenMap.UseVisualStyleBackColor = true;
+            this.btnOpenMap.Click += new System.EventHandler(this.btnOpenMap_Click);
+            // 
+            // OpenMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.btnOpenMap);
             this.Controls.Add(this.dgvMaps);
-            this.Name = "MapOpenerForm";
-            this.Text = "MapOpenerForm";
+            this.Name = "OpenMapForm";
+            this.Text = "Открыть карту";
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaps)).EndInit();
             this.ResumeLayout(false);
 

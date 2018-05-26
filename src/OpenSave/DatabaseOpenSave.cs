@@ -55,7 +55,7 @@ namespace FireSafety
 
             if (!map.LoadFromDatabase(id))
             {
-                throw new Exception("Не удалось загрузить карту");
+                throw new Exception("Не удалось загрузить карту.");
             }
 
             return map;

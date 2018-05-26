@@ -33,6 +33,7 @@
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
             this.gbControls = new System.Windows.Forms.GroupBox();
+            this.chbBlocked = new System.Windows.Forms.CheckBox();
             this.btnClearAlgorithm = new System.Windows.Forms.Button();
             this.btnDeleteAction = new System.Windows.Forms.Button();
             this.lblTurretCommands = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chbBlocked = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,7 @@
             // 
             // dgvAlgorithm
             // 
+            this.dgvAlgorithm.AllowDrop = true;
             this.dgvAlgorithm.AllowUserToAddRows = false;
             this.dgvAlgorithm.AllowUserToDeleteRows = false;
             this.dgvAlgorithm.AllowUserToResizeColumns = false;
@@ -150,6 +151,17 @@
             this.gbControls.TabIndex = 8;
             this.gbControls.TabStop = false;
             // 
+            // chbBlocked
+            // 
+            this.chbBlocked.AutoSize = true;
+            this.chbBlocked.Location = new System.Drawing.Point(124, 63);
+            this.chbBlocked.Name = "chbBlocked";
+            this.chbBlocked.Size = new System.Drawing.Size(105, 17);
+            this.chbBlocked.TabIndex = 7;
+            this.chbBlocked.Text = "Заблокировано";
+            this.chbBlocked.UseVisualStyleBackColor = true;
+            this.chbBlocked.CheckedChanged += new System.EventHandler(this.chbBlocked_CheckedChanged);
+            // 
             // btnClearAlgorithm
             // 
             this.btnClearAlgorithm.Location = new System.Drawing.Point(242, 59);
@@ -175,27 +187,27 @@
             this.lblTurretCommands.AutoSize = true;
             this.lblTurretCommands.Location = new System.Drawing.Point(239, 16);
             this.lblTurretCommands.Name = "lblTurretCommands";
-            this.lblTurretCommands.Size = new System.Drawing.Size(40, 13);
+            this.lblTurretCommands.Size = new System.Drawing.Size(56, 13);
             this.lblTurretCommands.TabIndex = 4;
-            this.lblTurretCommands.Text = "Башня";
+            this.lblTurretCommands.Text = "Наводчик";
             // 
             // lblChargeCommands
             // 
             this.lblChargeCommands.AutoSize = true;
             this.lblChargeCommands.Location = new System.Drawing.Point(121, 16);
             this.lblChargeCommands.Name = "lblChargeCommands";
-            this.lblChargeCommands.Size = new System.Drawing.Size(67, 13);
+            this.lblChargeCommands.Size = new System.Drawing.Size(75, 13);
             this.lblChargeCommands.TabIndex = 3;
-            this.lblChargeCommands.Text = "Подготовка";
+            this.lblChargeCommands.Text = "Заряжающий";
             // 
             // lblMoveCommands
             // 
             this.lblMoveCommands.AutoSize = true;
             this.lblMoveCommands.Location = new System.Drawing.Point(3, 16);
             this.lblMoveCommands.Name = "lblMoveCommands";
-            this.lblMoveCommands.Size = new System.Drawing.Size(83, 13);
+            this.lblMoveCommands.Size = new System.Drawing.Size(55, 13);
             this.lblMoveCommands.TabIndex = 0;
-            this.lblMoveCommands.Text = "Передвижение";
+            this.lblMoveCommands.Text = "Водитель";
             // 
             // Number
             // 
@@ -207,35 +219,24 @@
             // 
             // MoveCommands
             // 
-            this.MoveCommands.HeaderText = "Передвижение";
+            this.MoveCommands.HeaderText = "Водитель";
             this.MoveCommands.Name = "MoveCommands";
             this.MoveCommands.ReadOnly = true;
             this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ShootCommands
             // 
-            this.ShootCommands.HeaderText = "Подготовка";
+            this.ShootCommands.HeaderText = "Заряжающий";
             this.ShootCommands.Name = "ShootCommands";
             this.ShootCommands.ReadOnly = true;
             this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TurretCommands
             // 
-            this.TurretCommands.HeaderText = "Башня";
+            this.TurretCommands.HeaderText = "Наводчик";
             this.TurretCommands.Name = "TurretCommands";
             this.TurretCommands.ReadOnly = true;
             this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // chbBlocked
-            // 
-            this.chbBlocked.AutoSize = true;
-            this.chbBlocked.Location = new System.Drawing.Point(124, 63);
-            this.chbBlocked.Name = "chbBlocked";
-            this.chbBlocked.Size = new System.Drawing.Size(105, 17);
-            this.chbBlocked.TabIndex = 7;
-            this.chbBlocked.Text = "Заблокировано";
-            this.chbBlocked.UseVisualStyleBackColor = true;
-            this.chbBlocked.CheckedChanged += new System.EventHandler(this.chbBlocked_CheckedChanged);
             // 
             // AlgorithmForm
             // 
@@ -249,7 +250,6 @@
             this.MinimumSize = new System.Drawing.Size(400, 280);
             this.Name = "AlgorithmForm";
             this.Tag = "Algorithm";
-            this.Text = "Algorithm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlgorithmForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).EndInit();
             this.gbControls.ResumeLayout(false);
@@ -269,10 +269,10 @@
         private System.Windows.Forms.Label lblMoveCommands;
         private System.Windows.Forms.Button btnClearAlgorithm;
         private System.Windows.Forms.Button btnDeleteAction;
+        private System.Windows.Forms.CheckBox chbBlocked;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
-        private System.Windows.Forms.CheckBox chbBlocked;
     }
 }

@@ -13,7 +13,7 @@ namespace FireSafety
             {
                 if (guid == null)
                 {
-                    throw new Exception("Guid не задан");
+                    throw new Exception("Guid карты не задан.");
                 }
 
                 return guid;
@@ -44,12 +44,22 @@ namespace FireSafety
 
         private void btnOpenMap_Click(object sender, EventArgs e)
         {
+            OpenMap();
+        }
+
+        private void dgvMaps_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            OpenMap();
+        }
+
+        private void OpenMap()
+        {
             if (dgvMaps.SelectedRows.Count != 0)
             {
                 guid = (Guid)dgvMaps.SelectedRows[0].Cells[1].Value;
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
     }

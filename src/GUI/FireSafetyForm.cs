@@ -64,6 +64,7 @@ namespace FireSafety
             sfmlForm.MaximizeBox = false;
             sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
+            sfmlForm.MinimumSize = sfmlForm.Size;
             sfmlForm.Show();
 
             // Создаем surface на форме для рисования через контекст SFML
@@ -72,6 +73,10 @@ namespace FireSafety
                     (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Controls.Add(surface);
             sfmlForm.ControlBox = false;
+            sfmlForm.SizeChanged += (sender, e) =>
+            {
+                surface.Size = sfmlForm.ClientSize;
+            };
 
             // Creates our SFML RenderWindow on our surface control
             renderWindow = new RenderWindow(surface.Handle);

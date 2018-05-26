@@ -126,7 +126,7 @@ namespace FireSafety
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.GetInstance().WIDTH_TILE_COUNT, (int)Utilities.GetInstance().HEIGHT_TILE_COUNT,
                     Utilities.GetInstance().INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
-                ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
+                //ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
 
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
@@ -156,10 +156,10 @@ namespace FireSafety
                     $"Количество домов на карте: {world.terrain.houses.Count()}.\n" +
                     $"Спасено домов: {world.terrain.houses.Where(house => house.state.IsNormal()).Count()}.\n" +
                     $"Сгорело домов: {world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n" +
-                    $"Эффективность разработанного алгоритма = {result}.",
+                    $"Эффективность разработанного алгоритма = {Math.Round(result, 2)}.",
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
+                //ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();

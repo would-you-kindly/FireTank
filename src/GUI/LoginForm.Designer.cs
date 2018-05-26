@@ -40,9 +40,9 @@
             this.lblLogin.AutoSize = true;
             this.lblLogin.Location = new System.Drawing.Point(12, 9);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(33, 13);
+            this.lblLogin.Size = new System.Drawing.Size(38, 13);
             this.lblLogin.TabIndex = 0;
-            this.lblLogin.Text = "Login";
+            this.lblLogin.Text = "Логин";
             // 
             // tbLogin
             // 
@@ -56,9 +56,9 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(12, 48);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.Size = new System.Drawing.Size(45, 13);
             this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Password";
+            this.lblPassword.Text = "Пароль";
             // 
             // tbPassword
             // 
@@ -74,7 +74,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(260, 23);
             this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Войти";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -94,7 +94,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 180);
             this.Name = "LoginForm";
-            this.Text = "FireTank";
+            this.Text = "Пожарный танк";
             this.ResumeLayout(false);
             this.PerformLayout();
 

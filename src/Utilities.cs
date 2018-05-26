@@ -13,6 +13,8 @@ namespace FireSafety
         public uint WIDTH_TILE_COUNT;
         public uint HEIGHT_TILE_COUNT;
         public int INIT_BURNING_TREES;
+        public int MAX_TANKS_COUNT = 6;
+
         public ModelContext context;
 
         private Utilities()
@@ -83,7 +85,7 @@ namespace FireSafety
                     return MoveCommand.Commands.None;
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует.");
         }
 
         public static ChargeCommand.Commands ToChargeCommandRus(string value)
@@ -102,7 +104,7 @@ namespace FireSafety
                     return ChargeCommand.Commands.None;
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует.");
         }
 
         public static TurretCommand.Commands ToTurretCommandRus(string value)
@@ -127,7 +129,7 @@ namespace FireSafety
                     return TurretCommand.Commands.None;
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует.");
         }
 
         public static string ToMoveStringRus(MoveCommand.Commands value)
@@ -158,7 +160,7 @@ namespace FireSafety
                     return "Бездействие";
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует.");
         }
 
         public static string ToChargeStringRus(ChargeCommand.Commands value)
@@ -177,7 +179,7 @@ namespace FireSafety
                     return "Бездействие";
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует.");
         }
 
         public static string ToTurretStringRus(TurretCommand.Commands value)
@@ -202,7 +204,7 @@ namespace FireSafety
                     return "Бездействие";
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует.");
         }
 
         public static MoveCommand.Commands ToMoveCommand(string value)
@@ -233,7 +235,7 @@ namespace FireSafety
                     return MoveCommand.Commands.None;
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует.");
         }
 
         public static ChargeCommand.Commands ToChargeCommand(string value)
@@ -252,7 +254,7 @@ namespace FireSafety
                     return ChargeCommand.Commands.None;
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует.");
         }
 
         public static TurretCommand.Commands ToTurretCommand(string value)
@@ -277,7 +279,7 @@ namespace FireSafety
                     return TurretCommand.Commands.None;
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует.");
         }
 
         public static string ToMoveString(MoveCommand.Commands value)
@@ -308,7 +310,7 @@ namespace FireSafety
                     return "None";
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует.");
         }
 
         public static string ToChargeString(ChargeCommand.Commands value)
@@ -327,7 +329,7 @@ namespace FireSafety
                     return "None";
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует.");
         }
 
         public static string ToTurretString(TurretCommand.Commands value)
@@ -352,7 +354,7 @@ namespace FireSafety
                     return "None";
             }
 
-            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует");
+            throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует.");
         }
 
         public static float NormalizedRotation(float rotation)

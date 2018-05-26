@@ -41,24 +41,24 @@ namespace FireSafety
             switch (command)
             {
                 case Commands.Rotate45CW:
-                    return "Rotate 45 CW";
+                    return "45° по ч.с.";
                 case Commands.Rotate45CCW:
-                    return "Rotate 45 CCW";
+                    return "45° пр. ч.с.";
                 case Commands.Rotate90CW:
-                    return "Rotate 90 CW";
+                    return "90° по ч.с.";
                 case Commands.Rotate90CCW:
-                    return "Rotate 90 CCW";
+                    return "90° пр. ч.с.";
                 case Commands.Up:
-                    return "Up";
+                    return "Поднять";
                 case Commands.Down:
-                    return "Down";
+                    return "Опустить";
                 case Commands.Shoot:
-                    return "Shoot";
+                    return "Выстрелить";
                 case Commands.None:
-                    return "None";
+                    return "Бездействие";
             }
 
-            throw new NotImplementedException();
+            throw new Exception("Неверно задано название команды TurretCommand.");
         }
     }
 }

@@ -47,77 +47,101 @@ namespace FireSafety
                 return;
             }
 
-            // Задаем номер стобца
-            int index = 0;
-            switch (cb.Name)
+            if (!ParallelAlgorithm.GetInstance().running)
             {
-                case "cbMove":
-                    index = 1;
-                    break;
-                case "cbCharge":
-                    index = 2;
-                    break;
-                case "cbTurret":
-                    index = 3;
-                    break;
-            }
-
-            // Изменяем команды выделенного действия алгоритма
-            if (dgvAlgorithm.SelectedCells.Count != 0)
-            {
-                dgvAlgorithm.Rows[dgvAlgorithm.SelectedCells[0].RowIndex].Cells[index].Value = cb.SelectedItem.ToString();
-            }
-            // Вставляем новое действие в конец алгоритма
-            else
-            {
-                int number = dgvAlgorithm.RowCount + 1;
-                string move = index == 1 ? cb.SelectedItem.ToString() : "Бездействие";
-                string charge = index == 2 ? cb.SelectedItem.ToString() : "Бездействие";
-                string turret = index == 3 ? cb.SelectedItem.ToString() : "Бездействие";
-                dgvAlgorithm.Rows.Add(number, move, charge, turret);
-
-                // Перемещаем таблицу вниз, чтобы были видны новые добавленные дейтсвия
-                try
+                // Задаем номер стобца
+                int index = 0;
+                switch (cb.Name)
                 {
-                    dgvAlgorithm.FirstDisplayedScrollingRowIndex = dgvAlgorithm.Rows.Count - 1;
+                    case "cbMove":
+                        index = 1;
+                        break;
+                    case "cbCharge":
+                        index = 2;
+                        break;
+                    case "cbTurret":
+                        index = 3;
+                        break;
                 }
-                catch (Exception)
+
+                // Изменяем команды выделенного действия алгоритма
+                if (dgvAlgorithm.SelectedCells.Count != 0)
                 {
-                    // Ignore exception
+                    dgvAlgorithm.Rows[dgvAlgorithm.SelectedCells[0].RowIndex].Cells[index].Value = cb.SelectedItem.ToString();
                 }
-            }
+                // Вставляем новое действие в конец алгоритма
+                else
+                {
+                    int number = dgvAlgorithm.RowCount + 1;
+                    string move = index == 1 ? cb.SelectedItem.ToString() : "Бездействие";
+                    string charge = index == 2 ? cb.SelectedItem.ToString() : "Бездействие";
+                    string turret = index == 3 ? cb.SelectedItem.ToString() : "Бездействие";
+                    dgvAlgorithm.Rows.Add(number, move, charge, turret);
 
-            // Отменяем выделение и ставим фокус на таблице
-            dgvAlgorithm.ClearSelection();
-            dgvAlgorithm.Focus();
-        }
+                    // Перемещаем таблицу вниз, чтобы были видны новые добавленные дейтсвия
+                    try
+                    {
+                        dgvAlgorithm.FirstDisplayedScrollingRowIndex = dgvAlgorithm.Rows.Count - 1;
+                    }
+                    catch (Exception)
+                    {
+                        // Ignore exception
+                    }
+                }
 
-        public void DeleteAction()
-        {
-            if (dgvAlgorithm.SelectedRows.Count != 0)
-            {
-                dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
+                // Отменяем выделение и ставим фокус на таблице
+                dgvAlgorithm.ClearSelection();
                 dgvAlgorithm.Focus();
             }
             else
             {
-                MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.",
+                MessageBox.Show("Чтобы именить команды алгоритма, необходимо сначала остановить его.",
+                    "Изменение команд алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void DeleteAction()
+        {
+            if (!ParallelAlgorithm.GetInstance().running)
+            {
+                if (dgvAlgorithm.SelectedRows.Count != 0)
+                {
+                    dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
+                    dgvAlgorithm.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.",
+                        "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Чтобы удалить действие алгоритма, необходимо сначала остановить его.",
                     "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         public void ClearAlgorithm()
         {
-            if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
-                    "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (!ParallelAlgorithm.GetInstance().running)
             {
-                for (int i = dgvAlgorithm.Rows.Count - 1; i >= 0; i--)
+                if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
+                    "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    dgvAlgorithm.Rows.RemoveAt(i);
-                }
+                    for (int i = dgvAlgorithm.Rows.Count - 1; i >= 0; i--)
+                    {
+                        dgvAlgorithm.Rows.RemoveAt(i);
+                    }
 
-                dgvAlgorithm.ClearSelection();
-                dgvAlgorithm.Focus();
+                    dgvAlgorithm.ClearSelection();
+                    dgvAlgorithm.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Чтобы очистить алгоритм, необходимо сначала остановить его.",
+                    "Очистка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
