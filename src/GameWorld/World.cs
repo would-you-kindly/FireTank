@@ -14,6 +14,7 @@ namespace FireSafety
         public List<Tank> tanks;
         public Terrain terrain;
         public List<WaterTrace> traces;
+        public CoordinateSystem coordinateSystem;
 
         public World()
         {
@@ -94,6 +95,7 @@ namespace FireSafety
             Utilities.GetInstance().HEIGHT_TILE_COUNT = (uint)map.height;
             Utilities.GetInstance().INIT_BURNING_TREES = map.GetObjects("tree").Where(obj => obj.GetPropertyBool("burns")).Count();
 
+            coordinateSystem = new CoordinateSystem(Utilities.GetInstance().WIDTH_TILE_COUNT, Utilities.GetInstance().HEIGHT_TILE_COUNT, resources);
             traces = new List<WaterTrace>();
 
             // Устанавливаем направление ветра
@@ -254,6 +256,9 @@ namespace FireSafety
             {
                 tank.Draw(target, states);
             }
+
+            // Рисуем систему координат
+            coordinateSystem.Draw(target, states);
         }
     }
 }

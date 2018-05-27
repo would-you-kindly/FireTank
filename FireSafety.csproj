@@ -55,6 +55,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\GameWorld\CoordinateSystem.cs" />
     <Compile Include="src\GameWorld\House.cs" />
     <Compile Include="src\GameWorld\IFlammable.cs" />
     <Compile Include="src\OpenSave\IOpenSave.cs" />
