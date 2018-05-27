@@ -7,7 +7,7 @@
             // Empty method
         }
 
-        public override void Extinguish(Tree tree)
+        public override void Water(Tree tree)
         {
             // Empty method
         }

@@ -2,13 +2,16 @@
 {
     public abstract class TreeState
     {
-        public readonly int maxHitPoints = 10;
-        public int hitPoints = 10;
-        public readonly int timeToSpread = 3;
-        public int currentTimeToSpread = 0;
+        public static readonly int maxHitPoints = 10;
+        public static readonly int timeToSpread = 3;
+        public static readonly int timeToDryOut = 3;
 
-        // Тушит дерево
-        public abstract void Extinguish(Tree tree);
+        public int hitPoints = 10;
+        public int currentTimeToSpread = 0;
+        public int currentTimeToDryOut = 0;
+
+        // Поливает дерево
+        public abstract void Water(Tree tree);
 
         // Поджигает дерево
         public abstract void Fire(Tree tree);
@@ -32,6 +35,12 @@
         public bool IsBurned()
         {
             return this is BurnedTreeState;
+        }
+
+        // Проверяет, намочено ли дерево
+        public bool IsWet()
+        {
+            return this is WetTreeState;
         }
     }
 }

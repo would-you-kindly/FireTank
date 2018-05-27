@@ -158,6 +158,7 @@
     <Compile Include="src\GameWorld\Turret.cs" />
     <Compile Include="src\Commands\TurretCommand.cs" />
     <Compile Include="src\Models\UserModel.cs" />
+    <Compile Include="src\States\WetTreeState.cs" />
     <Compile Include="src\Utilities.cs" />
     <Compile Include="src\GameWorld\WaterTrace.cs" />
     <Compile Include="src\GameWorld\Wind.cs" />

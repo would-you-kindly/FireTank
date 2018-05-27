@@ -2,7 +2,7 @@
 {
     public interface IFlammable
     {
-        void Extinguish();
+        void Water();
         void Fire();
         void Burn();
     }

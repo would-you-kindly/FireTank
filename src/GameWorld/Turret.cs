@@ -306,7 +306,7 @@ namespace FireSafety
                     // Если нашли ближайшее дерево (или дом), то остальные не проверяем
                     if (objectToExtinguish != null)
                     {
-                        objectToExtinguish.Extinguish();
+                        objectToExtinguish.Water();
                         break;
                     }
                 }
@@ -315,7 +315,7 @@ namespace FireSafety
             else
             {
                 objectToExtinguish = _terrain.GetFlammableObjects().Find(flammable => ((Entity)flammable).Position == GetTargetPositions()[0]);
-                objectToExtinguish?.Extinguish();
+                objectToExtinguish?.Water();
             }
 
             TurretShoot?.Invoke(this, new ShootTurretEventArgs(objectToExtinguish));

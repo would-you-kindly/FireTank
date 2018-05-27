@@ -7,20 +7,22 @@
             currentTimeToSpread = 0;
         }
 
-        public override void Extinguish(Tree tree)
+        public override void Water(Tree tree)
         {
-            // Empty method
+            tree.state = new WetTreeState();
         }
 
+        // Пытаемся поджечь дерево
         public override void Fire(Tree tree)
         {
-            if (currentTimeToSpread == timeToSpread)
+            // Если дерево в обычном состоянии, то оно начинает загораться
+            if (tree.state.currentTimeToSpread == timeToSpread)
             {
                 tree.state = new BurningTreeState();
             }
             else
             {
-                currentTimeToSpread++;
+                tree.state.currentTimeToSpread++;
             }
         }
 

@@ -51,9 +51,9 @@ namespace FireSafety
         }
 
         // Тушит дерево
-        public void Extinguish()
+        public void Water()
         {
-            state.Extinguish(this);
+            state.Water(this);
             Extinguished?.Invoke(this, new ExtinguishTreeEventArgs());
         }
 
@@ -101,6 +101,13 @@ namespace FireSafety
             if (state.IsBurned())
             {
                 target.Draw(burnedTreeSprite, states);
+            }
+
+            if (state.IsWet())
+            {
+                Sprite wetTree = new Sprite(sprite);
+                wetTree.Color = Color.Magenta;
+                target.Draw(wetTree, states);
             }
         }
 

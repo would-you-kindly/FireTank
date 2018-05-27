@@ -43,7 +43,7 @@ namespace FireSafety
                     if (item.GetPropertyBool("burns"))
                     {
                         // TODO: Такое себе место (чтобы подожглось, нужно сделать так)
-                        tree.state.currentTimeToSpread = tree.state.timeToSpread;
+                        tree.state.currentTimeToSpread = TreeState.timeToSpread;
                         tree.Fire();
                     }
                     trees.Add(tree);
@@ -140,7 +140,7 @@ namespace FireSafety
             {
                 rock.Update(deltaTime);
             }
-
+            
             // Поджигаем новые деревья (и дома)
             SpreadFire();
             // Проверяем состояние местности на наличие пожара
@@ -166,6 +166,9 @@ namespace FireSafety
 
         private void SpreadFire()
         {
+            // TODO: Если у дерева осталась одна жизнь и оно проверяется первым, то соседнее не загорится (хотя должно)
+            // TODO: а если наоборот сначала проверится соседнее, то оно загорится и на этом же шаге сгорит предыдущее
+
             // Ищем дерево или дом, которые загорятся следующими
             List<IFlammable> burningTrees = new List<IFlammable>(trees.Where(found => found.state.IsBurning()));
             List<IFlammable> burningHouses = new List<IFlammable>(houses.Where(found => found.state.IsBurning()));

@@ -51,7 +51,7 @@ namespace FireSafety
         }
 
         // Тушит дом
-        public void Extinguish()
+        public void Water()
         {
             state.Extinguish(this);
             Extinguished?.Invoke(this, new ExtinguishHouseEventArgs());

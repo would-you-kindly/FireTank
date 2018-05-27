@@ -25,6 +25,11 @@ namespace FireSafety
             this.direction = direction;
         }
 
+        public void ChangeDirection(Direction direction)
+        {
+            this.direction = direction;
+        }
+
         public override string ToString()
         {
             switch (direction)
