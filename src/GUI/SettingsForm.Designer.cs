@@ -62,7 +62,7 @@
             this.tcSettings.Location = new System.Drawing.Point(0, 0);
             this.tcSettings.Name = "tcSettings";
             this.tcSettings.SelectedIndex = 0;
-            this.tcSettings.Size = new System.Drawing.Size(634, 512);
+            this.tcSettings.Size = new System.Drawing.Size(734, 662);
             this.tcSettings.TabIndex = 0;
             // 
             // tpCommon
@@ -76,9 +76,9 @@
             this.tpCommon.Location = new System.Drawing.Point(4, 22);
             this.tpCommon.Name = "tpCommon";
             this.tpCommon.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCommon.Size = new System.Drawing.Size(626, 486);
+            this.tpCommon.Size = new System.Drawing.Size(726, 636);
             this.tpCommon.TabIndex = 0;
-            this.tpCommon.Text = "Common";
+            this.tpCommon.Text = "Общие";
             this.tpCommon.UseVisualStyleBackColor = true;
             // 
             // nudFPS
@@ -92,7 +92,7 @@
             0,
             0});
             this.nudFPS.Name = "nudFPS";
-            this.nudFPS.Size = new System.Drawing.Size(610, 20);
+            this.nudFPS.Size = new System.Drawing.Size(710, 20);
             this.nudFPS.TabIndex = 6;
             this.nudFPS.Value = new decimal(new int[] {
             2,
@@ -116,7 +116,7 @@
             this.tbUser.Location = new System.Drawing.Point(8, 58);
             this.tbUser.Name = "tbUser";
             this.tbUser.ReadOnly = true;
-            this.tbUser.Size = new System.Drawing.Size(610, 20);
+            this.tbUser.Size = new System.Drawing.Size(710, 20);
             this.tbUser.TabIndex = 4;
             // 
             // lblUser
@@ -144,7 +144,7 @@
             this.tbConnectionString.Location = new System.Drawing.Point(8, 19);
             this.tbConnectionString.Name = "tbConnectionString";
             this.tbConnectionString.ReadOnly = true;
-            this.tbConnectionString.Size = new System.Drawing.Size(610, 20);
+            this.tbConnectionString.Size = new System.Drawing.Size(710, 20);
             this.tbConnectionString.TabIndex = 0;
             // 
             // tpShortcuts
@@ -157,16 +157,16 @@
             this.tpShortcuts.Location = new System.Drawing.Point(4, 22);
             this.tpShortcuts.Name = "tpShortcuts";
             this.tpShortcuts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpShortcuts.Size = new System.Drawing.Size(626, 486);
+            this.tpShortcuts.Size = new System.Drawing.Size(726, 636);
             this.tpShortcuts.TabIndex = 1;
-            this.tpShortcuts.Text = "Shortcuts";
+            this.tpShortcuts.Text = "Горячие клавиши";
             this.tpShortcuts.UseVisualStyleBackColor = true;
             // 
             // lblTimeToHold
             // 
             this.lblTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTimeToHold.AutoSize = true;
-            this.lblTimeToHold.Location = new System.Drawing.Point(370, 415);
+            this.lblTimeToHold.Location = new System.Drawing.Point(434, 565);
             this.lblTimeToHold.Name = "lblTimeToHold";
             this.lblTimeToHold.Size = new System.Drawing.Size(145, 13);
             this.lblTimeToHold.TabIndex = 4;
@@ -175,7 +175,7 @@
             // nudTimeToHold
             // 
             this.nudTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudTimeToHold.Location = new System.Drawing.Point(370, 431);
+            this.nudTimeToHold.Location = new System.Drawing.Point(434, 581);
             this.nudTimeToHold.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -187,7 +187,7 @@
             0,
             0});
             this.nudTimeToHold.Name = "nudTimeToHold";
-            this.nudTimeToHold.Size = new System.Drawing.Size(250, 20);
+            this.nudTimeToHold.Size = new System.Drawing.Size(284, 20);
             this.nudTimeToHold.TabIndex = 3;
             this.nudTimeToHold.Value = new decimal(new int[] {
             50,
@@ -198,20 +198,20 @@
             // lblDescription
             // 
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDescription.Location = new System.Drawing.Point(370, 6);
+            this.lblDescription.Location = new System.Drawing.Point(434, 6);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(250, 409);
+            this.lblDescription.Size = new System.Drawing.Size(286, 559);
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = resources.GetString("lblDescription.Text");
             // 
             // btnDefault
             // 
             this.btnDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefault.Location = new System.Drawing.Point(370, 457);
+            this.btnDefault.Location = new System.Drawing.Point(434, 607);
             this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(250, 23);
+            this.btnDefault.Size = new System.Drawing.Size(284, 23);
             this.btnDefault.TabIndex = 1;
-            this.btnDefault.Text = "Default";
+            this.btnDefault.Text = "Восстановить по умолчанию";
             this.btnDefault.UseVisualStyleBackColor = true;
             this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
@@ -239,42 +239,45 @@
             this.dgvShortcuts.ShowCellToolTips = false;
             this.dgvShortcuts.ShowEditingIcon = false;
             this.dgvShortcuts.ShowRowErrors = false;
-            this.dgvShortcuts.Size = new System.Drawing.Size(356, 472);
+            this.dgvShortcuts.Size = new System.Drawing.Size(420, 622);
             this.dgvShortcuts.TabIndex = 0;
             this.dgvShortcuts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvShortcuts_KeyDown);
             // 
             // dgvtbcPerformer
             // 
-            this.dgvtbcPerformer.HeaderText = "Performer";
+            this.dgvtbcPerformer.HeaderText = "Исполнитель";
             this.dgvtbcPerformer.Name = "dgvtbcPerformer";
             this.dgvtbcPerformer.ReadOnly = true;
             this.dgvtbcPerformer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcPerformer.Width = 120;
             // 
             // dgvtbcCommand
             // 
-            this.dgvtbcCommand.HeaderText = "Command";
+            this.dgvtbcCommand.HeaderText = "Команда";
             this.dgvtbcCommand.Name = "dgvtbcCommand";
             this.dgvtbcCommand.ReadOnly = true;
             this.dgvtbcCommand.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcCommand.Width = 120;
             // 
             // dgvtbcShortcut
             // 
-            this.dgvtbcShortcut.HeaderText = "Shortcut";
+            this.dgvtbcShortcut.HeaderText = "Горячая клавиша";
             this.dgvtbcShortcut.Name = "dgvtbcShortcut";
             this.dgvtbcShortcut.ReadOnly = true;
             this.dgvtbcShortcut.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcShortcut.Width = 120;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 512);
+            this.ClientSize = new System.Drawing.Size(734, 662);
             this.Controls.Add(this.tcSettings);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "SettingsForm";
-            this.Text = "Settings";
+            this.Text = "Настройки";
             this.tcSettings.ResumeLayout(false);
             this.tpCommon.ResumeLayout(false);
             this.tpCommon.PerformLayout();
@@ -294,9 +297,6 @@
         private System.Windows.Forms.TabPage tpShortcuts;
         private System.Windows.Forms.Button btnDefault;
         public System.Windows.Forms.DataGridView dgvShortcuts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcPerformer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcCommand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcShortcut;
         private System.Windows.Forms.Label lblDescription;
         public System.Windows.Forms.NumericUpDown nudTimeToHold;
         private System.Windows.Forms.Label lblTimeToHold;
@@ -306,5 +306,8 @@
         public System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.NumericUpDown nudFPS;
         private System.Windows.Forms.Label lblFPS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcPerformer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcCommand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcShortcut;
     }
 }

@@ -25,7 +25,7 @@ namespace FireSafety
 
         private void btnDefault_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы уверены, что хотите вернуть настройки по умолчанию?", 
+            if (MessageBox.Show("Вы уверены, что хотите восстановить настройки по умолчанию?", 
                 "Восстановаление настроек", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 controller.Default();

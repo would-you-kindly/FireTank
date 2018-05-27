@@ -21,7 +21,7 @@ namespace FireSafety
         private void DgvShortcuts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             SetShortcut(settingsForm.dgvShortcuts.SelectedRows[0].Cells[0].Value.ToString(),
-                settingsForm.dgvShortcuts.SelectedRows[0].Cells[1].Value, (Keys)((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                settingsForm.dgvShortcuts.SelectedRows[0].Cells[1].Value.ToString(), (Keys)((DataGridView)sender).Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
         }
 
         private void UpdateControls()
@@ -32,7 +32,7 @@ namespace FireSafety
 
         public void InitShortcuts()
         {
-            List<Tuple<string, object, Keys>> shortcuts = Settings.GetInstance().GenerateShortcutList();
+            List<Tuple<string, string, Keys>> shortcuts = Settings.GetInstance().GenerateShortcutList();
 
             foreach (var item in shortcuts)
             {
@@ -49,7 +49,7 @@ namespace FireSafety
             Settings.GetInstance().Default();
         }
 
-        public void SetShortcut(string permormer, object command, Keys key)
+        public void SetShortcut(string permormer, string command, Keys key)
         {
             Settings.GetInstance().SetShortcut(permormer, command, key);
         }

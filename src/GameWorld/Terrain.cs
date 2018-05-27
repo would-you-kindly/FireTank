@@ -123,9 +123,6 @@ namespace FireSafety
 
         public void Update(Time deltaTime)
         {
-            // Поджигаем новые деревья
-            SpreadFire();
-
             // Обновляем объекты местности
             foreach (Tree tree in trees)
             {
@@ -144,6 +141,8 @@ namespace FireSafety
                 rock.Update(deltaTime);
             }
 
+            // Поджигаем новые деревья (и дома)
+            SpreadFire();
             // Проверяем состояние местности на наличие пожара
             CheckTerrainState();
         }

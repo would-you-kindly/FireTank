@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlgorithmForm));
             this.cbMove = new System.Windows.Forms.ComboBox();
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControls = new System.Windows.Forms.GroupBox();
             this.chbBlocked = new System.Windows.Forms.CheckBox();
             this.btnClearAlgorithm = new System.Windows.Forms.Button();
@@ -39,10 +45,9 @@
             this.lblTurretCommands = new System.Windows.Forms.Label();
             this.lblChargeCommands = new System.Windows.Forms.Label();
             this.lblMoveCommands = new System.Windows.Forms.Label();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ttipDeleteAction = new System.Windows.Forms.ToolTip(this.components);
+            this.ttipBlock = new System.Windows.Forms.ToolTip(this.components);
+            this.ttipClearTankAlgorithm = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +137,35 @@
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
+            // Number
+            // 
+            this.Number.HeaderText = "№";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 25;
+            // 
+            // MoveCommands
+            // 
+            this.MoveCommands.HeaderText = "Водитель";
+            this.MoveCommands.Name = "MoveCommands";
+            this.MoveCommands.ReadOnly = true;
+            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ShootCommands
+            // 
+            this.ShootCommands.HeaderText = "Заряжающий";
+            this.ShootCommands.Name = "ShootCommands";
+            this.ShootCommands.ReadOnly = true;
+            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TurretCommands
+            // 
+            this.TurretCommands.HeaderText = "Наводчик";
+            this.TurretCommands.Name = "TurretCommands";
+            this.TurretCommands.ReadOnly = true;
+            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // gbControls
             // 
             this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -153,32 +187,38 @@
             // 
             // chbBlocked
             // 
-            this.chbBlocked.AutoSize = true;
-            this.chbBlocked.Location = new System.Drawing.Point(124, 63);
+            this.chbBlocked.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chbBlocked.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chbBlocked.BackgroundImage")));
+            this.chbBlocked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.chbBlocked.Location = new System.Drawing.Point(273, 59);
             this.chbBlocked.Name = "chbBlocked";
-            this.chbBlocked.Size = new System.Drawing.Size(105, 17);
+            this.chbBlocked.Size = new System.Drawing.Size(23, 23);
             this.chbBlocked.TabIndex = 7;
-            this.chbBlocked.Text = "Заблокировано";
+            this.ttipBlock.SetToolTip(this.chbBlocked, "Заблокировать выполнение");
             this.chbBlocked.UseVisualStyleBackColor = true;
             this.chbBlocked.CheckedChanged += new System.EventHandler(this.chbBlocked_CheckedChanged);
             // 
             // btnClearAlgorithm
             // 
-            this.btnClearAlgorithm.Location = new System.Drawing.Point(242, 59);
+            this.btnClearAlgorithm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearAlgorithm.BackgroundImage")));
+            this.btnClearAlgorithm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClearAlgorithm.Location = new System.Drawing.Point(331, 59);
             this.btnClearAlgorithm.Name = "btnClearAlgorithm";
-            this.btnClearAlgorithm.Size = new System.Drawing.Size(112, 23);
+            this.btnClearAlgorithm.Size = new System.Drawing.Size(23, 23);
             this.btnClearAlgorithm.TabIndex = 6;
-            this.btnClearAlgorithm.Text = "Очистить";
+            this.ttipClearTankAlgorithm.SetToolTip(this.btnClearAlgorithm, "Очистить алгоритм танка");
             this.btnClearAlgorithm.UseVisualStyleBackColor = true;
             this.btnClearAlgorithm.Click += new System.EventHandler(this.btnClearAlgorithm_Click);
             // 
             // btnDeleteAction
             // 
-            this.btnDeleteAction.Location = new System.Drawing.Point(6, 59);
+            this.btnDeleteAction.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteAction.BackgroundImage")));
+            this.btnDeleteAction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteAction.Location = new System.Drawing.Point(302, 59);
             this.btnDeleteAction.Name = "btnDeleteAction";
-            this.btnDeleteAction.Size = new System.Drawing.Size(112, 23);
+            this.btnDeleteAction.Size = new System.Drawing.Size(23, 23);
             this.btnDeleteAction.TabIndex = 6;
-            this.btnDeleteAction.Text = "Удалить строку";
+            this.ttipDeleteAction.SetToolTip(this.btnDeleteAction, "Удалить строку");
             this.btnDeleteAction.UseVisualStyleBackColor = true;
             this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
             // 
@@ -209,35 +249,6 @@
             this.lblMoveCommands.TabIndex = 0;
             this.lblMoveCommands.Text = "Водитель";
             // 
-            // Number
-            // 
-            this.Number.HeaderText = "№";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 25;
-            // 
-            // MoveCommands
-            // 
-            this.MoveCommands.HeaderText = "Водитель";
-            this.MoveCommands.Name = "MoveCommands";
-            this.MoveCommands.ReadOnly = true;
-            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ShootCommands
-            // 
-            this.ShootCommands.HeaderText = "Заряжающий";
-            this.ShootCommands.Name = "ShootCommands";
-            this.ShootCommands.ReadOnly = true;
-            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TurretCommands
-            // 
-            this.TurretCommands.HeaderText = "Наводчик";
-            this.TurretCommands.Name = "TurretCommands";
-            this.TurretCommands.ReadOnly = true;
-            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // AlgorithmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +261,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 280);
             this.Name = "AlgorithmForm";
             this.Tag = "Algorithm";
+            this.ttipDeleteAction.SetToolTip(this, "Удалить строку");
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlgorithmForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).EndInit();
             this.gbControls.ResumeLayout(false);
@@ -274,5 +286,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
+        private System.Windows.Forms.ToolTip ttipBlock;
+        private System.Windows.Forms.ToolTip ttipClearTankAlgorithm;
+        private System.Windows.Forms.ToolTip ttipDeleteAction;
     }
 }

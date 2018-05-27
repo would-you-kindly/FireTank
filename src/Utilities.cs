@@ -13,7 +13,7 @@ namespace FireSafety
         public uint WIDTH_TILE_COUNT;
         public uint HEIGHT_TILE_COUNT;
         public int INIT_BURNING_TREES;
-        public int MAX_TANKS_COUNT = 6;
+        public int MAX_TANKS_COUNT;
 
         public ModelContext context;
 
@@ -26,6 +26,8 @@ namespace FireSafety
             //WINDOW_WIDTH = (uint)TILE_SIZE * WIDTH_TILE_COUNT;
             //WINDOW_HEIGHT = (uint)TILE_SIZE * HEIGHT_TILE_COUNT;
             //INIT_BURNING_TREES = 0;
+            MAX_TANKS_COUNT = 6;
+
             context = new ModelContext(Settings.GetInstance().connectionString);
         }
 

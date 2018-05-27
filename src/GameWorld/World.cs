@@ -27,7 +27,6 @@ namespace FireSafety
             LoadMap();
 
             // Загружаем ресурсы
-            resources = new ResourceHolder();
             LoadResources();
         }
 
@@ -51,30 +50,39 @@ namespace FireSafety
 
         private void LoadResources()
         {
-            // Загружаем текстуры
-            resources.LoadTexture(Textures.ID.House, "Media/Textures/House.png");
-            resources.LoadTexture(Textures.ID.BurnedHouse, "Media/Textures/BurnedHouse.png");
-            resources.LoadTexture(Textures.ID.Fire, "Media/Textures/Fire.png");
-            resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/RedTank.png");
-            resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/RedTurret.png");
-            resources.LoadTexture(Textures.ID.BlueTank, "Media/Textures/BlueTank.png");
-            resources.LoadTexture(Textures.ID.BlueTurret, "Media/Textures/BlueTurret.png");
-            resources.LoadTexture(Textures.ID.YellowTank, "Media/Textures/YellowTank.png");
-            resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/YellowTurret.png");
-            resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/GreenTank.png");
-            resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/GreenTurret.png");
-            resources.LoadTexture(Textures.ID.PinkTank, "Media/Textures/PinkTank.png");
-            resources.LoadTexture(Textures.ID.PinkTurret, "Media/Textures/PinkTurret.png");
-            resources.LoadTexture(Textures.ID.GreyTank, "Media/Textures/GreyTank.png");
-            resources.LoadTexture(Textures.ID.GreyTurret, "Media/Textures/GreyTurret.png");
-            resources.LoadTexture(Textures.ID.Tree, "Media/Textures/Tree.png");
-            resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
-            resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
-            resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
+            try
+            {
+                resources = new ResourceHolder();
 
-            // Загружаем шрифты
-            resources.LoadFont(Fonts.ID.Sansation, "Media/Sansation.ttf");
-        }
+                // Загружаем текстуры
+                resources.LoadTexture(Textures.ID.House, "Media/Textures/House.png");
+                resources.LoadTexture(Textures.ID.BurnedHouse, "Media/Textures/BurnedHouse.png");
+                resources.LoadTexture(Textures.ID.Fire, "Media/Textures/Fire.png");
+                resources.LoadTexture(Textures.ID.RedTank, "Media/Textures/RedTank.png");
+                resources.LoadTexture(Textures.ID.RedTurret, "Media/Textures/RedTurret.png");
+                resources.LoadTexture(Textures.ID.BlueTank, "Media/Textures/BlueTank.png");
+                resources.LoadTexture(Textures.ID.BlueTurret, "Media/Textures/BlueTurret.png");
+                resources.LoadTexture(Textures.ID.YellowTank, "Media/Textures/YellowTank.png");
+                resources.LoadTexture(Textures.ID.YellowTurret, "Media/Textures/YellowTurret.png");
+                resources.LoadTexture(Textures.ID.GreenTank, "Media/Textures/GreenTank.png");
+                resources.LoadTexture(Textures.ID.GreenTurret, "Media/Textures/GreenTurret.png");
+                resources.LoadTexture(Textures.ID.PinkTank, "Media/Textures/PinkTank.png");
+                resources.LoadTexture(Textures.ID.PinkTurret, "Media/Textures/PinkTurret.png");
+                resources.LoadTexture(Textures.ID.GreyTank, "Media/Textures/GreyTank.png");
+                resources.LoadTexture(Textures.ID.GreyTurret, "Media/Textures/GreyTurret.png");
+                resources.LoadTexture(Textures.ID.Tree, "Media/Textures/Tree.png");
+                resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
+                resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
+                resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
+
+                // Загружаем шрифты
+                resources.LoadFont(Fonts.ID.Sansation, "Media/Fonts/Sansation.ttf");
+            }
+            catch (Exception)
+            {
+                throw new Exception("Не удалось загрузить необходимые ресурсы.");
+            }
+        }           
 
         // Выполняет построение мира, инициализирует точки старта объектов
         public void BuildWorld()
@@ -218,8 +226,8 @@ namespace FireSafety
 
         public void Update(Time deltaTime)
         {
-            // TODO: Важный момент, кто изменяется первым, новый огонь или действие игрока
-            foreach (var tank in tanks)
+            // Сначала обновляем танки (дейтсвия игрока), затем карту
+            foreach (Tank tank in tanks)
             {
                 tank.Update(deltaTime);
             }
@@ -236,13 +244,13 @@ namespace FireSafety
             terrain.Draw(target, states);
 
             // Рисуем следы выстрелов
-            foreach (var trace in traces)
+            foreach (WaterTrace trace in traces)
             {
                 trace.Draw(target, states);
             }
 
             // Рисуем танки
-            foreach (var tank in tanks)
+            foreach (Tank tank in tanks)
             {
                 tank.Draw(target, states);
             }

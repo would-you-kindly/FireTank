@@ -56,6 +56,8 @@ namespace FireSafety
         private const Keys clearSelectionDefault = Keys.Escape;
         [NonSerialized]
         private const Keys deleteActionDefault = Keys.Delete;
+        [NonSerialized]
+        private const Keys clearTankAlgorithmDefault = Keys.Back;
 
         [NonSerialized]
         private const Keys noneDefault = Keys.N;
@@ -122,6 +124,7 @@ namespace FireSafety
         // Shortcuts
         public Keys clearSelection;
         public Keys deleteAction;
+        public Keys clearTankAlgorithm;
 
         public Keys none;
 
@@ -147,7 +150,7 @@ namespace FireSafety
         public Keys run;
         public Keys reload;
         public Keys step;
-        public Keys clear;
+        public Keys clearParallelAlgorithm;
         public Keys help;
 
         public int timeToHold;
@@ -205,92 +208,91 @@ namespace FireSafety
             }
         }
 
-        public void SetShortcut(string performer, object command, Keys key)
+        public void SetShortcut(string performer, string command, Keys key)
         {
             switch (command)
             {
-                case MoveCommand.Commands.None:
+                case "Бездействие":
                     none = key;
                     break;
-                case MoveCommand.Commands.Forward:
+                case "Вперед":
                     moveForward = key;
                     break;
-                case MoveCommand.Commands.Backward:
+                case "Назад":
                     moveBackward = key;
                     break;
-                case MoveCommand.Commands.Forward45CW:
+                case "Вперед 45° по ч.с.":
                     moveForward45CW = key;
                     break;
-                case MoveCommand.Commands.Forward45CCW:
+                case "Вперед 45° пр.ч.с.":
                     moveForward45CCW = key;
                     break;
-                case MoveCommand.Commands.Backward45CW:
+                case "Назад 45° по ч.с.":
                     moveBackward45CW = key;
                     break;
-                case MoveCommand.Commands.Backward45CCW:
+                case "Назад 45° пр.ч.с.":
                     moveBackward45CCW = key;
                     break;
-                case MoveCommand.Commands.Rotate45CW:
-                    if (performer == "Move")
+                case "45° по ч.с.":
+                    if (performer == "Водитель")
                     {
                         moveRotateCW = key;
                     }
-                    break;
-                case MoveCommand.Commands.Rotate45CCW:
-                    if (performer == "Move")
-                    {
-                        moveRotateCCW = key;
-                    }
-                    break;
-                case ChargeCommand.Commands.Refuel:
-                    chargeRefuel = key;
-                    break;
-                case ChargeCommand.Commands.PressureX1:
-                    chargePressure = key;
-                    break;
-                case ChargeCommand.Commands.Charge:
-                    chargeCharge = key;
-                    break;
-                case TurretCommand.Commands.Up:
-                    turretUp = key;
-                    break;
-                case TurretCommand.Commands.Down:
-                    turretDown = key;
-                    break;
-                case TurretCommand.Commands.Shoot:
-                    turretShoot = key;
-                    break;
-                case TurretCommand.Commands.Rotate45CW:
-                    if (performer == "Turret")
+                    if (performer == "Наводчик")
                     {
                         turretRotateCW = key;
                     }
                     break;
-                case TurretCommand.Commands.Rotate45CCW:
-                    if (performer == "Turret")
+                case "45° пр.ч.с.":
+                    if (performer == "Водитель")
+                    {
+                        moveRotateCCW = key;
+                    }
+                    if (performer == "Наводчик")
                     {
                         turretRotateCCW = key;
                     }
                     break;
-                case "Clear selection":
+                case "Пополнить запас":
+                    chargeRefuel = key;
+                    break;
+                case "Давление +1":
+                    chargePressure = key;
+                    break;
+                case "Зарядить":
+                    chargeCharge = key;
+                    break;
+                case "Поднять":
+                    turretUp = key;
+                    break;
+                case "Опустить":
+                    turretDown = key;
+                    break;
+                case "Выстрелить":
+                    turretShoot = key;
+                    break;
+                case "Отменить выделение":
                     clearSelection = key;
                     break;
-                case "Delete action":
+                case "Удалить действие":
                     deleteAction = key;
                     break;
-                case "Run":
+                case "Очистить алгоритм танка":
+                    clearTankAlgorithm = key;
+                    break;
+                case "Запустить":
                     run = key;
                     break;
-                case "Reload":
+                case "Перезагрузить":
                     reload = key;
                     break;
-                case "Step":
+                case "Шаг":
                     step = key;
                     break;
-                case "Clear":
-                    clear = key;
+                case "Очистить":
+                    clearParallelAlgorithm = key;
                     break;
-                case "Help":
+                case "Помощь":
                     help = key;
                     break;
                 default:
@@ -328,6 +330,7 @@ namespace FireSafety
         {
             clearSelection = clearSelectionDefault;
             deleteAction = deleteActionDefault;
+            clearTankAlgorithm = clearTankAlgorithmDefault;
 
             none = noneDefault;
 
@@ -353,7 +356,7 @@ namespace FireSafety
             run = runDefault;
             reload = reloadDefault;
             step = stepDefault;
-            clear = clearDefault;
+            clearParallelAlgorithm = clearDefault;
             help = helpDefault;
 
             timeToHold = timeToHoldDefault;
@@ -364,40 +367,41 @@ namespace FireSafety
             Defaulted?.Invoke(this, new DefaultShortcutEventArgs());
         }
 
-        public List<Tuple<string, object, Keys>> GenerateShortcutList()
+        public List<Tuple<string, string, Keys>> GenerateShortcutList()
         {
             // Исполнитель, команда, shortcut
-            List<Tuple<string, object, Keys>> shortcuts = new List<Tuple<string, object, Keys>>();
+            List<Tuple<string, string, Keys>> shortcuts = new List<Tuple<string, string, Keys>>();
 
-            shortcuts.Add(new Tuple<string, object, Keys>("Common", MoveCommand.Commands.None, none));
+            shortcuts.Add(new Tuple<string, string, Keys>("Все исполнители", Utilities.ToMoveStringRus(MoveCommand.Commands.None), none));
 
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward, moveForward));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward, moveBackward));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward45CW, moveForward45CW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Forward45CCW, moveForward45CCW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward45CW, moveBackward45CW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Backward45CCW, moveBackward45CCW));
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CW, moveRotateCW)); //
-            shortcuts.Add(new Tuple<string, object, Keys>("Move", MoveCommand.Commands.Rotate45CCW, moveRotateCCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Forward), moveForward));
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Backward), moveBackward));
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CW), moveForward45CW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CCW), moveForward45CCW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CW), moveBackward45CW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CCW), moveBackward45CCW));
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CW), moveRotateCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CCW), moveRotateCCW)); //
 
-            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Refuel, chargeRefuel));
-            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.PressureX1, chargePressure)); //
-            shortcuts.Add(new Tuple<string, object, Keys>("Charge", ChargeCommand.Commands.Charge, chargeCharge));
+            shortcuts.Add(new Tuple<string, string, Keys>("Заряжающий", Utilities.ToChargeStringRus(ChargeCommand.Commands.Refuel), chargeRefuel));
+            shortcuts.Add(new Tuple<string, string, Keys>("Заряжающий", Utilities.ToChargeStringRus(ChargeCommand.Commands.PressureX1), chargePressure)); //
+            shortcuts.Add(new Tuple<string, string, Keys>("Заряжающий", Utilities.ToChargeStringRus(ChargeCommand.Commands.Charge), chargeCharge));
 
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Up, turretUp));
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Down, turretDown));
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Shoot, turretShoot));
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CW, turretRotateCW)); //
-            shortcuts.Add(new Tuple<string, object, Keys>("Turret", TurretCommand.Commands.Rotate45CCW, turretRotateCCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Up), turretUp));
+            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Down), turretDown));
+            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Shoot), turretShoot));
+            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CW), turretRotateCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CCW), turretRotateCCW)); //
 
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Run", run));
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Reload", reload));
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Step", step));
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Clear", clear));
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Help", help));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Запустить", run));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Перезагрузить", reload));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Шаг", step));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Очистить", clearParallelAlgorithm));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Помощь", help));
 
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Clear selection", clearSelection));
-            shortcuts.Add(new Tuple<string, object, Keys>("", "Delete action", deleteAction));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Отменить выделение", clearSelection));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Удалить действие", deleteAction));
+            shortcuts.Add(new Tuple<string, string, Keys>("", "Очистить алгоритм танка", clearTankAlgorithm));
 
             return shortcuts;
         }

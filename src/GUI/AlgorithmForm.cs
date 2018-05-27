@@ -178,11 +178,15 @@ namespace FireSafety
             {
                 dgvAlgorithm.ClearSelection();
             }
-
             // Удаляем выделенное действие
             if (e.KeyCode == Settings.GetInstance().deleteAction)
             {
                 DeleteAction();
+            }
+            // Очищаем алгоритм танка
+            if (e.KeyCode == Settings.GetInstance().clearTankAlgorithm)
+            {
+                ClearAlgorithm();
             }
 
             // Обрабатываем горячие клавиши добавления команд движения
@@ -336,13 +340,21 @@ namespace FireSafety
 
         private void chbBlocked_CheckedChanged(object sender, EventArgs e)
         {
-            if (((CheckBox)sender).Checked)
+            if (!ParallelAlgorithm.GetInstance().running)
             {
-                ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = true;
+                if (((CheckBox)sender).Checked)
+                {
+                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = true;
+                }
+                else
+                {
+                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = false;
+                }
             }
             else
             {
-                ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = false;
+                MessageBox.Show("Чтобы заблокировать алгоритм, необходимо сначала остановить его.",
+                    "Блокировка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
