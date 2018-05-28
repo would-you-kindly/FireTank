@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="32" tileheight="32" nextobjectid="156">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="32" tileheight="32" infinite="0" nextobjectid="156">
  <properties>
   <property name="algorithm" value="TrainingExample.fta2"/>
   <property name="wind" value="up"/>
@@ -156,8 +156,20 @@
   </data>
  </layer>
  <objectgroup name="tanks">
-  <object id="138" name="tank" type="tank" gid="20" x="160" y="288" width="32" height="32" rotation="-360"/>
-  <object id="155" name="tank" type="tank" gid="20" x="320" y="192" width="32" height="32" rotation="-450"/>
+  <object id="138" name="tank" type="tank" gid="20" x="160" y="288" width="32" height="32" rotation="-360">
+   <properties>
+    <property name="capacity" type="int" value="3"/>
+    <property name="maxCapacity" type="int" value="10"/>
+    <property name="maxPressure" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="155" name="tank" type="tank" gid="20" x="320" y="192" width="32" height="32" rotation="-450">
+   <properties>
+    <property name="capacity" type="int" value="2"/>
+    <property name="maxCapacity" type="int" value="10"/>
+    <property name="maxPressure" type="int" value="7"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="turrets">
   <object id="139" name="turret" type="turret" gid="21" x="160" y="288" width="32" height="32" rotation="-360"/>

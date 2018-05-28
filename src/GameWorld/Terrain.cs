@@ -140,7 +140,8 @@ namespace FireSafety
             {
                 rock.Update(deltaTime);
             }
-            
+
+            // TODO: SpreadFire либо здесь либо перед обновление деревьев
             // Поджигаем новые деревья (и дома)
             SpreadFire();
             // Проверяем состояние местности на наличие пожара

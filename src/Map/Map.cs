@@ -272,9 +272,9 @@ namespace FireSafety
                                     string propertyName = prop.GetAttribute("name");
                                     string propertyValue = prop.GetAttribute("value");
 
-                                    obj.properties[propertyName] = propertyValue;
+                                    obj.properties.Add(propertyName, propertyValue);
 
-                                    prop = (XmlElement)xDoc.GetElementsByTagName("property").Item(k + 1);
+                                    prop = (XmlElement)properties.GetElementsByTagName("property").Item(k + 1);
                                 }
                             }
                         }

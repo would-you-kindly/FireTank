@@ -162,6 +162,10 @@ namespace FireSafety
                         throw new Exception("Неверно указаны координаты танка. Проверьте правильность значений переменных танка.");
                 }
                 tank.SetRotation(tankObject.rotation);
+                var o = map.GetObjects("tank")[i].properties;
+                tank.turret.maxWaterPressure = map.GetObjects("tank")[i].GetPropertyInt("maxPressure");
+                tank.turret.maxWaterCapacity = map.GetObjects("tank")[i].GetPropertyInt("maxCapacity");
+                tank.turret.waterCapacity = map.GetObjects("tank")[i].GetPropertyInt("capacity");
 
                 // Подписываемся на обработку ошибок танка
                 tank.Collided += (sender, e) =>

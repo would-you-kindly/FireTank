@@ -58,6 +58,12 @@
     <Compile Include="src\GameWorld\CoordinateSystem.cs" />
     <Compile Include="src\GameWorld\House.cs" />
     <Compile Include="src\GameWorld\IFlammable.cs" />
+    <Compile Include="src\GUI\PlanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\GUI\PlanForm.Designer.cs">
+      <DependentUpon>PlanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\OpenSave\IOpenSave.cs" />
     <Compile Include="src\Map\GameObject.cs" />
     <Compile Include="src\Map\Layer.cs" />
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\OpenMapForm.resx">
       <DependentUpon>OpenMapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\GUI\PlanForm.resx">
+      <DependentUpon>PlanForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

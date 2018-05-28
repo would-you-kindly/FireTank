@@ -16,6 +16,7 @@ namespace FireSafety
 
         public List<AlgorithmForm> algorithmForms;
         public InfoForm infoForm;
+        public PlanForm planForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
         public RenderWindow renderWindow;
@@ -52,6 +53,16 @@ namespace FireSafety
             }
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
+
+            planForm = new PlanForm();
+            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
+            {
+                planForm.dgvPlan.Columns.Add("Ход", "Ход");
+                planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
+                    worldController.world.tanks[i].ToString());
+            }
+            planForm.MdiParent = this;
+            planForm.Show();
 
             //infoForm = new InfoForm();
             //infoForm.MdiParent = this;
@@ -233,6 +244,7 @@ namespace FireSafety
             infoForm?.Close();
             renderWindow?.Close();
             sfmlForm?.Close();
+            planForm?.Close();
 
             // Очищаем пункты меню алгоритмов
             algorithmsToolStripMenuItem.DropDownItems.Clear();
