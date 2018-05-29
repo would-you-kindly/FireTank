@@ -26,7 +26,7 @@ namespace FireSafety
 
         // Переменные игры
         public World world;
-        public Gui gui;
+        public static Gui gui;
 
         public Game()
         {

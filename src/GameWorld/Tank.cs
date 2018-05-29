@@ -47,6 +47,9 @@ namespace FireSafety
         public class NearLakeErrorEventArgs : EventArgs
         {
         }
+        public class RefueledEventArgs : EventArgs
+        {
+        }
         public class RefuelErrorEventArgs : EventArgs
         {
         }
@@ -58,11 +61,13 @@ namespace FireSafety
         public delegate void RotateTankEventHandler(object sender, RotateTankEventArgs e);
         public delegate void NearLakeErrorEventHandler(object sender, NearLakeErrorEventArgs e);
         public delegate void RefuelErrorEventHandler(object sender, RefuelErrorEventArgs e);
+        public delegate void RefueledEventHandler(object sender, RefueledEventArgs e);
         public event CollideEventHandler Collided;
         public event MapLeftEventHandler MapLeft;
         public event MoveTankEventHandler TankMoved;
         public event RotateTankEventHandler TankRotated;
         public event NearLakeErrorEventHandler NearLakeError;
+        public event RefueledEventHandler Refueled;
         public event RefuelErrorEventHandler RefuelError;
 
         // Параметры-ссылки
@@ -361,6 +366,8 @@ namespace FireSafety
             if (turret.waterCapacity < turret.maxWaterCapacity)
             {
                 turret.waterCapacity++;
+
+                Refueled?.Invoke(this, new RefueledEventArgs());
             }
             else
             {

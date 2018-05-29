@@ -83,7 +83,7 @@ namespace FireSafety
             {
                 throw new Exception("Не удалось загрузить необходимые ресурсы.");
             }
-        }           
+        }
 
         // Выполняет построение мира, инициализирует точки старта объектов
         public void BuildWorld()
@@ -162,7 +162,7 @@ namespace FireSafety
                         throw new Exception("Неверно указаны координаты танка. Проверьте правильность значений переменных танка.");
                 }
                 tank.SetRotation(tankObject.rotation);
-                var o = map.GetObjects("tank")[i].properties;
+                //var o = map.GetObjects("tank")[i].properties;
                 tank.turret.maxWaterPressure = map.GetObjects("tank")[i].GetPropertyInt("maxPressure");
                 tank.turret.maxWaterCapacity = map.GetObjects("tank")[i].GetPropertyInt("maxCapacity");
                 tank.turret.waterCapacity = map.GetObjects("tank")[i].GetPropertyInt("capacity");
@@ -226,8 +226,11 @@ namespace FireSafety
                         tank.turret.waterPressure, tank.turret.NormalizedRotation));
                 };
 
+
                 tanks.Add(tank);
             }
+
+            Game.gui?.form.AttachIndicators();
         }
 
         public void Update(Time deltaTime)

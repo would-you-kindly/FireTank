@@ -8,9 +8,12 @@ namespace FireSafety
     {
         private Stopwatch clock = new Stopwatch();
         private bool keyPressed = false;
+        //public TankController tankController;
 
         public AlgorithmForm()
         {
+            //tankController = new TankController(tank, this);
+
             InitializeComponent();
         }
 

@@ -16,5 +16,10 @@ namespace FireSafety
         {
             InitializeComponent();
         }
+
+        private void dgvPlan_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            dgvPlan.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
+        }
     }
 }

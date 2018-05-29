@@ -50,6 +50,9 @@ namespace FireSafety
                     algorithmForm.Visible = true;
                     algorithmForm.Select();
                 }));
+
+                // Устанавливаем значения танка в индикаторах
+                InitIndicators(i, algorithmForm);
             }
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
@@ -57,7 +60,6 @@ namespace FireSafety
             planForm = new PlanForm();
             for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
             {
-                planForm.dgvPlan.Columns.Add("Ход", "Ход");
                 planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
                     worldController.world.tanks[i].ToString());
             }
@@ -91,6 +93,71 @@ namespace FireSafety
 
             // Creates our SFML RenderWindow on our surface control
             renderWindow = new RenderWindow(surface.Handle);
+        }
+
+        private void InitIndicators(int i, AlgorithmForm algorithmForm)
+        {
+            algorithmForm.lblCapacity.Text = worldController.world.tanks[i].turret.waterCapacity.ToString();
+            algorithmForm.lblPressure.Text = worldController.world.tanks[i].turret.waterPressure.ToString();
+            algorithmForm.pbReady.Visible = worldController.world.tanks[i].turret.weaponReady;
+            algorithmForm.pbUnready.Visible = !worldController.world.tanks[i].turret.weaponReady;
+            algorithmForm.pbUp.Visible = worldController.world.tanks[i].turret.up;
+            algorithmForm.pbDown.Visible = !worldController.world.tanks[i].turret.up;
+
+            algorithmForm.lblMaxCapacity.Text = worldController.world.tanks[i].turret.maxWaterCapacity.ToString();
+            algorithmForm.lblMaxPressure.Text = worldController.world.tanks[i].turret.maxWaterPressure.ToString();
+        }
+
+        public void AttachIndicators()
+        {
+            int i = 0;
+            foreach (AlgorithmForm form in algorithmForms)
+            {
+                InitIndicators(i, form);
+
+                // При выстреле меняем показатель запасов воды, давления и готовности
+                worldController.world.tanks[i].turret.TurretShoot += (sender, e) =>
+                {
+                    form.lblCapacity.Text = (((Turret)sender).waterCapacity - 1).ToString();
+                    form.lblPressure.Text = ((Turret)sender).minWaterPressure.ToString();
+
+                    form.pbReady.Visible = false;
+                    form.pbUnready.Visible = true;
+                };
+
+                // При увеличении давления меняем показатель давления
+                worldController.world.tanks[i].turret.TurretPressure += (sender, e) =>
+                {
+                    form.lblPressure.Text = ((Turret)sender).waterPressure.ToString();
+                };
+
+                // При поднятии/опускании пушки меняем картинку
+                worldController.world.tanks[i].turret.TurretUp += (sender, e) =>
+                {
+                    form.pbUp.Visible = true;
+                    form.pbDown.Visible = false;
+                };
+                worldController.world.tanks[i].turret.TurretDown += (sender, e) =>
+                {
+                    form.pbUp.Visible = false;
+                    form.pbDown.Visible = true;
+                };
+
+                // При заряде пушки меняем картинку
+                worldController.world.tanks[i].turret.WeaponCharged += (sender, e) =>
+                {
+                    form.pbReady.Visible = true;
+                    form.pbUnready.Visible = false;
+                };
+
+                // При пополнении запасов меняем значение запасов
+                worldController.world.tanks[i].Refueled += (sender, e) =>
+                {
+                    form.lblCapacity.Text = ((Tank)sender).turret.waterCapacity.ToString();
+                };
+
+                i++;
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

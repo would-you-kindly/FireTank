@@ -29,17 +29,31 @@
         private void InitializeComponent()
         {
             this.dgvPlan = new System.Windows.Forms.DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlan)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPlan
             // 
+            this.dgvPlan.AllowUserToResizeRows = false;
             this.dgvPlan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Number});
             this.dgvPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPlan.Location = new System.Drawing.Point(0, 0);
+            this.dgvPlan.MultiSelect = false;
             this.dgvPlan.Name = "dgvPlan";
             this.dgvPlan.Size = new System.Drawing.Size(284, 261);
             this.dgvPlan.TabIndex = 0;
+            this.dgvPlan.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPlan_RowsAdded);
+            // 
+            // Number
+            // 
+            this.Number.HeaderText = "№";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Number.Width = 25;
             // 
             // PlanForm
             // 
@@ -57,5 +71,6 @@
         #endregion
 
         public System.Windows.Forms.DataGridView dgvPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
     }
 }
