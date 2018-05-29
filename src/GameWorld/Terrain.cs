@@ -44,7 +44,7 @@ namespace FireSafety
                     {
                         // TODO: Такое себе место (чтобы подожглось, нужно сделать так)
                         tree.state.currentTimeToSpread = TreeState.timeToSpread;
-                        tree.Fire();
+                        tree.Fire(1);
                     }
                     trees.Add(tree);
                 }
@@ -58,7 +58,7 @@ namespace FireSafety
                     {
                         // TODO: Такое себе место (чтобы подожглось, нужно сделать так)
                         house.state.currentTimeToSpread = house.state.timeToSpread;
-                        house.Fire();
+                        house.Fire(1);
                     }
                     houses.Add(house);
                 }
@@ -181,36 +181,36 @@ namespace FireSafety
                 switch (wind.direction)
                 {
                     case Wind.Direction.Up:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
                         break;
                     case Wind.Direction.UpLeft:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
                         break;
                     case Wind.Direction.Left:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire(wind.power);
                         break;
                     case Wind.Direction.LeftDown:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X - Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
                         break;
                     case Wind.Direction.Down:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
                         break;
                     case Wind.Direction.DownRight:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y + Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
                         break;
                     case Wind.Direction.Right:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y))?.Fire(wind.power);
                         break;
                     case Wind.Direction.RightUp:
-                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire();
-                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire();
+                        trees.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
+                        houses.Find(found => found.Position == new Vector2f(((Entity)entity).Position.X + Utilities.GetInstance().TILE_SIZE, ((Entity)entity).Position.Y - Utilities.GetInstance().TILE_SIZE))?.Fire(wind.power);
                         break;
                     default:
                         break;

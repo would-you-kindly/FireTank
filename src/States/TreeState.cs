@@ -14,7 +14,7 @@
         public abstract void Water(Tree tree);
 
         // Поджигает дерево
-        public abstract void Fire(Tree tree);
+        public abstract void Fire(Tree tree, int power);
 
         // Сжигает дерево
         public abstract void Burn(Tree tree);

@@ -3,7 +3,7 @@
     public interface IFlammable
     {
         void Water();
-        void Fire();
+        void Fire(int power);
         void Burn();
     }
 }

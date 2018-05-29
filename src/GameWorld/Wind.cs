@@ -88,29 +88,31 @@ namespace FireSafety
 
         public override string ToString()
         {
-            switch (direction)
-            {
-                case Direction.Up:
-                    return "Вверх ↑";
-                case Direction.UpLeft:
-                    return "Вверх-влево ↖";
-                case Direction.Left:
-                    return "Влево ←";
-                case Direction.LeftDown:
-                    return "Влево-вниз ↙";
-                case Direction.Down:
-                    return "Вниз ↓";
-                case Direction.DownRight:
-                    return "Вниз-вправо ↘";
-                case Direction.Right:
-                    return "Вправо →";
-                case Direction.RightUp:
-                    return "Вправо-вверх ↗";
-                default:
-                    break;
-            }
+            //switch (direction)
+            //{
+            //    case Direction.Up:
+            //        return "Вверх ↑";
+            //    case Direction.UpLeft:
+            //        return "Вверх-влево ↖";
+            //    case Direction.Left:
+            //        return "Влево ←";
+            //    case Direction.LeftDown:
+            //        return "Влево-вниз ↙";
+            //    case Direction.Down:
+            //        return "Вниз ↓";
+            //    case Direction.DownRight:
+            //        return "Вниз-вправо ↘";
+            //    case Direction.Right:
+            //        return "Вправо →";
+            //    case Direction.RightUp:
+            //        return "Вправо-вверх ↗";
+            //    default:
+            //        break;
+            //}
 
-            throw new Exception("Неверно задано наравление ветра.");
+            return string.Join(" ", settings);
+
+            //throw new Exception("Неверно задано наравление ветра.");
         }
     }
 }

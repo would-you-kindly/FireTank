@@ -12,7 +12,7 @@
             tree.state = new NormalTreeState();
         }
 
-        public override void Fire(Tree tree)
+        public override void Fire(Tree tree, int power)
         {
             // Empty method
         }

@@ -13,10 +13,10 @@
         }
 
         // Пытаемся поджечь дерево
-        public override void Fire(Tree tree)
+        public override void Fire(Tree tree, int power)
         {
             // Если дерево в обычном состоянии, то оно начинает загораться
-            if (tree.state.currentTimeToSpread == timeToSpread)
+            if (tree.state.currentTimeToSpread == timeToSpread - (power - 1))
             {
                 tree.state = new BurningTreeState();
             }

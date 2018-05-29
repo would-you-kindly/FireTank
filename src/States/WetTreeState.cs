@@ -23,10 +23,10 @@ namespace FireSafety
             tree.state.currentTimeToDryOut = 0;
         }
 
-        public override void Fire(Tree tree)
+        public override void Fire(Tree tree, int power)
         {
             // Если дерево намочено, то оно начинает сохнуть
-            if (tree.state.currentTimeToDryOut == timeToDryOut)
+            if (tree.state.currentTimeToDryOut == timeToDryOut - (power - 1))
             {
                 tree.state = new NormalTreeState();
             }

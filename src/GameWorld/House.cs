@@ -58,7 +58,7 @@ namespace FireSafety
         }
 
         // Поджигает дом
-        public void Fire()
+        public void Fire(int power)
         {
             state.Fire(this);
             Fired?.Invoke(this, new FireHouseEventArgs());

@@ -58,9 +58,9 @@ namespace FireSafety
         }
 
         // Поджигает дерево
-        public void Fire()
+        public void Fire(int power)
         {
-            state.Fire(this);
+            state.Fire(this, power);
             Fired?.Invoke(this, new FireTreeEventArgs());
         }
 
