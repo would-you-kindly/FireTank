@@ -146,6 +146,8 @@ namespace FireSafety
             SpreadFire();
             // Проверяем состояние местности на наличие пожара
             CheckTerrainState();
+            // Если пришло время изменить направление ветра, меняем его
+            wind.ChangeDirection();
         }
 
         private void CheckTerrainState()

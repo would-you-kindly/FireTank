@@ -99,36 +99,36 @@ namespace FireSafety
             traces = new List<WaterTrace>();
 
             // Устанавливаем направление ветра
-            Wind wind;
-            switch (map.properties["wind"])
-            {
-                case "up":
-                    wind = new Wind(Wind.Direction.Up);
-                    break;
-                case "upleft":
-                    wind = new Wind(Wind.Direction.UpLeft);
-                    break;
-                case "left":
-                    wind = new Wind(Wind.Direction.Left);
-                    break;
-                case "leftdown":
-                    wind = new Wind(Wind.Direction.LeftDown);
-                    break;
-                case "down":
-                    wind = new Wind(Wind.Direction.Down);
-                    break;
-                case "downright":
-                    wind = new Wind(Wind.Direction.DownRight);
-                    break;
-                case "right":
-                    wind = new Wind(Wind.Direction.Right);
-                    break;
-                case "rightup":
-                    wind = new Wind(Wind.Direction.RightUp);
-                    break;
-                default:
-                    throw new Exception("Неверно указано направление ветра. Проверьте правильность значений переменных карты.");
-            }
+            Wind wind = new Wind(map.properties["wind"]);
+            //switch (map.properties["wind"])
+            //{
+            //    case "up":
+            //        wind = new Wind(Wind.Direction.Up);
+            //        break;
+            //    case "upleft":
+            //        wind = new Wind(Wind.Direction.UpLeft);
+            //        break;
+            //    case "left":
+            //        wind = new Wind(Wind.Direction.Left);
+            //        break;
+            //    case "leftdown":
+            //        wind = new Wind(Wind.Direction.LeftDown);
+            //        break;
+            //    case "down":
+            //        wind = new Wind(Wind.Direction.Down);
+            //        break;
+            //    case "downright":
+            //        wind = new Wind(Wind.Direction.DownRight);
+            //        break;
+            //    case "right":
+            //        wind = new Wind(Wind.Direction.Right);
+            //        break;
+            //    case "rightup":
+            //        wind = new Wind(Wind.Direction.RightUp);
+            //        break;
+            //    default:
+            //        throw new Exception("Неверно указано направление ветра. Проверьте правильность значений переменных карты.");
+            //}
 
             // Устанавливаем начальное положение объектов местности (деревьев, озер, гор)
             terrain = new Terrain(map.GetAllObjects(), resources, wind);

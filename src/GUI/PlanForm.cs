@@ -15,6 +15,8 @@ namespace FireSafety
         public PlanForm()
         {
             InitializeComponent();
+
+            dgvPlan.Rows[0].Cells[0].Value = 1;
         }
 
         private void dgvPlan_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
