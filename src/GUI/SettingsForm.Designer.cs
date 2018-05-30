@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpCommon = new System.Windows.Forms.TabPage();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnTestConnection = new System.Windows.Forms.Button();
             this.nudFPS = new System.Windows.Forms.NumericUpDown();
             this.lblFPS = new System.Windows.Forms.Label();
             this.tbUser = new System.Windows.Forms.TextBox();
@@ -67,6 +69,8 @@
             // 
             // tpCommon
             // 
+            this.tpCommon.Controls.Add(this.btnLogin);
+            this.tpCommon.Controls.Add(this.btnTestConnection);
             this.tpCommon.Controls.Add(this.nudFPS);
             this.tpCommon.Controls.Add(this.lblFPS);
             this.tpCommon.Controls.Add(this.tbUser);
@@ -80,6 +84,26 @@
             this.tpCommon.TabIndex = 0;
             this.tpCommon.Text = "Общие";
             this.tpCommon.UseVisualStyleBackColor = true;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(618, 17);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(100, 23);
+            this.btnLogin.TabIndex = 11;
+            this.btnLogin.Text = "Войти";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnTestConnection
+            // 
+            this.btnTestConnection.Location = new System.Drawing.Point(462, 17);
+            this.btnTestConnection.Name = "btnTestConnection";
+            this.btnTestConnection.Size = new System.Drawing.Size(150, 23);
+            this.btnTestConnection.TabIndex = 9;
+            this.btnTestConnection.Text = "Проверить соединение";
+            this.btnTestConnection.UseVisualStyleBackColor = true;
+            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
             // 
             // nudFPS
             // 
@@ -103,7 +127,7 @@
             // lblFPS
             // 
             this.lblFPS.AutoSize = true;
-            this.lblFPS.Location = new System.Drawing.Point(8, 81);
+            this.lblFPS.Location = new System.Drawing.Point(6, 81);
             this.lblFPS.Name = "lblFPS";
             this.lblFPS.Size = new System.Drawing.Size(329, 13);
             this.lblFPS.TabIndex = 5;
@@ -144,7 +168,7 @@
             this.tbConnectionString.Location = new System.Drawing.Point(8, 19);
             this.tbConnectionString.Name = "tbConnectionString";
             this.tbConnectionString.ReadOnly = true;
-            this.tbConnectionString.Size = new System.Drawing.Size(710, 20);
+            this.tbConnectionString.Size = new System.Drawing.Size(448, 20);
             this.tbConnectionString.TabIndex = 0;
             // 
             // tpShortcuts
@@ -309,5 +333,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcPerformer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcCommand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcShortcut;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnTestConnection;
     }
 }

@@ -16,7 +16,7 @@ namespace FireSafety
         public abstract void Extinguish(House house);
 
         // Поджигает дом
-        public abstract void Fire(House house);
+        public abstract void Fire(House house, int power);
 
         // Сжигает дом
         public abstract void Burn(House house);

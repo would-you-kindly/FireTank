@@ -68,7 +68,7 @@ namespace FireSafety
                     ProcessInput();
                     // TODO: Есть ли синтаксис, который позволяет обратиться к переменной типа bool и после этого ее переключить step = !step
                     if (ParallelAlgorithm.GetInstance().running || ParallelAlgorithm.GetInstance().step)
-                    {           
+                    {
                         // TODO: Костыль
                         ParallelAlgorithm.GetInstance().SetNextAction();
 
@@ -126,7 +126,10 @@ namespace FireSafety
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.GetInstance().WIDTH_TILE_COUNT, (int)Utilities.GetInstance().HEIGHT_TILE_COUNT,
                     Utilities.GetInstance().INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
-                //ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
+                if (Utilities.GetInstance().context != null && Settings.GetInstance().currentUser != null && Settings.GetInstance().currentMap != null)
+                {
+                    ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
+                }
 
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
@@ -159,7 +162,10 @@ namespace FireSafety
                     $"Эффективность разработанного алгоритма = {Math.Round(result, 2)}.",
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
+                if (Utilities.GetInstance().context != null && Settings.GetInstance().currentUser != null && Settings.GetInstance().currentMap != null)
+                {
+                    ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
+                }
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();

@@ -61,6 +61,7 @@ namespace FireSafety
                         house.state.currentTimeToSpread = house.state.timeToSpread;
                         house.Fire(1);
                     }
+                    house.SetHitpoints(item.GetPropertyInt("hitpoints"));
                     houses.Add(house);
                 }
 

@@ -259,6 +259,8 @@ namespace FireSafety
 
                 // Загружаем тренировочный алгоритм (если он есть)
                 LoadTrainingAlgorithm(ofd.FileName);
+
+                Settings.GetInstance().currentMap = null;
             }
         }
 
@@ -718,6 +720,18 @@ namespace FireSafety
         private void smartmapDownToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SmartLayoutMapDown();
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Utilities.GetInstance().context != null)
+            {
+                openMapFromDatabaseToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                openMapFromDatabaseToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }

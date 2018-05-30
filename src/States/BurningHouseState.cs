@@ -35,7 +35,7 @@ namespace FireSafety
             }
         }
 
-        public override void Fire(House house)
+        public override void Fire(House house, int power)
         {
             // Empty method
         }

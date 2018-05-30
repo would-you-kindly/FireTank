@@ -50,6 +50,12 @@ namespace FireSafety
             Utilities.CenterOrigin(sprite);
         }
 
+        public void SetHitpoints(int hitPoints)
+        {
+            state.hitPoints = hitPoints;
+            this.hitPoints.DisplayedString = hitPoints.ToString();
+        }
+
         // Тушит дом
         public void Water()
         {
@@ -60,7 +66,7 @@ namespace FireSafety
         // Поджигает дом
         public void Fire(int power)
         {
-            state.Fire(this);
+            state.Fire(this, power);
             Fired?.Invoke(this, new FireHouseEventArgs());
         }
 

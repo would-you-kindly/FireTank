@@ -18,9 +18,9 @@ namespace FireSafety
             // Empty method
         }
 
-        public override void Fire(House house)
+        public override void Fire(House house, int power)
         {
-            if (currentTimeToSpread == timeToSpread)
+            if (currentTimeToSpread == timeToSpread - (power - 1))
             {
                 house.state = new BurningHouseState();
             }
