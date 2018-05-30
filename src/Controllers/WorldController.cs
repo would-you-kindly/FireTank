@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FireSafety
+﻿namespace FireSafety
 {
     public class WorldController
     {

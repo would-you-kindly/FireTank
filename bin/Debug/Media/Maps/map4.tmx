@@ -5,7 +5,7 @@
   <property name="wind" value="downright"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Prototypes/Sprites.png" width="160" height="160"/>
+  <image source="../Textures/Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="20" height="16">
   <data>

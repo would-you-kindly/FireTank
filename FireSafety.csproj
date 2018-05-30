@@ -143,7 +143,6 @@
     <Compile Include="src\GUI\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Controllers\TankController.cs" />
     <Compile Include="src\GameWorld\Terrain.cs" />
     <Compile Include="src\GameWorld\Game.cs" />
     <Compile Include="src\GUI\Gui.cs" />

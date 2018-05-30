@@ -10,7 +10,7 @@
 
         public override string ToString()
         {
-            return "Озеро";
+            return Properties.Resources.Lake;
         }
     }
 }

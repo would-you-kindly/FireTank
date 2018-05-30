@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="32" tileheight="32" nextobjectid="156">
  <properties>
-  <property name="algorithm" value="TrainingExample.fta"/>
-  <property name="wind" value="up"/>
+  <property name="algorithm" value="TrainingExample.fta2"/>
+  <property name="wind" value="up 1 4 left 2 4"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Prototypes/Sprites.png" width="160" height="160"/>
+  <image source="../Textures/Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="12" height="12">
   <data>
@@ -155,11 +155,23 @@
    <tile gid="12"/>
   </data>
  </layer>
- <objectgroup name="tanks">
-  <object id="138" name="tank" type="tank" gid="20" x="160" y="288" width="32" height="32" rotation="-360"/>
-  <object id="155" name="tank" type="tank" gid="20" x="320" y="192" width="32" height="32" rotation="-450"/>
+ <objectgroup name="tanks" visible="0">
+  <object id="138" name="tank" type="tank" gid="20" x="160" y="288" width="32" height="32" rotation="-360">
+   <properties>
+    <property name="capacity" type="int" value="3"/>
+    <property name="maxCapacity" type="int" value="10"/>
+    <property name="maxPressure" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="155" name="tank" type="tank" gid="20" x="320" y="192" width="32" height="32" rotation="-450">
+   <properties>
+    <property name="capacity" type="int" value="2"/>
+    <property name="maxCapacity" type="int" value="10"/>
+    <property name="maxPressure" type="int" value="7"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="turrets">
+ <objectgroup name="turrets" visible="0">
   <object id="139" name="turret" type="turret" gid="21" x="160" y="288" width="32" height="32" rotation="-360"/>
   <object id="148" name="turret" type="turret" gid="21" x="320" y="192" width="32" height="32" rotation="-450"/>
  </objectgroup>
@@ -167,196 +179,235 @@
   <object id="78" name="tree" type="tree" gid="6" x="64" y="192" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="80" name="tree" type="tree" gid="6" x="64" y="224" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="81" name="tree" type="tree" gid="6" x="128" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="83" name="tree" type="tree" gid="6" x="96" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="84" name="tree" type="tree" gid="6" x="96" y="192" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="86" name="tree" type="tree" gid="6" x="64" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="87" name="tree" type="tree" gid="6" x="128" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="92" name="tree" type="tree" gid="6" x="96" y="224" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="93" name="tree" type="tree" gid="6" x="64" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="94" name="tree" type="tree" gid="6" x="96" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="117" name="tree" type="tree" gid="6" x="160" y="160" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="118" name="tree" type="tree" gid="6" x="256" y="224" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="120" name="tree" type="tree" gid="6" x="256" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="121" name="tree" type="tree" gid="6" x="224" y="128" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="122" name="tree" type="tree" gid="6" x="224" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="123" name="tree" type="tree" gid="6" x="224" y="64" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="124" name="tree" type="tree" gid="6" x="160" y="128" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="125" name="tree" type="tree" gid="6" x="320" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="126" name="tree" type="tree" gid="6" x="128" y="128" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="127" name="tree" type="tree" gid="6" x="192" y="160" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="128" name="tree" type="tree" gid="6" x="192" y="96" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="129" name="tree" type="tree" gid="6" x="288" y="224" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="131" name="tree" type="tree" gid="6" x="224" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="132" name="tree" type="tree" gid="6" x="160" y="96" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="133" name="tree" type="tree" gid="6" x="320" y="224" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="135" name="tree" type="tree" gid="6" x="224" y="96" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="136" name="tree" type="tree" gid="6" x="288" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="137" name="tree" type="tree" gid="6" x="192" y="128" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="140" name="tree" type="tree" gid="6" x="256" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="141" name="tree" type="tree" gid="6" x="288" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="142" name="tree" type="tree" gid="6" x="256" y="96" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="143" name="tree" type="tree" gid="6" x="288" y="96" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="144" name="tree" type="tree" gid="6" x="256" y="128" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="145" name="tree" type="tree" gid="6" x="288" y="128" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="146" name="tree" type="tree" gid="6" x="192" y="64" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="149" name="tree" type="tree" gid="6" x="32" y="256" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="150" name="tree" type="tree" gid="6" x="32" y="288" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="151" name="tree" type="tree" gid="6" x="64" y="320" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
   <object id="152" name="tree" type="tree" gid="6" x="96" y="320" width="32" height="32">
    <properties>
     <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="12"/>
    </properties>
   </object>
  </objectgroup>

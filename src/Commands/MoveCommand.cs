@@ -10,14 +10,14 @@ namespace FireSafety
         {
             Forward,
             Backward,
-            Forward45CW,
-            Forward45CCW,
-            Backward45CW,
-            Backward45CCW,
             Rotate45CW,
             Rotate45CCW,
             Rotate90CW,
             Rotate90CCW,
+            Forward45CW,
+            Forward45CCW,
+            Backward45CW,
+            Backward45CCW,
 
             None
         }
@@ -44,27 +44,27 @@ namespace FireSafety
             switch (command)
             {
                 case Commands.Forward:
-                    return "Вперед";
+                    return Properties.Resources.MoveCommandForward;
                 case Commands.Backward:
-                    return "Назад";
-                case Commands.Rotate90CW:
-                    return "90° по ч.с.";
-                case Commands.Rotate90CCW:
-                    return "90° пр. ч.с.";
+                    return Properties.Resources.MoveCommandBackward;
                 case Commands.Rotate45CW:
-                    return "45° по ч.с.";
+                    return Properties.Resources.MoveCommandRotate45CW;
                 case Commands.Rotate45CCW:
-                    return "45° пр. ч.с.";
+                    return Properties.Resources.MoveCommandRotate45CCW;
+                case Commands.Rotate90CW:
+                    return Properties.Resources.MoveCommandRotate90CW;
+                case Commands.Rotate90CCW:
+                    return Properties.Resources.MoveCommandRotate90CCW;
                 case Commands.Forward45CW:
-                    return "Вперед 45° по ч.с.";
+                    return Properties.Resources.MoveCommandForwardRotate45CW;
                 case Commands.Forward45CCW:
-                    return "Вперед 45° пр. ч.с.";
+                    return Properties.Resources.MoveCommandForwardRotate45CCW;
                 case Commands.Backward45CW:
-                    return "Назад 45° по ч.с.";
+                    return Properties.Resources.MoveCommandBackwardRotate45CW;
                 case Commands.Backward45CCW:
-                    return "Назад 45° пр. ч.с.";
+                    return Properties.Resources.MoveCommandBackwardRotate45CCW;
                 case Commands.None:
-                    return "Бездействие";
+                    return Properties.Resources.MoveCommandNone;
             }
 
             throw new Exception("Неверно задано название команды MoveCommand.");

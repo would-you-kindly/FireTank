@@ -59,5 +59,545 @@ namespace FireSafety.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все исполнители.
+        /// </summary>
+        internal static string AllPerformers {
+            get {
+                return ResourceManager.GetString("AllPerformers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отменить выделение.
+        /// </summary>
+        internal static string CancelSelection {
+            get {
+                return ResourceManager.GetString("CancelSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Зарядить.
+        /// </summary>
+        internal static string ChargeCommandCharge {
+            get {
+                return ResourceManager.GetString("ChargeCommandCharge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Бездействие.
+        /// </summary>
+        internal static string ChargeCommandNone {
+            get {
+                return ResourceManager.GetString("ChargeCommandNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Давление +1.
+        /// </summary>
+        internal static string ChargeCommandPressure1 {
+            get {
+                return ResourceManager.GetString("ChargeCommandPressure1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Давление +2.
+        /// </summary>
+        internal static string ChargeCommandPressure2 {
+            get {
+                return ResourceManager.GetString("ChargeCommandPressure2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пополнить запас.
+        /// </summary>
+        internal static string ChargeCommandRefuel {
+            get {
+                return ResourceManager.GetString("ChargeCommandRefuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заряжающий.
+        /// </summary>
+        internal static string ChargePerformer {
+            get {
+                return ResourceManager.GetString("ChargePerformer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Очистить алгоритм танка.
+        /// </summary>
+        internal static string ClearTankAlgorithm {
+            get {
+                return ResourceManager.GetString("ClearTankAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Очистить все алгоритмы.
+        /// </summary>
+        internal static string ClearWholeAlgorithm {
+            get {
+                return ResourceManager.GetString("ClearWholeAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удалить действие.
+        /// </summary>
+        internal static string DeleteAction {
+            get {
+                return ResourceManager.GetString("DeleteAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Документация.
+        /// </summary>
+        internal static string Documentation {
+            get {
+                return ResourceManager.GetString("Documentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Помощь.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дом.
+        /// </summary>
+        internal static string House {
+            get {
+                return ResourceManager.GetString("House", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Озеро.
+        /// </summary>
+        internal static string Lake {
+            get {
+                return ResourceManager.GetString("Lake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to algorithm.
+        /// </summary>
+        internal static string MapParameterAlgorithm {
+            get {
+                return ResourceManager.GetString("MapParameterAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to capacity.
+        /// </summary>
+        internal static string MapParameterCurrentWaterCapacity {
+            get {
+                return ResourceManager.GetString("MapParameterCurrentWaterCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to house.
+        /// </summary>
+        internal static string MapParameterHouse {
+            get {
+                return ResourceManager.GetString("MapParameterHouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to maxCapacity.
+        /// </summary>
+        internal static string MapParameterMaxWaterCapacity {
+            get {
+                return ResourceManager.GetString("MapParameterMaxWaterCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to maxPressure.
+        /// </summary>
+        internal static string MapParameterMaxWaterPressure {
+            get {
+                return ResourceManager.GetString("MapParameterMaxWaterPressure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to burns.
+        /// </summary>
+        internal static string MapParameterObjectBurns {
+            get {
+                return ResourceManager.GetString("MapParameterObjectBurns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hitpoints.
+        /// </summary>
+        internal static string MapParameterObjectHitPoints {
+            get {
+                return ResourceManager.GetString("MapParameterObjectHitPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tank.
+        /// </summary>
+        internal static string MapParameterTank {
+            get {
+                return ResourceManager.GetString("MapParameterTank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tree.
+        /// </summary>
+        internal static string MapParameterTree {
+            get {
+                return ResourceManager.GetString("MapParameterTree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to turret.
+        /// </summary>
+        internal static string MapParameterTurret {
+            get {
+                return ResourceManager.GetString("MapParameterTurret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to wind.
+        /// </summary>
+        internal static string MapParameterWind {
+            get {
+                return ResourceManager.GetString("MapParameterWind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to down.
+        /// </summary>
+        internal static string MapParameterWindDown {
+            get {
+                return ResourceManager.GetString("MapParameterWindDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to downright.
+        /// </summary>
+        internal static string MapParameterWindDownRight {
+            get {
+                return ResourceManager.GetString("MapParameterWindDownRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to left.
+        /// </summary>
+        internal static string MapParameterWindLeft {
+            get {
+                return ResourceManager.GetString("MapParameterWindLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to leftdown.
+        /// </summary>
+        internal static string MapParameterWindLeftDown {
+            get {
+                return ResourceManager.GetString("MapParameterWindLeftDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rigth.
+        /// </summary>
+        internal static string MapParameterWindRight {
+            get {
+                return ResourceManager.GetString("MapParameterWindRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rightup.
+        /// </summary>
+        internal static string MapParameterWindRightUp {
+            get {
+                return ResourceManager.GetString("MapParameterWindRightUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to up.
+        /// </summary>
+        internal static string MapParameterWindUp {
+            get {
+                return ResourceManager.GetString("MapParameterWindUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to upleft.
+        /// </summary>
+        internal static string MapParameterWindUpLeft {
+            get {
+                return ResourceManager.GetString("MapParameterWindUpLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад.
+        /// </summary>
+        internal static string MoveCommandBackward {
+            get {
+                return ResourceManager.GetString("MoveCommandBackward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад 45° пр.ч.с..
+        /// </summary>
+        internal static string MoveCommandBackwardRotate45CCW {
+            get {
+                return ResourceManager.GetString("MoveCommandBackwardRotate45CCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад 45° по ч.с..
+        /// </summary>
+        internal static string MoveCommandBackwardRotate45CW {
+            get {
+                return ResourceManager.GetString("MoveCommandBackwardRotate45CW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вперед.
+        /// </summary>
+        internal static string MoveCommandForward {
+            get {
+                return ResourceManager.GetString("MoveCommandForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вперед 45° пр.ч.с..
+        /// </summary>
+        internal static string MoveCommandForwardRotate45CCW {
+            get {
+                return ResourceManager.GetString("MoveCommandForwardRotate45CCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вперед 45° по ч.с..
+        /// </summary>
+        internal static string MoveCommandForwardRotate45CW {
+            get {
+                return ResourceManager.GetString("MoveCommandForwardRotate45CW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Бездействие.
+        /// </summary>
+        internal static string MoveCommandNone {
+            get {
+                return ResourceManager.GetString("MoveCommandNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 45° пр.ч.с..
+        /// </summary>
+        internal static string MoveCommandRotate45CCW {
+            get {
+                return ResourceManager.GetString("MoveCommandRotate45CCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 45° по ч.с..
+        /// </summary>
+        internal static string MoveCommandRotate45CW {
+            get {
+                return ResourceManager.GetString("MoveCommandRotate45CW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 90° пр.ч.с..
+        /// </summary>
+        internal static string MoveCommandRotate90CCW {
+            get {
+                return ResourceManager.GetString("MoveCommandRotate90CCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 90° по ч.с..
+        /// </summary>
+        internal static string MoveCommandRotate90CW {
+            get {
+                return ResourceManager.GetString("MoveCommandRotate90CW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Водитель.
+        /// </summary>
+        internal static string MovePerformer {
+            get {
+                return ResourceManager.GetString("MovePerformer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Перезагрузить.
+        /// </summary>
+        internal static string ReloadAlgorithm {
+            get {
+                return ResourceManager.GetString("ReloadAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Скала.
+        /// </summary>
+        internal static string Rock {
+            get {
+                return ResourceManager.GetString("Rock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запустить.
+        /// </summary>
+        internal static string RunAlgorithm {
+            get {
+                return ResourceManager.GetString("RunAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Шаг.
+        /// </summary>
+        internal static string StepAlgorithm {
+            get {
+                return ResourceManager.GetString("StepAlgorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дерево.
+        /// </summary>
+        internal static string Tree {
+            get {
+                return ResourceManager.GetString("Tree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Опустить.
+        /// </summary>
+        internal static string TurretCommandDown {
+            get {
+                return ResourceManager.GetString("TurretCommandDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Бездействие.
+        /// </summary>
+        internal static string TurretCommandNone {
+            get {
+                return ResourceManager.GetString("TurretCommandNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 45° пр.ч.с..
+        /// </summary>
+        internal static string TurretCommandRotate45CCW {
+            get {
+                return ResourceManager.GetString("TurretCommandRotate45CCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 45° по ч.с..
+        /// </summary>
+        internal static string TurretCommandRotate45CW {
+            get {
+                return ResourceManager.GetString("TurretCommandRotate45CW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 90° пр.ч.с..
+        /// </summary>
+        internal static string TurretCommandRotate90CCW {
+            get {
+                return ResourceManager.GetString("TurretCommandRotate90CCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 90° по ч.с..
+        /// </summary>
+        internal static string TurretCommandRotate90CW {
+            get {
+                return ResourceManager.GetString("TurretCommandRotate90CW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выстрелить.
+        /// </summary>
+        internal static string TurretCommandShoot {
+            get {
+                return ResourceManager.GetString("TurretCommandShoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поднять.
+        /// </summary>
+        internal static string TurretCommandUp {
+            get {
+                return ResourceManager.GetString("TurretCommandUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Наводчик.
+        /// </summary>
+        internal static string TurretPerformer {
+            get {
+                return ResourceManager.GetString("TurretPerformer", resourceCulture);
+            }
+        }
     }
 }

@@ -8,25 +8,11 @@ namespace FireSafety
     {
         private Stopwatch clock = new Stopwatch();
         private bool keyPressed = false;
-        //public TankController tankController;
 
         public AlgorithmForm()
         {
-            //tankController = new TankController(tank, this);
-
             InitializeComponent();
         }
-
-        // Блокируем кнопку закрытия окна
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams createParams = base.CreateParams;
-        //        createParams.ClassStyle = 0x200;
-        //        return createParams;
-        //    }
-        //}
 
         private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -158,8 +158,7 @@ namespace FireSafety
 
         public Settings()
         {
-            Default();
-            //Load();
+            //Default();
         }
 
         public static Settings GetInstance()
@@ -169,7 +168,7 @@ namespace FireSafety
                 instance = new Settings();
 
                 // Грузим настройки из файла
-                //instance.Load();
+                instance.Load();
 
                 instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }
@@ -234,7 +233,7 @@ namespace FireSafety
                     moveBackward45CCW = key;
                     break;
                 case "45° по ч.с.":
-                    if (performer == "Водитель")
+                    if (performer == Properties.Resources.MovePerformer)
                     {
                         moveRotateCW = key;
                     }
@@ -372,36 +371,36 @@ namespace FireSafety
             // Исполнитель, команда, shortcut
             List<Tuple<string, string, Keys>> shortcuts = new List<Tuple<string, string, Keys>>();
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Все исполнители", Utilities.ToMoveStringRus(MoveCommand.Commands.None), none));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.AllPerformers, Utilities.ToMoveStringRus(MoveCommand.Commands.None), none));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Forward), moveForward));
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Backward), moveBackward));
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CW), moveForward45CW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CCW), moveForward45CCW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CW), moveBackward45CW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CCW), moveBackward45CCW));
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CW), moveRotateCW)); //
-            shortcuts.Add(new Tuple<string, string, Keys>("Водитель", Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CCW), moveRotateCCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Forward), moveForward));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Backward), moveBackward));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CW), moveForward45CW));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Forward45CCW), moveForward45CCW));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CW), moveBackward45CW));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Backward45CCW), moveBackward45CCW));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CW), moveRotateCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.MovePerformer, Utilities.ToMoveStringRus(MoveCommand.Commands.Rotate45CCW), moveRotateCCW)); //
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Заряжающий", Utilities.ToChargeStringRus(ChargeCommand.Commands.Refuel), chargeRefuel));
-            shortcuts.Add(new Tuple<string, string, Keys>("Заряжающий", Utilities.ToChargeStringRus(ChargeCommand.Commands.PressureX1), chargePressure)); //
-            shortcuts.Add(new Tuple<string, string, Keys>("Заряжающий", Utilities.ToChargeStringRus(ChargeCommand.Commands.Charge), chargeCharge));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.ChargePerformer, Utilities.ToChargeStringRus(ChargeCommand.Commands.Refuel), chargeRefuel));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.ChargePerformer, Utilities.ToChargeStringRus(ChargeCommand.Commands.PressureX1), chargePressure)); //
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.ChargePerformer, Utilities.ToChargeStringRus(ChargeCommand.Commands.Charge), chargeCharge));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Up), turretUp));
-            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Down), turretDown));
-            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Shoot), turretShoot));
-            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CW), turretRotateCW)); //
-            shortcuts.Add(new Tuple<string, string, Keys>("Наводчик", Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CCW), turretRotateCCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.TurretPerformer, Utilities.ToTurretStringRus(TurretCommand.Commands.Up), turretUp));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.TurretPerformer, Utilities.ToTurretStringRus(TurretCommand.Commands.Down), turretDown));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.TurretPerformer, Utilities.ToTurretStringRus(TurretCommand.Commands.Shoot), turretShoot));
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.TurretPerformer, Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CW), turretRotateCW)); //
+            shortcuts.Add(new Tuple<string, string, Keys>(Properties.Resources.TurretPerformer, Utilities.ToTurretStringRus(TurretCommand.Commands.Rotate45CCW), turretRotateCCW)); //
 
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Запустить", run));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Перезагрузить", reload));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Шаг", step));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Очистить", clearParallelAlgorithm));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Помощь", help));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.RunAlgorithm, run));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.ReloadAlgorithm, reload));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.StepAlgorithm, step));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.ClearWholeAlgorithm, clearParallelAlgorithm));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.Help, help));
 
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Отменить выделение", clearSelection));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Удалить действие", deleteAction));
-            shortcuts.Add(new Tuple<string, string, Keys>("", "Очистить алгоритм танка", clearTankAlgorithm));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.CancelSelection, clearSelection));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.DeleteAction, deleteAction));
+            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.ClearTankAlgorithm, clearTankAlgorithm));
 
             return shortcuts;
         }

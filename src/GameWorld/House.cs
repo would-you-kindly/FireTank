@@ -112,7 +112,7 @@ namespace FireSafety
 
         public override string ToString()
         {
-            return "Дом";
+            return Properties.Resources.House;
         }
     }
 }

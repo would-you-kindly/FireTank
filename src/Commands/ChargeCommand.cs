@@ -11,10 +11,10 @@ namespace FireSafety
             // Увеличение давления воды (дальности стрельбы)
             PressureX1,
             PressureX2,
-            // Пополнение запасов воды (из озера)
-            Refuel,
             // Перезарядка (подготовка к выстрелу)
             Charge,
+            // Пополнение запасов воды (из озера)
+            Refuel,
 
             None
         }
@@ -41,15 +41,15 @@ namespace FireSafety
             switch (command)
             {
                 case Commands.PressureX1:
-                    return "Давление +1";
+                    return Properties.Resources.ChargeCommandPressure1;
                 case Commands.PressureX2:
-                    return "Давление +2";
-                case Commands.Refuel:
-                    return "Пополнить запасы";
+                    return Properties.Resources.ChargeCommandPressure2;
                 case Commands.Charge:
-                    return "Зарядить";
+                    return Properties.Resources.ChargeCommandCharge;
+                case Commands.Refuel:
+                    return Properties.Resources.ChargeCommandRefuel;
                 case Commands.None:
-                    return "Бездействие";
+                    return Properties.Resources.ChargeCommandNone;
             }
 
             throw new Exception("Неверно задано название команды ChargeCommand.");

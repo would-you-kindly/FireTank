@@ -15,7 +15,7 @@ namespace FireSafety
             this.width = width;
             this.height = height;
 
-            text = new Text("", resources.GetFont(Fonts.ID.Sansation), 12);
+            text = new Text(string.Empty, resources.GetFont(Fonts.ID.Sansation), 12);
             text.FillColor = Color.Black;
             text.OutlineThickness = 0.2f;
         }

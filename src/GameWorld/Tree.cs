@@ -119,7 +119,7 @@ namespace FireSafety
 
         public override string ToString()
         {
-            return "Дерево";
+            return Properties.Resources.Tree;
         }
     }
 }

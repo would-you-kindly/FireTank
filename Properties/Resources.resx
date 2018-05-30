@@ -117,4 +117,242 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllPerformers" xml:space="preserve">
+    <value>Все исполнители</value>
+    <comment>Исполнитель</comment>
+  </data>
+  <data name="CancelSelection" xml:space="preserve">
+    <value>Отменить выделение</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="ChargeCommandCharge" xml:space="preserve">
+    <value>Зарядить</value>
+    <comment>Команда заряжающего</comment>
+  </data>
+  <data name="ChargeCommandNone" xml:space="preserve">
+    <value>Бездействие</value>
+    <comment>Команда заряжающего</comment>
+  </data>
+  <data name="ChargeCommandPressure1" xml:space="preserve">
+    <value>Давление +1</value>
+    <comment>Команда заряжающего</comment>
+  </data>
+  <data name="ChargeCommandPressure2" xml:space="preserve">
+    <value>Давление +2</value>
+    <comment>Команда заряжающего</comment>
+  </data>
+  <data name="ChargeCommandRefuel" xml:space="preserve">
+    <value>Пополнить запас</value>
+    <comment>Команда заряжающего</comment>
+  </data>
+  <data name="ChargePerformer" xml:space="preserve">
+    <value>Заряжающий</value>
+    <comment>Исполнитель</comment>
+  </data>
+  <data name="ClearTankAlgorithm" xml:space="preserve">
+    <value>Очистить алгоритм танка</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="ClearWholeAlgorithm" xml:space="preserve">
+    <value>Очистить все алгоритмы</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="DeleteAction" xml:space="preserve">
+    <value>Удалить действие</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="Documentation" xml:space="preserve">
+    <value>Документация</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="House" xml:space="preserve">
+    <value>Дом</value>
+    <comment>Объект</comment>
+  </data>
+  <data name="Lake" xml:space="preserve">
+    <value>Озеро</value>
+    <comment>Объект</comment>
+  </data>
+  <data name="MapParameterAlgorithm" xml:space="preserve">
+    <value>algorithm</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterCurrentWaterCapacity" xml:space="preserve">
+    <value>capacity</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterHouse" xml:space="preserve">
+    <value>house</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterMaxWaterCapacity" xml:space="preserve">
+    <value>maxCapacity</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterMaxWaterPressure" xml:space="preserve">
+    <value>maxPressure</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterObjectBurns" xml:space="preserve">
+    <value>burns</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterObjectHitPoints" xml:space="preserve">
+    <value>hitpoints</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterTank" xml:space="preserve">
+    <value>tank</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterTree" xml:space="preserve">
+    <value>tree</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterTurret" xml:space="preserve">
+    <value>turret</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWind" xml:space="preserve">
+    <value>wind</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindDown" xml:space="preserve">
+    <value>down</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindDownRight" xml:space="preserve">
+    <value>downright</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindLeft" xml:space="preserve">
+    <value>left</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindLeftDown" xml:space="preserve">
+    <value>leftdown</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindRight" xml:space="preserve">
+    <value>rigth</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindRightUp" xml:space="preserve">
+    <value>rightup</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindUp" xml:space="preserve">
+    <value>up</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MapParameterWindUpLeft" xml:space="preserve">
+    <value>upleft</value>
+    <comment>Параметр карты</comment>
+  </data>
+  <data name="MoveCommandBackward" xml:space="preserve">
+    <value>Назад</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandBackwardRotate45CCW" xml:space="preserve">
+    <value>Назад 45° пр.ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandBackwardRotate45CW" xml:space="preserve">
+    <value>Назад 45° по ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandForward" xml:space="preserve">
+    <value>Вперед</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandForwardRotate45CCW" xml:space="preserve">
+    <value>Вперед 45° пр.ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandForwardRotate45CW" xml:space="preserve">
+    <value>Вперед 45° по ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandNone" xml:space="preserve">
+    <value>Бездействие</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandRotate45CCW" xml:space="preserve">
+    <value>45° пр.ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandRotate45CW" xml:space="preserve">
+    <value>45° по ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandRotate90CCW" xml:space="preserve">
+    <value>90° пр.ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MoveCommandRotate90CW" xml:space="preserve">
+    <value>90° по ч.с.</value>
+    <comment>Команда водителя</comment>
+  </data>
+  <data name="MovePerformer" xml:space="preserve">
+    <value>Водитель</value>
+    <comment>Исполнитель</comment>
+  </data>
+  <data name="ReloadAlgorithm" xml:space="preserve">
+    <value>Перезагрузить</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="Rock" xml:space="preserve">
+    <value>Скала</value>
+    <comment>Объект</comment>
+  </data>
+  <data name="RunAlgorithm" xml:space="preserve">
+    <value>Запустить</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="StepAlgorithm" xml:space="preserve">
+    <value>Шаг</value>
+    <comment>Алгоритм</comment>
+  </data>
+  <data name="Tree" xml:space="preserve">
+    <value>Дерево</value>
+    <comment>Объект</comment>
+  </data>
+  <data name="TurretCommandDown" xml:space="preserve">
+    <value>Опустить</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandNone" xml:space="preserve">
+    <value>Бездействие</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandRotate45CCW" xml:space="preserve">
+    <value>45° пр.ч.с.</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandRotate45CW" xml:space="preserve">
+    <value>45° по ч.с.</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandRotate90CCW" xml:space="preserve">
+    <value>90° пр.ч.с.</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandRotate90CW" xml:space="preserve">
+    <value>90° по ч.с.</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandShoot" xml:space="preserve">
+    <value>Выстрелить</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretCommandUp" xml:space="preserve">
+    <value>Поднять</value>
+    <comment>Команда наводчика</comment>
+  </data>
+  <data name="TurretPerformer" xml:space="preserve">
+    <value>Наводчик</value>
+    <comment>Исполнитель</comment>
+  </data>
 </root>
