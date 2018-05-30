@@ -718,7 +718,7 @@ namespace FireSafety
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Settings.GetInstance().context != null)
+            if (Settings.GetInstance().currentUser != null)
             {
                 openMapFromDatabaseToolStripMenuItem.Enabled = true;
             }
