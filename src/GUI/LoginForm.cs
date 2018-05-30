@@ -13,11 +13,11 @@ namespace FireSafety
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (Utilities.GetInstance().context.Users.Any(user => user.Login == tbLogin.Text))
+            if (Settings.GetInstance().context.Users.Any(user => user.Login == tbLogin.Text))
             {
-                if (Utilities.GetInstance().context.Users.First(user => user.Login == tbLogin.Text).Password == tbPassword.Text)
+                if (Settings.GetInstance().context.Users.First(user => user.Login == tbLogin.Text).Password == tbPassword.Text)
                 {
-                    UserModel userModel = Utilities.GetInstance().context.Users.First(user =>
+                    UserModel userModel = Settings.GetInstance().context.Users.First(user =>
                         user.Login == tbLogin.Text && user.Password == tbPassword.Text);
 
                     Settings.GetInstance().SetCurrentUser(userModel.Id);

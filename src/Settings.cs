@@ -156,8 +156,14 @@ namespace FireSafety
         public int timeToHold;
         public string connectionString;
 
+        [XmlIgnore]
+        [NonSerialized]
+        public ModelContext context;
+
         public Settings()
         {
+            context = new ModelContext(instance.connectionString);
+
             //Default();
         }
 
@@ -183,14 +189,14 @@ namespace FireSafety
 
         public void SetCurrentUser(Guid user)
         {
-            UserRepository userRepository = new UserRepository(Utilities.GetInstance().context);
+            UserRepository userRepository = new UserRepository(context);
 
             currentUser = userRepository.Read(user);
         }
 
         public void SetCurrentMap(Guid map)
         {
-            MapRepository mapRepository = new MapRepository(Utilities.GetInstance().context);
+            MapRepository mapRepository = new MapRepository(context);
 
             currentMap = mapRepository.Read(map);
         }

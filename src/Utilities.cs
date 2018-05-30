@@ -15,8 +15,6 @@ namespace FireSafety
         public int INIT_BURNING_TREES;
         public int MAX_TANKS_COUNT;
 
-        public ModelContext context;
-
         private Utilities()
         {
             TILE_SIZE = 32;
@@ -25,8 +23,6 @@ namespace FireSafety
             HEIGHT_TILE_COUNT = 16;
             INIT_BURNING_TREES = 0;
             MAX_TANKS_COUNT = 6;
-
-            context = new ModelContext(Settings.GetInstance().connectionString);
         }
 
         public static Utilities GetInstance()
@@ -67,10 +63,10 @@ namespace FireSafety
                     return MoveCommand.Commands.Backward;
                 case "45° по ч.с.":
                     return MoveCommand.Commands.Rotate45CW;
-                case "90° по ч.с.":
-                    return MoveCommand.Commands.Rotate90CW;
                 case "45° пр. ч.с.":
                     return MoveCommand.Commands.Rotate45CCW;
+                case "90° по ч.с.":
+                    return MoveCommand.Commands.Rotate90CW;
                 case "90° пр. ч.с.":
                     return MoveCommand.Commands.Rotate90CCW;
                 case "Вперед 45° по ч.с.":

@@ -22,7 +22,7 @@ namespace FireSafety
             XmlDocument xDoc = new XmlDocument();
             try
             {
-                MapModel mapModel = Utilities.GetInstance().context.Maps.Find(id);
+                MapModel mapModel = Settings.GetInstance().context.Maps.Find(id);
                 xDoc.LoadXml(mapModel.XmlContent);
                 Settings.GetInstance().SetCurrentMap(id);
             }
