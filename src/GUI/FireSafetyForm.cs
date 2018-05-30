@@ -251,11 +251,6 @@ namespace FireSafety
 
                 // Применяем компоновку окон
                 SmartLayoutMapUp();
-
-                // Загружаем тренировочный алгоритм (если он есть)
-                LoadTrainingAlgorithm(ofd.FileName);
-
-                Settings.GetInstance().currentMap = null;
             }
         }
 
@@ -275,20 +270,6 @@ namespace FireSafety
 
                 // Применяем компоновку окон
                 SmartLayout();
-
-                // Загружаем тренировочный алгоритм (если он есть)
-                //LoadTrainingAlgorithm(ofd.FileName);
-            }
-        }
-
-        public void LoadTrainingAlgorithm(string filename)
-        {
-            // Если указан обучающий алгоритм, загружаем его
-            string algorithmFilename = worldController.GetMapProperty("algorithm");
-            if (algorithmFilename != string.Empty)
-            {
-                filename = Path.Combine(Path.GetDirectoryName(filename), algorithmFilename);
-                ParallelAlgorithm.GetInstance().LoadAlgorithm(new FileOpenSave(filename));
             }
         }
 

@@ -128,7 +128,7 @@ namespace FireSafety
                 double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.GetInstance().WIDTH_TILE_COUNT, (int)Utilities.GetInstance().HEIGHT_TILE_COUNT,
                     Utilities.GetInstance().INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
 
-                if (Settings.GetInstance().currentMap != null)
+                if (Settings.GetInstance().currentUser != null && Settings.GetInstance().currentMap != null)
                 {
                     ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
                 }
@@ -160,7 +160,7 @@ namespace FireSafety
                     warning,
                     "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (Settings.GetInstance().currentMap != null)
+                if (Settings.GetInstance().currentUser != null && Settings.GetInstance().currentMap != null)
                 {
                     ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
                 }
