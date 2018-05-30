@@ -50,6 +50,12 @@ namespace FireSafety
             Utilities.CenterOrigin(sprite);
         }
 
+        public void SetHitpoints(int hitPoints)
+        {
+            state.hitPoints = hitPoints;
+            this.hitPoints.DisplayedString = hitPoints.ToString();
+        }
+
         // Тушит дерево
         public void Water()
         {

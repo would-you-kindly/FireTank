@@ -46,6 +46,7 @@ namespace FireSafety
                         tree.state.currentTimeToSpread = TreeState.timeToSpread;
                         tree.Fire(1);
                     }
+                    tree.SetHitpoints(item.GetPropertyInt("hitpoints"));
                     trees.Add(tree);
                 }
 
