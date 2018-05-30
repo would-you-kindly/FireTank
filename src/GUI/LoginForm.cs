@@ -21,7 +21,8 @@ namespace FireSafety
                         user.Login == tbLogin.Text && user.Password == tbPassword.Text);
 
                     Settings.GetInstance().SetCurrentUser(userModel.Id);
-                    this.DialogResult = DialogResult.OK;
+
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {

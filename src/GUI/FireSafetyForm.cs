@@ -15,7 +15,6 @@ namespace FireSafety
         private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
-        public InfoForm infoForm;
         public PlanForm planForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
@@ -65,10 +64,6 @@ namespace FireSafety
             }
             planForm.MdiParent = this;
             planForm.Show();
-
-            //infoForm = new InfoForm();
-            //infoForm.MdiParent = this;
-            //infoForm.Show();
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
@@ -310,7 +305,6 @@ namespace FireSafety
 
             // Закрываем окна
             algorithmForms.ForEach(form => form?.Close());
-            infoForm?.Close();
             renderWindow?.Close();
             sfmlForm?.Close();
             planForm?.Close();

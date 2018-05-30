@@ -16,44 +16,20 @@ namespace FireSafety
         private List<Layer> layers = new List<Layer>();
         public Dictionary<string, string> properties = new Dictionary<string, string>();
 
-        public bool LoadFromDatabase(Guid id)
+        public bool Load(string xml)
         {
             // Открываем документ с картой в .xml разметке 
             XmlDocument xDoc = new XmlDocument();
             try
             {
-                MapModel mapModel = Settings.GetInstance().context.Maps.Find(id);
-                xDoc.LoadXml(mapModel.XmlContent);
-                Settings.GetInstance().SetCurrentMap(id);
+                xDoc.LoadXml(xml);
             }
             catch (Exception)
             {
-                Console.WriteLine("Loading level \"" + id.ToString() + "\" failed.");
+                Console.WriteLine("Loading level failed.");
                 return false;
             }
 
-            return Load(xDoc);
-        }
-
-        public bool LoadFromFile(string filename)
-        {
-            // Открываем документ с картой в .xml разметке 
-            XmlDocument xDoc = new XmlDocument();
-            try
-            {
-                xDoc.Load(filename);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Loading level \"" + filename + "\" failed.");
-                return false;
-            }
-
-            return Load(xDoc);
-        }
-
-        private bool Load(XmlDocument xDoc)
-        {
             // Получаем информацию о карте (ширину, высоту карты и тайлов)
             XmlElement mapElement = (XmlElement)xDoc.GetElementsByTagName("map")[0];
 

@@ -104,12 +104,6 @@
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\GameWorld\Flame.cs" />
-    <Compile Include="src\GUI\InfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\GUI\InfoForm.Designer.cs">
-      <DependentUpon>InfoForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\Repositories\IRepository.cs" />
     <Compile Include="src\GameWorld\IUpdatable.cs" />
     <Compile Include="src\GUI\LoginForm.cs">
@@ -184,9 +178,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\FireSafetyForm.resx">
       <DependentUpon>FireSafetyForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\GUI\InfoForm.resx">
-      <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

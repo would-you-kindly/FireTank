@@ -11,7 +11,6 @@ D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafet
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\System.ValueTuple.xml
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.AlgorithmForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.FireSafetyForm.resources
-D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.InfoForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.LoginForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.OpenMapForm.resources
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.SettingsForm.resources

@@ -40,10 +40,18 @@ namespace FireSafety
         {
             Map map = new Map();
 
-            if (!map.LoadFromFile(filename))
+            using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
-                throw new Exception("Не удалось загрузить карту.");
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    if (!map.Load(sr.ReadToEnd()))
+                    {
+                        throw new Exception("Не удалось загрузить карту.");
+                    }
+                }
             }
+
+            Settings.GetInstance().UnsetCurrentMap();
 
             return map;
         }

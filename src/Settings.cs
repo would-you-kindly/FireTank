@@ -162,7 +162,7 @@ namespace FireSafety
 
         public Settings()
         {
-            context = new ModelContext(instance.connectionString);
+            context = new ModelContext(connectionStringDefault);
 
             //Default();
         }
@@ -199,6 +199,16 @@ namespace FireSafety
             MapRepository mapRepository = new MapRepository(context);
 
             currentMap = mapRepository.Read(map);
+        }
+
+        public void UnsetCurrentUser()
+        {
+            currentUser = null;
+        }
+
+        public void UnsetCurrentMap()
+        {
+            currentMap = null;
         }
 
         public string GetUserString()

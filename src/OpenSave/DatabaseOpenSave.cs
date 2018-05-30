@@ -53,10 +53,14 @@ namespace FireSafety
         {
             Map map = new Map();
 
-            if (!map.LoadFromDatabase(id))
+            MapModel mapModel = Settings.GetInstance().context.Maps.Find(id);
+
+            if (!map.Load(mapModel.XmlContent))
             {
                 throw new Exception("Не удалось загрузить карту.");
             }
+
+            Settings.GetInstance().SetCurrentMap(id);
 
             return map;
         }
