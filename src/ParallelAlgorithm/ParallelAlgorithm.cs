@@ -1,5 +1,4 @@
-﻿using MoreLinq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
@@ -38,9 +37,6 @@ namespace FireSafety
         public class PerformNextActionEventArgs : EventArgs
         {
         }
-        public class ExecuteEventArgs : EventArgs
-        {
-        }
 
         // События параллельного алгоритма
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
@@ -51,7 +47,6 @@ namespace FireSafety
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
         public delegate void ReloadEventHandler(object sender, ReloadEventArgs e);
         public delegate void PerformNexActionEventHandler(object sender, PerformNextActionEventArgs e);
-        public delegate void ExecuteEventHandler(object sender, ExecuteEventArgs e);
         public event AddActionEventHandler ActionAdded;
         public event ChangeCommandEventHandler CommandChanged;
         public event RemoveActionEventHandler ActionRemoved;
@@ -60,10 +55,6 @@ namespace FireSafety
         public event LoadEventHandler Loaded;
         public event ReloadEventHandler Reloaded;
         public event PerformNexActionEventHandler NextActionPerforming;
-
-       
-
-        public event ExecuteEventHandler Executed;
 
         // Переменные параллельного алгоритма
         [XmlArray("Algorithms"), XmlArrayItem(typeof(Algorithm), ElementName = "Algorithm")]
@@ -111,8 +102,6 @@ namespace FireSafety
                 instance.Cleared += ParallelAlgorithmController.ParallelAlgorithmController_Cleared;
                 // При переходе алгоритма к следующему шагу подсвечиваем соответствующие строки таблицы
                 instance.NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
-                // При окончании работы алгоритма перезапускаем алгоритм и отключаем подсветку строк в таблице
-                instance.Executed += ParallelAlgorithmController.ParallelAlgorithmController_Executed;
                 // При перезагрузке алгоритма отключаем подсветку строк в таблице
                 instance.Reloaded += ParallelAlgorithmController.ParallelAlgorithmController_Reloaded;
 
