@@ -60,6 +60,7 @@ namespace FireSafety
                 throw new Exception("Не удалось загрузить карту.");
             }
 
+            // TODO: Это вроде не здесь должно быть
             Settings.GetInstance().SetCurrentMap(id);
 
             return map;

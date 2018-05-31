@@ -51,6 +51,7 @@ namespace FireSafety
                 }
             }
 
+            // TODO: Это вроде не здесь должно быть
             Settings.GetInstance().UnsetCurrentMap();
 
             return map;

@@ -9,7 +9,10 @@ namespace FireSafety
 {
     public class Map : Drawable
     {
-        public int width, height, tileWidth, tileHeight;
+        public int width;
+        public int height;
+        public int tileWidth;
+        public int tileHeight;
         private int firstTileID;
         private Texture tilesetImage;
         private List<GameObject> objects = new List<GameObject>();
@@ -47,16 +50,18 @@ namespace FireSafety
             {
                 string propertyName = mapPropertyElement.GetAttribute("name");
                 string propertyValue = mapPropertyElement.GetAttribute("value");
+
                 properties.Add(propertyName, propertyValue);
+
                 mapPropertyElement = (XmlElement)mapPropertyElement.NextSibling;
             }
 
             // Получаем информацию о наборе тайлов (firstgid)
-            XmlElement tilesetElement = (XmlElement)xDoc.GetElementsByTagName("tileset")[0];
+            XmlElement tilesetElement = (XmlElement)mapElement.GetElementsByTagName("tileset")[0];
             firstTileID = int.Parse(tilesetElement.GetAttribute("firstgid"));
 
             // Получаем информацию о картинке (путь к файлу)
-            XmlElement imageElement = (XmlElement)xDoc.GetElementsByTagName("image")[0];
+            XmlElement imageElement = (XmlElement)tilesetElement.GetElementsByTagName("image")[0];
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
@@ -71,7 +76,6 @@ namespace FireSafety
 
             image.CreateMaskFromColor(new Color(255, 255, 255));
             tilesetImage = new Texture(image);
-            //tilesetImage.Smooth = false;
 
             int columns = (int)tilesetImage.Size.X / tileWidth;
             int rows = (int)tilesetImage.Size.Y / tileHeight;
@@ -96,9 +100,9 @@ namespace FireSafety
 
 
             // Работа со слоями
-            XmlElement layerElement = (XmlElement)xDoc.GetElementsByTagName("layer")[0];
+            XmlElement layerElement = (XmlElement)mapElement.GetElementsByTagName("layer")[0];
 
-            for (int i = 0; i < xDoc.GetElementsByTagName("layer").Count; i++)
+            for (int i = 0; i < mapElement.GetElementsByTagName("layer").Count; i++)
             {
                 Layer layer = new Layer();
 
@@ -164,7 +168,7 @@ namespace FireSafety
 
                 layers.Add(layer);
 
-                layerElement = (XmlElement)xDoc.GetElementsByTagName("layer").Item(i + 1);
+                layerElement = (XmlElement)mapElement.GetElementsByTagName("layer").Item(i + 1);
             }
 
 
@@ -175,9 +179,9 @@ namespace FireSafety
             // Если есть слои объектов
             if (xDoc.GetElementsByTagName("objectgroup").Count != 0)
             {
-                objectGroupElement = (XmlElement)xDoc.GetElementsByTagName("objectgroup")[0];
+                objectGroupElement = (XmlElement)mapElement.GetElementsByTagName("objectgroup")[0];
 
-                for (int i = 0; i < xDoc.GetElementsByTagName("objectgroup").Count; i++)
+                for (int i = 0; i < mapElement.GetElementsByTagName("objectgroup").Count; i++)
                 {
                     // Контейнер <object>
                     XmlElement objectElement = (XmlElement)objectGroupElement.GetElementsByTagName("object")[0];
@@ -255,12 +259,12 @@ namespace FireSafety
                             }
                         }
 
-
                         objects.Add(obj);
 
                         objectElement = (XmlElement)objectGroupElement.GetElementsByTagName("object").Item(j + 1);
                     }
-                    objectGroupElement = (XmlElement)xDoc.GetElementsByTagName("objectgroup").Item(i + 1);
+
+                    objectGroupElement = (XmlElement)mapElement.GetElementsByTagName("objectgroup").Item(i + 1);
                 }
             }
             else
