@@ -114,12 +114,6 @@ namespace FireSafety
         private const Keys stepDefault = Keys.F7;
         [NonSerialized]
         private const Keys clearDefault = Keys.F8;
-        [NonSerialized]
-        private const Keys helpDefault = Keys.F1;
-
-        // Время, в течение которого нужно держать клавишу, чтобы сработало долгое нажатие
-        [NonSerialized]
-        private const int timeToHoldDefault = 200;
 
         // Shortcuts
         public Keys clearSelection;
@@ -151,9 +145,8 @@ namespace FireSafety
         public Keys reload;
         public Keys step;
         public Keys clearParallelAlgorithm;
-        public Keys help;
 
-        public int timeToHold;
+        public int timeToHold = 200;
         public string connectionString;
 
         [XmlIgnore]
@@ -239,13 +232,13 @@ namespace FireSafety
                 case "Вперед 45° по ч.с.":
                     moveForward45CW = key;
                     break;
-                case "Вперед 45° пр.ч.с.":
+                case "Вперед 45° пр. ч.с.":
                     moveForward45CCW = key;
                     break;
                 case "Назад 45° по ч.с.":
                     moveBackward45CW = key;
                     break;
-                case "Назад 45° пр.ч.с.":
+                case "Назад 45° пр. ч.с.":
                     moveBackward45CCW = key;
                     break;
                 case "45° по ч.с.":
@@ -258,7 +251,7 @@ namespace FireSafety
                         turretRotateCW = key;
                     }
                     break;
-                case "45° пр.ч.с.":
+                case "45° пр. ч.с.":
                     if (performer == "Водитель")
                     {
                         moveRotateCCW = key;
@@ -304,11 +297,8 @@ namespace FireSafety
                 case "Шаг":
                     step = key;
                     break;
-                case "Очистить":
+                case "Очистить все алгоритмы":
                     clearParallelAlgorithm = key;
-                    break;
-                case "Помощь":
-                    help = key;
                     break;
                 default:
                     break;
@@ -372,12 +362,10 @@ namespace FireSafety
             reload = reloadDefault;
             step = stepDefault;
             clearParallelAlgorithm = clearDefault;
-            help = helpDefault;
 
-            timeToHold = timeToHoldDefault;
             connectionString = connectionStringDefault;
 
-            //Save();
+            Save();
 
             Defaulted?.Invoke(this, new DefaultShortcutEventArgs());
         }
@@ -412,7 +400,6 @@ namespace FireSafety
             shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.ReloadAlgorithm, reload));
             shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.StepAlgorithm, step));
             shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.ClearWholeAlgorithm, clearParallelAlgorithm));
-            shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.Help, help));
 
             shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.CancelSelection, clearSelection));
             shortcuts.Add(new Tuple<string, string, Keys>(string.Empty, Properties.Resources.DeleteAction, deleteAction));

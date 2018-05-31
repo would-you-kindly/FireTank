@@ -24,7 +24,6 @@
   <reload>F6</reload>
   <step>F7</step>
   <clearParallelAlgorithm>F8</clearParallelAlgorithm>
-  <help>F1</help>
   <timeToHold>200</timeToHold>
   <connectionString>data source =.\sqlexpress; initial catalog = FireTankAdmin; integrated security = True;</connectionString>
 </Settings>

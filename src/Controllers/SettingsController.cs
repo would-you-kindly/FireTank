@@ -39,7 +39,6 @@ namespace FireSafety
                 settingsForm.dgvShortcuts.Rows.Add(item.Item1, item.Item2, item.Item3);
             }
 
-            settingsForm.nudTimeToHold.Value = Settings.GetInstance().timeToHold;
             settingsForm.tbConnectionString.Text = Settings.GetInstance().connectionString;
             settingsForm.tbUser.Text = Settings.GetInstance().GetUserString();
         }

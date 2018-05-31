@@ -34,11 +34,6 @@
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtbcPlanItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControls = new System.Windows.Forms.GroupBox();
             this.lblMaxPressure = new System.Windows.Forms.Label();
             this.lblPressureSlash = new System.Windows.Forms.Label();
@@ -62,6 +57,11 @@
             this.ttipBlock = new System.Windows.Forms.ToolTip(this.components);
             this.ttipClearTankAlgorithm = new System.Windows.Forms.ToolTip(this.components);
             this.ttipIndicators = new System.Windows.Forms.ToolTip(this.components);
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtbcPlanItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReady)).BeginInit();
@@ -156,44 +156,6 @@
             this.dgvAlgorithm.TabIndex = 6;
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
-            // 
-            // Number
-            // 
-            this.Number.HeaderText = "№";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 25;
-            // 
-            // MoveCommands
-            // 
-            this.MoveCommands.HeaderText = "Водитель";
-            this.MoveCommands.Name = "MoveCommands";
-            this.MoveCommands.ReadOnly = true;
-            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MoveCommands.Width = 105;
-            // 
-            // ShootCommands
-            // 
-            this.ShootCommands.HeaderText = "Заряжающий";
-            this.ShootCommands.Name = "ShootCommands";
-            this.ShootCommands.ReadOnly = true;
-            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TurretCommands
-            // 
-            this.TurretCommands.HeaderText = "Наводчик";
-            this.TurretCommands.Name = "TurretCommands";
-            this.TurretCommands.ReadOnly = true;
-            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TurretCommands.Width = 85;
-            // 
-            // dgvtbcPlanItem
-            // 
-            this.dgvtbcPlanItem.HeaderText = "П.";
-            this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
-            this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtbcPlanItem.Width = 25;
             // 
             // gbControls
             // 
@@ -417,6 +379,45 @@
             this.pbUnready.TabIndex = 15;
             this.pbUnready.TabStop = false;
             this.ttipIndicators.SetToolTip(this.pbUnready, "Пушка не заряжена");
+            // 
+            // Number
+            // 
+            this.Number.HeaderText = "№";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 25;
+            // 
+            // MoveCommands
+            // 
+            this.MoveCommands.HeaderText = "Водитель";
+            this.MoveCommands.Name = "MoveCommands";
+            this.MoveCommands.ReadOnly = true;
+            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MoveCommands.Width = 105;
+            // 
+            // ShootCommands
+            // 
+            this.ShootCommands.HeaderText = "Заряжающий";
+            this.ShootCommands.Name = "ShootCommands";
+            this.ShootCommands.ReadOnly = true;
+            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TurretCommands
+            // 
+            this.TurretCommands.HeaderText = "Наводчик";
+            this.TurretCommands.Name = "TurretCommands";
+            this.TurretCommands.ReadOnly = true;
+            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TurretCommands.Width = 85;
+            // 
+            // dgvtbcPlanItem
+            // 
+            this.dgvtbcPlanItem.HeaderText = "П.";
+            this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
+            this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcPlanItem.Visible = false;
+            this.dgvtbcPlanItem.Width = 25;
             // 
             // AlgorithmForm
             // 

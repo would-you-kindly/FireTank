@@ -55,14 +55,14 @@ namespace FireSafety
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
 
-            planForm = new PlanForm();
-            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
-            {
-                planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
-                    worldController.world.tanks[i].ToString());
-            }
-            planForm.MdiParent = this;
-            planForm.Show();
+            //planForm = new PlanForm();
+            //for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
+            //{
+            //    planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
+            //        worldController.world.tanks[i].ToString());
+            //}
+            //planForm.MdiParent = this;
+            //planForm.Show();
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
@@ -87,6 +87,8 @@ namespace FireSafety
 
             // Creates our SFML RenderWindow on our surface control
             renderWindow = new RenderWindow(surface.Handle);
+
+
         }
 
         private void InitIndicators(int i, AlgorithmForm algorithmForm)
@@ -162,6 +164,7 @@ namespace FireSafety
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             worldController.BuildWorld();
+            AttachIndicators();
             algorithmController.RunAlgorithm();
         }
 
@@ -223,6 +226,12 @@ namespace FireSafety
         {
             algorithmController.ReloadAlgorithm();
             worldController.BuildWorld();
+
+            for (int i = 0; i < algorithmForms.Count; i++)
+            {
+                // Устанавливаем значения танка в индикаторах
+                InitIndicators(i, algorithmForms[i]);
+            }
         }
 
         private void openMapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,6 +251,8 @@ namespace FireSafety
 
                 // Применяем компоновку окон
                 SmartLayoutMapUp();
+
+                AttachIndicators();
             }
         }
 
@@ -261,6 +272,8 @@ namespace FireSafety
 
                 // Применяем компоновку окон
                 SmartLayout();
+
+                AttachIndicators();
             }
         }
 
@@ -268,6 +281,8 @@ namespace FireSafety
         {
             worldController.LoadMap(openSave);
             worldController.BuildWorld();
+
+            
         }
 
         public void Clear()

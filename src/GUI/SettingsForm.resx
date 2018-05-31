@@ -120,9 +120,7 @@
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Чтобы назначить новую горячую клавишу на действие, выделите соответствующую строку в таблице и нажмите клавишу на клавиатуре.
 
-Чтобы назначить время удержания кнопки для "долгих команд", установите значение в поле ниже (количество миллисекунд).
-
-Следующие команды будут применены, если удерживать соответствующую команде кнопку указанное количество времени:
+Следующие команды будут применены, если удерживать соответствующую команде кнопку некоторое количество времени:
 
 (Водитель) 90° по ч.с. (вместо 45° по ч.с.)
 (Водитель) 90° пр. ч.с. (вместо 45° пр. ч.с.))
@@ -131,6 +129,15 @@
 (Наводчик) 90° пр. ч.с. (вместо 45° пр. ч.с.))
 </value>
   </data>
+  <metadata name="dgvtbcPerformer.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dgvtbcCommand.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dgvtbcShortcut.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="dgvtbcPerformer.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

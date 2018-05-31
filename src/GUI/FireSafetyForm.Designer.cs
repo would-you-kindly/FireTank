@@ -37,28 +37,7 @@
             this.openMapFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.algorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.запуститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.перезапуститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.шагToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,9 +65,27 @@
             this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьВсеЛагоритмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.шагToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.перезапуститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запуститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +96,6 @@
             this.editToolStripMenuItem,
             this.algorithmToolStripMenuItem,
             this.windowToolStripMenuItem,
-            this.helpToolStripMenuItem,
             this.шагToolStripMenuItem,
             this.перезапуститьToolStripMenuItem,
             this.запуститьToolStripMenuItem});
@@ -159,6 +155,7 @@
             // 
             // openMapFromDatabaseToolStripMenuItem
             // 
+            this.openMapFromDatabaseToolStripMenuItem.Enabled = false;
             this.openMapFromDatabaseToolStripMenuItem.Name = "openMapFromDatabaseToolStripMenuItem";
             this.openMapFromDatabaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
@@ -185,6 +182,282 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.editToolStripMenuItem.Text = "Правка";
             // 
+            // addCommandToolStripMenuItem
+            // 
+            this.addCommandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moveCommandsToolStripMenuItem,
+            this.shootCommandsToolStripMenuItem,
+            this.turretCommandsToolStripMenuItem});
+            this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
+            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCommandToolStripMenuItem.Text = "Команды";
+            // 
+            // moveCommandsToolStripMenuItem
+            // 
+            this.moveCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.forwardToolStripMenuItem,
+            this.backwardToolStripMenuItem,
+            this.forward45CWToolStripMenuItem,
+            this.forward45CCWToolStripMenuItem,
+            this.backward45CWToolStripMenuItem,
+            this.backward45CCWToolStripMenuItem,
+            this.rotate45CWToolStripMenuItem,
+            this.rotate45CCWToolStripMenuItem,
+            this.rotate90CWToolStripMenuItem,
+            this.rotate90CCWToolStripMenuItem,
+            this.noneMoveCommandToolStripMenuItem});
+            this.moveCommandsToolStripMenuItem.Name = "moveCommandsToolStripMenuItem";
+            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.moveCommandsToolStripMenuItem.Text = "Водитель";
+            // 
+            // forwardToolStripMenuItem
+            // 
+            this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
+            this.forwardToolStripMenuItem.ShortcutKeyDisplayString = "F";
+            this.forwardToolStripMenuItem.ShowShortcutKeys = false;
+            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.forwardToolStripMenuItem.Text = "Вперед";
+            this.forwardToolStripMenuItem.Click += new System.EventHandler(this.forwardToolStripMenuItem_Click);
+            // 
+            // backwardToolStripMenuItem
+            // 
+            this.backwardToolStripMenuItem.Name = "backwardToolStripMenuItem";
+            this.backwardToolStripMenuItem.ShortcutKeyDisplayString = "B";
+            this.backwardToolStripMenuItem.ShowShortcutKeys = false;
+            this.backwardToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.backwardToolStripMenuItem.Text = "Назад";
+            this.backwardToolStripMenuItem.Click += new System.EventHandler(this.backwardToolStripMenuItem_Click);
+            // 
+            // forward45CWToolStripMenuItem
+            // 
+            this.forward45CWToolStripMenuItem.Name = "forward45CWToolStripMenuItem";
+            this.forward45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 9";
+            this.forward45CWToolStripMenuItem.ShowShortcutKeys = false;
+            this.forward45CWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.forward45CWToolStripMenuItem.Text = "Вперед 45° по ч.с.";
+            this.forward45CWToolStripMenuItem.Click += new System.EventHandler(this.forward45CWToolStripMenuItem_Click);
+            // 
+            // forward45CCWToolStripMenuItem
+            // 
+            this.forward45CCWToolStripMenuItem.Name = "forward45CCWToolStripMenuItem";
+            this.forward45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 7";
+            this.forward45CCWToolStripMenuItem.ShowShortcutKeys = false;
+            this.forward45CCWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.forward45CCWToolStripMenuItem.Text = "Вперед 45° пр. ч.с.";
+            this.forward45CCWToolStripMenuItem.Click += new System.EventHandler(this.forward45CCWToolStripMenuItem_Click);
+            // 
+            // backward45CWToolStripMenuItem
+            // 
+            this.backward45CWToolStripMenuItem.Name = "backward45CWToolStripMenuItem";
+            this.backward45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 1";
+            this.backward45CWToolStripMenuItem.ShowShortcutKeys = false;
+            this.backward45CWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.backward45CWToolStripMenuItem.Text = "Назад 45° по ч.с.";
+            this.backward45CWToolStripMenuItem.Click += new System.EventHandler(this.backward45CWToolStripMenuItem_Click);
+            // 
+            // backward45CCWToolStripMenuItem
+            // 
+            this.backward45CCWToolStripMenuItem.Name = "backward45CCWToolStripMenuItem";
+            this.backward45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 3";
+            this.backward45CCWToolStripMenuItem.ShowShortcutKeys = false;
+            this.backward45CCWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.backward45CCWToolStripMenuItem.Text = "Назад 45° пр. ч.с.";
+            this.backward45CCWToolStripMenuItem.Click += new System.EventHandler(this.backward45CCWToolStripMenuItem_Click);
+            // 
+            // rotate45CWToolStripMenuItem
+            // 
+            this.rotate45CWToolStripMenuItem.Name = "rotate45CWToolStripMenuItem";
+            this.rotate45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 8";
+            this.rotate45CWToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate45CWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.rotate45CWToolStripMenuItem.Text = "45° по ч.с.";
+            this.rotate45CWToolStripMenuItem.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem_Click);
+            // 
+            // rotate45CCWToolStripMenuItem
+            // 
+            this.rotate45CCWToolStripMenuItem.Name = "rotate45CCWToolStripMenuItem";
+            this.rotate45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 2";
+            this.rotate45CCWToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate45CCWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.rotate45CCWToolStripMenuItem.Text = "45° пр. ч.с.";
+            this.rotate45CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem_Click);
+            // 
+            // rotate90CWToolStripMenuItem
+            // 
+            this.rotate90CWToolStripMenuItem.Name = "rotate90CWToolStripMenuItem";
+            this.rotate90CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 8 (Удерживать)";
+            this.rotate90CWToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate90CWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.rotate90CWToolStripMenuItem.Text = "90° по ч.с.";
+            this.rotate90CWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem_Click);
+            // 
+            // rotate90CCWToolStripMenuItem
+            // 
+            this.rotate90CCWToolStripMenuItem.Name = "rotate90CCWToolStripMenuItem";
+            this.rotate90CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 2 (Удерживать)";
+            this.rotate90CCWToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate90CCWToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.rotate90CCWToolStripMenuItem.Text = "90° пр. ч.с.";
+            this.rotate90CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem_Click);
+            // 
+            // noneMoveCommandToolStripMenuItem
+            // 
+            this.noneMoveCommandToolStripMenuItem.Name = "noneMoveCommandToolStripMenuItem";
+            this.noneMoveCommandToolStripMenuItem.ShortcutKeyDisplayString = "N";
+            this.noneMoveCommandToolStripMenuItem.ShowShortcutKeys = false;
+            this.noneMoveCommandToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.noneMoveCommandToolStripMenuItem.Text = "Бездействие";
+            this.noneMoveCommandToolStripMenuItem.Click += new System.EventHandler(this.noneMoveToolStripMenuItem_Click);
+            // 
+            // shootCommandsToolStripMenuItem
+            // 
+            this.shootCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pressureX1ToolStripMenuItem,
+            this.pressureX2ToolStripMenuItem,
+            this.refuelToolStripMenuItem,
+            this.chargeToolStripMenuItem,
+            this.noneChargeToolStripMenuItem});
+            this.shootCommandsToolStripMenuItem.Name = "shootCommandsToolStripMenuItem";
+            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.shootCommandsToolStripMenuItem.Text = "Заряжающий";
+            // 
+            // pressureX1ToolStripMenuItem
+            // 
+            this.pressureX1ToolStripMenuItem.Name = "pressureX1ToolStripMenuItem";
+            this.pressureX1ToolStripMenuItem.ShortcutKeyDisplayString = "P";
+            this.pressureX1ToolStripMenuItem.ShowShortcutKeys = false;
+            this.pressureX1ToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.pressureX1ToolStripMenuItem.Text = "Давление +1";
+            this.pressureX1ToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
+            // 
+            // pressureX2ToolStripMenuItem
+            // 
+            this.pressureX2ToolStripMenuItem.Name = "pressureX2ToolStripMenuItem";
+            this.pressureX2ToolStripMenuItem.ShortcutKeyDisplayString = "P (Удерживать)";
+            this.pressureX2ToolStripMenuItem.ShowShortcutKeys = false;
+            this.pressureX2ToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.pressureX2ToolStripMenuItem.Text = "Давление +2";
+            this.pressureX2ToolStripMenuItem.Click += new System.EventHandler(this.pressureX2ToolStripMenuItem_Click);
+            // 
+            // refuelToolStripMenuItem
+            // 
+            this.refuelToolStripMenuItem.Name = "refuelToolStripMenuItem";
+            this.refuelToolStripMenuItem.ShortcutKeyDisplayString = "R";
+            this.refuelToolStripMenuItem.ShowShortcutKeys = false;
+            this.refuelToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.refuelToolStripMenuItem.Text = "Пополнить запас";
+            this.refuelToolStripMenuItem.Click += new System.EventHandler(this.refuelToolStripMenuItem_Click);
+            // 
+            // chargeToolStripMenuItem
+            // 
+            this.chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
+            this.chargeToolStripMenuItem.ShortcutKeyDisplayString = "C";
+            this.chargeToolStripMenuItem.ShowShortcutKeys = false;
+            this.chargeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.chargeToolStripMenuItem.Text = "Зарядить";
+            this.chargeToolStripMenuItem.Click += new System.EventHandler(this.chargeToolStripMenuItem_Click);
+            // 
+            // noneChargeToolStripMenuItem
+            // 
+            this.noneChargeToolStripMenuItem.Name = "noneChargeToolStripMenuItem";
+            this.noneChargeToolStripMenuItem.ShortcutKeyDisplayString = "N";
+            this.noneChargeToolStripMenuItem.ShowShortcutKeys = false;
+            this.noneChargeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.noneChargeToolStripMenuItem.Text = "Бездействие";
+            this.noneChargeToolStripMenuItem.Click += new System.EventHandler(this.noneShootToolStripMenuItem_Click);
+            // 
+            // turretCommandsToolStripMenuItem
+            // 
+            this.turretCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rotate45CWTurretToolStripMenuItem,
+            this.rotate45CCWTurretToolStripMenuItem,
+            this.rotate90CWTurretToolStripMenuItem,
+            this.rotate90CCWTurretToolStripMenuItem,
+            this.upToolStripMenuItem,
+            this.downToolStripMenuItem,
+            this.shootToolStripMenuItem,
+            this.noneToolStripMenuItem2});
+            this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
+            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.turretCommandsToolStripMenuItem.Text = "Наводчик";
+            // 
+            // rotate45CWTurretToolStripMenuItem
+            // 
+            this.rotate45CWTurretToolStripMenuItem.Name = "rotate45CWTurretToolStripMenuItem";
+            this.rotate45CWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 6";
+            this.rotate45CWTurretToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate45CWTurretToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rotate45CWTurretToolStripMenuItem.Text = "45° по ч.с.";
+            this.rotate45CWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem1_Click);
+            // 
+            // rotate45CCWTurretToolStripMenuItem
+            // 
+            this.rotate45CCWTurretToolStripMenuItem.Name = "rotate45CCWTurretToolStripMenuItem";
+            this.rotate45CCWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 4";
+            this.rotate45CCWTurretToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate45CCWTurretToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rotate45CCWTurretToolStripMenuItem.Text = "45° пр. ч.с.";
+            this.rotate45CCWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem1_Click);
+            // 
+            // rotate90CWTurretToolStripMenuItem
+            // 
+            this.rotate90CWTurretToolStripMenuItem.Name = "rotate90CWTurretToolStripMenuItem";
+            this.rotate90CWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 6 (Удерживать)";
+            this.rotate90CWTurretToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate90CWTurretToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rotate90CWTurretToolStripMenuItem.Text = "90° по ч.с.";
+            this.rotate90CWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem1_Click);
+            // 
+            // rotate90CCWTurretToolStripMenuItem
+            // 
+            this.rotate90CCWTurretToolStripMenuItem.Name = "rotate90CCWTurretToolStripMenuItem";
+            this.rotate90CCWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 4 (Удерживать)";
+            this.rotate90CCWTurretToolStripMenuItem.ShowShortcutKeys = false;
+            this.rotate90CCWTurretToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rotate90CCWTurretToolStripMenuItem.Text = "90° пр. ч.с.";
+            this.rotate90CCWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem1_Click);
+            // 
+            // upToolStripMenuItem
+            // 
+            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
+            this.upToolStripMenuItem.ShortcutKeyDisplayString = "U";
+            this.upToolStripMenuItem.ShowShortcutKeys = false;
+            this.upToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.upToolStripMenuItem.Text = "Поднять";
+            this.upToolStripMenuItem.Click += new System.EventHandler(this.upToolStripMenuItem_Click);
+            // 
+            // downToolStripMenuItem
+            // 
+            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
+            this.downToolStripMenuItem.ShortcutKeyDisplayString = "D";
+            this.downToolStripMenuItem.ShowShortcutKeys = false;
+            this.downToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.downToolStripMenuItem.Text = "Опустить";
+            this.downToolStripMenuItem.Click += new System.EventHandler(this.downToolStripMenuItem_Click);
+            // 
+            // shootToolStripMenuItem
+            // 
+            this.shootToolStripMenuItem.Name = "shootToolStripMenuItem";
+            this.shootToolStripMenuItem.ShortcutKeyDisplayString = "S";
+            this.shootToolStripMenuItem.ShowShortcutKeys = false;
+            this.shootToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.shootToolStripMenuItem.Text = "Выстрелить";
+            this.shootToolStripMenuItem.Click += new System.EventHandler(this.shootToolStripMenuItem1_Click);
+            // 
+            // noneToolStripMenuItem2
+            // 
+            this.noneToolStripMenuItem2.Name = "noneToolStripMenuItem2";
+            this.noneToolStripMenuItem2.ShortcutKeyDisplayString = "N";
+            this.noneToolStripMenuItem2.ShowShortcutKeys = false;
+            this.noneToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.noneToolStripMenuItem2.Text = "Бездействие";
+            this.noneToolStripMenuItem2.Click += new System.EventHandler(this.noneTurretToolStripMenuItem_Click);
+            // 
+            // lineToolStripMenuItem
+            // 
+            this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
+            this.lineToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
+            // 
             // reorderingToolStripMenuItem
             // 
             this.reorderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -199,16 +472,27 @@
             // 
             this.deleteActionToolStripMenuItem.Name = "deleteActionToolStripMenuItem";
             this.deleteActionToolStripMenuItem.ShortcutKeyDisplayString = "Delete";
-            this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.deleteActionToolStripMenuItem.ShowShortcutKeys = false;
+            this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.deleteActionToolStripMenuItem.Text = "Удалить действие";
             this.deleteActionToolStripMenuItem.Click += new System.EventHandler(this.deleteActionToolStripMenuItem_Click);
             // 
             // clearAlgorithmToolStripMenuItem
             // 
             this.clearAlgorithmToolStripMenuItem.Name = "clearAlgorithmToolStripMenuItem";
-            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.clearAlgorithmToolStripMenuItem.ShowShortcutKeys = false;
+            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.clearAlgorithmToolStripMenuItem.Text = "Очистить алгоритм танка";
             this.clearAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.clearAlgorithmToolStripMenuItem_Click);
+            // 
+            // очиститьВсеЛагоритмыToolStripMenuItem
+            // 
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Name = "очиститьВсеЛагоритмыToolStripMenuItem";
+            this.очиститьВсеЛагоритмыToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.очиститьВсеЛагоритмыToolStripMenuItem.ShowShortcutKeys = false;
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Text = "Очистить все алгоритмы";
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Click += new System.EventHandler(this.очиститьВсеЛагоритмыToolStripMenuItem_Click);
             // 
             // algorithmToolStripMenuItem
             // 
@@ -225,7 +509,8 @@
             // 
             this.executeToolStripMenuItem.Name = "executeToolStripMenuItem";
             this.executeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.executeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.executeToolStripMenuItem.ShowShortcutKeys = false;
+            this.executeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.executeToolStripMenuItem.Text = "Запустить";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
@@ -233,7 +518,8 @@
             // 
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
             this.reloadToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.reloadToolStripMenuItem.ShowShortcutKeys = false;
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reloadToolStripMenuItem.Text = "Перезагрузить";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
             // 
@@ -241,7 +527,8 @@
             // 
             this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
             this.stepToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.stepToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.stepToolStripMenuItem.ShowShortcutKeys = false;
+            this.stepToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.stepToolStripMenuItem.Text = "Шаг";
             this.stepToolStripMenuItem.Click += new System.EventHandler(this.stepToolStripMenuItem_Click);
             // 
@@ -264,7 +551,7 @@
             this.horizontalToolStripMenuItem,
             this.verticalToolStripMenuItem});
             this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
-            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.layoutToolStripMenuItem.Text = "Компоновка";
             // 
             // smartToolStripMenuItem
@@ -305,53 +592,15 @@
             // algorithmsToolStripMenuItem
             // 
             this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
-            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.algorithmsToolStripMenuItem.Text = "Алгоритмы";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "Настройки";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.documentationToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.helpToolStripMenuItem.Text = "Помощь";
-            // 
-            // documentationToolStripMenuItem
-            // 
-            this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
-            this.documentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.documentationToolStripMenuItem.Text = "Документация";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.aboutToolStripMenuItem.Text = "О программе";
-            // 
-            // запуститьToolStripMenuItem
-            // 
-            this.запуститьToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.запуститьToolStripMenuItem.Name = "запуститьToolStripMenuItem";
-            this.запуститьToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
-            this.запуститьToolStripMenuItem.Text = "Запустить";
-            this.запуститьToolStripMenuItem.Click += new System.EventHandler(this.запуститьToolStripMenuItem_Click);
-            // 
-            // перезапуститьToolStripMenuItem
-            // 
-            this.перезапуститьToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.перезапуститьToolStripMenuItem.Name = "перезапуститьToolStripMenuItem";
-            this.перезапуститьToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.перезапуститьToolStripMenuItem.Text = "Перезапустить";
-            this.перезапуститьToolStripMenuItem.Click += new System.EventHandler(this.перезапуститьToolStripMenuItem_Click);
             // 
             // шагToolStripMenuItem
             // 
@@ -361,265 +610,21 @@
             this.шагToolStripMenuItem.Text = "Шаг";
             this.шагToolStripMenuItem.Click += new System.EventHandler(this.шагToolStripMenuItem_Click);
             // 
-            // moveCommandsToolStripMenuItem
+            // перезапуститьToolStripMenuItem
             // 
-            this.moveCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.forwardToolStripMenuItem,
-            this.backwardToolStripMenuItem,
-            this.forward45CWToolStripMenuItem,
-            this.forward45CCWToolStripMenuItem,
-            this.backward45CWToolStripMenuItem,
-            this.backward45CCWToolStripMenuItem,
-            this.rotate45CWToolStripMenuItem,
-            this.rotate45CCWToolStripMenuItem,
-            this.rotate90CWToolStripMenuItem,
-            this.rotate90CCWToolStripMenuItem,
-            this.noneMoveCommandToolStripMenuItem});
-            this.moveCommandsToolStripMenuItem.Name = "moveCommandsToolStripMenuItem";
-            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.moveCommandsToolStripMenuItem.Text = "Водитель";
+            this.перезапуститьToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.перезапуститьToolStripMenuItem.Name = "перезапуститьToolStripMenuItem";
+            this.перезапуститьToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.перезапуститьToolStripMenuItem.Text = "Перезапустить";
+            this.перезапуститьToolStripMenuItem.Click += new System.EventHandler(this.перезапуститьToolStripMenuItem_Click);
             // 
-            // forwardToolStripMenuItem
+            // запуститьToolStripMenuItem
             // 
-            this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
-            this.forwardToolStripMenuItem.ShortcutKeyDisplayString = "F";
-            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.forwardToolStripMenuItem.Text = "Вперед";
-            this.forwardToolStripMenuItem.Click += new System.EventHandler(this.forwardToolStripMenuItem_Click);
-            // 
-            // backwardToolStripMenuItem
-            // 
-            this.backwardToolStripMenuItem.Name = "backwardToolStripMenuItem";
-            this.backwardToolStripMenuItem.ShortcutKeyDisplayString = "B";
-            this.backwardToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.backwardToolStripMenuItem.Text = "Назад";
-            this.backwardToolStripMenuItem.Click += new System.EventHandler(this.backwardToolStripMenuItem_Click);
-            // 
-            // forward45CWToolStripMenuItem
-            // 
-            this.forward45CWToolStripMenuItem.Name = "forward45CWToolStripMenuItem";
-            this.forward45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 9";
-            this.forward45CWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.forward45CWToolStripMenuItem.Text = "Вперед 45° по ч.с.";
-            this.forward45CWToolStripMenuItem.Click += new System.EventHandler(this.forward45CWToolStripMenuItem_Click);
-            // 
-            // forward45CCWToolStripMenuItem
-            // 
-            this.forward45CCWToolStripMenuItem.Name = "forward45CCWToolStripMenuItem";
-            this.forward45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 7";
-            this.forward45CCWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.forward45CCWToolStripMenuItem.Text = "Вперед 45° пр.ч.с.";
-            this.forward45CCWToolStripMenuItem.Click += new System.EventHandler(this.forward45CCWToolStripMenuItem_Click);
-            // 
-            // backward45CWToolStripMenuItem
-            // 
-            this.backward45CWToolStripMenuItem.Name = "backward45CWToolStripMenuItem";
-            this.backward45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 1";
-            this.backward45CWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.backward45CWToolStripMenuItem.Text = "Назад 45° по ч.с.";
-            this.backward45CWToolStripMenuItem.Click += new System.EventHandler(this.backward45CWToolStripMenuItem_Click);
-            // 
-            // backward45CCWToolStripMenuItem
-            // 
-            this.backward45CCWToolStripMenuItem.Name = "backward45CCWToolStripMenuItem";
-            this.backward45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 3";
-            this.backward45CCWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.backward45CCWToolStripMenuItem.Text = "Назад 45° пр.ч.с.";
-            this.backward45CCWToolStripMenuItem.Click += new System.EventHandler(this.backward45CCWToolStripMenuItem_Click);
-            // 
-            // rotate45CWToolStripMenuItem
-            // 
-            this.rotate45CWToolStripMenuItem.Name = "rotate45CWToolStripMenuItem";
-            this.rotate45CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 8";
-            this.rotate45CWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate45CWToolStripMenuItem.Text = "45° по ч.с.";
-            this.rotate45CWToolStripMenuItem.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem_Click);
-            // 
-            // rotate45CCWToolStripMenuItem
-            // 
-            this.rotate45CCWToolStripMenuItem.Name = "rotate45CCWToolStripMenuItem";
-            this.rotate45CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 2";
-            this.rotate45CCWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate45CCWToolStripMenuItem.Text = "45° пр.ч.с.";
-            this.rotate45CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem_Click);
-            // 
-            // rotate90CWToolStripMenuItem
-            // 
-            this.rotate90CWToolStripMenuItem.Name = "rotate90CWToolStripMenuItem";
-            this.rotate90CWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 8 (Удерживать)";
-            this.rotate90CWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate90CWToolStripMenuItem.Text = "90° по ч.с.";
-            this.rotate90CWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem_Click);
-            // 
-            // rotate90CCWToolStripMenuItem
-            // 
-            this.rotate90CCWToolStripMenuItem.Name = "rotate90CCWToolStripMenuItem";
-            this.rotate90CCWToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 2 (Удерживать)";
-            this.rotate90CCWToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate90CCWToolStripMenuItem.Text = "90° пр.ч.с.";
-            this.rotate90CCWToolStripMenuItem.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem_Click);
-            // 
-            // noneMoveCommandToolStripMenuItem
-            // 
-            this.noneMoveCommandToolStripMenuItem.Name = "noneMoveCommandToolStripMenuItem";
-            this.noneMoveCommandToolStripMenuItem.ShortcutKeyDisplayString = "N";
-            this.noneMoveCommandToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.noneMoveCommandToolStripMenuItem.Text = "Бездействие";
-            this.noneMoveCommandToolStripMenuItem.Click += new System.EventHandler(this.noneMoveToolStripMenuItem_Click);
-            // 
-            // shootCommandsToolStripMenuItem
-            // 
-            this.shootCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pressureX1ToolStripMenuItem,
-            this.pressureX2ToolStripMenuItem,
-            this.refuelToolStripMenuItem,
-            this.chargeToolStripMenuItem,
-            this.noneChargeToolStripMenuItem});
-            this.shootCommandsToolStripMenuItem.Name = "shootCommandsToolStripMenuItem";
-            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.shootCommandsToolStripMenuItem.Text = "Заряжающий";
-            // 
-            // pressureX1ToolStripMenuItem
-            // 
-            this.pressureX1ToolStripMenuItem.Name = "pressureX1ToolStripMenuItem";
-            this.pressureX1ToolStripMenuItem.ShortcutKeyDisplayString = "P";
-            this.pressureX1ToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.pressureX1ToolStripMenuItem.Text = "Давление +1";
-            this.pressureX1ToolStripMenuItem.Click += new System.EventHandler(this.pressureToolStripMenuItem_Click);
-            // 
-            // pressureX2ToolStripMenuItem
-            // 
-            this.pressureX2ToolStripMenuItem.Name = "pressureX2ToolStripMenuItem";
-            this.pressureX2ToolStripMenuItem.ShortcutKeyDisplayString = "P (Удерживать)";
-            this.pressureX2ToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.pressureX2ToolStripMenuItem.Text = "Давление +2";
-            this.pressureX2ToolStripMenuItem.Click += new System.EventHandler(this.pressureX2ToolStripMenuItem_Click);
-            // 
-            // refuelToolStripMenuItem
-            // 
-            this.refuelToolStripMenuItem.Name = "refuelToolStripMenuItem";
-            this.refuelToolStripMenuItem.ShortcutKeyDisplayString = "R";
-            this.refuelToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.refuelToolStripMenuItem.Text = "Пополнить запасы";
-            this.refuelToolStripMenuItem.Click += new System.EventHandler(this.refuelToolStripMenuItem_Click);
-            // 
-            // chargeToolStripMenuItem
-            // 
-            this.chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
-            this.chargeToolStripMenuItem.ShortcutKeyDisplayString = "C";
-            this.chargeToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.chargeToolStripMenuItem.Text = "Зарядить";
-            this.chargeToolStripMenuItem.Click += new System.EventHandler(this.chargeToolStripMenuItem_Click);
-            // 
-            // noneChargeToolStripMenuItem
-            // 
-            this.noneChargeToolStripMenuItem.Name = "noneChargeToolStripMenuItem";
-            this.noneChargeToolStripMenuItem.ShortcutKeyDisplayString = "N";
-            this.noneChargeToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.noneChargeToolStripMenuItem.Text = "Бездействие";
-            this.noneChargeToolStripMenuItem.Click += new System.EventHandler(this.noneShootToolStripMenuItem_Click);
-            // 
-            // turretCommandsToolStripMenuItem
-            // 
-            this.turretCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rotate45CWTurretToolStripMenuItem,
-            this.rotate45CCWTurretToolStripMenuItem,
-            this.rotate90CWTurretToolStripMenuItem,
-            this.rotate90CCWTurretToolStripMenuItem,
-            this.upToolStripMenuItem,
-            this.downToolStripMenuItem,
-            this.shootToolStripMenuItem,
-            this.noneToolStripMenuItem2});
-            this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
-            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.turretCommandsToolStripMenuItem.Text = "Наводчик";
-            // 
-            // rotate45CWTurretToolStripMenuItem
-            // 
-            this.rotate45CWTurretToolStripMenuItem.Name = "rotate45CWTurretToolStripMenuItem";
-            this.rotate45CWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 6";
-            this.rotate45CWTurretToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate45CWTurretToolStripMenuItem.Text = "45° по ч.с.";
-            this.rotate45CWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate45CWToolStripMenuItem1_Click);
-            // 
-            // rotate45CCWTurretToolStripMenuItem
-            // 
-            this.rotate45CCWTurretToolStripMenuItem.Name = "rotate45CCWTurretToolStripMenuItem";
-            this.rotate45CCWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 4";
-            this.rotate45CCWTurretToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate45CCWTurretToolStripMenuItem.Text = "45° пр.ч.с.";
-            this.rotate45CCWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate45CCWToolStripMenuItem1_Click);
-            // 
-            // rotate90CWTurretToolStripMenuItem
-            // 
-            this.rotate90CWTurretToolStripMenuItem.Name = "rotate90CWTurretToolStripMenuItem";
-            this.rotate90CWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 6 (Удерживать)";
-            this.rotate90CWTurretToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate90CWTurretToolStripMenuItem.Text = "90° по ч.с.";
-            this.rotate90CWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate90CWToolStripMenuItem1_Click);
-            // 
-            // rotate90CCWTurretToolStripMenuItem
-            // 
-            this.rotate90CCWTurretToolStripMenuItem.Name = "rotate90CCWTurretToolStripMenuItem";
-            this.rotate90CCWTurretToolStripMenuItem.ShortcutKeyDisplayString = "NumPad 4 (Удерживать)";
-            this.rotate90CCWTurretToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.rotate90CCWTurretToolStripMenuItem.Text = "90° пр.ч.с.";
-            this.rotate90CCWTurretToolStripMenuItem.Click += new System.EventHandler(this.rotate90CCWToolStripMenuItem1_Click);
-            // 
-            // upToolStripMenuItem
-            // 
-            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
-            this.upToolStripMenuItem.ShortcutKeyDisplayString = "U";
-            this.upToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.upToolStripMenuItem.Text = "Поднять";
-            this.upToolStripMenuItem.Click += new System.EventHandler(this.upToolStripMenuItem_Click);
-            // 
-            // downToolStripMenuItem
-            // 
-            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
-            this.downToolStripMenuItem.ShortcutKeyDisplayString = "D";
-            this.downToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.downToolStripMenuItem.Text = "Опустить";
-            this.downToolStripMenuItem.Click += new System.EventHandler(this.downToolStripMenuItem_Click);
-            // 
-            // shootToolStripMenuItem
-            // 
-            this.shootToolStripMenuItem.Name = "shootToolStripMenuItem";
-            this.shootToolStripMenuItem.ShortcutKeyDisplayString = "S";
-            this.shootToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.shootToolStripMenuItem.Text = "Выстрелить";
-            this.shootToolStripMenuItem.Click += new System.EventHandler(this.shootToolStripMenuItem1_Click);
-            // 
-            // noneToolStripMenuItem2
-            // 
-            this.noneToolStripMenuItem2.Name = "noneToolStripMenuItem2";
-            this.noneToolStripMenuItem2.ShortcutKeyDisplayString = "N";
-            this.noneToolStripMenuItem2.Size = new System.Drawing.Size(269, 22);
-            this.noneToolStripMenuItem2.Text = "Бездействие";
-            this.noneToolStripMenuItem2.Click += new System.EventHandler(this.noneTurretToolStripMenuItem_Click);
-            // 
-            // addCommandToolStripMenuItem
-            // 
-            this.addCommandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moveCommandsToolStripMenuItem,
-            this.shootCommandsToolStripMenuItem,
-            this.turretCommandsToolStripMenuItem});
-            this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
-            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addCommandToolStripMenuItem.Text = "Команды";
-            // 
-            // lineToolStripMenuItem
-            // 
-            this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
-            this.lineToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
-            // 
-            // очиститьВсеЛагоритмыToolStripMenuItem
-            // 
-            this.очиститьВсеЛагоритмыToolStripMenuItem.Name = "очиститьВсеЛагоритмыToolStripMenuItem";
-            this.очиститьВсеЛагоритмыToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.очиститьВсеЛагоритмыToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.очиститьВсеЛагоритмыToolStripMenuItem.Text = "Очистить все алгоритмы";
-            this.очиститьВсеЛагоритмыToolStripMenuItem.Click += new System.EventHandler(this.очиститьВсеЛагоритмыToolStripMenuItem_Click);
+            this.запуститьToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.запуститьToolStripMenuItem.Name = "запуститьToolStripMenuItem";
+            this.запуститьToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.запуститьToolStripMenuItem.Text = "Запустить";
+            this.запуститьToolStripMenuItem.Click += new System.EventHandler(this.запуститьToolStripMenuItem_Click);
             // 
             // FireSafetyForm
             // 
@@ -652,9 +657,6 @@
         private System.Windows.Forms.ToolStripMenuItem openAlgorithmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openMapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stepToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem documentationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAlgorithmToolStripMenuItem;

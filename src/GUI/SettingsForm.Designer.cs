@@ -33,15 +33,11 @@
             this.tpCommon = new System.Windows.Forms.TabPage();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnTestConnection = new System.Windows.Forms.Button();
-            this.nudFPS = new System.Windows.Forms.NumericUpDown();
-            this.lblFPS = new System.Windows.Forms.Label();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblConnectionString = new System.Windows.Forms.Label();
             this.tbConnectionString = new System.Windows.Forms.TextBox();
             this.tpShortcuts = new System.Windows.Forms.TabPage();
-            this.lblTimeToHold = new System.Windows.Forms.Label();
-            this.nudTimeToHold = new System.Windows.Forms.NumericUpDown();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnDefault = new System.Windows.Forms.Button();
             this.dgvShortcuts = new System.Windows.Forms.DataGridView();
@@ -50,9 +46,7 @@
             this.dgvtbcShortcut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcSettings.SuspendLayout();
             this.tpCommon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFPS)).BeginInit();
             this.tpShortcuts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,8 +65,6 @@
             // 
             this.tpCommon.Controls.Add(this.btnLogin);
             this.tpCommon.Controls.Add(this.btnTestConnection);
-            this.tpCommon.Controls.Add(this.nudFPS);
-            this.tpCommon.Controls.Add(this.lblFPS);
             this.tpCommon.Controls.Add(this.tbUser);
             this.tpCommon.Controls.Add(this.lblUser);
             this.tpCommon.Controls.Add(this.lblConnectionString);
@@ -104,34 +96,6 @@
             this.btnTestConnection.Text = "Проверить соединение";
             this.btnTestConnection.UseVisualStyleBackColor = true;
             this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
-            // 
-            // nudFPS
-            // 
-            this.nudFPS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudFPS.Location = new System.Drawing.Point(8, 97);
-            this.nudFPS.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.nudFPS.Name = "nudFPS";
-            this.nudFPS.Size = new System.Drawing.Size(710, 20);
-            this.nudFPS.TabIndex = 6;
-            this.nudFPS.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // lblFPS
-            // 
-            this.lblFPS.AutoSize = true;
-            this.lblFPS.Location = new System.Drawing.Point(6, 81);
-            this.lblFPS.Name = "lblFPS";
-            this.lblFPS.Size = new System.Drawing.Size(329, 13);
-            this.lblFPS.TabIndex = 5;
-            this.lblFPS.Text = "Количество кадров в секунду во время выполнения алгоритма";
             // 
             // tbUser
             // 
@@ -173,8 +137,6 @@
             // 
             // tpShortcuts
             // 
-            this.tpShortcuts.Controls.Add(this.lblTimeToHold);
-            this.tpShortcuts.Controls.Add(this.nudTimeToHold);
             this.tpShortcuts.Controls.Add(this.lblDescription);
             this.tpShortcuts.Controls.Add(this.btnDefault);
             this.tpShortcuts.Controls.Add(this.dgvShortcuts);
@@ -185,39 +147,6 @@
             this.tpShortcuts.TabIndex = 1;
             this.tpShortcuts.Text = "Горячие клавиши";
             this.tpShortcuts.UseVisualStyleBackColor = true;
-            // 
-            // lblTimeToHold
-            // 
-            this.lblTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTimeToHold.AutoSize = true;
-            this.lblTimeToHold.Location = new System.Drawing.Point(434, 565);
-            this.lblTimeToHold.Name = "lblTimeToHold";
-            this.lblTimeToHold.Size = new System.Drawing.Size(145, 13);
-            this.lblTimeToHold.TabIndex = 4;
-            this.lblTimeToHold.Text = "Время удержания клавиши";
-            // 
-            // nudTimeToHold
-            // 
-            this.nudTimeToHold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudTimeToHold.Location = new System.Drawing.Point(434, 581);
-            this.nudTimeToHold.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nudTimeToHold.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nudTimeToHold.Name = "nudTimeToHold";
-            this.nudTimeToHold.Size = new System.Drawing.Size(284, 20);
-            this.nudTimeToHold.TabIndex = 3;
-            this.nudTimeToHold.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
             // 
             // lblDescription
             // 
@@ -305,10 +234,7 @@
             this.tcSettings.ResumeLayout(false);
             this.tpCommon.ResumeLayout(false);
             this.tpCommon.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFPS)).EndInit();
             this.tpShortcuts.ResumeLayout(false);
-            this.tpShortcuts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTimeToHold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).EndInit();
             this.ResumeLayout(false);
 
@@ -322,14 +248,10 @@
         private System.Windows.Forms.Button btnDefault;
         public System.Windows.Forms.DataGridView dgvShortcuts;
         private System.Windows.Forms.Label lblDescription;
-        public System.Windows.Forms.NumericUpDown nudTimeToHold;
-        private System.Windows.Forms.Label lblTimeToHold;
         private System.Windows.Forms.Label lblConnectionString;
         private System.Windows.Forms.Label lblUser;
         public System.Windows.Forms.TextBox tbConnectionString;
         public System.Windows.Forms.TextBox tbUser;
-        private System.Windows.Forms.NumericUpDown nudFPS;
-        private System.Windows.Forms.Label lblFPS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcPerformer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcCommand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcShortcut;

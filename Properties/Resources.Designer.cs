@@ -376,7 +376,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Назад 45° пр.ч.с..
+        ///   Looks up a localized string similar to Назад 45° пр. ч.с..
         /// </summary>
         internal static string MoveCommandBackwardRotate45CCW {
             get {
@@ -403,7 +403,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вперед 45° пр.ч.с..
+        ///   Looks up a localized string similar to Вперед 45° пр. ч.с..
         /// </summary>
         internal static string MoveCommandForwardRotate45CCW {
             get {
@@ -430,7 +430,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45° пр.ч.с..
+        ///   Looks up a localized string similar to 45° пр. ч.с..
         /// </summary>
         internal static string MoveCommandRotate45CCW {
             get {
@@ -448,7 +448,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 90° пр.ч.с..
+        ///   Looks up a localized string similar to 90° пр. ч.с..
         /// </summary>
         internal static string MoveCommandRotate90CCW {
             get {
@@ -538,7 +538,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45° пр.ч.с..
+        ///   Looks up a localized string similar to 45° пр. ч.с..
         /// </summary>
         internal static string TurretCommandRotate45CCW {
             get {
@@ -556,7 +556,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 90° пр.ч.с..
+        ///   Looks up a localized string similar to 90° пр. ч.с..
         /// </summary>
         internal static string TurretCommandRotate90CCW {
             get {

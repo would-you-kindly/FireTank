@@ -256,7 +256,7 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandBackwardRotate45CCW" xml:space="preserve">
-    <value>Назад 45° пр.ч.с.</value>
+    <value>Назад 45° пр. ч.с.</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandBackwardRotate45CW" xml:space="preserve">
@@ -268,7 +268,7 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandForwardRotate45CCW" xml:space="preserve">
-    <value>Вперед 45° пр.ч.с.</value>
+    <value>Вперед 45° пр. ч.с.</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandForwardRotate45CW" xml:space="preserve">
@@ -280,7 +280,7 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate45CCW" xml:space="preserve">
-    <value>45° пр.ч.с.</value>
+    <value>45° пр. ч.с.</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate45CW" xml:space="preserve">
@@ -288,7 +288,7 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate90CCW" xml:space="preserve">
-    <value>90° пр.ч.с.</value>
+    <value>90° пр. ч.с.</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate90CW" xml:space="preserve">
@@ -328,7 +328,7 @@
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate45CCW" xml:space="preserve">
-    <value>45° пр.ч.с.</value>
+    <value>45° пр. ч.с.</value>
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate45CW" xml:space="preserve">
@@ -336,7 +336,7 @@
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate90CCW" xml:space="preserve">
-    <value>90° пр.ч.с.</value>
+    <value>90° пр. ч.с.</value>
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate90CW" xml:space="preserve">
