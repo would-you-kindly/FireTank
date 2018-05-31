@@ -53,82 +53,73 @@ namespace FireSafety
             shape.Origin = new Vector2f(rect.Width / 2.0f + shiftX, rect.Height / 2.0f + shiftY);
         }
 
-        public static MoveCommand.Commands ToMoveCommandRus(string value)
+        public static MoveCommand.Commands ToMoveCommand(string value)
         {
-            switch (value)
-            {
-                case "Вперед":
-                    return MoveCommand.Commands.Forward;
-                case "Назад":
-                    return MoveCommand.Commands.Backward;
-                case "45° по ч.с.":
-                    return MoveCommand.Commands.Rotate45CW;
-                case "45° пр. ч.с.":
-                    return MoveCommand.Commands.Rotate45CCW;
-                case "90° по ч.с.":
-                    return MoveCommand.Commands.Rotate90CW;
-                case "90° пр. ч.с.":
-                    return MoveCommand.Commands.Rotate90CCW;
-                case "Вперед 45° по ч.с.":
-                    return MoveCommand.Commands.Forward45CW;
-                case "Вперед 45° пр. ч.с.":
-                    return MoveCommand.Commands.Forward45CCW;
-                case "Назад 45° по ч.с.":
-                    return MoveCommand.Commands.Backward45CW;
-                case "Назад 45° пр. ч.с.":
-                    return MoveCommand.Commands.Backward45CCW;
-                case "Бездействие":
-                    return MoveCommand.Commands.None;
-            }
+            if (value == Properties.Resources.MoveCommandForward)
+                return MoveCommand.Commands.Forward;
+            if (value == Properties.Resources.MoveCommandBackward)
+                return MoveCommand.Commands.Backward;
+            if (value == Properties.Resources.MoveCommandRotate45CW)
+                return MoveCommand.Commands.Rotate45CW;
+            if (value == Properties.Resources.MoveCommandRotate45CCW)
+                return MoveCommand.Commands.Rotate45CCW;
+            if (value == Properties.Resources.MoveCommandRotate90CW)
+                return MoveCommand.Commands.Rotate90CW;
+            if (value == Properties.Resources.MoveCommandRotate90CCW)
+                return MoveCommand.Commands.Rotate90CCW;
+            if (value == Properties.Resources.MoveCommandForwardRotate45CW)
+                return MoveCommand.Commands.Forward45CW;
+            if (value == Properties.Resources.MoveCommandForwardRotate45CCW)
+                return MoveCommand.Commands.Forward45CCW;
+            if (value == Properties.Resources.MoveCommandBackwardRotate45CW)
+                return MoveCommand.Commands.Backward45CW;
+            if (value == Properties.Resources.MoveCommandBackwardRotate45CCW)
+                return MoveCommand.Commands.Backward45CCW;
+            if (value == Properties.Resources.MoveCommandNone)
+                return MoveCommand.Commands.None;
 
             throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует.");
         }
 
-        public static ChargeCommand.Commands ToChargeCommandRus(string value)
+        public static ChargeCommand.Commands ToChargeCommand(string value)
         {
-            switch (value)
-            {
-                case "Давление +1":
-                    return ChargeCommand.Commands.PressureX1;
-                case "Давление +2":
-                    return ChargeCommand.Commands.PressureX2;
-                case "Зарядить":
-                    return ChargeCommand.Commands.Charge;
-                case "Пополнить запас":
-                    return ChargeCommand.Commands.Refuel;
-                case "Бездействие":
-                    return ChargeCommand.Commands.None;
-            }
+            if (value == Properties.Resources.ChargeCommandPressure1)
+                return ChargeCommand.Commands.PressureX1;
+            if (value == Properties.Resources.ChargeCommandPressure2)
+                return ChargeCommand.Commands.PressureX2;
+            if (value == Properties.Resources.ChargeCommandCharge)
+                return ChargeCommand.Commands.Charge;
+            if (value == Properties.Resources.ChargeCommandRefuel)
+                return ChargeCommand.Commands.Refuel;
+            if (value == Properties.Resources.ChargeCommandNone)
+                return ChargeCommand.Commands.None;
 
             throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует.");
         }
 
-        public static TurretCommand.Commands ToTurretCommandRus(string value)
+        public static TurretCommand.Commands ToTurretCommand(string value)
         {
-            switch (value)
-            {
-                case "45° по ч.с.":
-                    return TurretCommand.Commands.Rotate45CW;
-                case "45° пр. ч.с.":
-                    return TurretCommand.Commands.Rotate45CCW;
-                case "90° по ч.с.":
-                    return TurretCommand.Commands.Rotate90CW;
-                case "90° пр. ч.с.":
-                    return TurretCommand.Commands.Rotate90CCW;
-                case "Поднять":
-                    return TurretCommand.Commands.Up;
-                case "Опустить":
-                    return TurretCommand.Commands.Down;
-                case "Выстрелить":
-                    return TurretCommand.Commands.Shoot;
-                case "Бездействие":
-                    return TurretCommand.Commands.None;
-            }
+            if (value == Properties.Resources.TurretCommandRotate45CW)
+                return TurretCommand.Commands.Rotate45CW;
+            if (value == Properties.Resources.TurretCommandRotate45CCW)
+                return TurretCommand.Commands.Rotate45CCW;
+            if (value == Properties.Resources.TurretCommandRotate90CW)
+                return TurretCommand.Commands.Rotate90CW;
+            if (value == Properties.Resources.TurretCommandRotate90CCW)
+                return TurretCommand.Commands.Rotate90CCW;
+            if (value == Properties.Resources.TurretCommandUp)
+                return TurretCommand.Commands.Up;
+            if (value == Properties.Resources.TurretCommandDown)
+                return TurretCommand.Commands.Down;
+            if (value == Properties.Resources.TurretCommandShoot)
+                return TurretCommand.Commands.Shoot;
+            if (value == Properties.Resources.TurretCommandNone)
+                return TurretCommand.Commands.None;
 
             throw new Exception($"Строкового представления {value} в перечислении TurretCommand.Commands не существует.");
         }
 
-        public static string ToMoveStringRus(MoveCommand.Commands value)
+        public static string ToMoveString(MoveCommand.Commands value)
         {
             switch (value)
             {
@@ -159,7 +150,7 @@ namespace FireSafety
             throw new Exception($"Строкового представления {value} в перечислении MoveCommand.Commands не существует.");
         }
 
-        public static string ToChargeStringRus(ChargeCommand.Commands value)
+        public static string ToChargeString(ChargeCommand.Commands value)
         {
             switch (value)
             {
@@ -178,7 +169,7 @@ namespace FireSafety
             throw new Exception($"Строкового представления {value} в перечислении ChargeCommand.Commands не существует.");
         }
 
-        public static string ToTurretStringRus(TurretCommand.Commands value)
+        public static string ToTurretString(TurretCommand.Commands value)
         {
             switch (value)
             {
