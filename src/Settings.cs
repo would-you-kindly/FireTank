@@ -155,7 +155,6 @@ namespace FireSafety
 
         public Settings()
         {
-            context = new ModelContext(connectionStringDefault);
 
             //Default();
         }
@@ -168,6 +167,8 @@ namespace FireSafety
 
                 // Грузим настройки из файла
                 instance.Load();
+
+                instance.context = new ModelContext(instance.connectionString);
 
                 instance.ShortcutUpdated += Settings_ShortcutUpdated;
             }

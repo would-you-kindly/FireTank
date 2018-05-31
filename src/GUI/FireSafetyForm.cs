@@ -87,11 +87,9 @@ namespace FireSafety
 
             // Creates our SFML RenderWindow on our surface control
             renderWindow = new RenderWindow(surface.Handle);
-
-
         }
 
-        private void InitIndicators(int i, AlgorithmForm algorithmForm)
+        public void InitIndicators(int i, AlgorithmForm algorithmForm)
         {
             algorithmForm.lblCapacity.Text = worldController.world.tanks[i].turret.waterCapacity.ToString();
             algorithmForm.lblPressure.Text = worldController.world.tanks[i].turret.waterPressure.ToString();

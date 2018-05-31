@@ -136,6 +136,12 @@ namespace FireSafety
                 ParallelAlgorithm.GetInstance().errors.Clear();
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();
+
+                for (int i = 0; i < gui.form.algorithmForms.Count; i++)
+                {
+                    // Устанавливаем значения танка в индикаторах
+                    gui.form.InitIndicators(i, gui.form.algorithmForms[i]);
+                }
             }
 
             // Если горящих деревьев (и домов) больше нет, выводим результат работы алгоритма
@@ -167,6 +173,12 @@ namespace FireSafety
 
                 ParallelAlgorithm.GetInstance().Reload();
                 world.BuildWorld();
+
+                for (int i = 0; i < gui.form.algorithmForms.Count; i++)
+                {
+                    // Устанавливаем значения танка в индикаторах
+                    gui.form.InitIndicators(i, gui.form.algorithmForms[i]);
+                }
             }
         }
     }
