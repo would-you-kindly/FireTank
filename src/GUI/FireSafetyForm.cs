@@ -28,6 +28,12 @@ namespace FireSafety
             worldController = new WorldController(world);
             savedFilename = string.Empty;
 
+            windowToolStripMenuItem.DropDownItems.Add("План", null, new EventHandler((sender, e) =>
+            {
+                planForm.Visible = true;
+                planForm.Select();
+            }));
+
             Init();
         }
 
@@ -43,6 +49,7 @@ namespace FireSafety
                 algorithmForm.Text = worldController.world.tanks[i].ToString();
                 algorithmForm.Show();
                 algorithmForms.Add(algorithmForm);
+                
                 algorithmsToolStripMenuItem.DropDownItems.Add(worldController.world.tanks[i].ToString(), null, new EventHandler((sender, e) =>
                 {
                     algorithmForm.Visible = true;
@@ -55,14 +62,14 @@ namespace FireSafety
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
 
-            //planForm = new PlanForm();
-            //for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
-            //{
-            //    planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
-            //        worldController.world.tanks[i].ToString());
-            //}
-            //planForm.MdiParent = this;
-            //planForm.Show();
+            planForm = new PlanForm();
+            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
+            {
+                planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
+                    worldController.world.tanks[i].ToString());
+            }
+            planForm.MdiParent = this;
+            planForm.Show();
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
@@ -353,6 +360,8 @@ namespace FireSafety
             sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Location = new Point(0, 0);
+
+            planForm.Location = new Point(sfmlForm.Size.Width, 0);
 
             // Подбираем размеры для окон алгоритмов
             int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - sfmlForm.Size.Height - 4);

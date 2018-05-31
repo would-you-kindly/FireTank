@@ -25,5 +25,5 @@
   <step>F7</step>
   <clearParallelAlgorithm>F8</clearParallelAlgorithm>
   <timeToHold>200</timeToHold>
-  <connectionString>data source =.\sqlexpress; initial catalog = FireTankAdmin2; integrated security = True;</connectionString>
+  <connectionString>Data Source=STUD-DBA\MSSQLSERVER16;Initial Catalog=FireTankAdmin;User ID=localuser;Password=654321</connectionString>
 </Settings>

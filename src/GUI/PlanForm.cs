@@ -23,5 +23,15 @@ namespace FireSafety
         {
             dgvPlan.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
         }
+
+        private void PlanForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
+
+            Visible = false;
+        }
     }
 }

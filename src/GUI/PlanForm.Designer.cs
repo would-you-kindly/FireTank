@@ -43,7 +43,7 @@
             this.dgvPlan.Location = new System.Drawing.Point(0, 0);
             this.dgvPlan.MultiSelect = false;
             this.dgvPlan.Name = "dgvPlan";
-            this.dgvPlan.Size = new System.Drawing.Size(284, 261);
+            this.dgvPlan.Size = new System.Drawing.Size(484, 211);
             this.dgvPlan.TabIndex = 0;
             this.dgvPlan.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPlan_RowsAdded);
             // 
@@ -59,10 +59,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(484, 211);
             this.Controls.Add(this.dgvPlan);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PlanForm";
             this.Text = "План";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlanForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlan)).EndInit();
             this.ResumeLayout(false);
 
