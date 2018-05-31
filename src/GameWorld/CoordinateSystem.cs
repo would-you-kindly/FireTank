@@ -27,6 +27,7 @@ namespace FireSafety
             {
                 char symbol = (char)(65 + i);
                 text.DisplayedString = symbol.ToString();
+                // Сверху
                 text.Position = new Vector2f((float)(i * Utilities.GetInstance().TILE_SIZE +
                     Utilities.GetInstance().TILE_SIZE / 2.0), (float)(Utilities.GetInstance().TILE_SIZE / 6.0));
                 Utilities.CenterOrigin(text);
@@ -38,7 +39,8 @@ namespace FireSafety
             {
                 int symbol = i + 1;
                 text.DisplayedString = symbol.ToString();
-                text.Position = new Vector2f((float)(Utilities.GetInstance().TILE_SIZE / 6.0), 
+                // Слева
+                text.Position = new Vector2f((float)(Utilities.GetInstance().TILE_SIZE / 6.0),
                     (float)(i * Utilities.GetInstance().TILE_SIZE + Utilities.GetInstance().TILE_SIZE / 2.0));
                 Utilities.CenterOrigin(text);
                 text.Draw(target, states);

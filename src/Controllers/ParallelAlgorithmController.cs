@@ -228,5 +228,30 @@ namespace FireSafety
         {
             ParallelAlgorithm.GetInstance().Step();
         }
+
+        public void ClearErrors()
+        {
+            ParallelAlgorithm.GetInstance().errors.Clear();
+        }
+
+        public bool IsExecuted()
+        {
+            return ParallelAlgorithm.GetInstance().IsExecuted();
+        }
+
+        public double ComputeEfficiency(double mapWidth, double mapHeight, double initiallyBurningTrees, double totalTrees, double burnedTrees)
+        {
+            return ParallelAlgorithm.GetInstance().ComputeEfficiency(mapWidth, mapHeight, initiallyBurningTrees, totalTrees, burnedTrees);
+        }
+
+        public bool CheckErrors()
+        {
+            return ParallelAlgorithm.GetInstance().errors.Check();
+        }
+
+        public Errors GetErrors()
+        {
+            return ParallelAlgorithm.GetInstance().errors;
+        }
     }
 }

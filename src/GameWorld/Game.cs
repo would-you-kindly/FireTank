@@ -26,7 +26,7 @@ namespace FireSafety
 
         // Переменные игры
         public World world;
-        public static Gui gui;
+        public Gui gui;
 
         public Game()
         {
@@ -39,7 +39,7 @@ namespace FireSafety
         private void AssignEvents()
         {
             gui.form.renderWindow.Closed += Window_Closed;
-            Rendered += Game_Rendered;
+            Rendered += gui.form.Game_Rendered;
         }
 
         public void Run()
@@ -104,82 +104,6 @@ namespace FireSafety
         private void Window_Closed(object sender, EventArgs e)
         {
             ((RenderWindow)sender)?.Close();
-        }
-
-        private void Game_Rendered(object sender, RenderEventArgs e)
-        {
-
-            CheckGameState();
-        }
-
-        private void CheckGameState()
-        {
-            // TODO: Приходится ждать пока карта перерисуется и только потом обрабатывать ошибку
-            // TODO: Можно ли вызывать метод по срабатывания сразу двух событий? Есть подобный паттерн? (т.е. после столкновения И перерисовки)
-
-            // Если произошла ошибка во время выполнения алгоритма, выводим сообщение и перезапускаем карту
-            if (ParallelAlgorithm.GetInstance().errors.Check())
-            {
-                string warning = Settings.GetInstance().currentMap != null ? "" : "\n\nТекущая карта была открыта не из базы данных. Результат не будет сохранен.";
-
-                MessageBox.Show(ParallelAlgorithm.GetInstance().errors.ToString() + warning,
-                    "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.GetInstance().WIDTH_TILE_COUNT, (int)Utilities.GetInstance().HEIGHT_TILE_COUNT,
-                    Utilities.GetInstance().INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
-
-                if (Settings.GetInstance().currentUser != null && Settings.GetInstance().currentMap != null)
-                {
-                    ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, false));
-                }
-
-                ParallelAlgorithm.GetInstance().errors.Clear();
-                ParallelAlgorithm.GetInstance().Reload();
-                world.BuildWorld();
-
-                for (int i = 0; i < gui.form.algorithmForms.Count; i++)
-                {
-                    // Устанавливаем значения танка в индикаторах
-                    gui.form.InitIndicators(i, gui.form.algorithmForms[i]);
-                }
-            }
-
-            // Если горящих деревьев (и домов) больше нет, выводим результат работы алгоритма
-            if (world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0 &&
-                world.terrain.houses.Where(house => house.state.IsBurning()).Count() == 0 &&
-                ParallelAlgorithm.GetInstance().IsExecuted())
-            {
-                Ended?.Invoke(this, new EndEventArgs());
-
-                double result = ParallelAlgorithm.GetInstance().ComputeEfficiency((int)Utilities.GetInstance().WIDTH_TILE_COUNT, (int)Utilities.GetInstance().HEIGHT_TILE_COUNT,
-                    Utilities.GetInstance().INIT_BURNING_TREES, world.terrain.trees.Count(), world.terrain.trees.Where(tree => tree.state.IsBurned()).Count());
-
-                string warning = Settings.GetInstance().currentMap != null ? "" : "\n\nТекущая карта была открыта не из базы данных. Результат не будет сохранен.";
-
-                MessageBox.Show($"Количество деревьев на карте: {world.terrain.trees.Count()}.\n" +
-                    $"Спасено деревьев: {world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}.\n" +
-                    $"Сгорело деревьев: {world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n\n" +
-                    $"Количество домов на карте: {world.terrain.houses.Count()}.\n" +
-                    $"Спасено домов: {world.terrain.houses.Where(house => house.state.IsNormal()).Count()}.\n" +
-                    $"Сгорело домов: {world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n" +
-                    $"Эффективность разработанного алгоритма = {Math.Round(result, 2)}." +
-                    warning,
-                    "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (Settings.GetInstance().currentUser != null && Settings.GetInstance().currentMap != null)
-                {
-                    ParallelAlgorithm.GetInstance().SaveAlgorithm(new DatabaseOpenSave(Guid.NewGuid(), result, true));
-                }
-
-                ParallelAlgorithm.GetInstance().Reload();
-                world.BuildWorld();
-
-                for (int i = 0; i < gui.form.algorithmForms.Count; i++)
-                {
-                    // Устанавливаем значения танка в индикаторах
-                    gui.form.InitIndicators(i, gui.form.algorithmForms[i]);
-                }
-            }
         }
     }
 }
