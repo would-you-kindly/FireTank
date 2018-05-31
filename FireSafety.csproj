@@ -49,6 +49,10 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -232,6 +236,96 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Charged.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\ClearAlgorithm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\DeleteAction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Pressure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Uncharged.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\Water.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BlueTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BlueTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BurnedHouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\BurnedTree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Fire.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreenTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreenTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreyTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\GreyTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\House.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Lake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\PinkTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\PinkTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\RedTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\RedTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\Tree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\YellowTank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Textures\YellowTurret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Icons\FireTank.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FireTank.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

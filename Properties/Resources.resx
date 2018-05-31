@@ -121,6 +121,22 @@
     <value>Все исполнители</value>
     <comment>Исполнитель</comment>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Block" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Block.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\BlueTank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueTurret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\BlueTurret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BurnedHouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\BurnedHouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BurnedTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\BurnedTree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CancelSelection" xml:space="preserve">
     <value>Отменить выделение</value>
     <comment>Алгоритм</comment>
@@ -145,9 +161,15 @@
     <value>Пополнить запас</value>
     <comment>Команда заряжающего</comment>
   </data>
+  <data name="Charged" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Charged.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ChargePerformer" xml:space="preserve">
     <value>Заряжающий</value>
     <comment>Исполнитель</comment>
+  </data>
+  <data name="ClearAlgorithm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\ClearAlgorithm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ClearTankAlgorithm" xml:space="preserve">
     <value>Очистить алгоритм танка</value>
@@ -161,8 +183,32 @@
     <value>Удалить действие</value>
     <comment>Алгоритм</comment>
   </data>
+  <data name="DeleteAction1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\DeleteAction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Documentation" xml:space="preserve">
     <value>Документация</value>
+  </data>
+  <data name="Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\Fire.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FireTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\FireTank.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\GreenTank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenTurret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\GreenTurret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreyTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\GreyTank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreyTurret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\GreyTurret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Помощь</value>
@@ -171,9 +217,15 @@
     <value>Дом</value>
     <comment>Объект</comment>
   </data>
+  <data name="House1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\House.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Lake" xml:space="preserve">
     <value>Озеро</value>
     <comment>Объект</comment>
+  </data>
+  <data name="Lake1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\Lake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MapParameterAlgorithm" xml:space="preserve">
     <value>algorithm</value>
@@ -299,6 +351,21 @@
     <value>Водитель</value>
     <comment>Исполнитель</comment>
   </data>
+  <data name="PinkTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\PinkTank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PinkTurret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\PinkTurret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pressure" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Pressure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\RedTank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedTurret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\RedTurret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ReloadAlgorithm" xml:space="preserve">
     <value>Перезагрузить</value>
     <comment>Алгоритм</comment>
@@ -306,6 +373,9 @@
   <data name="Rock" xml:space="preserve">
     <value>Скала</value>
     <comment>Объект</comment>
+  </data>
+  <data name="Rock1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\Rock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RunAlgorithm" xml:space="preserve">
     <value>Запустить</value>
@@ -318,6 +388,9 @@
   <data name="Tree" xml:space="preserve">
     <value>Дерево</value>
     <comment>Объект</comment>
+  </data>
+  <data name="Tree1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\Tree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TurretCommandDown" xml:space="preserve">
     <value>Опустить</value>
@@ -355,6 +428,15 @@
     <value>Наводчик</value>
     <comment>Исполнитель</comment>
   </data>
+  <data name="Uncharged" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Uncharged.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Water" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Icons\Water.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="WindDown" xml:space="preserve">
     <value>Вниз ↓</value>
     <comment>Направление ветра</comment>
@@ -386,5 +468,11 @@
   <data name="WindUpLeft" xml:space="preserve">
     <value>Вверх-влево ↖</value>
     <comment>Направление ветра</comment>
+  </data>
+  <data name="YellowTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\YellowTank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowTurret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\YellowTurret.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

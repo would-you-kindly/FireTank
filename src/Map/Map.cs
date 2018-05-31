@@ -65,7 +65,7 @@ namespace FireSafety
             string imagePath = imageElement.GetAttribute("source");
 
             // Загружаем картинку
-            Image image = new Image(Path.Combine("Media/", imagePath.Remove(0, 3)));
+            Image image = new Image("Media/Maps/" + imagePath);
 
             // TODO: Проверку добавить
             //if (!img.loadFromFile(imagepath))
