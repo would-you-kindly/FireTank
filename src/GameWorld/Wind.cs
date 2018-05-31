@@ -91,21 +91,21 @@ namespace FireSafety
             switch (direction)
             {
                 case Direction.Up:
-                    return "Вверх ↑";
+                    return Properties.Resources.WindUp;
                 case Direction.UpLeft:
-                    return "Вверх-влево ↖";
+                    return Properties.Resources.WindUpLeft;
                 case Direction.Left:
-                    return "Влево ←";
+                    return Properties.Resources.WindLeft;
                 case Direction.LeftDown:
-                    return "Влево-вниз ↙";
+                    return Properties.Resources.WindLeftDown;
                 case Direction.Down:
-                    return "Вниз ↓";
+                    return Properties.Resources.WindDown;
                 case Direction.DownRight:
-                    return "Вниз-вправо ↘";
+                    return Properties.Resources.WindDownRight;
                 case Direction.Right:
-                    return "Вправо →";
+                    return Properties.Resources.WindRight;
                 case Direction.RightUp:
-                    return "Вправо-вверх ↗";
+                    return Properties.Resources.WindRightUp;
                 default:
                     break;
             }

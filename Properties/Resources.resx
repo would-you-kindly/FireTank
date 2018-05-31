@@ -355,4 +355,36 @@
     <value>Наводчик</value>
     <comment>Исполнитель</comment>
   </data>
+  <data name="WindDown" xml:space="preserve">
+    <value>Вниз ↓</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindDownRight" xml:space="preserve">
+    <value>Вниз-вправо ↘</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindLeft" xml:space="preserve">
+    <value>Влево ←</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindLeftDown" xml:space="preserve">
+    <value>Влево-вниз ↙</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindRight" xml:space="preserve">
+    <value>Вправо →</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindRightUp" xml:space="preserve">
+    <value>Вправо-вверх ↗</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindUp" xml:space="preserve">
+    <value>Вверх ↑</value>
+    <comment>Направление ветра</comment>
+  </data>
+  <data name="WindUpLeft" xml:space="preserve">
+    <value>Вверх-влево ↖</value>
+    <comment>Направление ветра</comment>
+  </data>
 </root>

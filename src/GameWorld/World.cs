@@ -226,11 +226,8 @@ namespace FireSafety
                         tank.turret.waterPressure, tank.turret.NormalizedRotation));
                 };
 
-
                 tanks.Add(tank);
             }
-
-            //Game.gui?.form.AttachIndicators();
         }
 
         public void Update(Time deltaTime)

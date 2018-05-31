@@ -599,5 +599,77 @@ namespace FireSafety.Properties {
                 return ResourceManager.GetString("TurretPerformer", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вниз ↓.
+        /// </summary>
+        internal static string WindDown {
+            get {
+                return ResourceManager.GetString("WindDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вниз-вправо ↘.
+        /// </summary>
+        internal static string WindDownRight {
+            get {
+                return ResourceManager.GetString("WindDownRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Влево ←.
+        /// </summary>
+        internal static string WindLeft {
+            get {
+                return ResourceManager.GetString("WindLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Влево-вниз ↙.
+        /// </summary>
+        internal static string WindLeftDown {
+            get {
+                return ResourceManager.GetString("WindLeftDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вправо →.
+        /// </summary>
+        internal static string WindRight {
+            get {
+                return ResourceManager.GetString("WindRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вправо-вверх ↗.
+        /// </summary>
+        internal static string WindRightUp {
+            get {
+                return ResourceManager.GetString("WindRightUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вверх ↑.
+        /// </summary>
+        internal static string WindUp {
+            get {
+                return ResourceManager.GetString("WindUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вверх-влево ↖.
+        /// </summary>
+        internal static string WindUpLeft {
+            get {
+                return ResourceManager.GetString("WindUpLeft", resourceCulture);
+            }
+        }
     }
 }
