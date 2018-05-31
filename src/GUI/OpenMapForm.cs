@@ -7,6 +7,7 @@ namespace FireSafety
     public partial class OpenMapForm : Form
     {
         private Guid guid;
+
         public Guid Guid
         {
             get

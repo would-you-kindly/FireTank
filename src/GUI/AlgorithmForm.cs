@@ -6,28 +6,87 @@ namespace FireSafety
 {
     public partial class AlgorithmForm : Form
     {
-        private Stopwatch clock = new Stopwatch();
-        private bool keyPressed = false;
+        private Stopwatch clock;
+        private bool keyPressed;
 
         public AlgorithmForm()
         {
             InitializeComponent();
+
+            clock = new Stopwatch();
+            keyPressed = false;
         }
 
-        private void cbShootCommandsCommands_SelectedIndexChanged(object sender, EventArgs e)
+        #region Методы класса
+        private void BlockTankAlgorithm(object sender)
         {
-            SetCommand((ComboBox)sender);
+            // Позволяем заблокировать алгоритм, если он не выполняется
+            if (!ParallelAlgorithm.GetInstance().running)
+            {
+                if (((CheckBox)sender).Checked)
+                {
+                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = true;
+                }
+                else
+                {
+                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Чтобы заблокировать алгоритм, необходимо сначала остановить его.",
+                    "Блокировка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void cbShoot_SelectedIndexChanged(object sender, EventArgs e)
+        public void DeleteAction()
         {
-            SetCommand((ComboBox)sender);
+            // Позволяем удалить строку, если алгоритм не выполняется
+            if (!ParallelAlgorithm.GetInstance().running)
+            {
+                if (dgvAlgorithm.SelectedRows.Count != 0)
+                {
+                    dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
+                    dgvAlgorithm.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.",
+                        "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Чтобы удалить действие алгоритма, необходимо сначала остановить его.",
+                    "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void cbTurret_SelectedIndexChanged(object sender, EventArgs e)
+        public void ClearTankAlgorithm()
         {
-            SetCommand((ComboBox)sender);
+            // Позволяем очистить алгоритм, если он не выполняется
+            if (!ParallelAlgorithm.GetInstance().running)
+            {
+                if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
+                    "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    for (int i = dgvAlgorithm.Rows.Count - 1; i >= 0; i--)
+                    {
+                        dgvAlgorithm.Rows.RemoveAt(i);
+                    }
+
+                    dgvAlgorithm.ClearSelection();
+                    dgvAlgorithm.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Чтобы очистить алгоритм, необходимо сначала остановить его.",
+                    "Очистка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+
 
         public void SetCommand(ComboBox cb)
         {
@@ -89,56 +148,33 @@ namespace FireSafety
             }
         }
 
-        public void DeleteAction()
-        {
-            if (!ParallelAlgorithm.GetInstance().running)
-            {
-                if (dgvAlgorithm.SelectedRows.Count != 0)
-                {
-                    dgvAlgorithm.Rows.RemoveAt(dgvAlgorithm.SelectedRows[0].Index);
-                    dgvAlgorithm.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Выберите строку алгоритма, чтобы удалить ее.",
-                        "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Чтобы удалить действие алгоритма, необходимо сначала остановить его.",
-                    "Удаление строки алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        public void ClearAlgorithm()
-        {
-            if (!ParallelAlgorithm.GetInstance().running)
-            {
-                if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
-                    "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    for (int i = dgvAlgorithm.Rows.Count - 1; i >= 0; i--)
-                    {
-                        dgvAlgorithm.Rows.RemoveAt(i);
-                    }
-
-                    dgvAlgorithm.ClearSelection();
-                    dgvAlgorithm.Focus();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Чтобы очистить алгоритм, необходимо сначала остановить его.",
-                    "Очистка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void Shortcut(ComboBox cb, string command)
         {
             // Задаем индекс -1, т.к. при выборе того же элемента событие SelectedItem не вызывается
             cb.SelectedIndex = -1;
             cb.SelectedItem = command;
+        }
+        #endregion
+
+        #region Обработчики событий
+        private void cbMove_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetCommand((ComboBox)sender);
+        }
+
+        private void cbCharge_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetCommand((ComboBox)sender);
+        }
+
+        private void cbTurret_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetCommand((ComboBox)sender);
+        }
+
+        private void chbBlocked_CheckedChanged(object sender, EventArgs e)
+        {
+            BlockTankAlgorithm(sender);
         }
 
         private void btnDeleteAction_Click(object sender, EventArgs e)
@@ -148,7 +184,17 @@ namespace FireSafety
 
         private void btnClearAlgorithm_Click(object sender, EventArgs e)
         {
-            ClearAlgorithm();
+            ClearTankAlgorithm();
+        }
+
+        private void AlgorithmForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
+
+            Visible = false;
         }
 
         private void dgvAlgorithm_KeyDown(object sender, KeyEventArgs e)
@@ -175,7 +221,7 @@ namespace FireSafety
             // Очищаем алгоритм танка
             if (e.KeyCode == Settings.GetInstance().clearTankAlgorithm)
             {
-                ClearAlgorithm();
+                ClearTankAlgorithm();
             }
 
             // Обрабатываем горячие клавиши добавления команд движения
@@ -311,40 +357,6 @@ namespace FireSafety
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var t = ParallelAlgorithm.GetInstance();
-        }
-
-        private void AlgorithmForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-            }
-
-            Visible = false;
-        }
-
-        private void chbBlocked_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!ParallelAlgorithm.GetInstance().running)
-            {
-                if (((CheckBox)sender).Checked)
-                {
-                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = true;
-                }
-                else
-                {
-                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].blocked = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Чтобы заблокировать алгоритм, необходимо сначала остановить его.",
-                    "Блокировка алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        #endregion
     }
 }

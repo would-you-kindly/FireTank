@@ -92,7 +92,7 @@
             this.cbMove.Name = "cbMove";
             this.cbMove.Size = new System.Drawing.Size(112, 21);
             this.cbMove.TabIndex = 2;
-            this.cbMove.SelectedIndexChanged += new System.EventHandler(this.cbShootCommandsCommands_SelectedIndexChanged);
+            this.cbMove.SelectedIndexChanged += new System.EventHandler(this.cbMove_SelectedIndexChanged);
             // 
             // cbCharge
             // 
@@ -108,7 +108,7 @@
             this.cbCharge.Name = "cbCharge";
             this.cbCharge.Size = new System.Drawing.Size(112, 21);
             this.cbCharge.TabIndex = 2;
-            this.cbCharge.SelectedIndexChanged += new System.EventHandler(this.cbShoot_SelectedIndexChanged);
+            this.cbCharge.SelectedIndexChanged += new System.EventHandler(this.cbCharge_SelectedIndexChanged);
             // 
             // cbTurret
             // 

@@ -55,6 +55,7 @@ namespace FireSafety
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
 
+            // Создаем окно с планом
             planForm = new PlanForm();
             for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
             {
@@ -261,7 +262,7 @@ namespace FireSafety
             {
                 if (algorithmForm.ContainsFocus)
                 {
-                    algorithmForm.ClearAlgorithm();
+                    algorithmForm.ClearTankAlgorithm();
                     break;
                 }
             }
