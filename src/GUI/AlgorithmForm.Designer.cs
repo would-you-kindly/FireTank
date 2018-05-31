@@ -34,7 +34,16 @@
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtbcPlanItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControls = new System.Windows.Forms.GroupBox();
+            this.lblMaxPressure = new System.Windows.Forms.Label();
+            this.lblPressureSlash = new System.Windows.Forms.Label();
+            this.lblMaxCapacity = new System.Windows.Forms.Label();
+            this.lblCapacitySlash = new System.Windows.Forms.Label();
             this.pbReady = new System.Windows.Forms.PictureBox();
             this.pbUp = new System.Windows.Forms.PictureBox();
             this.pbDown = new System.Windows.Forms.PictureBox();
@@ -52,16 +61,7 @@
             this.ttipDeleteAction = new System.Windows.Forms.ToolTip(this.components);
             this.ttipBlock = new System.Windows.Forms.ToolTip(this.components);
             this.ttipClearTankAlgorithm = new System.Windows.Forms.ToolTip(this.components);
-            this.lblCapacitySlash = new System.Windows.Forms.Label();
-            this.lblMaxCapacity = new System.Windows.Forms.Label();
-            this.lblPressureSlash = new System.Windows.Forms.Label();
-            this.lblMaxPressure = new System.Windows.Forms.Label();
             this.ttipIndicators = new System.Windows.Forms.ToolTip(this.components);
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtbcPlanItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReady)).BeginInit();
@@ -157,6 +157,44 @@
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
+            // Number
+            // 
+            this.Number.HeaderText = "№";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 25;
+            // 
+            // MoveCommands
+            // 
+            this.MoveCommands.HeaderText = "Водитель";
+            this.MoveCommands.Name = "MoveCommands";
+            this.MoveCommands.ReadOnly = true;
+            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MoveCommands.Width = 105;
+            // 
+            // ShootCommands
+            // 
+            this.ShootCommands.HeaderText = "Заряжающий";
+            this.ShootCommands.Name = "ShootCommands";
+            this.ShootCommands.ReadOnly = true;
+            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TurretCommands
+            // 
+            this.TurretCommands.HeaderText = "Наводчик";
+            this.TurretCommands.Name = "TurretCommands";
+            this.TurretCommands.ReadOnly = true;
+            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TurretCommands.Width = 85;
+            // 
+            // dgvtbcPlanItem
+            // 
+            this.dgvtbcPlanItem.HeaderText = "П.";
+            this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
+            this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcPlanItem.Width = 25;
+            // 
             // gbControls
             // 
             this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -187,6 +225,46 @@
             this.gbControls.Size = new System.Drawing.Size(360, 88);
             this.gbControls.TabIndex = 8;
             this.gbControls.TabStop = false;
+            // 
+            // lblMaxPressure
+            // 
+            this.lblMaxPressure.AutoSize = true;
+            this.lblMaxPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMaxPressure.Location = new System.Drawing.Point(136, 62);
+            this.lblMaxPressure.Name = "lblMaxPressure";
+            this.lblMaxPressure.Size = new System.Drawing.Size(18, 20);
+            this.lblMaxPressure.TabIndex = 19;
+            this.lblMaxPressure.Text = "0";
+            // 
+            // lblPressureSlash
+            // 
+            this.lblPressureSlash.AutoSize = true;
+            this.lblPressureSlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPressureSlash.Location = new System.Drawing.Point(126, 62);
+            this.lblPressureSlash.Name = "lblPressureSlash";
+            this.lblPressureSlash.Size = new System.Drawing.Size(13, 20);
+            this.lblPressureSlash.TabIndex = 18;
+            this.lblPressureSlash.Text = "/";
+            // 
+            // lblMaxCapacity
+            // 
+            this.lblMaxCapacity.AutoSize = true;
+            this.lblMaxCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMaxCapacity.Location = new System.Drawing.Point(59, 62);
+            this.lblMaxCapacity.Name = "lblMaxCapacity";
+            this.lblMaxCapacity.Size = new System.Drawing.Size(18, 20);
+            this.lblMaxCapacity.TabIndex = 17;
+            this.lblMaxCapacity.Text = "0";
+            // 
+            // lblCapacitySlash
+            // 
+            this.lblCapacitySlash.AutoSize = true;
+            this.lblCapacitySlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCapacitySlash.Location = new System.Drawing.Point(49, 62);
+            this.lblCapacitySlash.Name = "lblCapacitySlash";
+            this.lblCapacitySlash.Size = new System.Drawing.Size(13, 20);
+            this.lblCapacitySlash.TabIndex = 16;
+            this.lblCapacitySlash.Text = "/";
             // 
             // pbReady
             // 
@@ -339,84 +417,6 @@
             this.pbUnready.TabIndex = 15;
             this.pbUnready.TabStop = false;
             this.ttipIndicators.SetToolTip(this.pbUnready, "Пушка не заряжена");
-            // 
-            // lblCapacitySlash
-            // 
-            this.lblCapacitySlash.AutoSize = true;
-            this.lblCapacitySlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCapacitySlash.Location = new System.Drawing.Point(49, 62);
-            this.lblCapacitySlash.Name = "lblCapacitySlash";
-            this.lblCapacitySlash.Size = new System.Drawing.Size(13, 20);
-            this.lblCapacitySlash.TabIndex = 16;
-            this.lblCapacitySlash.Text = "/";
-            // 
-            // lblMaxCapacity
-            // 
-            this.lblMaxCapacity.AutoSize = true;
-            this.lblMaxCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblMaxCapacity.Location = new System.Drawing.Point(59, 62);
-            this.lblMaxCapacity.Name = "lblMaxCapacity";
-            this.lblMaxCapacity.Size = new System.Drawing.Size(18, 20);
-            this.lblMaxCapacity.TabIndex = 17;
-            this.lblMaxCapacity.Text = "0";
-            // 
-            // lblPressureSlash
-            // 
-            this.lblPressureSlash.AutoSize = true;
-            this.lblPressureSlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPressureSlash.Location = new System.Drawing.Point(126, 62);
-            this.lblPressureSlash.Name = "lblPressureSlash";
-            this.lblPressureSlash.Size = new System.Drawing.Size(13, 20);
-            this.lblPressureSlash.TabIndex = 18;
-            this.lblPressureSlash.Text = "/";
-            // 
-            // lblMaxPressure
-            // 
-            this.lblMaxPressure.AutoSize = true;
-            this.lblMaxPressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblMaxPressure.Location = new System.Drawing.Point(136, 62);
-            this.lblMaxPressure.Name = "lblMaxPressure";
-            this.lblMaxPressure.Size = new System.Drawing.Size(18, 20);
-            this.lblMaxPressure.TabIndex = 19;
-            this.lblMaxPressure.Text = "0";
-            // 
-            // Number
-            // 
-            this.Number.HeaderText = "№";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 25;
-            // 
-            // MoveCommands
-            // 
-            this.MoveCommands.HeaderText = "Водитель";
-            this.MoveCommands.Name = "MoveCommands";
-            this.MoveCommands.ReadOnly = true;
-            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MoveCommands.Width = 105;
-            // 
-            // ShootCommands
-            // 
-            this.ShootCommands.HeaderText = "Заряжающий";
-            this.ShootCommands.Name = "ShootCommands";
-            this.ShootCommands.ReadOnly = true;
-            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TurretCommands
-            // 
-            this.TurretCommands.HeaderText = "Наводчик";
-            this.TurretCommands.Name = "TurretCommands";
-            this.TurretCommands.ReadOnly = true;
-            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TurretCommands.Width = 85;
-            // 
-            // dgvtbcPlanItem
-            // 
-            this.dgvtbcPlanItem.HeaderText = "П.";
-            this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
-            this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtbcPlanItem.Width = 25;
             // 
             // AlgorithmForm
             // 

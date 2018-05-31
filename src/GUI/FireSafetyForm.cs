@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -164,14 +163,6 @@ namespace FireSafety
         {
             worldController.BuildWorld();
             algorithmController.RunAlgorithm();
-
-            // Отключаем окна алгоритмов
-            //foreach (AlgorithmForm form in algorithmForms)
-            //{
-            //    form.Enabled = false;
-            //}
-
-            //menuStrip.Enabled = false;
         }
 
         private void saveAlgorithmAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -413,16 +404,6 @@ namespace FireSafety
         private void FireSafetyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Clear();
-        }
-
-        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм? Все несохраненные данные будут утеряны.",
-                "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                worldController.BuildWorld();
-                algorithmController.ClearAlgorithm();
-            }
         }
 
         private void stepToolStripMenuItem_Click(object sender, EventArgs e)
@@ -706,6 +687,32 @@ namespace FireSafety
             else
             {
                 openMapFromDatabaseToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void запуститьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            worldController.BuildWorld();
+            algorithmController.RunAlgorithm();
+        }
+
+        private void перезапуститьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reload();
+        }
+
+        private void шагToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            algorithmController.StepAlgorithm();
+        }
+
+        private void очиститьВсеЛагоритмыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите очистить все алгоритмы? Все несохраненные данные будут утеряны.",
+                "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                worldController.BuildWorld();
+                algorithmController.ClearAlgorithm();
             }
         }
     }

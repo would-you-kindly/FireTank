@@ -37,7 +37,28 @@
             this.openMapFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запуститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.перезапуститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.шагToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,26 +86,9 @@
             this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.reorderingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearAlgorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.algorithmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.smartmapDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.algorithmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.очиститьВсеЛагоритмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,10 +99,13 @@
             this.editToolStripMenuItem,
             this.algorithmToolStripMenuItem,
             this.windowToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.шагToolStripMenuItem,
+            this.перезапуститьToolStripMenuItem,
+            this.запуститьToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(384, 24);
+            this.menuStrip.Size = new System.Drawing.Size(584, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -172,20 +179,187 @@
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCommandToolStripMenuItem,
+            this.lineToolStripMenuItem,
             this.reorderingToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.editToolStripMenuItem.Text = "Правка";
             // 
-            // addCommandToolStripMenuItem
+            // reorderingToolStripMenuItem
             // 
-            this.addCommandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moveCommandsToolStripMenuItem,
-            this.shootCommandsToolStripMenuItem,
-            this.turretCommandsToolStripMenuItem});
-            this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
-            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.addCommandToolStripMenuItem.Text = "Команды";
+            this.reorderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteActionToolStripMenuItem,
+            this.clearAlgorithmToolStripMenuItem,
+            this.очиститьВсеЛагоритмыToolStripMenuItem});
+            this.reorderingToolStripMenuItem.Name = "reorderingToolStripMenuItem";
+            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reorderingToolStripMenuItem.Text = "Управление";
+            // 
+            // deleteActionToolStripMenuItem
+            // 
+            this.deleteActionToolStripMenuItem.Name = "deleteActionToolStripMenuItem";
+            this.deleteActionToolStripMenuItem.ShortcutKeyDisplayString = "Delete";
+            this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.deleteActionToolStripMenuItem.Text = "Удалить действие";
+            this.deleteActionToolStripMenuItem.Click += new System.EventHandler(this.deleteActionToolStripMenuItem_Click);
+            // 
+            // clearAlgorithmToolStripMenuItem
+            // 
+            this.clearAlgorithmToolStripMenuItem.Name = "clearAlgorithmToolStripMenuItem";
+            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.clearAlgorithmToolStripMenuItem.Text = "Очистить алгоритм танка";
+            this.clearAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.clearAlgorithmToolStripMenuItem_Click);
+            // 
+            // algorithmToolStripMenuItem
+            // 
+            this.algorithmToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.executeToolStripMenuItem,
+            this.reloadToolStripMenuItem,
+            this.stepToolStripMenuItem});
+            this.algorithmToolStripMenuItem.Name = "algorithmToolStripMenuItem";
+            this.algorithmToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.algorithmToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.algorithmToolStripMenuItem.Text = "Алгоритм";
+            // 
+            // executeToolStripMenuItem
+            // 
+            this.executeToolStripMenuItem.Name = "executeToolStripMenuItem";
+            this.executeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.executeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.executeToolStripMenuItem.Text = "Запустить";
+            this.executeToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
+            // 
+            // reloadToolStripMenuItem
+            // 
+            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            this.reloadToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.reloadToolStripMenuItem.Text = "Перезагрузить";
+            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
+            // 
+            // stepToolStripMenuItem
+            // 
+            this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
+            this.stepToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.stepToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.stepToolStripMenuItem.Text = "Шаг";
+            this.stepToolStripMenuItem.Click += new System.EventHandler(this.stepToolStripMenuItem_Click);
+            // 
+            // windowToolStripMenuItem
+            // 
+            this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.layoutToolStripMenuItem,
+            this.algorithmsToolStripMenuItem,
+            this.settingsToolStripMenuItem});
+            this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
+            this.windowToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.windowToolStripMenuItem.Text = "Окно";
+            // 
+            // layoutToolStripMenuItem
+            // 
+            this.layoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.smartToolStripMenuItem,
+            this.smartToolStripMenuItem1,
+            this.smartmapDownToolStripMenuItem,
+            this.horizontalToolStripMenuItem,
+            this.verticalToolStripMenuItem});
+            this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
+            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.layoutToolStripMenuItem.Text = "Компоновка";
+            // 
+            // smartToolStripMenuItem
+            // 
+            this.smartToolStripMenuItem.Name = "smartToolStripMenuItem";
+            this.smartToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.smartToolStripMenuItem.Text = "Умная";
+            this.smartToolStripMenuItem.Click += new System.EventHandler(this.smartToolStripMenuItem_Click);
+            // 
+            // smartToolStripMenuItem1
+            // 
+            this.smartToolStripMenuItem1.Name = "smartToolStripMenuItem1";
+            this.smartToolStripMenuItem1.Size = new System.Drawing.Size(189, 22);
+            this.smartToolStripMenuItem1.Text = "Умная (карта сверху)";
+            this.smartToolStripMenuItem1.Click += new System.EventHandler(this.smartToolStripMenuItem1_Click);
+            // 
+            // smartmapDownToolStripMenuItem
+            // 
+            this.smartmapDownToolStripMenuItem.Name = "smartmapDownToolStripMenuItem";
+            this.smartmapDownToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.smartmapDownToolStripMenuItem.Text = "Умная (карта снизу)";
+            this.smartmapDownToolStripMenuItem.Click += new System.EventHandler(this.smartmapDownToolStripMenuItem_Click);
+            // 
+            // horizontalToolStripMenuItem
+            // 
+            this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.horizontalToolStripMenuItem.Text = "Горизонтальная";
+            this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
+            // 
+            // verticalToolStripMenuItem
+            // 
+            this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.verticalToolStripMenuItem.Text = "Вертикальная";
+            this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
+            // 
+            // algorithmsToolStripMenuItem
+            // 
+            this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
+            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.algorithmsToolStripMenuItem.Text = "Алгоритмы";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.settingsToolStripMenuItem.Text = "Настройки";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.documentationToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.helpToolStripMenuItem.Text = "Помощь";
+            // 
+            // documentationToolStripMenuItem
+            // 
+            this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
+            this.documentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.documentationToolStripMenuItem.Text = "Документация";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.aboutToolStripMenuItem.Text = "О программе";
+            // 
+            // запуститьToolStripMenuItem
+            // 
+            this.запуститьToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.запуститьToolStripMenuItem.Name = "запуститьToolStripMenuItem";
+            this.запуститьToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.запуститьToolStripMenuItem.Text = "Запустить";
+            this.запуститьToolStripMenuItem.Click += new System.EventHandler(this.запуститьToolStripMenuItem_Click);
+            // 
+            // перезапуститьToolStripMenuItem
+            // 
+            this.перезапуститьToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.перезапуститьToolStripMenuItem.Name = "перезапуститьToolStripMenuItem";
+            this.перезапуститьToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.перезапуститьToolStripMenuItem.Text = "Перезапустить";
+            this.перезапуститьToolStripMenuItem.Click += new System.EventHandler(this.перезапуститьToolStripMenuItem_Click);
+            // 
+            // шагToolStripMenuItem
+            // 
+            this.шагToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.шагToolStripMenuItem.Name = "шагToolStripMenuItem";
+            this.шагToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.шагToolStripMenuItem.Text = "Шаг";
+            this.шагToolStripMenuItem.Click += new System.EventHandler(this.шагToolStripMenuItem_Click);
             // 
             // moveCommandsToolStripMenuItem
             // 
@@ -202,7 +376,7 @@
             this.rotate90CCWToolStripMenuItem,
             this.noneMoveCommandToolStripMenuItem});
             this.moveCommandsToolStripMenuItem.Name = "moveCommandsToolStripMenuItem";
-            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.moveCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.moveCommandsToolStripMenuItem.Text = "Водитель";
             // 
             // forwardToolStripMenuItem
@@ -302,7 +476,7 @@
             this.chargeToolStripMenuItem,
             this.noneChargeToolStripMenuItem});
             this.shootCommandsToolStripMenuItem.Name = "shootCommandsToolStripMenuItem";
-            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.shootCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.shootCommandsToolStripMenuItem.Text = "Заряжающий";
             // 
             // pressureX1ToolStripMenuItem
@@ -357,7 +531,7 @@
             this.shootToolStripMenuItem,
             this.noneToolStripMenuItem2});
             this.turretCommandsToolStripMenuItem.Name = "turretCommandsToolStripMenuItem";
-            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.turretCommandsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.turretCommandsToolStripMenuItem.Text = "Наводчик";
             // 
             // rotate45CWTurretToolStripMenuItem
@@ -424,170 +598,34 @@
             this.noneToolStripMenuItem2.Text = "Бездействие";
             this.noneToolStripMenuItem2.Click += new System.EventHandler(this.noneTurretToolStripMenuItem_Click);
             // 
-            // reorderingToolStripMenuItem
+            // addCommandToolStripMenuItem
             // 
-            this.reorderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteActionToolStripMenuItem,
-            this.clearAlgorithmToolStripMenuItem});
-            this.reorderingToolStripMenuItem.Name = "reorderingToolStripMenuItem";
-            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.reorderingToolStripMenuItem.Text = "Reordering";
+            this.addCommandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moveCommandsToolStripMenuItem,
+            this.shootCommandsToolStripMenuItem,
+            this.turretCommandsToolStripMenuItem});
+            this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
+            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCommandToolStripMenuItem.Text = "Команды";
             // 
-            // deleteActionToolStripMenuItem
+            // lineToolStripMenuItem
             // 
-            this.deleteActionToolStripMenuItem.Name = "deleteActionToolStripMenuItem";
-            this.deleteActionToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.deleteActionToolStripMenuItem.Text = "Delete action";
-            this.deleteActionToolStripMenuItem.Click += new System.EventHandler(this.deleteActionToolStripMenuItem_Click);
+            this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
+            this.lineToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
             // 
-            // clearAlgorithmToolStripMenuItem
+            // очиститьВсеЛагоритмыToolStripMenuItem
             // 
-            this.clearAlgorithmToolStripMenuItem.Name = "clearAlgorithmToolStripMenuItem";
-            this.clearAlgorithmToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.clearAlgorithmToolStripMenuItem.Text = "Clear algorithm";
-            this.clearAlgorithmToolStripMenuItem.Click += new System.EventHandler(this.clearAlgorithmToolStripMenuItem_Click);
-            // 
-            // algorithmToolStripMenuItem
-            // 
-            this.algorithmToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.executeToolStripMenuItem,
-            this.reloadToolStripMenuItem,
-            this.stepToolStripMenuItem,
-            this.clearToolStripMenuItem});
-            this.algorithmToolStripMenuItem.Name = "algorithmToolStripMenuItem";
-            this.algorithmToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.algorithmToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
-            this.algorithmToolStripMenuItem.Text = "Алгоритм";
-            // 
-            // executeToolStripMenuItem
-            // 
-            this.executeToolStripMenuItem.Name = "executeToolStripMenuItem";
-            this.executeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.executeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.executeToolStripMenuItem.Text = "Запустить";
-            this.executeToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
-            // 
-            // reloadToolStripMenuItem
-            // 
-            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.reloadToolStripMenuItem.Text = "Перезагрузить";
-            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
-            // 
-            // stepToolStripMenuItem
-            // 
-            this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
-            this.stepToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.stepToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.stepToolStripMenuItem.Text = "Шаг";
-            this.stepToolStripMenuItem.Click += new System.EventHandler(this.stepToolStripMenuItem_Click);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.clearToolStripMenuItem.Text = "Очистить";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
-            // 
-            // windowToolStripMenuItem
-            // 
-            this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.layoutToolStripMenuItem,
-            this.algorithmsToolStripMenuItem,
-            this.settingsToolStripMenuItem});
-            this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
-            this.windowToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.windowToolStripMenuItem.Text = "Окно";
-            // 
-            // layoutToolStripMenuItem
-            // 
-            this.layoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.smartToolStripMenuItem,
-            this.smartToolStripMenuItem1,
-            this.smartmapDownToolStripMenuItem,
-            this.horizontalToolStripMenuItem,
-            this.verticalToolStripMenuItem});
-            this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
-            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.layoutToolStripMenuItem.Text = "Компоновка";
-            // 
-            // smartToolStripMenuItem
-            // 
-            this.smartToolStripMenuItem.Name = "smartToolStripMenuItem";
-            this.smartToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.smartToolStripMenuItem.Text = "Умная";
-            this.smartToolStripMenuItem.Click += new System.EventHandler(this.smartToolStripMenuItem_Click);
-            // 
-            // smartToolStripMenuItem1
-            // 
-            this.smartToolStripMenuItem1.Name = "smartToolStripMenuItem1";
-            this.smartToolStripMenuItem1.Size = new System.Drawing.Size(189, 22);
-            this.smartToolStripMenuItem1.Text = "Умная (карта сверху)";
-            this.smartToolStripMenuItem1.Click += new System.EventHandler(this.smartToolStripMenuItem1_Click);
-            // 
-            // smartmapDownToolStripMenuItem
-            // 
-            this.smartmapDownToolStripMenuItem.Name = "smartmapDownToolStripMenuItem";
-            this.smartmapDownToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.smartmapDownToolStripMenuItem.Text = "Умная (карта снизу)";
-            this.smartmapDownToolStripMenuItem.Click += new System.EventHandler(this.smartmapDownToolStripMenuItem_Click);
-            // 
-            // horizontalToolStripMenuItem
-            // 
-            this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.horizontalToolStripMenuItem.Text = "Горизонтальная";
-            this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
-            // 
-            // verticalToolStripMenuItem
-            // 
-            this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.verticalToolStripMenuItem.Text = "Вертикальная";
-            this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
-            // 
-            // algorithmsToolStripMenuItem
-            // 
-            this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
-            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.algorithmsToolStripMenuItem.Text = "Алгоритмы";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.settingsToolStripMenuItem.Text = "Настройки";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.documentationToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.helpToolStripMenuItem.Text = "Помощь";
-            // 
-            // documentationToolStripMenuItem
-            // 
-            this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
-            this.documentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.documentationToolStripMenuItem.Text = "Документация";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.aboutToolStripMenuItem.Text = "О программе";
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Name = "очиститьВсеЛагоритмыToolStripMenuItem";
+            this.очиститьВсеЛагоритмыToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Text = "Очистить все алгоритмы";
+            this.очиститьВсеЛагоритмыToolStripMenuItem.Click += new System.EventHandler(this.очиститьВсеЛагоритмыToolStripMenuItem_Click);
             // 
             // FireSafetyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 262);
+            this.ClientSize = new System.Drawing.Size(584, 262);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -614,7 +652,6 @@
         private System.Windows.Forms.ToolStripMenuItem openAlgorithmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openMapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stepToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -624,42 +661,47 @@
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem smartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addCommandToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moveCommandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forwardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem shootCommandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem turretCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reorderingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteActionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backwardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate45CWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate45CCWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate90CWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate90CCWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noneMoveCommandToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pressureX1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pressureX2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refuelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem chargeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearAlgorithmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noneChargeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate45CWTurretToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate45CCWTurretToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate90CWTurretToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotate90CCWTurretToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem forward45CWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forward45CCWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backward45CWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backward45CCWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem shootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openMapFromDatabaseToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem smartToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem smartmapDownToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem algorithmsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem шагToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem перезапуститьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запуститьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCommandToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forwardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backwardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forward45CWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forward45CCWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backward45CWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backward45CCWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate45CWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate45CCWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate90CWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate90CCWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noneMoveCommandToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shootCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pressureX1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pressureX2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refuelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chargeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noneChargeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turretCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate45CWTurretToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate45CCWTurretToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate90CWTurretToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate90CCWTurretToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shootToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator lineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьВсеЛагоритмыToolStripMenuItem;
     }
 }
