@@ -188,7 +188,7 @@
             this.shootCommandsToolStripMenuItem,
             this.turretCommandsToolStripMenuItem});
             this.addCommandToolStripMenuItem.Name = "addCommandToolStripMenuItem";
-            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCommandToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.addCommandToolStripMenuItem.Text = "Команды";
             // 
             // moveCommandsToolStripMenuItem
@@ -459,7 +459,7 @@
             this.clearAlgorithmToolStripMenuItem,
             this.очиститьВсеЛагоритмыToolStripMenuItem});
             this.reorderingToolStripMenuItem.Name = "reorderingToolStripMenuItem";
-            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reorderingToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.reorderingToolStripMenuItem.Text = "Управление";
             // 
             // deleteActionToolStripMenuItem
@@ -595,7 +595,7 @@
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
             this.planToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.planToolStripMenuItem.Text = "План";
-            this.planToolStripMenuItem.Visible = false;
+            this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 

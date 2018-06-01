@@ -14,7 +14,7 @@ namespace FireSafety
         private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
-        //public PlanForm planForm;
+        public PlanForm planForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
         public RenderWindow renderWindow;
@@ -57,15 +57,15 @@ namespace FireSafety
 
             algorithmController = new ParallelAlgorithmController(algorithmForms);
 
-            // Создаем окно с планом
-            //planForm = new PlanForm();
-            //for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
-            //{
-            //    planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
-            //        worldController.world.tanks[i].ToString());
-            //}
-            //planForm.MdiParent = this;
-            //planForm.Show();
+            //Создаем окно с планом
+            planForm = new PlanForm();
+            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
+            {
+                planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
+                    worldController.world.tanks[i].ToString());
+            }
+            planForm.MdiParent = this;
+            planForm.Show();
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
@@ -436,11 +436,11 @@ namespace FireSafety
             algorithmForm.Select();
         }
 
-        //private void OpenPlanForm()
-        //{
-        //    planForm.Visible = true;
-        //    planForm.Select();
-        //}
+        private void OpenPlanForm()
+        {
+            planForm.Visible = true;
+            planForm.Select();
+        }
 
         private void OpenSettingsForm()
         {
@@ -736,10 +736,10 @@ namespace FireSafety
             LayoutMdi(MdiLayout.TileVertical);
         }
 
-        //private void planToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    OpenPlanForm();
-        //}
+        private void planToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPlanForm();
+        }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -885,6 +885,5 @@ namespace FireSafety
             StepAlgorithm();
         }
         #endregion
-
     }
 }

@@ -29,16 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlgorithmForm));
             this.cbMove = new System.Windows.Forms.ComboBox();
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
             this.dgvAlgorithm = new System.Windows.Forms.DataGridView();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtbcPlanItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbControls = new System.Windows.Forms.GroupBox();
             this.lblMaxPressure = new System.Windows.Forms.Label();
             this.lblPressureSlash = new System.Windows.Forms.Label();
@@ -63,6 +57,11 @@
             this.ttipClearTankAlgorithm = new System.Windows.Forms.ToolTip(this.components);
             this.ttipIndicators = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoveCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShootCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TurretCommands = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtbcPlanItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).BeginInit();
             this.gbControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReady)).BeginInit();
@@ -158,45 +157,6 @@
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
-            // Number
-            // 
-            this.Number.HeaderText = "№";
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Number.Width = 25;
-            // 
-            // MoveCommands
-            // 
-            this.MoveCommands.HeaderText = "Водитель";
-            this.MoveCommands.Name = "MoveCommands";
-            this.MoveCommands.ReadOnly = true;
-            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MoveCommands.Width = 105;
-            // 
-            // ShootCommands
-            // 
-            this.ShootCommands.HeaderText = "Заряжающий";
-            this.ShootCommands.Name = "ShootCommands";
-            this.ShootCommands.ReadOnly = true;
-            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TurretCommands
-            // 
-            this.TurretCommands.HeaderText = "Наводчик";
-            this.TurretCommands.Name = "TurretCommands";
-            this.TurretCommands.ReadOnly = true;
-            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TurretCommands.Width = 85;
-            // 
-            // dgvtbcPlanItem
-            // 
-            this.dgvtbcPlanItem.HeaderText = "П.";
-            this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
-            this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtbcPlanItem.Visible = false;
-            this.dgvtbcPlanItem.Width = 25;
-            // 
             // gbControls
             // 
             this.gbControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -271,7 +231,7 @@
             // 
             // pbReady
             // 
-            this.pbReady.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbReady.BackgroundImage")));
+            this.pbReady.BackgroundImage = global::FireSafety.Properties.Resources.Charged;
             this.pbReady.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbReady.Location = new System.Drawing.Point(189, 59);
             this.pbReady.Name = "pbReady";
@@ -283,7 +243,7 @@
             // 
             // pbUp
             // 
-            this.pbUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbUp.BackgroundImage")));
+            this.pbUp.BackgroundImage = global::FireSafety.Properties.Resources.Up;
             this.pbUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbUp.Location = new System.Drawing.Point(160, 59);
             this.pbUp.Name = "pbUp";
@@ -295,7 +255,7 @@
             // 
             // pbDown
             // 
-            this.pbDown.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbDown.BackgroundImage")));
+            this.pbDown.BackgroundImage = global::FireSafety.Properties.Resources.Down;
             this.pbDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbDown.Location = new System.Drawing.Point(160, 59);
             this.pbDown.Name = "pbDown";
@@ -316,7 +276,7 @@
             // 
             // pbPressure
             // 
-            this.pbPressure.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbPressure.BackgroundImage")));
+            this.pbPressure.BackgroundImage = global::FireSafety.Properties.Resources.Pressure;
             this.pbPressure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbPressure.Location = new System.Drawing.Point(83, 59);
             this.pbPressure.Name = "pbPressure";
@@ -337,7 +297,7 @@
             // 
             // pbCapacity
             // 
-            this.pbCapacity.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCapacity.BackgroundImage")));
+            this.pbCapacity.BackgroundImage = global::FireSafety.Properties.Resources.Water;
             this.pbCapacity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCapacity.Location = new System.Drawing.Point(6, 59);
             this.pbCapacity.Name = "pbCapacity";
@@ -349,7 +309,7 @@
             // chbBlocked
             // 
             this.chbBlocked.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chbBlocked.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chbBlocked.BackgroundImage")));
+            this.chbBlocked.BackgroundImage = global::FireSafety.Properties.Resources.Block;
             this.chbBlocked.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.chbBlocked.Location = new System.Drawing.Point(273, 59);
             this.chbBlocked.Name = "chbBlocked";
@@ -361,7 +321,7 @@
             // 
             // btnClearAlgorithm
             // 
-            this.btnClearAlgorithm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearAlgorithm.BackgroundImage")));
+            this.btnClearAlgorithm.BackgroundImage = global::FireSafety.Properties.Resources.ClearAlgorithm;
             this.btnClearAlgorithm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearAlgorithm.Location = new System.Drawing.Point(331, 59);
             this.btnClearAlgorithm.Name = "btnClearAlgorithm";
@@ -373,7 +333,7 @@
             // 
             // btnDeleteAction
             // 
-            this.btnDeleteAction.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteAction.BackgroundImage")));
+            this.btnDeleteAction.BackgroundImage = global::FireSafety.Properties.Resources.DeleteAction1;
             this.btnDeleteAction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeleteAction.Location = new System.Drawing.Point(302, 59);
             this.btnDeleteAction.Name = "btnDeleteAction";
@@ -412,7 +372,7 @@
             // 
             // pbUnready
             // 
-            this.pbUnready.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbUnready.BackgroundImage")));
+            this.pbUnready.BackgroundImage = global::FireSafety.Properties.Resources.Uncharged;
             this.pbUnready.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbUnready.Location = new System.Drawing.Point(189, 59);
             this.pbUnready.Name = "pbUnready";
@@ -423,13 +383,51 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(231, 59);
+            this.button1.Location = new System.Drawing.Point(242, 59);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(24, 23);
             this.button1.TabIndex = 20;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Number
+            // 
+            this.Number.HeaderText = "№";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Number.Width = 25;
+            // 
+            // MoveCommands
+            // 
+            this.MoveCommands.HeaderText = "Водитель";
+            this.MoveCommands.Name = "MoveCommands";
+            this.MoveCommands.ReadOnly = true;
+            this.MoveCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MoveCommands.Width = 105;
+            // 
+            // ShootCommands
+            // 
+            this.ShootCommands.HeaderText = "Заряжающий";
+            this.ShootCommands.Name = "ShootCommands";
+            this.ShootCommands.ReadOnly = true;
+            this.ShootCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TurretCommands
+            // 
+            this.TurretCommands.HeaderText = "Наводчик";
+            this.TurretCommands.Name = "TurretCommands";
+            this.TurretCommands.ReadOnly = true;
+            this.TurretCommands.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TurretCommands.Width = 85;
+            // 
+            // dgvtbcPlanItem
+            // 
+            this.dgvtbcPlanItem.HeaderText = "П.";
+            this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
+            this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcPlanItem.Width = 25;
             // 
             // AlgorithmForm
             // 
@@ -486,11 +484,11 @@
         public System.Windows.Forms.Label lblMaxCapacity;
         private System.Windows.Forms.Label lblCapacitySlash;
         private System.Windows.Forms.ToolTip ttipIndicators;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoveCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShootCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurretCommands;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcPlanItem;
-        private System.Windows.Forms.Button button1;
     }
 }

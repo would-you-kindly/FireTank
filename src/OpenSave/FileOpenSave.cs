@@ -27,6 +27,7 @@ namespace FireSafety
             XmlSerializer formatter = new XmlSerializer(typeof(ParallelAlgorithm));
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
+                // TODO: на всякий случай чистим
                 ParallelAlgorithm.GetInstance().Clear();
                 ParallelAlgorithm parallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
 
