@@ -27,6 +27,7 @@ namespace FireSafety
             XmlSerializer formatter = new XmlSerializer(typeof(ParallelAlgorithm));
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
+                ParallelAlgorithm.GetInstance().Clear();
                 ParallelAlgorithm parallelAlgorithm = (ParallelAlgorithm)formatter.Deserialize(fs);
 
                 // TODO: Почему-то грузит алгоритмы два раза

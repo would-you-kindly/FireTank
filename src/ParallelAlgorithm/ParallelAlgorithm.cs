@@ -87,6 +87,22 @@ namespace FireSafety
             {
                 algorithms.Add(new Algorithm());
             }
+
+            // TODO: Модель начинает знать что-то о контроллере - плохо
+            // При загрузке алгоритма заполняем таблицу данными алгоритма
+            Loaded += ParallelAlgorithmController.ParallelAlgorithmController_Loaded;
+            // При очистке алгоритма очищаем таблицу
+            Cleared += ParallelAlgorithmController.ParallelAlgorithmController_Cleared;
+            // При переходе алгоритма к следующему шагу подсвечиваем соответствующие строки таблицы
+            NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
+            // При перезагрузке алгоритма отключаем подсветку строк в таблице
+            Reloaded += ParallelAlgorithmController.ParallelAlgorithmController_Reloaded;
+
+            foreach (Algorithm algorithm in algorithms)
+            {
+                algorithm.NextActionPerforming += Algorithm_NextActionPerforming;
+            }
+            NextActionPerforming += Instance_NextActionPerforming;
         }
 
         public static ParallelAlgorithm GetInstance()
@@ -94,22 +110,6 @@ namespace FireSafety
             if (instance == null)
             {
                 instance = new ParallelAlgorithm();
-
-                // TODO: Модель начинает знать что-то о контроллере - плохо
-                // При загрузке алгоритма заполняем таблицу данными алгоритма
-                instance.Loaded += ParallelAlgorithmController.ParallelAlgorithmController_Loaded;
-                // При очистке алгоритма очищаем таблицу
-                instance.Cleared += ParallelAlgorithmController.ParallelAlgorithmController_Cleared;
-                // При переходе алгоритма к следующему шагу подсвечиваем соответствующие строки таблицы
-                instance.NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
-                // При перезагрузке алгоритма отключаем подсветку строк в таблице
-                instance.Reloaded += ParallelAlgorithmController.ParallelAlgorithmController_Reloaded;
-
-                foreach (Algorithm algorithm in instance.algorithms)
-                {
-                    algorithm.NextActionPerforming += Algorithm_NextActionPerforming;
-                }
-                instance.NextActionPerforming += Instance_NextActionPerforming;
             }
 
             return instance;
