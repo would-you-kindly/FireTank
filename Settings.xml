@@ -1,29 +1,28 @@
 <?xml version="1.0"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <clearSelection>Escape</clearSelection>
-  <deleteAction>Delete</deleteAction>
-  <clearTankAlgorithm>Back</clearTankAlgorithm>
-  <none>N</none>
+  <none>M</none>
   <moveForward>F</moveForward>
   <moveBackward>B</moveBackward>
+  <moveRotateCW>NumPad8</moveRotateCW>
+  <moveRotateCCW>NumPad2</moveRotateCCW>
   <moveForward45CW>NumPad9</moveForward45CW>
   <moveForward45CCW>NumPad7</moveForward45CCW>
   <moveBackward45CW>NumPad1</moveBackward45CW>
   <moveBackward45CCW>NumPad3</moveBackward45CCW>
-  <moveRotateCW>NumPad8</moveRotateCW>
-  <moveRotateCCW>NumPad2</moveRotateCCW>
-  <chargeRefuel>R</chargeRefuel>
   <chargePressure>P</chargePressure>
   <chargeCharge>C</chargeCharge>
+  <chargeRefuel>R</chargeRefuel>
+  <turretRotateCW>NumPad6</turretRotateCW>
+  <turretRotateCCW>NumPad4</turretRotateCCW>
   <turretUp>U</turretUp>
   <turretDown>D</turretDown>
   <turretShoot>S</turretShoot>
-  <turretRotateCW>NumPad6</turretRotateCW>
-  <turretRotateCCW>NumPad4</turretRotateCCW>
   <run>F5</run>
   <reload>F6</reload>
   <step>F7</step>
   <clearParallelAlgorithm>F8</clearParallelAlgorithm>
-  <timeToHold>200</timeToHold>
+  <clearTankAlgorithm>Back</clearTankAlgorithm>
+  <clearSelection>Escape</clearSelection>
+  <deleteAction>Delete</deleteAction>
   <connectionString>Data Source=STUD-DBA\MSSQLSERVER16;Initial Catalog=FireTankAdmin;User ID=localuser;Password=654321</connectionString>
 </Settings>

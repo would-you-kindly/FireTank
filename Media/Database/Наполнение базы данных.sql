@@ -9,7 +9,7 @@ insert into MapModels values (NEWID(), CONVERT(XML, '<?xml version="1.0" encodin
   <property name="wind" value="left"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Textures/Sprites.png" width="160" height="160"/>
+  <image source="Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="16" height="16">
   <data>
@@ -593,7 +593,7 @@ insert into MapModels values (NEWID(), CONVERT(XML, '<?xml version="1.0" encodin
   <property name="wind" value="up"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Textures/Sprites.png" width="160" height="160"/>
+  <image source="Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="16" height="16">
   <data>
@@ -1307,7 +1307,7 @@ insert into MapModels values (NEWID(), CONVERT(XML, '<?xml version="1.0" encodin
   <property name="wind" value="right"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Textures/Sprites.png" width="160" height="160"/>
+  <image source="Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="24" height="24">
   <data>
@@ -3015,7 +3015,7 @@ insert into MapModels values (NEWID(), CONVERT(XML, '<?xml version="1.0" encodin
   <property name="wind" value="downright"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Textures/Sprites.png" width="160" height="160"/>
+  <image source="Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="20" height="16">
   <data>
@@ -4012,7 +4012,7 @@ insert into MapModels values (NEWID(), CONVERT(XML, '<?xml version="1.0" encodin
   <property name="wind" value="right"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Textures/Sprites.png" width="160" height="160"/>
+  <image source="Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="8" height="8">
   <data>
@@ -4238,7 +4238,7 @@ insert into MapModels values (NEWID(), CONVERT(XML, '<?xml version="1.0" encodin
   <property name="wind" value="up"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="../Textures/Sprites.png" width="160" height="160"/>
+  <image source="Sprites.png" width="160" height="160"/>
  </tileset>
  <layer name="terrain" width="12" height="12">
   <data>

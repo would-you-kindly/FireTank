@@ -416,6 +416,7 @@
             this.dgvtbcPlanItem.HeaderText = "П.";
             this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
             this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtbcPlanItem.Visible = false;
             this.dgvtbcPlanItem.Width = 25;
             // 
             // AlgorithmForm

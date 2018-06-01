@@ -50,8 +50,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Media\Icons\FireTank.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\Resources.Designer.cs">

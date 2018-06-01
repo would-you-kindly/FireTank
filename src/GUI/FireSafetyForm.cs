@@ -14,7 +14,7 @@ namespace FireSafety
         private WorldController worldController;
 
         public List<AlgorithmForm> algorithmForms;
-        public PlanForm planForm;
+        //public PlanForm planForm;
         public SettingsForm settingsForm;
         public Form sfmlForm;
         public RenderWindow renderWindow;
@@ -24,6 +24,8 @@ namespace FireSafety
         public FireSafetyForm(World world)
         {
             InitializeComponent();
+
+            Icon = Properties.Resources.FireTank;
 
             worldController = new WorldController(world);
             savedFilename = string.Empty;
@@ -56,14 +58,14 @@ namespace FireSafety
             algorithmController = new ParallelAlgorithmController(algorithmForms);
 
             // Создаем окно с планом
-            planForm = new PlanForm();
-            for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
-            {
-                planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
-                    worldController.world.tanks[i].ToString());
-            }
-            planForm.MdiParent = this;
-            planForm.Show();
+            //planForm = new PlanForm();
+            //for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
+            //{
+            //    planForm.dgvPlan.Columns.Add(worldController.world.tanks[i].ToString(),
+            //        worldController.world.tanks[i].ToString());
+            //}
+            //planForm.MdiParent = this;
+            //planForm.Show();
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();
@@ -275,6 +277,11 @@ namespace FireSafety
             {
                 worldController.BuildWorld();
                 algorithmController.ClearAlgorithm();
+                algorithmController.ClearAlgorithm();
+                //foreach (AlgorithmForm form in algorithmForms)
+                //{
+                //    form.dgvAlgorithm.Rows.Clear();
+                //}
             }
         }
 
@@ -361,7 +368,7 @@ namespace FireSafety
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Location = new Point(0, 0);
 
-            planForm.Location = new Point(sfmlForm.Size.Width, 0);
+            //planForm.Location = new Point(sfmlForm.Size.Width, 0);
 
             // Подбираем размеры для окон алгоритмов
             int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - sfmlForm.Size.Height - 4);
@@ -429,11 +436,11 @@ namespace FireSafety
             algorithmForm.Select();
         }
 
-        private void OpenPlanForm()
-        {
-            planForm.Visible = true;
-            planForm.Select();
-        }
+        //private void OpenPlanForm()
+        //{
+        //    planForm.Visible = true;
+        //    planForm.Select();
+        //}
 
         private void OpenSettingsForm()
         {
@@ -508,7 +515,7 @@ namespace FireSafety
             algorithmForms.ForEach(form => form?.Close());
             renderWindow?.Close();
             sfmlForm?.Close();
-            planForm?.Close();
+            //planForm?.Close();
 
             // Очищаем пункты меню алгоритмов
             algorithmsToolStripMenuItem.DropDownItems.Clear();
@@ -729,10 +736,10 @@ namespace FireSafety
             LayoutMdi(MdiLayout.TileVertical);
         }
 
-        private void planToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenPlanForm();
-        }
+        //private void planToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    OpenPlanForm();
+        //}
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {

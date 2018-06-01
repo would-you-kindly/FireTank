@@ -1,1 +1,0 @@
-https://icons8.ru/icon/set/delete/windows
