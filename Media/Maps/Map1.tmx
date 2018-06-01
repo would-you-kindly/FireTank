@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="147">
  <properties>
   <property name="algorithm" value=""/>
-  <property name="wind" value="left"/>
+  <property name="wind" value="left 2 5 leftdown 2 3"/>
  </properties>
  <tileset firstgid="1" name="Sprites" tilewidth="32" tileheight="32" tilecount="25" columns="5">
   <image source="Sprites.png" width="160" height="160"/>

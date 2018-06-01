@@ -51,6 +51,7 @@ namespace FireSafety
             Utilities.CenterOrigin(sprite);
             sprite.Position = new Vector2f(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT - Utilities.GetInstance().TILE_SIZE * 1.0f,
                 Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT - Utilities.GetInstance().TILE_SIZE * 0.5f);
+            SetRotation();
 
             powerText = new Text(power.ToString(), resources.GetFont(Fonts.ID.Sansation), 20);
             powerText.Position = new Vector2f(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT - Utilities.GetInstance().TILE_SIZE * 1.75f,
@@ -157,6 +158,14 @@ namespace FireSafety
         {
             ChangeDirection();
 
+            SetRotation();
+
+            powerText.DisplayedString = power.ToString();
+            timeText.DisplayedString = time.ToString();
+        }
+
+        private void SetRotation()
+        {
             switch (direction)
             {
                 case Direction.Up:
@@ -186,9 +195,6 @@ namespace FireSafety
                 default:
                     break;
             }
-
-            powerText.DisplayedString = power.ToString();
-            timeText.DisplayedString = time.ToString();
         }
 
         public override void Draw(RenderTarget target, RenderStates states)
