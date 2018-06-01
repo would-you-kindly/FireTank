@@ -160,6 +160,13 @@ namespace FireSafety
             ActionAdded?.Invoke(this, new AddActionEventArgs());
         }
 
+        public void InsertAction(int algorithmNumber, Action action, int index)
+        {
+            algorithms[algorithmNumber].actions.Insert(index, action);
+
+            ActionAdded?.Invoke(this, new AddActionEventArgs());
+        }
+
         public void ChangeCommand(int algorithmNumber, int actionNumber, int commandNumber, Command command)
         {
             algorithms[algorithmNumber].actions[actionNumber].commands[commandNumber] = command;

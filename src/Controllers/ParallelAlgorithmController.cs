@@ -167,7 +167,7 @@ namespace FireSafety
 
             // Добавляем Action в соответствующий алгоритм танка
             Action action = new Action(moveCommand, chargeCommand, turretCommand);
-            ParallelAlgorithm.GetInstance().AddAction((int)((DataGridView)sender).Tag, action);
+            ParallelAlgorithm.GetInstance().InsertAction((int)((DataGridView)sender).Tag, action, e.RowIndex);
         }
 
         public void ClearAlgorithm()

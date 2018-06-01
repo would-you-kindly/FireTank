@@ -347,6 +347,16 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InsertAction {
+            get {
+                object obj = ResourceManager.GetObject("InsertAction", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Озеро.
         /// </summary>
         internal static string Lake {
@@ -837,6 +847,16 @@ namespace FireSafety.Properties {
         internal static string TurretPerformer {
             get {
                 return ResourceManager.GetString("TurretPerformer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Unblock {
+            get {
+                object obj = ResourceManager.GetObject("Unblock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

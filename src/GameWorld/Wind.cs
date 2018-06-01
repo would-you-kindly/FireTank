@@ -30,12 +30,6 @@ namespace FireSafety
 
         private string[] settings;
 
-        // Инициализирует объект Wind, устанавливает направление ветра в Direction.Up
-        public Wind(Direction direction = Direction.Up)
-        {
-            this.direction = direction;
-        }
-
         public Wind(Textures.ID id, ResourceHolder resources, string parameters)
             : base(id, resources)
         {
@@ -66,6 +60,12 @@ namespace FireSafety
             timeText.FillColor = Color.Blue;
             timeText.OutlineThickness = 0.25f;
             Utilities.CenterOrigin(timeText);
+        }
+
+        // Инициализирует объект Wind, устанавливает направление ветра в Direction.Up
+        public Wind(Direction direction = Direction.Up)
+        {
+            this.direction = direction;
         }
 
         private void ChangeDirection(Direction direction)
