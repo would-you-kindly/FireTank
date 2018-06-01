@@ -324,40 +324,22 @@ namespace FireSafety
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Location = new Point(0, 0);
 
+            // Подбираем размеры и положение для окна плана
+            planForm.Size = new Size(sfmlForm.Size.Width, ClientSize.Height - menuStrip.Size.Height - sfmlForm.Size.Height - 4);
+            planForm.Location = new Point(0, sfmlForm.Size.Height);
+
             // Подбираем размеры для окон алгоритмов
             int algorithmFormsCountInColumn = (int)Math.Ceiling((decimal)(Utilities.GetInstance().TANKS_COUNT / 2.0));
-            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - 4) / algorithmFormsCountInColumn;
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height - 4) / algorithmFormsCountInColumn;
 
             // Устанавливаем положение окон
-            if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[0].Location = new Point(sfmlForm.Size.Width, 0);
-            }
-            if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
-            {
-                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[1].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, 0);
-            }
-            if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
-            {
-                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[2].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height);
-            }
-            if (algorithmForms.Count >= 4 && algorithmForms.ElementAt(3) != null)
-            {
-                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[3].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height);
-            }
-            if (algorithmForms.Count >= 5 && algorithmForms.ElementAt(4) != null)
-            {
-                algorithmForms[4].Size = new Size(algorithmForms[4].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[4].Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Height + algorithmForms[2].Height);
-            }
-            if (algorithmForms.Count == 6 && algorithmForms.ElementAt(5) != null)
-            {
-                algorithmForms[5].Size = new Size(algorithmForms[5].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[5].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width, algorithmForms[0].Height + algorithmForms[2].Height);
+                if (algorithmForms.ElementAt(i) != null)
+                {
+                    algorithmForms[i].Size = new Size(algorithmForms[i].MinimumSize.Width, algorithmFormHeight);
+                    algorithmForms[i].Location = new Point(sfmlForm.Size.Width + algorithmForms[0].Width * (i % 2), algorithmForms[0].Height * (i / 2));
+                }
             }
         }
 
@@ -368,31 +350,21 @@ namespace FireSafety
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
             sfmlForm.Location = new Point(0, 0);
 
-            //planForm.Location = new Point(sfmlForm.Size.Width, 0);
+            // Подбираем размеры и положение для окна плана
+            planForm.Size = new Size(ClientSize.Width - sfmlForm.Size.Width - 4, sfmlForm.Size.Height);
+            planForm.Location = new Point(sfmlForm.Size.Width, 0);
 
             // Подбираем размеры для окон алгоритмов
-            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - sfmlForm.Size.Height - 4);
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height - sfmlForm.Size.Height - 4);
 
             // Устанавливаем положение окон
-            if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[0].Location = new Point(algorithmForms[0].Width * 0, sfmlForm.Size.Height);
-            }
-            if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
-            {
-                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[1].Location = new Point(algorithmForms[0].Width * 1, sfmlForm.Size.Height);
-            }
-            if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
-            {
-                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[2].Location = new Point(algorithmForms[0].Width * 2, sfmlForm.Size.Height);
-            }
-            if (algorithmForms.Count == 4 && algorithmForms.ElementAt(3) != null)
-            {
-                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[3].Location = new Point(algorithmForms[0].Width * 3, sfmlForm.Size.Height);
+                if (algorithmForms.ElementAt(i) != null)
+                {
+                    algorithmForms[i].Size = new Size(algorithmForms[i].MinimumSize.Width, algorithmFormHeight);
+                    algorithmForms[i].Location = new Point(algorithmForms[0].Width * i, sfmlForm.Size.Height);
+                }
             }
         }
 
@@ -402,32 +374,24 @@ namespace FireSafety
             sfmlForm.ClientSize = new Size((int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().WIDTH_TILE_COUNT),
                 (int)(Utilities.GetInstance().TILE_SIZE * Utilities.GetInstance().HEIGHT_TILE_COUNT));
 
+            // Подбираем размеры и положение для окна плана
+            planForm.Size = new Size(ClientSize.Width - sfmlForm.Size.Width - 4, sfmlForm.Size.Height);
+
             // Подбираем размеры для окон алгоритмов
-            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height /*- statusStrip.Size.Height*/ - sfmlForm.Size.Height - 4);
+            int algorithmFormHeight = (ClientSize.Height - menuStrip.Size.Height - sfmlForm.Size.Height - 4);
 
             // Устанавливаем положение окон
-            if (algorithmForms.Count >= 1 && algorithmForms.ElementAt(0) != null)
+            for (int i = 0; i < algorithmForms.Count; i++)
             {
-                algorithmForms[0].Size = new Size(algorithmForms[0].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[0].Location = new Point(algorithmForms[0].Width * 0, 0);
-            }
-            if (algorithmForms.Count >= 2 && algorithmForms.ElementAt(1) != null)
-            {
-                algorithmForms[1].Size = new Size(algorithmForms[1].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[1].Location = new Point(algorithmForms[0].Width * 1, 0);
-            }
-            if (algorithmForms.Count >= 3 && algorithmForms.ElementAt(2) != null)
-            {
-                algorithmForms[2].Size = new Size(algorithmForms[2].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[2].Location = new Point(algorithmForms[0].Width * 2, 0);
-            }
-            if (algorithmForms.Count == 4 && algorithmForms.ElementAt(3) != null)
-            {
-                algorithmForms[3].Size = new Size(algorithmForms[3].MinimumSize.Width, algorithmFormHeight);
-                algorithmForms[3].Location = new Point(algorithmForms[0].Width * 3, 0);
+                if (algorithmForms.ElementAt(i) != null)
+                {
+                    algorithmForms[i].Size = new Size(algorithmForms[i].MinimumSize.Width, algorithmFormHeight);
+                    algorithmForms[i].Location = new Point(algorithmForms[0].Width * i, 0);
+                }
             }
 
             sfmlForm.Location = new Point(0, algorithmForms[0].Size.Height);
+            planForm.Location = new Point(sfmlForm.Size.Width, algorithmForms[0].Size.Height);
         }
 
         private void OpenAlgorithmForm(AlgorithmForm algorithmForm)
@@ -515,7 +479,7 @@ namespace FireSafety
             algorithmForms.ForEach(form => form?.Close());
             renderWindow?.Close();
             sfmlForm?.Close();
-            //planForm?.Close();
+            planForm?.Close();
 
             // Очищаем пункты меню алгоритмов
             algorithmsToolStripMenuItem.DropDownItems.Clear();
