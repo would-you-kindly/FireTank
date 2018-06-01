@@ -149,7 +149,7 @@ namespace FireSafety
             // Проверяем состояние местности на наличие пожара
             CheckTerrainState();
             // Если пришло время изменить направление ветра, меняем его
-            wind.ChangeDirection();
+            wind.Update(deltaTime);
         }
 
         private void CheckTerrainState()

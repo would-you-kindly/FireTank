@@ -15,6 +15,7 @@ namespace FireSafety
         public Terrain terrain;
         public List<WaterTrace> traces;
         public CoordinateSystem coordinateSystem;
+        public Wind wind;
 
         public World()
         {
@@ -75,6 +76,7 @@ namespace FireSafety
                 resources.LoadTexture(Textures.ID.BurnedTree, "Media/Textures/BurnedTree.png");
                 resources.LoadTexture(Textures.ID.Lake, "Media/Textures/Lake.png");
                 resources.LoadTexture(Textures.ID.Rock, "Media/Textures/Rock.png");
+                resources.LoadTexture(Textures.ID.Wind, "Media/Textures/Wind.png");
 
                 // Загружаем шрифты
                 resources.LoadFont(Fonts.ID.Sansation, "Media/Fonts/Sansation.ttf");
@@ -99,7 +101,7 @@ namespace FireSafety
             traces = new List<WaterTrace>();
 
             // Устанавливаем направление ветра
-            Wind wind = new Wind(map.properties["wind"]);
+            wind = new Wind(Textures.ID.Wind, resources, map.properties["wind"]);
             //switch (map.properties["wind"])
             //{
             //    case "up":
@@ -260,6 +262,9 @@ namespace FireSafety
             {
                 tank.Draw(target, states);
             }
+
+            // Рисуем направление ветра
+            wind.Draw(target, states);
 
             // Рисуем систему координат
             coordinateSystem.Draw(target, states);

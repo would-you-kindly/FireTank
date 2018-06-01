@@ -22,7 +22,8 @@
             BurnedHouse,
             Fire,
             Lake,
-            Rock
+            Rock,
+            Wind
         }
     }
 

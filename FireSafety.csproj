@@ -325,6 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FireTank.ico" />
+    <None Include="Media\Textures\Wind.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

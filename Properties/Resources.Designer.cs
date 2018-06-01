@@ -871,6 +871,16 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wind {
+            get {
+                object obj = ResourceManager.GetObject("Wind", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вниз ↓.
         /// </summary>
         internal static string WindDown {
