@@ -20,7 +20,7 @@ namespace FireSafety
 
         public override void Fire(House house, int power)
         {
-            if (currentTimeToSpread == timeToSpread/* - (power - 1)*/)
+            if (currentTimeToSpread == timeToSpread - (power - 1))
             {
                 house.state = new BurningHouseState();
             }

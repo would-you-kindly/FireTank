@@ -88,29 +88,29 @@ namespace FireSafety
 
         public override string ToString()
         {
-            switch (direction)
-            {
-                case Direction.Up:
-                    return Properties.Resources.WindUp;
-                case Direction.UpLeft:
-                    return Properties.Resources.WindUpLeft;
-                case Direction.Left:
-                    return Properties.Resources.WindLeft;
-                case Direction.LeftDown:
-                    return Properties.Resources.WindLeftDown;
-                case Direction.Down:
-                    return Properties.Resources.WindDown;
-                case Direction.DownRight:
-                    return Properties.Resources.WindDownRight;
-                case Direction.Right:
-                    return Properties.Resources.WindRight;
-                case Direction.RightUp:
-                    return Properties.Resources.WindRightUp;
-                default:
-                    break;
-            }
+            //switch (direction)
+            //{
+            //    case Direction.Up:
+            //        return Properties.Resources.WindUp;
+            //    case Direction.UpLeft:
+            //        return Properties.Resources.WindUpLeft;
+            //    case Direction.Left:
+            //        return Properties.Resources.WindLeft;
+            //    case Direction.LeftDown:
+            //        return Properties.Resources.WindLeftDown;
+            //    case Direction.Down:
+            //        return Properties.Resources.WindDown;
+            //    case Direction.DownRight:
+            //        return Properties.Resources.WindDownRight;
+            //    case Direction.Right:
+            //        return Properties.Resources.WindRight;
+            //    case Direction.RightUp:
+            //        return Properties.Resources.WindRightUp;
+            //    default:
+            //        break;
+            //}
 
-            //return string.Join(" ", settings);
+            return string.Join(" ", settings);
 
             throw new Exception("Неверно задано наравление ветра.");
         }
