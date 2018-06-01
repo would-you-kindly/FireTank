@@ -155,7 +155,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 87);
-            this.ControlBox = false;
             this.Controls.Add(this.lblNumber);
             this.Controls.Add(this.cbNumber);
             this.Controls.Add(this.btnInsert);
@@ -165,9 +164,12 @@
             this.Controls.Add(this.cbTurret);
             this.Controls.Add(this.cbCharge);
             this.Controls.Add(this.cbMove);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(444, 125);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(444, 125);
             this.Name = "InsertActionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вставить строку";
             this.ResumeLayout(false);
             this.PerformLayout();
