@@ -194,6 +194,7 @@ namespace FireSafety
             {
                 savedFilename = ofd.FileName;
                 algorithmController.LoadAlgorithm(new FileOpenSave(ofd.FileName));
+                worldController.BuildWorld();
             }
         }
 
@@ -314,6 +315,11 @@ namespace FireSafety
 
         private void StepAlgorithm()
         {
+            if (ParallelAlgorithm.GetInstance().currentAction == 0)
+            {
+                AttachIndicators();
+            }
+
             algorithmController.StepAlgorithm();
         }
 

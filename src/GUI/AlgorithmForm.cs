@@ -32,7 +32,7 @@ namespace FireSafety
         private void BlockTankAlgorithm(object sender)
         {
             // Позволяем заблокировать алгоритм, если он не выполняется
-            if (!ParallelAlgorithm.GetInstance().running)
+            if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
                 if (((CheckBox)sender).Checked)
                 {
@@ -55,7 +55,7 @@ namespace FireSafety
         public void DeleteAction()
         {
             // Позволяем удалить строку, если алгоритм не выполняется
-            if (!ParallelAlgorithm.GetInstance().running)
+            if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
                 if (dgvAlgorithm.SelectedRows.Count != 0)
                 {
@@ -78,7 +78,7 @@ namespace FireSafety
         public void ClearTankAlgorithm()
         {
             // Позволяем очистить алгоритм, если он не выполняется
-            if (!ParallelAlgorithm.GetInstance().running)
+            if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
                 if (MessageBox.Show("Вы уверены, что хотите очистить алгоритм данного танка? Все несохраненные данные будут утеряны.",
                     "Очистка алгоритма", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -103,7 +103,7 @@ namespace FireSafety
 
         private void InsertAction(int number, Action action)
         {
-            if (!ParallelAlgorithm.GetInstance().running)
+            if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
                 dgvAlgorithm.Rows.Insert(number, number + 1, action.commands[0].ToString(),
                     action.commands[1].ToString(), action.commands[2].ToString());
@@ -142,7 +142,7 @@ namespace FireSafety
                 return;
             }
 
-            if (!ParallelAlgorithm.GetInstance().running)
+            if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
                 // Задаем номер стобца
                 int index = 0;
