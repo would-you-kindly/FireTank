@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="147">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" nextobjectid="191">
  <properties>
   <property name="algorithm" value=""/>
   <property name="wind" value="left 2 5 leftdown 2 3"/>
@@ -20,6 +20,11 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -31,6 +36,11 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -43,15 +53,32 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -59,7 +86,15 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -67,7 +102,15 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -76,7 +119,14 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -85,9 +135,14 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -125,146 +180,91 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
    <tile gid="12"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
+   <tile gid="19"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
+   <tile gid="14"/>
   </data>
  </layer>
  <objectgroup name="tanks">
@@ -578,5 +578,198 @@
     <property name="hitpoints" type="int" value="10"/>
    </properties>
   </object>
+  <object id="147" name="tree" type="tree" gid="6" x="256" y="96" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="148" name="tree" type="tree" gid="6" x="224" y="96" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="149" name="tree" type="tree" gid="6" x="192" y="96" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="150" name="tree" type="tree" gid="6" x="224" y="128" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="151" name="tree" type="tree" gid="6" x="256" y="128" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="152" name="tree" type="tree" gid="6" x="288" y="128" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="153" name="tree" type="tree" gid="6" x="128" y="448" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="154" name="tree" type="tree" gid="6" x="192" y="448" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="155" name="tree" type="tree" gid="6" x="224" y="448" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="156" name="tree" type="tree" gid="6" x="160" y="448" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="157" name="tree" type="tree" gid="6" x="192" y="480" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="158" name="tree" type="tree" gid="6" x="224" y="480" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="159" name="tree" type="tree" gid="6" x="320" y="480" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="160" name="tree" type="tree" gid="6" x="96" y="352" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="161" name="tree" type="tree" gid="6" x="128" y="352" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="162" name="tree" type="tree" gid="6" x="288" y="320" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="10"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="houses">
+  <object id="163" name="house" type="house" gid="25" x="64" y="224" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="165" name="house" type="house" gid="25" x="64" y="192" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="166" name="house" type="house" gid="25" x="64" y="160" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="167" name="house" type="house" gid="25" x="64" y="128" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="168" name="house" type="house" gid="25" x="32" y="128" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="169" name="house" type="house" gid="25" x="32" y="160" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="170" name="house" type="house" gid="25" x="32" y="192" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="171" name="house" type="house" gid="25" x="32" y="224" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="172" name="house" type="house" gid="25" x="64" y="448" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="173" name="house" type="house" gid="25" x="416" y="256" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="174" name="house" type="house" gid="25" x="448" y="256" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="true"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="175" name="house" type="house" gid="25" x="416" y="224" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="176" name="house" type="house" gid="25" x="448" y="224" width="32" height="32">
+   <properties>
+    <property name="burns" type="bool" value="false"/>
+    <property name="hitpoints" type="int" value="15"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="lakes">
+  <object id="177" name="lake" type="lake" gid="22" x="160" y="288" width="32" height="32"/>
+  <object id="178" name="lake" type="lake" gid="22" x="192" y="288" width="32" height="32"/>
+  <object id="179" name="lake" type="lake" gid="22" x="224" y="288" width="32" height="32"/>
+  <object id="180" name="lake" type="lake" gid="22" x="192" y="320" width="32" height="32"/>
+  <object id="181" name="lake" type="lake" gid="22" x="224" y="320" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="rocks">
+  <object id="183" name="rock" type="rock" gid="23" x="384" y="96" width="32" height="32"/>
+  <object id="184" name="rock" type="rock" gid="23" x="416" y="96" width="32" height="32"/>
+  <object id="185" name="rock" type="rock" gid="23" x="384" y="128" width="32" height="32"/>
+  <object id="186" name="rock" type="rock" gid="23" x="416" y="128" width="32" height="32"/>
+  <object id="187" name="rock" type="rock" gid="23" x="128" y="128" width="32" height="32"/>
+  <object id="188" name="rock" type="rock" gid="23" x="448" y="448" width="32" height="32"/>
+  <object id="189" name="rock" type="rock" gid="23" x="416" y="448" width="32" height="32"/>
+  <object id="190" name="rock" type="rock" gid="23" x="384" y="448" width="32" height="32"/>
  </objectgroup>
 </map>

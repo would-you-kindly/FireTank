@@ -152,6 +152,11 @@ namespace FireSafety
             wind.Update(deltaTime);
         }
 
+        public bool FireIsOver()
+        {
+            return trees.All(tree => !tree.state.IsBurning()) && houses.All(house => !house.state.IsBurning());
+        }
+
         private void CheckTerrainState()
         {
             foreach (IFlammable flammable in GetFlammableObjects())

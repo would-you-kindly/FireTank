@@ -134,9 +134,6 @@
   <data name="BurnedHouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Textures\BurnedHouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BurnedTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Textures\BurnedTree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CancelSelection" xml:space="preserve">
     <value>Отменить выделение</value>
     <comment>Алгоритм</comment>
@@ -483,5 +480,8 @@
   </data>
   <data name="Wind" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Textures\Wind.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BurnedTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Textures\BurnedTree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

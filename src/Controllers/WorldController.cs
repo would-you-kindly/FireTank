@@ -1,4 +1,6 @@
-﻿namespace FireSafety
+﻿using System;
+
+namespace FireSafety
 {
     public class WorldController
     {
@@ -27,6 +29,11 @@
         public Wind GetWind()
         {
             return world.terrain.wind;
+        }
+
+        public bool FireIsOver()
+        {
+            return world.terrain.FireIsOver();
         }
     }
 }

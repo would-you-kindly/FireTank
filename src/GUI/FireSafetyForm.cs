@@ -562,9 +562,7 @@ namespace FireSafety
         private void CheckGameStateForEnd()
         {
             // Если горящих деревьев (и домов) больше нет, выводим результат работы алгоритма
-            if (worldController.world.terrain.trees.Where(tree => tree.state.IsBurning()).Count() == 0 &&
-                worldController.world.terrain.houses.Where(house => house.state.IsBurning()).Count() == 0 &&
-                algorithmController.IsExecuted())
+            if (worldController.FireIsOver())
             {
                 // Вычисляем результат работы алгоритма
                 double result = ComputeResult();
