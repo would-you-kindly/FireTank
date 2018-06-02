@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbMove = new System.Windows.Forms.ComboBox();
             this.cbCharge = new System.Windows.Forms.ComboBox();
             this.cbTurret = new System.Windows.Forms.ComboBox();
@@ -158,6 +158,7 @@
             this.dgvAlgorithm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlgorithm.Size = new System.Drawing.Size(360, 294);
             this.dgvAlgorithm.TabIndex = 6;
+            this.dgvAlgorithm.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAlgorithm_CellValidating);
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
@@ -411,8 +412,8 @@
             // 
             // Number
             // 
-            dataGridViewCellStyle1.NullValue = null;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.NullValue = null;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle3;
             this.Number.HeaderText = "№";
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -444,13 +445,12 @@
             // 
             // dgvtbcPlanItem
             // 
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgvtbcPlanItem.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dgvtbcPlanItem.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvtbcPlanItem.HeaderText = "П.";
             this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
             this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtbcPlanItem.Visible = false;
             this.dgvtbcPlanItem.Width = 25;
             // 
             // AlgorithmForm

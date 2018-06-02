@@ -211,26 +211,24 @@ namespace FireSafety
             cb.SelectedItem = command;
         }
 
-        //private void SetPlanItem(DataGridViewCellValidatingEventArgs e)
-        //{
-        //    // Запрещаем вводить что-либо кроме цифр в столбец пункта плана
-        //    if (e.ColumnIndex == 4)
-        //    {
-        //        if (!uint.TryParse(Convert.ToString(e.FormattedValue), out uint planItem) || e.FormattedValue.ToString() == "0")
-        //        {
-        //            e.Cancel = true;
+        private void SetPlanItem(DataGridViewCellValidatingEventArgs e)
+        {
+            // Запрещаем вводить что-либо кроме цифр в столбец пункта плана
+            if (e.ColumnIndex == 4)
+            {
+                if (!uint.TryParse(Convert.ToString(e.FormattedValue), out uint planItem) || e.FormattedValue.ToString() == "0")
+                {
+                    e.Cancel = true;
 
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            // Запоминаем пункт плана в алгоритме
-        //            ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].actions[e.RowIndex].planItem = planItem;
-
-        //            dgvAlgorithm.CancelEdit();
-        //        }
-        //    }
-        //}
+                    return;
+                }
+                else
+                {
+                    // Запоминаем пункт плана в алгоритме
+                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].actions[e.RowIndex].planItem = planItem;
+                }
+            }
+        }
         #endregion
 
         #region Обработчики событий
@@ -249,10 +247,10 @@ namespace FireSafety
             SetCommand((ComboBox)sender);
         }
 
-        //private void dgvAlgorithm_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    SetPlanItem(e);
-        //}
+        private void dgvAlgorithm_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            SetPlanItem(e);
+        }
 
         private void btnInsertAction_Click(object sender, EventArgs e)
         {
