@@ -11,7 +11,7 @@ namespace FireSafety
         public int needShootsToExtinguishCount = 3;
         public int currentShootsToExtinguishCount = 0;
 
-        private static int algorithmActionNumber = -1;
+        private int algorithmActionNumber = -1;
 
         public BurningHouseState()
         {

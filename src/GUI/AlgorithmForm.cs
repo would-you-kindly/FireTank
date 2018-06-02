@@ -21,7 +21,16 @@ namespace FireSafety
         private void InsertAction()
         {
             InsertActionForm insertActionForm = new InsertActionForm(dgvAlgorithm.Rows.Count);
-            insertActionForm.ShowDialog();
+
+            if (ParallelAlgorithm.GetInstance().currentAction == 0)
+            {
+                insertActionForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Чтобы вставить команду в алгоритм, необходимо сначала остановить его.",
+                    "Вставка команды алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             if (insertActionForm.DialogResult == DialogResult.OK)
             {
