@@ -17,6 +17,7 @@ namespace FireSafety
 
         [XmlArray("Commands"), XmlArrayItem(typeof(Command), ElementName = "Command")]
         public Command[] commands;
+        public uint planItem;
 
         public Action()
         {

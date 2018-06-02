@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<ParallelAlgorithm xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Algorithms>
+    <Algorithm>
+      <Actions>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+          <planItem>1</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+          <planItem>1</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+          <planItem>1</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+          <planItem>2</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+          <planItem>2</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">Forward</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">Down</command>
+            </Command>
+          </Commands>
+          <planItem>3</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">None</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">Shoot</command>
+            </Command>
+          </Commands>
+          <planItem>3</planItem>
+        </Action>
+        <Action>
+          <Commands>
+            <Command xsi:type="MoveCommand">
+              <command xmlns="MoveCommand">None</command>
+            </Command>
+            <Command xsi:type="ChargeCommand">
+              <command xmlns="ChargeCommand">None</command>
+            </Command>
+            <Command xsi:type="TurretCommand">
+              <command xmlns="TurretCommand">None</command>
+            </Command>
+          </Commands>
+          <planItem>0</planItem>
+        </Action>
+      </Actions>
+    </Algorithm>
+    <Algorithm>
+      <Actions />
+    </Algorithm>
+  </Algorithms>
+</ParallelAlgorithm>

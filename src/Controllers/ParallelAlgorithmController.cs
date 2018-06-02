@@ -125,8 +125,9 @@ namespace FireSafety
                     string move = action.commands[(int)Action.Types.Move].ToString();
                     string charge = action.commands[(int)Action.Types.Charge].ToString();
                     string turret = action.commands[(int)Action.Types.Turret].ToString();
+                    uint? planItem = action.planItem;
 
-                    algorithmForms[i].dgvAlgorithm.Rows.Add(number, move, charge, turret);
+                    algorithmForms[i].dgvAlgorithm.Rows.Add(number, move, charge, turret, planItem != 0 ? planItem : null);
                 }
 
                 // Отменяем выделение
