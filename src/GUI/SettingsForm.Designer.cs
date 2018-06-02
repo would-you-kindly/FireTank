@@ -230,6 +230,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "SettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки";
             this.tcSettings.ResumeLayout(false);
             this.tpCommon.ResumeLayout(false);

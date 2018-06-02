@@ -218,6 +218,9 @@ namespace FireSafety
 
                 // Для новых созданных окон снова привязываем события индикаторов
                 AttachIndicators();
+
+                // Забываем файл алгоритма
+                savedFilename = string.Empty;
             }
         }
 
@@ -240,6 +243,9 @@ namespace FireSafety
 
                 // Для новых созданных окон снова привязываем события индикаторов
                 AttachIndicators();
+
+                // Забываем файл алгоритма
+                savedFilename = string.Empty;
             }
         }
 
