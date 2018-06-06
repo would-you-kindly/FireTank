@@ -148,7 +148,7 @@ namespace FireSafety
                 }
 
                 result += ", Сила: " + settings[i * 3 + 1];
-                result += ", Прод-ть: " + settings[i * 3 + 2] + "); ";
+                result += ", Время: " + settings[i * 3 + 2] + "); ";
             }
 
             return result;

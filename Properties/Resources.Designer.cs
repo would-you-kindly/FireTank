@@ -556,7 +556,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Назад 45° пр. ч.с..
+        ///   Looks up a localized string similar to Назад, 45° ↺.
         /// </summary>
         internal static string MoveCommandBackwardRotate45CCW {
             get {
@@ -565,7 +565,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Назад 45° по ч.с..
+        ///   Looks up a localized string similar to Назад, 45° ↻.
         /// </summary>
         internal static string MoveCommandBackwardRotate45CW {
             get {
@@ -583,7 +583,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вперед 45° пр. ч.с..
+        ///   Looks up a localized string similar to Вперед, 45° ↺.
         /// </summary>
         internal static string MoveCommandForwardRotate45CCW {
             get {
@@ -592,7 +592,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вперед 45° по ч.с..
+        ///   Looks up a localized string similar to Вперед, 45° ↻.
         /// </summary>
         internal static string MoveCommandForwardRotate45CW {
             get {
@@ -610,7 +610,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45° пр. ч.с..
+        ///   Looks up a localized string similar to 45° ↺.
         /// </summary>
         internal static string MoveCommandRotate45CCW {
             get {
@@ -619,7 +619,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45° по ч.с..
+        ///   Looks up a localized string similar to 45° ↻.
         /// </summary>
         internal static string MoveCommandRotate45CW {
             get {
@@ -628,7 +628,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 90° пр. ч.с..
+        ///   Looks up a localized string similar to 90° ↺.
         /// </summary>
         internal static string MoveCommandRotate90CCW {
             get {
@@ -637,7 +637,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 90° по ч.с..
+        ///   Looks up a localized string similar to 90° ↻.
         /// </summary>
         internal static string MoveCommandRotate90CW {
             get {
@@ -788,7 +788,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45° пр. ч.с..
+        ///   Looks up a localized string similar to 45° ↺.
         /// </summary>
         internal static string TurretCommandRotate45CCW {
             get {
@@ -797,7 +797,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45° по ч.с..
+        ///   Looks up a localized string similar to 45° ↻.
         /// </summary>
         internal static string TurretCommandRotate45CW {
             get {
@@ -806,7 +806,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 90° пр. ч.с..
+        ///   Looks up a localized string similar to 90° ↺.
         /// </summary>
         internal static string TurretCommandRotate90CCW {
             get {
@@ -815,7 +815,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 90° по ч.с..
+        ///   Looks up a localized string similar to 90° ↻.
         /// </summary>
         internal static string TurretCommandRotate90CW {
             get {
@@ -901,7 +901,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вниз ↓.
+        ///   Looks up a localized string similar to ↓.
         /// </summary>
         internal static string WindDown {
             get {
@@ -910,7 +910,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вниз-вправо ↘.
+        ///   Looks up a localized string similar to ↘.
         /// </summary>
         internal static string WindDownRight {
             get {
@@ -919,7 +919,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Влево ←.
+        ///   Looks up a localized string similar to ←.
         /// </summary>
         internal static string WindLeft {
             get {
@@ -928,7 +928,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Влево-вниз ↙.
+        ///   Looks up a localized string similar to ↙.
         /// </summary>
         internal static string WindLeftDown {
             get {
@@ -937,7 +937,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вправо →.
+        ///   Looks up a localized string similar to →.
         /// </summary>
         internal static string WindRight {
             get {
@@ -946,7 +946,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вправо-вверх ↗.
+        ///   Looks up a localized string similar to ↗.
         /// </summary>
         internal static string WindRightUp {
             get {
@@ -955,7 +955,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вверх ↑.
+        ///   Looks up a localized string similar to ↑.
         /// </summary>
         internal static string WindUp {
             get {
@@ -964,7 +964,7 @@ namespace FireSafety.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вверх-влево ↖.
+        ///   Looks up a localized string similar to ↖.
         /// </summary>
         internal static string WindUpLeft {
             get {

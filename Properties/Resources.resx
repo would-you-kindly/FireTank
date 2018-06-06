@@ -305,11 +305,11 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandBackwardRotate45CCW" xml:space="preserve">
-    <value>Назад 45° пр. ч.с.</value>
+    <value>Назад, 45° ↺</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandBackwardRotate45CW" xml:space="preserve">
-    <value>Назад 45° по ч.с.</value>
+    <value>Назад, 45° ↻</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandForward" xml:space="preserve">
@@ -317,11 +317,11 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandForwardRotate45CCW" xml:space="preserve">
-    <value>Вперед 45° пр. ч.с.</value>
+    <value>Вперед, 45° ↺</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandForwardRotate45CW" xml:space="preserve">
-    <value>Вперед 45° по ч.с.</value>
+    <value>Вперед, 45° ↻</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandNone" xml:space="preserve">
@@ -329,19 +329,19 @@
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate45CCW" xml:space="preserve">
-    <value>45° пр. ч.с.</value>
+    <value>45° ↺</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate45CW" xml:space="preserve">
-    <value>45° по ч.с.</value>
+    <value>45° ↻</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate90CCW" xml:space="preserve">
-    <value>90° пр. ч.с.</value>
+    <value>90° ↺</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MoveCommandRotate90CW" xml:space="preserve">
-    <value>90° по ч.с.</value>
+    <value>90° ↻</value>
     <comment>Команда водителя</comment>
   </data>
   <data name="MovePerformer" xml:space="preserve">
@@ -398,19 +398,19 @@
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate45CCW" xml:space="preserve">
-    <value>45° пр. ч.с.</value>
+    <value>45° ↺</value>
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate45CW" xml:space="preserve">
-    <value>45° по ч.с.</value>
+    <value>45° ↻</value>
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate90CCW" xml:space="preserve">
-    <value>90° пр. ч.с.</value>
+    <value>90° ↺</value>
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandRotate90CW" xml:space="preserve">
-    <value>90° по ч.с.</value>
+    <value>90° ↻</value>
     <comment>Команда наводчика</comment>
   </data>
   <data name="TurretCommandShoot" xml:space="preserve">
@@ -435,35 +435,35 @@
     <value>..\Media\Icons\Water.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WindDown" xml:space="preserve">
-    <value>Вниз ↓</value>
+    <value>↓</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindDownRight" xml:space="preserve">
-    <value>Вниз-вправо ↘</value>
+    <value>↘</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindLeft" xml:space="preserve">
-    <value>Влево ←</value>
+    <value>←</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindLeftDown" xml:space="preserve">
-    <value>Влево-вниз ↙</value>
+    <value>↙</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindRight" xml:space="preserve">
-    <value>Вправо →</value>
+    <value>→</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindRightUp" xml:space="preserve">
-    <value>Вправо-вверх ↗</value>
+    <value>↗</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindUp" xml:space="preserve">
-    <value>Вверх ↑</value>
+    <value>↑</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="WindUpLeft" xml:space="preserve">
-    <value>Вверх-влево ↖</value>
+    <value>↖</value>
     <comment>Направление ветра</comment>
   </data>
   <data name="YellowTank" type="System.Resources.ResXFileRef, System.Windows.Forms">

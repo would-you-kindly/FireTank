@@ -13,8 +13,42 @@ namespace FireSafety
         {
             InitializeComponent();
 
+            Init();
+        }
+
+        private void Init()
+        {
+            // Задаем переменные для горячих клавиш
             clock = new Stopwatch();
             keyPressed = false;
+
+            // Задаем возможные команды исполнителей танков
+            cbMove.Items.Add(Properties.Resources.MoveCommandForward);
+            cbMove.Items.Add(Properties.Resources.MoveCommandBackward);
+            cbMove.Items.Add(Properties.Resources.MoveCommandRotate45CW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandRotate45CCW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandRotate90CW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandRotate90CCW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandForwardRotate45CW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandForwardRotate45CCW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandBackwardRotate45CW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandBackwardRotate45CCW);
+            cbMove.Items.Add(Properties.Resources.MoveCommandNone);
+
+            cbCharge.Items.Add(Properties.Resources.ChargeCommandPressure1);
+            cbCharge.Items.Add(Properties.Resources.ChargeCommandPressure2);
+            cbCharge.Items.Add(Properties.Resources.ChargeCommandCharge);
+            cbCharge.Items.Add(Properties.Resources.ChargeCommandRefuel);
+            cbCharge.Items.Add(Properties.Resources.ChargeCommandNone);
+
+            cbTurret.Items.Add(Properties.Resources.TurretCommandRotate45CW);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandRotate45CCW);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandRotate90CW);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandRotate90CCW);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandUp);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandDown);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandShoot);
+            cbTurret.Items.Add(Properties.Resources.TurretCommandNone);
         }
 
         #region Методы класса
@@ -139,7 +173,7 @@ namespace FireSafety
             }
             else
             {
-                MessageBox.Show("Чтобы именить команды алгоритма, необходимо сначала остановить его.",
+                MessageBox.Show("Чтобы изменить команды алгоритма, необходимо сначала остановить его.",
                     "Изменение команд алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -199,7 +233,7 @@ namespace FireSafety
             }
             else
             {
-                MessageBox.Show("Чтобы именить команды алгоритма, необходимо сначала остановить его.",
+                MessageBox.Show("Чтобы изменить команды алгоритма, необходимо сначала остановить его.",
                     "Изменение команд алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -219,7 +253,7 @@ namespace FireSafety
             }
             else
             {
-                MessageBox.Show("Чтобы именить пункт плана алгоритма, необходимо сначала остановить его.",
+                MessageBox.Show("Чтобы изменить пункт плана алгоритма, необходимо сначала остановить его.",
                    "Изменение пункта плана алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
