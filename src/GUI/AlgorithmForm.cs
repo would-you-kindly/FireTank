@@ -211,22 +211,16 @@ namespace FireSafety
             cb.SelectedItem = command;
         }
 
-        private void SetPlanItem(DataGridViewCellValidatingEventArgs e)
+        private void SetPlanItem(uint planItem)
         {
-            // Запрещаем вводить что-либо кроме цифр в столбец пункта плана
-            if (e.ColumnIndex == 4)
+            if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
-                if (!uint.TryParse(Convert.ToString(e.FormattedValue), out uint planItem) || e.FormattedValue.ToString() == "0")
-                {
-                    e.Cancel = true;
-
-                    return;
-                }
-                else
-                {
-                    // Запоминаем пункт плана в алгоритме
-                    ParallelAlgorithm.GetInstance()[(int)dgvAlgorithm.Tag].actions[e.RowIndex].planItem = planItem;
-                }
+                dgvAlgorithm.SelectedRows[0].Cells[4].Value = planItem;
+            }
+            else
+            {
+                MessageBox.Show("Чтобы именить пункт плана алгоритма, необходимо сначала остановить его.",
+                   "Изменение пункта плана алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion
@@ -245,11 +239,6 @@ namespace FireSafety
         private void cbTurret_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetCommand((ComboBox)sender);
-        }
-
-        private void dgvAlgorithm_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            SetPlanItem(e);
         }
 
         private void btnInsertAction_Click(object sender, EventArgs e)
@@ -440,6 +429,16 @@ namespace FireSafety
                 {
                     Shortcut(cbTurret, Utilities.ToTurretString(TurretCommand.Commands.Rotate90CCW));
                 }
+            }
+
+            // Устанавливаем пункты плана
+            if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 ||
+                e.KeyCode == Keys.D3 || e.KeyCode == Keys.D4 ||
+                e.KeyCode == Keys.D5 || e.KeyCode == Keys.D6 ||
+                e.KeyCode == Keys.D7 || e.KeyCode == Keys.D8 ||
+                e.KeyCode == Keys.D9)
+            {
+                SetPlanItem((uint)(e.KeyCode - Keys.D0));
             }
         }
         #endregion

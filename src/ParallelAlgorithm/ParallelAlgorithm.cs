@@ -22,6 +22,9 @@ namespace FireSafety
         public class RemoveActionEventArgs : EventArgs
         {
         }
+        public class ChangePlanItemEventArgs : EventArgs
+        {
+        }
         public class ClearEventArgs : EventArgs
         {
         }
@@ -42,6 +45,7 @@ namespace FireSafety
         public delegate void AddActionEventHandler(object sender, AddActionEventArgs e);
         public delegate void ChangeCommandEventHandler(object sender, ChangeCommandEventArgs e);
         public delegate void RemoveActionEventHandler(object sender, RemoveActionEventArgs e);
+        public delegate void PlanItemChangedEventHandler(object sender, ChangePlanItemEventArgs e);
         public delegate void ClearEventHandler(object sender, ClearEventArgs e);
         public delegate void SaveEventHandler(object sender, SaveEventArgs e);
         public delegate void LoadEventHandler(object sender, LoadEventArgs e);
@@ -50,12 +54,12 @@ namespace FireSafety
         public event AddActionEventHandler ActionAdded;
         public event ChangeCommandEventHandler CommandChanged;
         public event RemoveActionEventHandler ActionRemoved;
+        public event PlanItemChangedEventHandler PlanItemChanged;
         public event ClearEventHandler Cleared;
         public event SaveEventHandler Saved;
         public event LoadEventHandler Loaded;
         public event ReloadEventHandler Reloaded;
         public event PerformNexActionEventHandler NextActionPerforming;
-
         // Переменные параллельного алгоритма
         [XmlArray("Algorithms"), XmlArrayItem(typeof(Algorithm), ElementName = "Algorithm")]
         public List<Algorithm> algorithms;
@@ -179,6 +183,13 @@ namespace FireSafety
             algorithms[algorithmNumber].actions.RemoveAt(actionNumber);
 
             ActionRemoved?.Invoke(this, new RemoveActionEventArgs());
+        }
+
+        public void SetPlanItem(int algorithmNumber, int actionNumber, uint planItem)
+        {
+            algorithms[algorithmNumber].actions[actionNumber].planItem = planItem;
+
+            PlanItemChanged?.Invoke(this, new ChangePlanItemEventArgs());
         }
 
         public void LoadAlgorithm(IOpenSave openSave)

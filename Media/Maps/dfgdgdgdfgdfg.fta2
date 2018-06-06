@@ -29,34 +29,6 @@
               <command xmlns="TurretCommand">None</command>
             </Command>
           </Commands>
-          <planItem>1</planItem>
-        </Action>
-        <Action>
-          <Commands>
-            <Command xsi:type="MoveCommand">
-              <command xmlns="MoveCommand">Forward</command>
-            </Command>
-            <Command xsi:type="ChargeCommand">
-              <command xmlns="ChargeCommand">None</command>
-            </Command>
-            <Command xsi:type="TurretCommand">
-              <command xmlns="TurretCommand">None</command>
-            </Command>
-          </Commands>
-          <planItem>1</planItem>
-        </Action>
-        <Action>
-          <Commands>
-            <Command xsi:type="MoveCommand">
-              <command xmlns="MoveCommand">Forward</command>
-            </Command>
-            <Command xsi:type="ChargeCommand">
-              <command xmlns="ChargeCommand">None</command>
-            </Command>
-            <Command xsi:type="TurretCommand">
-              <command xmlns="TurretCommand">None</command>
-            </Command>
-          </Commands>
           <planItem>0</planItem>
         </Action>
       </Actions>

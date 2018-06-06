@@ -82,6 +82,7 @@ namespace FireSafety
             // Создаем команду в зависимости от измененного столбца
             switch (e.ColumnIndex)
             {
+                // Команды исполнителей танка
                 case 1:
                     command = new MoveCommand(Utilities.ToMoveCommand(row.Cells[1].Value.ToString()));
                     break;
@@ -91,6 +92,10 @@ namespace FireSafety
                 case 3:
                     command = new TurretCommand(Utilities.ToTurretCommand(row.Cells[3].Value.ToString()));
                     break;
+                // Пункт плана
+                case 4:
+                    ParallelAlgorithm.GetInstance().SetPlanItem((int)((DataGridView)sender).Tag, e.RowIndex, (uint)row.Cells[4].Value);
+                    return;
                 default:
                     return;
             }

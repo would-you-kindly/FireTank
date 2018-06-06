@@ -158,7 +158,6 @@
             this.dgvAlgorithm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlgorithm.Size = new System.Drawing.Size(360, 294);
             this.dgvAlgorithm.TabIndex = 6;
-            this.dgvAlgorithm.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAlgorithm_CellValidating);
             this.dgvAlgorithm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyDown);
             this.dgvAlgorithm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAlgorithm_KeyUp);
             // 
@@ -215,7 +214,6 @@
             this.button1.TabIndex = 20;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblMaxPressure
@@ -445,11 +443,11 @@
             // 
             // dgvtbcPlanItem
             // 
-            dataGridViewCellStyle4.Format = "N0";
             dataGridViewCellStyle4.NullValue = null;
             this.dgvtbcPlanItem.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvtbcPlanItem.HeaderText = "П.";
             this.dgvtbcPlanItem.Name = "dgvtbcPlanItem";
+            this.dgvtbcPlanItem.ReadOnly = true;
             this.dgvtbcPlanItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtbcPlanItem.Width = 25;
             // 
