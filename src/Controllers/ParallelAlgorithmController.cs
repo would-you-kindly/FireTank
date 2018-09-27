@@ -8,10 +8,12 @@ namespace FireSafety
     public class ParallelAlgorithmController
     {
         private static List<AlgorithmForm> algorithmForms;
+        private static PlanForm planForm;
 
-        public ParallelAlgorithmController(List<AlgorithmForm> algoForms)
+        public ParallelAlgorithmController(List<AlgorithmForm> algoForms, PlanForm planWindow)
         {
             algorithmForms = algoForms;
+            planForm = planWindow;
 
             AttachEvents();
             // TODO: Почему-то если подписаться здесь ParallelAlgorithm.GetInstance().Loaded, то требует, чтобы этот класс тоже был сериализуемым
@@ -138,6 +140,9 @@ namespace FireSafety
                 // Отменяем выделение
                 algorithmForms[i].dgvAlgorithm.ClearSelection();
             }
+
+            // Обновляем DataGridView плана в соответствии с алгоритмом
+
 
             AttachEvents();
         }

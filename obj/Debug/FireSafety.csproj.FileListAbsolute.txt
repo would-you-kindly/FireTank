@@ -18,3 +18,23 @@ D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafet
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CoreCompileInputs.cache
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojResolveAssemblyReference.cache
 D:\YandexDisk\HSE\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.InsertActionForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\FireSafety.exe.config
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\FireSafety.exe
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\FireSafety.pdb
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.dll
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.SqlServer.dll
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.xml
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.SqlServer.xml
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojResolveAssemblyReference.cache
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.Properties.Resources.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.AlgorithmForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.FireSafetyForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.InsertActionForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.LoginForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.OpenMapForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.PlanForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.SettingsForm.resources
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.GenerateResource.Cache
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CoreCompileInputs.cache
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.exe
+D:\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.pdb

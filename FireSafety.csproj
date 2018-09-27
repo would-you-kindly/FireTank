@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="src\Models\AlgorithmModel.cs" />
     <Compile Include="src\ParallelAlgorithm\Plan.cs" />
+    <Compile Include="src\ParallelAlgorithm\PlanItem.cs" />
     <Compile Include="src\Repositories\AlgorithmRepository.cs" />
     <Compile Include="src\States\BurnedHouseState.cs" />
     <Compile Include="src\States\BurnedTreeState.cs" />

@@ -249,7 +249,15 @@ namespace FireSafety
         {
             if (!ParallelAlgorithm.GetInstance().running && ParallelAlgorithm.GetInstance().currentAction == 0)
             {
-                dgvAlgorithm.SelectedRows[0].Cells[4].Value = planItem;
+                if (dgvAlgorithm.SelectedRows.Count != 0)
+                {
+                    dgvAlgorithm.SelectedRows[0].Cells[4].Value = planItem;
+                }
+                else
+                {
+                    MessageBox.Show("Выделите строку, чтобы задать пункт плана.",
+                       "Изменение пункта плана алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {

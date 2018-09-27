@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace FireSafety
 {
+    [Serializable]
     public class Plan
     {
-        public List<Tuple<int, string, string>> ints = new List<Tuple<int, string, string>>();
+        [XmlArray("PlanItems"), XmlArrayItem(typeof(PlanItem), ElementName = "PlanItems")]
+        public List<PlanItem> items;
 
         public Plan()
         {
-            ints.Add(new Tuple<int, string, string>(1, "K-0", "L-2"));
-            ints.Add(new Tuple<int, string, string>(3, "K-4", "L-8"));
-            ints.Add(new Tuple<int, string, string>(4, "K-2", "L-5"));
-            ints.Add(new Tuple<int, string, string>(5, "K-9", "L-6"));
+            items = new List<PlanItem>();
         }
     }
 }

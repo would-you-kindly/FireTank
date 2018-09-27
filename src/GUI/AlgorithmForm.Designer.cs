@@ -436,7 +436,6 @@
             this.MinimumSize = new System.Drawing.Size(400, 280);
             this.Name = "AlgorithmForm";
             this.Tag = "Algorithm";
-            this.ttipDeleteAction.SetToolTip(this, "Удалить строку");
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlgorithmForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlgorithm)).EndInit();
             this.gbControls.ResumeLayout(false);

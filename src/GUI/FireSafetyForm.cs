@@ -56,8 +56,6 @@ namespace FireSafety
                 InitIndicators(i, algorithmForm);
             }
 
-            algorithmController = new ParallelAlgorithmController(algorithmForms);
-
             //Создаем окно с планом
             planForm = new PlanForm();
             for (int i = 0; i < Utilities.GetInstance().TANKS_COUNT; i++)
@@ -72,6 +70,8 @@ namespace FireSafety
 
             //}
             planForm.Show();
+
+            algorithmController = new ParallelAlgorithmController(algorithmForms, planForm);
 
             // Задаем параметры формы, в которой будет выводится графика SFML
             sfmlForm = new Form();

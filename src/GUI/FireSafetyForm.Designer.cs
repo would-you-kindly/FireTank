@@ -546,7 +546,7 @@
             this.horizontalToolStripMenuItem,
             this.verticalToolStripMenuItem});
             this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
-            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.layoutToolStripMenuItem.Text = "Компоновка";
             // 
             // smartToolStripMenuItem
@@ -587,20 +587,20 @@
             // algorithmsToolStripMenuItem
             // 
             this.algorithmsToolStripMenuItem.Name = "algorithmsToolStripMenuItem";
-            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.algorithmsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.algorithmsToolStripMenuItem.Text = "Алгоритмы";
             // 
             // planToolStripMenuItem
             // 
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
-            this.planToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.planToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.planToolStripMenuItem.Text = "План";
             this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.settingsToolStripMenuItem.Text = "Настройки";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
