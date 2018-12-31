@@ -15,6 +15,7 @@
               <command xmlns="TurretCommand">Up</command>
             </Command>
           </Commands>
+          <planItem>1</planItem>
         </Action>
         <Action>
           <Commands>
@@ -28,6 +29,7 @@
               <command xmlns="TurretCommand">Shoot</command>
             </Command>
           </Commands>
+          <planItem>1</planItem>
         </Action>
         <Action>
           <Commands>
@@ -41,6 +43,7 @@
               <command xmlns="TurretCommand">Down</command>
             </Command>
           </Commands>
+          <planItem>2</planItem>
         </Action>
         <Action>
           <Commands>
@@ -54,6 +57,7 @@
               <command xmlns="TurretCommand">Up</command>
             </Command>
           </Commands>
+          <planItem>2</planItem>
         </Action>
         <Action>
           <Commands>
@@ -67,6 +71,7 @@
               <command xmlns="TurretCommand">Shoot</command>
             </Command>
           </Commands>
+          <planItem>2</planItem>
         </Action>
         <Action>
           <Commands>
@@ -80,6 +85,7 @@
               <command xmlns="TurretCommand">Down</command>
             </Command>
           </Commands>
+          <planItem>3</planItem>
         </Action>
         <Action>
           <Commands>
@@ -93,6 +99,7 @@
               <command xmlns="TurretCommand">Rotate90CW</command>
             </Command>
           </Commands>
+          <planItem>3</planItem>
         </Action>
         <Action>
           <Commands>
@@ -106,6 +113,7 @@
               <command xmlns="TurretCommand">Shoot</command>
             </Command>
           </Commands>
+          <planItem>3</planItem>
         </Action>
       </Actions>
     </Algorithm>
@@ -123,6 +131,7 @@
               <command xmlns="TurretCommand">Up</command>
             </Command>
           </Commands>
+          <planItem>1</planItem>
         </Action>
         <Action>
           <Commands>
@@ -136,6 +145,7 @@
               <command xmlns="TurretCommand">Shoot</command>
             </Command>
           </Commands>
+          <planItem>1</planItem>
         </Action>
         <Action>
           <Commands>
@@ -149,6 +159,7 @@
               <command xmlns="TurretCommand">Down</command>
             </Command>
           </Commands>
+          <planItem>2</planItem>
         </Action>
         <Action>
           <Commands>
@@ -162,6 +173,7 @@
               <command xmlns="TurretCommand">Up</command>
             </Command>
           </Commands>
+          <planItem>2</planItem>
         </Action>
         <Action>
           <Commands>
@@ -175,6 +187,7 @@
               <command xmlns="TurretCommand">Shoot</command>
             </Command>
           </Commands>
+          <planItem>2</planItem>
         </Action>
         <Action>
           <Commands>
@@ -188,6 +201,7 @@
               <command xmlns="TurretCommand">Down</command>
             </Command>
           </Commands>
+          <planItem>3</planItem>
         </Action>
         <Action>
           <Commands>
@@ -201,6 +215,7 @@
               <command xmlns="TurretCommand">Rotate45CW</command>
             </Command>
           </Commands>
+          <planItem>3</planItem>
         </Action>
         <Action>
           <Commands>
@@ -214,8 +229,34 @@
               <command xmlns="TurretCommand">Shoot</command>
             </Command>
           </Commands>
+          <planItem>3</planItem>
         </Action>
       </Actions>
     </Algorithm>
   </Algorithms>
+  <plan xmlns="Plan">
+    <PlanItems>
+      <PlanItems>
+        <number>1</number>
+        <tankActions>
+          <string>c8</string>
+          <string>i9</string>
+        </tankActions>
+      </PlanItems>
+      <PlanItems>
+        <number>2</number>
+        <tankActions>
+          <string>f3</string>
+          <string>i3</string>
+        </tankActions>
+      </PlanItems>
+      <PlanItems>
+        <number>3</number>
+        <tankActions>
+          <string>f4</string>
+          <string>k7</string>
+        </tankActions>
+      </PlanItems>
+    </PlanItems>
+  </plan>
 </ParallelAlgorithm>

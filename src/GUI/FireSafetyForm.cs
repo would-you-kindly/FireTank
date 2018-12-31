@@ -69,7 +69,6 @@ namespace FireSafety
             //foreach (var item in plan.ints)
             //{
             //    planForm.dgvPlan.Rows.Add(item.Item1, item.Item2, item.Item3);
-
             //}
             planForm.Show();
 
@@ -534,12 +533,12 @@ namespace FireSafety
             {
                 MessageBox.Show($"Деревья:\n\n" +
                   $"Было: {worldController.world.terrain.trees.Count()}.\n" +
-                  $"Сгорело: {worldController.world.terrain.trees.Where(tree => !tree.state.IsBurned()).Count()}.\n" +
-                  $"Осталось: {worldController.world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n\n" +
+                  $"Сгорело: {worldController.world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n" +
+                  $"Осталось: {worldController.world.terrain.trees.Where(tree => !tree.state.IsBurned()).Count()}.\n\n" +
                   $"Дома:\n\n" +
                   $"Было: {worldController.world.terrain.houses.Count()}.\n" +
-                  $"Сгорело: {worldController.world.terrain.houses.Where(house => !house.state.IsBurned()).Count()}.\n" +
-                  $"Осталось: {worldController.world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n",
+                  $"Сгорело: {worldController.world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n" +
+                  $"Осталось: {worldController.world.terrain.houses.Where(house => !house.state.IsBurned()).Count()}.\n\n",
                   //$"Эффективность разработанного алгоритма = {Math.Round(result, 2)}." + warning,
                   "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -56,7 +56,7 @@ namespace FireSafety
         public event RemoveActionEventHandler ActionRemoved;
         public event PlanItemChangedEventHandler PlanItemChanged;
         public event ClearEventHandler Cleared;
-        public event SaveEventHandler Saved;
+        public event SaveEventHandler Saving;
         public event LoadEventHandler Loaded;
         public event ReloadEventHandler Reloaded;
         public event PerformNexActionEventHandler NextActionPerforming;
@@ -64,8 +64,8 @@ namespace FireSafety
         // Переменные параллельного алгоритма
         [XmlArray("Algorithms"), XmlArrayItem(typeof(Algorithm), ElementName = "Algorithm")]
         public List<Algorithm> algorithms;
-        //[XmlArray("Plan"), XmlArrayItem(typeof(Plan), ElementName = "Plan")]
-        //public Plan plan;
+        [XmlElement(Namespace = "Plan")]
+        public Plan plan;
 
         [XmlIgnore]
         [NonSerialized]
@@ -106,6 +106,8 @@ namespace FireSafety
             NextActionPerforming += ParallelAlgorithmController.ParallelAlgorithmController_NextActionPerforming;
             // При перезагрузке алгоритма отключаем подсветку строк в таблице
             Reloaded += ParallelAlgorithmController.ParallelAlgorithmController_Reloaded;
+            Saving += ParallelAlgorithmController.ParallelAlgorithmController_Saving;
+            Cleared += ParallelAlgorithmController.ParallelAlgorithm_Cleared;
 
             foreach (Algorithm algorithm in algorithms)
             {
@@ -206,9 +208,9 @@ namespace FireSafety
 
         public void SaveAlgorithm(IOpenSave openSave)
         {
-            openSave.SaveAlgorithm();
+            Saving?.Invoke(this, new SaveEventArgs());
 
-            Saved?.Invoke(this, new SaveEventArgs());
+            openSave.SaveAlgorithm();
         }
 
         public void Run()

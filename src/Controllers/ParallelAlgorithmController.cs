@@ -19,6 +19,40 @@ namespace FireSafety
             // TODO: Почему-то если подписаться здесь ParallelAlgorithm.GetInstance().Loaded, то требует, чтобы этот класс тоже был сериализуемым
         }
 
+        public static void ParallelAlgorithm_Cleared(object sender, ParallelAlgorithm.ClearEventArgs e)
+        {
+            planForm.dgvPlan.Rows.Clear();
+            //planForm.dgvPlan.Rows.Add(1);
+            planForm.dgvPlan.Rows[0].Cells[0].Value = 1;
+        }
+
+        public static void ParallelAlgorithmController_Saving(object sender, ParallelAlgorithm.SaveEventArgs e)
+        {
+            Plan plan = new Plan();
+
+            for (int i = 0; i < planForm.dgvPlan.Rows.Count - 1; i++)
+            {
+                PlanItem planItem = new PlanItem();
+                planItem.number = (int)planForm.dgvPlan.Rows[i].Cells[0].Value;
+
+                for (int j = 1; j < planForm.dgvPlan.Rows[i].Cells.Count; j++)
+                {
+                    if (planForm.dgvPlan.Rows[i].Cells[j].Value != null)
+                    {
+                        planItem.tankActions.Add(planForm.dgvPlan.Rows[i].Cells[j].Value.ToString());
+                    }
+                    else
+                    {
+                        planItem.tankActions.Add("");
+                    }
+                }
+
+                plan.items.Add(planItem);
+            }
+
+            ParallelAlgorithm.GetInstance().plan = plan;
+        }
+
         public static void ParallelAlgorithmController_Reloaded(object sender, ParallelAlgorithm.ReloadEventArgs e)
         {
             foreach (AlgorithmForm form in algorithmForms)
@@ -145,6 +179,10 @@ namespace FireSafety
         {
             DetachEvents();
 
+            planForm.dgvPlan.Rows.Clear();
+            //planForm.dgvPlan.Rows.Add(1);
+            //planForm.dgvPlan.Rows[0].Cells[0].Value = 1;
+
             // Обновляем DataGridView в соответствии с алгоритмом
             for (int i = 0; i < algorithmForms.Count; i++)
             {
@@ -170,7 +208,46 @@ namespace FireSafety
             }
 
             // Обновляем DataGridView плана в соответствии с алгоритмом
+            for (int i = 0; i < ParallelAlgorithm.GetInstance().plan.items.Count; i++)
+            {
+                if (planForm.dgvPlan.Columns.Count == 2)
+                {
+                    planForm.dgvPlan.Rows.Add(ParallelAlgorithm.GetInstance().plan.items[i].number,
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[0]);
+                }
 
+                if (planForm.dgvPlan.Columns.Count == 3)
+                {
+                    planForm.dgvPlan.Rows.Add(ParallelAlgorithm.GetInstance().plan.items[i].number,
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[0],
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[1]);
+                }
+
+                if (planForm.dgvPlan.Columns.Count == 4)
+                {
+                    planForm.dgvPlan.Rows.Add(ParallelAlgorithm.GetInstance().plan.items[i].number,
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[0],
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[1],
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[2]);
+                }
+
+                if (planForm.dgvPlan.Columns.Count == 5)
+                {
+                    planForm.dgvPlan.Rows.Add(ParallelAlgorithm.GetInstance().plan.items[i].number,
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[0],
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[1],
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[2],
+                        ParallelAlgorithm.GetInstance().plan.items[i].tankActions[3]);
+                }
+
+                //planForm.dgvPlan.Rows.Add(ParallelAlgorithm.GetInstance().plan.items.Count);
+                //planForm.dgvPlan.Rows[i].Cells[0].Value = ParallelAlgorithm.GetInstance().plan.items[i].number;
+
+                //for (int j = 0; j < ParallelAlgorithm.GetInstance().plan.items[i].tankActions.Count; j++)
+                //{
+                //    planForm.dgvPlan.Rows[i].Cells[j + 1].Value = ParallelAlgorithm.GetInstance().plan.items[i].tankActions[j];
+                //}
+            }
 
             AttachEvents();
         }
