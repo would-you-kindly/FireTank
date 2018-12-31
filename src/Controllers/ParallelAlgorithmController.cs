@@ -23,19 +23,39 @@ namespace FireSafety
         {
             foreach (AlgorithmForm form in algorithmForms)
             {
-                // Очищаем цвета всех строк в таблице
+                // Очищаем цвета всех строк в таблице алгоритмов
                 foreach (DataGridViewRow row in form.dgvAlgorithm.Rows)
                 {
                     row.DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+
+            // Очищаем цвета всех строк в таблице плана
+            foreach (DataGridViewRow row in planForm.dgvPlan.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.White;
                 }
             }
         }
 
         public static void ParallelAlgorithmController_NextActionPerforming(object sender, ParallelAlgorithm.PerformNextActionEventArgs e)
         {
+            int i = 0;
+
+            // Очищаем цвета всех строк в таблице плана
+            foreach (DataGridViewRow row in planForm.dgvPlan.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.White;
+                }
+            }
+
             foreach (AlgorithmForm form in algorithmForms)
             {
-                // Очищаем цвета всех строк в таблице
+                // Очищаем цвета всех строк в таблице алгоритмов
                 foreach (DataGridViewRow row in form.dgvAlgorithm.Rows)
                 {
                     row.DefaultCellStyle.BackColor = Color.White;
@@ -45,11 +65,19 @@ namespace FireSafety
                 try
                 {
                     form.dgvAlgorithm.Rows[ParallelAlgorithm.GetInstance().currentAction - 1].DefaultCellStyle.BackColor = Color.Yellow;
+                    object planItem = form.dgvAlgorithm.Rows[ParallelAlgorithm.GetInstance().currentAction - 1].Cells[4].Value;
+                    if (planItem != null)
+                    {
+                        int index = int.Parse(((uint)planItem).ToString());
+                        planForm.dgvPlan.Rows[index - 1].Cells[i + 1].Style.BackColor = Color.Yellow;
+                    }
                 }
                 catch (Exception)
                 {
                     // Ignore exception
                 }
+
+                i++;
             }
         }
 
