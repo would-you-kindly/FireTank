@@ -64,8 +64,8 @@ namespace FireSafety
         // Переменные параллельного алгоритма
         [XmlArray("Algorithms"), XmlArrayItem(typeof(Algorithm), ElementName = "Algorithm")]
         public List<Algorithm> algorithms;
-        [XmlArray("Plan"), XmlArrayItem(typeof(Plan), ElementName = "Plan")]
-        public Plan plan;
+        //[XmlArray("Plan"), XmlArrayItem(typeof(Plan), ElementName = "Plan")]
+        //public Plan plan;
 
         [XmlIgnore]
         [NonSerialized]
@@ -86,7 +86,7 @@ namespace FireSafety
         private ParallelAlgorithm()
         {
             algorithms = new List<Algorithm>();
-            plan = new Plan();
+            //plan = new Plan();
             errors = new Errors();
             running = false;
             step = false;

@@ -515,23 +515,25 @@ namespace FireSafety
         private void ShowResultMessage(double result, bool success)
         {
             // Выводим предупреждение, если пользователь не авторизировался
-            string warning = Settings.GetInstance().currentMap != null ? "" :
-                "\n\nТекущая карта была открыта не из базы данных. Результат работы алгоритма не будет сохранен.";
+            //string warning = Settings.GetInstance().currentMap != null ? "" :
+            //"\n\nТекущая карта была открыта не из базы данных. Результат работы алгоритма не будет сохранен.";
 
             if (success)
             {
-                MessageBox.Show($"Количество деревьев на карте: {worldController.world.terrain.trees.Count()}.\n" +
-                  $"Спасено деревьев: {worldController.world.terrain.trees.Where(tree => tree.state.IsNormal()).Count()}.\n" +
-                  $"Сгорело деревьев: {worldController.world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n\n" +
-                  $"Количество домов на карте: {worldController.world.terrain.houses.Count()}.\n" +
-                  $"Спасено домов: {worldController.world.terrain.houses.Where(house => house.state.IsNormal()).Count()}.\n" +
-                  $"Сгорело домов: {worldController.world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n" +
-                  $"Эффективность разработанного алгоритма = {Math.Round(result, 2)}." + warning,
+                MessageBox.Show($"Деревья:\n\n" +
+                  $"Было: {worldController.world.terrain.trees.Count()}.\n" +
+                  $"Сгорело: {worldController.world.terrain.trees.Where(tree => !tree.state.IsBurned()).Count()}.\n" +
+                  $"Осталось: {worldController.world.terrain.trees.Where(tree => tree.state.IsBurned()).Count()}.\n\n" +
+                  $"Дома:\n\n" +
+                  $"Было: {worldController.world.terrain.houses.Count()}.\n" +
+                  $"Сгорело: {worldController.world.terrain.houses.Where(house => !house.state.IsBurned()).Count()}.\n" +
+                  $"Осталось: {worldController.world.terrain.houses.Where(house => house.state.IsBurned()).Count()}.\n\n",
+                  //$"Эффективность разработанного алгоритма = {Math.Round(result, 2)}." + warning,
                   "Результат работы алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(algorithmController.GetErrors().ToString() + warning,
+                MessageBox.Show(algorithmController.GetErrors().ToString()/* + warning*/,
                     "Ошибка выполнения алгоритма", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
