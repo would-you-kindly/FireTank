@@ -20,6 +20,7 @@ namespace FireSafety
         public RenderWindow renderWindow;
 
         private string savedFilename;
+        private string openedMap;
 
         public FireSafetyForm(World world)
         {
@@ -29,6 +30,7 @@ namespace FireSafety
 
             worldController = new WorldController(world);
             savedFilename = string.Empty;
+            openedMap = "TrainingExample2.tmx";
 
             Init();
         }
@@ -172,7 +174,10 @@ namespace FireSafety
                 sfd.Filter = $"Fire tank algorithms files (*.fta{algorithmForms.Count})|*.fta{algorithmForms.Count};";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
+                    savedFilename = sfd.FileName;
                     algorithmController.SaveAlgorithm(new FileOpenSave(sfd.FileName));
+
+                    Text = $"Карта - {openedMap}; Алгоритм - {savedFilename.Substring(savedFilename.LastIndexOf('\\') + 1)}";
                 }
             }
             else
@@ -189,6 +194,8 @@ namespace FireSafety
             {
                 savedFilename = sfd.FileName;
                 algorithmController.SaveAlgorithm(new FileOpenSave(sfd.FileName));
+
+                Text = $"Карта - {openedMap}; Алгоритм - {savedFilename.Substring(savedFilename.LastIndexOf('\\') + 1)}";
             }
         }
 
@@ -201,6 +208,8 @@ namespace FireSafety
                 savedFilename = ofd.FileName;
                 algorithmController.LoadAlgorithm(new FileOpenSave(ofd.FileName));
                 worldController.BuildWorld();
+
+                Text = $"Карта - {openedMap}; Алгоритм - {savedFilename.Substring(savedFilename.LastIndexOf('\\') + 1)}";
             }
         }
 
@@ -227,6 +236,9 @@ namespace FireSafety
 
                 // Забываем файл алгоритма
                 savedFilename = string.Empty;
+
+                openedMap = ofd.SafeFileName;
+                Text = "Карта - " + openedMap;
             }
         }
 
