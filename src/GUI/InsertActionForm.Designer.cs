@@ -71,10 +71,10 @@
             this.cbTurret.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTurret.FormattingEnabled = true;
             this.cbTurret.Items.AddRange(new object[] {
-            "45° по ч.с.",
-            "45° пр. ч.с.",
-            "90° по ч.с.",
-            "90° пр. ч.с.",
+            "45° ↻",
+            "45° ↺",
+            "90° ↻",
+            "90° ↺",
             "Поднять",
             "Опустить",
             "Выстрелить",
@@ -106,14 +106,14 @@
             this.cbMove.Items.AddRange(new object[] {
             "Вперед",
             "Назад",
-            "45° по ч.с.",
-            "45° пр. ч.с.",
-            "90° по ч.с.",
-            "90° пр. ч.с.",
-            "Вперед 45° по ч.с.",
-            "Вперед 45° пр. ч.с.",
-            "Назад 45° по ч.с.",
-            "Назад 45° пр. ч.с.",
+            "45° ↻",
+            "45° ↺",
+            "90° ↻",
+            "90° ↺",
+            "Вперед 45° ↻",
+            "Вперед 45° ↺",
+            "Назад 45° ↻",
+            "Назад 45° ↺",
             "Бездействие"});
             this.cbMove.Location = new System.Drawing.Point(68, 25);
             this.cbMove.Name = "cbMove";
@@ -154,7 +154,7 @@
             this.AcceptButton = this.btnInsert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 87);
+            this.ClientSize = new System.Drawing.Size(428, 86);
             this.Controls.Add(this.lblNumber);
             this.Controls.Add(this.cbNumber);
             this.Controls.Add(this.btnInsert);

@@ -45,7 +45,6 @@ D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный тан�
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.SqlServer.dll
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.xml
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\bin\Debug\EntityFramework.SqlServer.xml
-D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojAssemblyReference.cache
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.Properties.Resources.resources
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.AlgorithmForm.resources
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.FireSafetyForm.resources
@@ -55,7 +54,7 @@ D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный тан�
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.PlanForm.resources
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.SettingsForm.resources
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.GenerateResource.cache
-D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CoreCompileInputs.cache
-D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CopyComplete
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.exe
 D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.pdb
+D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csprojAssemblyReference.cache
+D:\YandexDisk\HSE\4th course\_Игры Плаксина\Пожарный танк\FireSafety\obj\Debug\FireSafety.csproj.CopyComplete
